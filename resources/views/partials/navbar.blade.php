@@ -12,7 +12,7 @@
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Blog</a></li>
       <li><a href="#">Podcast</a></li> 
-      <li><a href=" {{ asset('resume.pdf') }} ">Resume</a></li> 
+      <li><a href=" {{ asset('Resume.pdf') }} ">Resume</a></li> 
     </ul>
   </div>
 </div>
