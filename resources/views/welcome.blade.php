@@ -24,15 +24,14 @@
                     <div class="row">
                         <div class="col-md-12 col-offset-0">
                             <div>
-                                <h2>Web Developer & Student At Aston University</h2>
-                                <h3>Birmingham UK</h3>
+                                <div><b>#Web Developer & Student At Aston University. Birmingham UK.</b></div>
                                 <hr>
-                                <h3><span class="label label-default">About me</span></h3>
+                                <!-- <h3><span class="label label-default">About me</span></h3> -->
                                 <p>
                                 I am an ambitious student and an aspiring web developer. I've just completed my internship at <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> as a web developer on a project using <a href="https://laravel.com/">Laravel</a>.
                                 At the moment I am experimenting with React.js and Vue.js. I am also actively looking for a placement in the tech industry, starting on Summer 2018.
                                 </p>
-                                <h3><span class="label label-default">Skills & Projects</span></h3>
+                                <!-- <h3><span class="label label-default">Skills & Projects</span></h3> -->
                                 <p>
                                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                                 <span class="label label-info">Bootstrap</span> <span class="label label-info">HTML</span>
@@ -53,7 +52,7 @@
                     </div>
                 </div>
             <div class="text-center">
-            <small>&copy; Romario Giacholari 2017</small>
+            <small><b>&copy; Romario Giacholari 2017</b></small>
             </div>
             <hr>
             <div class="text-center">
