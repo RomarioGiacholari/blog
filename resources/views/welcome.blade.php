@@ -55,7 +55,7 @@
             <small><b>&copy; Romario Giacholari 2017</b></small>
             </div>
             <hr>
-            <div class="text-center">
+            <div id="contact-links" class="text-center">
                 <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
                 <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
                 <a href = 'https://www.instagram.com/alex.giacholari/?hl=en' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
