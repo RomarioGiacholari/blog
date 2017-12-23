@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-12 col-offset-0">
                             <div>
-                                <div><b>#Web Developer & Student At Aston University. Birmingham UK.</b></div>
+                                <h1><b>#Web Developer & Student At Aston University. Birmingham UK.</b></h1>
                                 <hr>
                                 <!-- <h3><span class="label label-default">About me</span></h3> -->
                                 <p>
@@ -32,6 +32,8 @@
                                 At the moment I am experimenting with React.js and Vue.js. I am also actively looking for a placement in the tech industry, starting on Summer 2018.
                                 </p>
                                 <!-- <h3><span class="label label-default">Skills & Projects</span></h3> -->
+                                <hr>
+                                <h2><b>#Skills</b></h2>
                                 <p>
                                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                                 <span class="label label-info">Bootstrap</span> <span class="label label-info">HTML</span>
@@ -45,6 +47,7 @@
                                 </p>
                             </div>
                             <hr>
+                            <h2 style="margin-bottom:10px"><b>#Projects</b></h2>
                             <section>
                                 <project-list></project-list>
                            </section>
