@@ -1,25 +1,5 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="author" content="Romario Giacholari">
-        <meta name="description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
-        <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Romario Giacholari">
-        <title>Romario Giacholari</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        @include('partials.navbar')
-        <div id="app">
+@extends('layouts.app')
+    @section('content')
             <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-offset-0">
@@ -60,17 +40,4 @@
                 <a href = 'https://www.instagram.com/alex.giacholari/?hl=en' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a> 
             </div>
-         </div>
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-90120268-3', 'auto');
-        ga('send', 'pageview');
-        </script>
-    </body>
-</html>
+    @endsection
