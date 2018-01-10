@@ -10,8 +10,8 @@
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/podcast">Podcast</a></li> 
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Podcast</a></li> 
       <li><a href=" {{ asset('Resume.pdf') }} ">Resume</a></li> 
     </ul>
   </div>

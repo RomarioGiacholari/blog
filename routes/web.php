@@ -15,10 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', function () {
-    return '#Coming soon.';
-});
-
-Route::get('/podcast', function () {
-    return '#Coming soon.';
-});
+Route::resource('posts', 'PostController');

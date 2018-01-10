@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="author" content="Romario Giacholari">
         <meta name="description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
-        <meta name="keywords" content="HTML,CSS,JavaScript,Laravel,Romario Giacholari">
+        <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Romario Giacholari">
         <title>Romario Giacholari</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -24,16 +24,13 @@
                     <div class="row">
                         <div class="col-md-12 col-offset-0">
                             <div>
-                                <h1><b>#Web Developer & Student At Aston University. Birmingham UK.</b></h1>
-                                <hr>
-                                <!-- <h3><span class="label label-default">About me</span></h3> -->
+                                <h1>Hi! I am Mario.</h1>
                                 <p>
                                 I am an ambitious student and an aspiring web developer. I've just completed my internship at <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> as a web developer on a project using <a href="https://laravel.com/">Laravel</a>.
                                 At the moment I am experimenting with React.js and Vue.js. I am also actively looking for a placement in the tech industry, starting on Summer 2018.
                                 </p>
                                 <!-- <h3><span class="label label-default">Skills & Projects</span></h3> -->
-                                <hr>
-                                <h2><b>#Skills</b></h2>
+                                <p>Those are some of the skills and tools I use to build and monitor web apps.</p>
                                 <p>
                                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                                 <span class="label label-info">Bootstrap</span> <span class="label label-info">HTML</span>
@@ -46,8 +43,7 @@
                                 <span class="label label-info">Bash</span> <span class="label label-info">MVC</span>  <span class="label label-info">Google Analytics</span>
                                 </p>
                             </div>
-                            <hr>
-                            <h2 style="margin-bottom:10px"><b>#Projects</b></h2>
+                            <p>Here are some of the projects I have contributed to.</p>
                             <section>
                                 <project-list></project-list>
                            </section>
