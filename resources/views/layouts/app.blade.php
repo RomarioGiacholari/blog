@@ -44,8 +44,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="/blog">blog</a></li>
-                        <li><a href="/resume">resume</a></li>
+                        <li><a href="/posts">blog</a></li>
+                        <li><a href="{{ asset('resume.pdf') }}">resume</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -72,6 +72,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li><a href="/home">dashboard</a></li>
                                 </ul>
                             </li>
                         @endguest

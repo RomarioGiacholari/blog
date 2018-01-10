@@ -14,8 +14,33 @@
                         </div>
                     @endif
 
-                    You are logged in!
-                </div>
+                    <div class="table-responsive">          
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($posts as $post)
+                            <tr>
+                                <td>{{$post->title}}</td>
+                                <td><a href="posts/{{$post->id}}/edit">edit</a></td>
+                                <td>
+                                <form action="/posts/{{$post->id}}" method="POST">
+                                {{method_field('DELETE')}}
+
+                                    {{csrf_field()}}
+                                <a href="#" onclick="$(this).closest('form').submit()" style="color:red">delete</a>
+                                </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
             </div>
         </div>
     </div>

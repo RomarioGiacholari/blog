@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin')->only(['store','edit','update','delete']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::with('creator')->get();
+        $posts =  Post::with('creator')->latest()->paginate(15);
 
         return view('posts.index', compact('posts'));
     }
@@ -74,7 +80,7 @@ class PostController extends Controller
     {
         $post->update($request->all());
 
-        return back();
+        return redirect('/home');
     }
 
     /**
@@ -86,5 +92,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
+        return back();
     }
 }

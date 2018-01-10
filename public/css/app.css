@@ -8350,6 +8350,11 @@ button.close {
   }
 }
 
+.post-item:hover {
+  background-color: #f0f0f0;
+  opacity: 0.7;
+}
+
 #contact-links {
   font-size: 2em;
 }
