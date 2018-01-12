@@ -43,8 +43,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        auth()->posts()->create($request->all());
+        $post = auth()->user()->posts()->create($request->all());
 
+        return redirect($post->path());
+        
     }
 
     /**
