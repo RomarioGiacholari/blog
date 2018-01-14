@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'body', 'image_path'];
+    protected $fillable = ['title', 'body', 'slug', 'image_path'];
     
     public function creator() 
     {
@@ -15,6 +15,16 @@ class Post extends Model
 
     public function path()
     {
-        return "posts/{$this->id}";
+        return "posts/{$this->slug}";
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = str_slug($value,'-');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

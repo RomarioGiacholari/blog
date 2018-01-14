@@ -1,18 +1,15 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
-    <div class="row">
          <div id="pinBoot">
            @foreach($posts as $post)
-                <div class="thumbnail white-panel post-item">
-                    {{ $post->title }}
+                <div class="thumbnail white-panel">
+                <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
                     <hr>
-                    <a href="posts/{{$post->id}}"> {{ $post->body }} </a>
+                     <p class="post-body">{{ $post->body }}</p> 
                 </div>
             @endforeach
         </div>
-    </div>
     <div style="padding:80px">
         {{ $posts->links() }}
     </div>

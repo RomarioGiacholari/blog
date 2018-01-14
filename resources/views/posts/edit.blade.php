@@ -5,7 +5,7 @@
         <div class="col-md-12 col-md-offset-0 ">
                 <h3>Update post</h3>
                 <hr>
-                    <form action="/posts/{{$post->id}}" method="POST">
+                    <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
 

@@ -70,6 +70,7 @@
                                         </form>
                                     </li>
                                     <li><a href="/home">dashboard</a></li>
+                                    <li><a href=" {{ route('posts.create') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                 </ul>
                             </li>
                         @endauth

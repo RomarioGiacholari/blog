@@ -26,10 +26,10 @@
                             <tbody>
                             @foreach($posts as $post)
                             <tr>
-                                <td>{{$post->title}}</td>
-                                <td><a href="posts/{{$post->id}}/edit">edit</a></td>
+                                <td><a href=" {{ route('posts.show' , ['post' => $post] ) }}">{{$post->title}}</a></td>
+                                <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} ">edit</a></td>
                                 <td>
-                                <form action="/posts/{{$post->id}}" method="POST">
+                                <form action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
                                 {{method_field('DELETE')}}
 
                                     {{csrf_field()}}
