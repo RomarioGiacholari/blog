@@ -10,7 +10,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->only(['store','edit','update','delete']);
+        $this->middleware('admin')->except(['show','index']);
     }
     
     /**
