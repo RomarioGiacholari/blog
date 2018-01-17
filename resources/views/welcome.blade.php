@@ -31,7 +31,7 @@
                     </div>
                 </div>
             <div class="text-center">
-            <small><b>&copy; Romario Giacholari 2017</b></small>
+            <small><b>&copy; Romario Giacholari 2018</b></small>
             </div>
             <hr>
             <div id="contact-links" class="text-center">
