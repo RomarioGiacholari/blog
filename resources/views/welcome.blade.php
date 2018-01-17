@@ -37,7 +37,6 @@
             <div id="contact-links" class="text-center">
                 <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
                 <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
-                <a href = 'https://www.instagram.com/alex.giacholari/?hl=en' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a> 
             </div>
     @endsection

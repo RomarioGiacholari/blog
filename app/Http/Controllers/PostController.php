@@ -43,6 +43,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|max:20',
+            'body' => 'required|max:255',
+            ]);
+
         $post = auth()->user()->posts()->create([
             'title' => $request->title,
             'body' => $request->body,
@@ -84,7 +89,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->update($request->all());
+        $this->validate($request, [
+            'title' => 'required|max:20',
+            'body' => 'required|max:255',
+            ]);
+
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'slug' => $request->title
+        ]);
 
         return redirect('/home');
     }
