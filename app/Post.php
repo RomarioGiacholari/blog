@@ -28,7 +28,7 @@ class Post extends Model
 
     public function setExcerptAttribute($excerpt)
     {
-        $this->attributes['excerpt'] = Str::words($excerpt, 10, '...');
+        $this->attributes['excerpt'] = Str::words($excerpt, 20, ' ...');
     }
 
     public function getRouteKeyName()
