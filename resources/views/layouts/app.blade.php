@@ -45,7 +45,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="/posts">blog</a></li>
-                        <li><a href="{{ asset('resume.pdf') }}">resume</a></li>
+                        <li><a href="{{ secure_asset('resume.pdf') }}">resume</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
