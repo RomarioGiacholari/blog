@@ -51,7 +51,8 @@ class PostController extends Controller
         $post = auth()->user()->posts()->create([
             'title' => $request->title,
             'body' => $request->body,
-            'slug' => $request->title
+            'slug' => $request->title,
+            'excerpt' => $request->body,
         ]);
 
         return redirect($post->path());
@@ -97,7 +98,8 @@ class PostController extends Controller
         $post->update([
             'title' => $request->title,
             'body' => $request->body,
-            'slug' => $request->title
+            'slug' => $request->title,
+            'excerpt' => $request->body,
         ]);
 
         return redirect('/home');
