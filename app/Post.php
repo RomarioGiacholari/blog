@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'body', 'slug'];
+    protected $fillable = ['title', 'body', 'slug', 'excerpt'];
     
     public function creator() 
     {
@@ -18,9 +19,14 @@ class Post extends Model
         return "posts/{$this->slug}";
     }
 
-    public function setSlugAttribute($value)
+    public function setSlugAttribute($title)
     {
-        $this->attributes['slug'] = str_slug($value,'-');
+        $this->attributes['slug'] = str_slug($title,'-');
+    }
+
+    public function setExcerptAttribute($excerpt)
+    {
+        $this->attributes['excerpt'] = Str::words($excerpt, 10, '...');
     }
 
     public function getRouteKeyName()
