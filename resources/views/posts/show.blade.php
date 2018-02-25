@@ -5,10 +5,11 @@
         <div class="col-md-12">
                 <div> 
                   <h1> {{ $post->title }} </h1>
+                    <hr>
                     <p> {{ $post->body }} </p>
                 </div>
             </a>
         </div>
     </div>
- </div>
+</div>
 @endsection
