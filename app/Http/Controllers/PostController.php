@@ -45,7 +45,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:20',
-            'body' => 'required|max:255',
+            'body' => 'required',
             ]);
 
         $post = auth()->user()->posts()->create([
@@ -91,7 +91,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:20',
-            'body' => 'required|max:255',
+            'body' => 'required',
             ]);
 
         $post->update([
