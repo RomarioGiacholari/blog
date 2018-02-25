@@ -17,5 +17,5 @@
             {{ $posts->links() }}
         </div>
     @endif
- </div>
+</div>
 @endsection
