@@ -8,6 +8,9 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+.post-show-body {
+  font-family:Comic Sans MS;
+}
 .post-body:hover{opacity:0.7}
 #contact-links{font-size:2em}
 .projects:hover{opacity:0.5;}

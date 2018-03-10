@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-md-12">
                 <div> 
-                  <h1> {{ $post->title }} </h1>
+                  <h1> <strong> {{ $post->title }} </strong> </h1>
                     <hr>
-                    <p> {{ $post->body }} </p>
+                    <p class="post-show-body"> {{ $post->body }} </p>
                 </div>
             </a>
         </div>
