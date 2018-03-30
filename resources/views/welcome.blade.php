@@ -23,7 +23,7 @@
                                 <span class="label label-info">Bash</span> <span class="label label-info">MVC</span>  <span class="label label-info">Google Analytics</span>
                                 </p>
                             </div>
-                            <p>Here are some of the projects I have contributed to.</p>
+                            <p><b><u>Here are some of the projects I have contributed to.</u></b></p>
                             <section>
                                 <project-list></project-list>
                            </section>
