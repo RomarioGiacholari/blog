@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
                 <div> 
-                  <h1> <strong> {{ $post->title }} </strong> </h1>
+                  <h1 style="font-family:Comic Sans MS;"> <u> {{ $post->title }} </u> </h1>
                     <hr>
                     <p class="post-show-body"> {{ $post->body }} </p>
                 </div>
