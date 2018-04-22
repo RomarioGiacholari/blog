@@ -20,6 +20,7 @@
                     {id:3, name:"Industry Club", link:"https://cs.aston.ac.uk/industryclub/", image:"photos/cs-industry-portal.png"},
                     {id:4, name:"C&M Builders", link:"http://www.cmbuildersinfo.co.uk", image:"photos/cmbuilders.png"},
                     {id:5, name:"Picarea", link:"https://picarea.github.io/Porftolio/", image:"photos/picarea.png"},
+                    {id:6, name:"Astonbrite", link:"https://astonbrite.me", image:"photos/astonbrite.png"},
                 ]
             }
         }
