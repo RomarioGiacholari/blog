@@ -16,10 +16,10 @@
          <p>Blog posts coming soon.</p>
         @endforelse
     </div>
-    @if(count($posts) >= 15)
-        <div style="padding:80px">
-            {{ $posts->links() }}
-        </div>
-    @endif
+
+    <div style="padding:80px">
+        {{ $posts->links() }}
+    </div>
+    
 </div>
 @endsection
