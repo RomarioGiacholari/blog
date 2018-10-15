@@ -46,7 +46,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|max:20',
             'body' => 'required',
-            ]);
+        ]);
 
         $post = auth()->user()->posts()->create([
             'title' => $request->title,
@@ -56,7 +56,6 @@ class PostController extends Controller
         ]);
 
         return redirect($post->path());
-        
     }
 
     /**
@@ -93,7 +92,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required|max:20',
             'body' => 'required',
-            ]);
+        ]);
 
         $post->update([
             'title' => $request->title,
