@@ -6,12 +6,16 @@
                         <div>
                             <h1>Hi! I am Mario.</h1>
                             <p>
-                                I am an ambitious student and an aspiring web developer. I completed my internship at <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> as a web developer on a project using <a href="https://laravel.com/">Laravel</a> last year.
-                                At the moment I am experimenting with React.js, Vue.js and I do work as a full stack web developer at <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a>.
-                                I am also happy to announce that I secured a placement with <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> for the year to come.
+                                I am an ambitious student and aspiring web developer from Aston University.
                             </p>
+                            <p><b>Work experience</b></p>
+                            <ul>
+                                    <li><a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student - 2018/2019</li>
+                                    <li> <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer - 2018</li>
+                                    <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern - 2017</li>
+                            </ul>
                             <!-- <h3><span class="label label-default">Skills & Projects</span></h3> -->
-                            <p>Those are some of the skills and tools I use to build and monitor web apps.</p>
+                            <p><b>Those are some of the skills and tools I use to build and monitor web apps.</b></p>
                             <p>
                                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                                 <span class="label label-info">Bootstrap</span> <span class="label label-info">HTML</span>
@@ -23,10 +27,10 @@
                                 <span class="label label-info">Vue</span> <span class="label label-info">Bash</span>
                                 <span class="label label-info">MVC</span>  <span class="label label-info">Google Analytics</span>
                                 <span class="label label-info">Python</span> <span class="label label-info">Digital Ocean</span>
-                                <span class="label label-info">Nginx</span>
+                                <span class="label label-info">Nginx</span> <span class="label label-info">C#</span>
                             </p>
                         </div>
-                        <h3>Here are some of the projects I have contributed to ...</h3>
+                        <p><b>Live projects</b></p>
                         <section>
                             <project-list></project-list>
                         </section>
