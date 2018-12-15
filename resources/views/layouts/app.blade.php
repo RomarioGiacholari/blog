@@ -45,6 +45,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="/posts">blog</a></li>
+                        <!-- <li><a href="/all-photos">photos</a></li> -->
                         <li><a href="{{ asset('resume.pdf') }}">resume</a></li>
                     </ul>
 
