@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use App\Photo;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = [];
+        $photos = array_filter(Storage::disk('public')->files(), function ($file) {
+            return strpos($file, 'jpg');
+        });
+        
         return view('photos.index', compact('photos'));
     }
 
