@@ -38,6 +38,6 @@
                 </div>
             </div>
             <div class="text-center">
-                <small><b>&copy; Romario Giacholari 2018</b></small>
+                <small><b>&copy; Romario Giacholari 2019</b></small>
             </div>
     @endsection
