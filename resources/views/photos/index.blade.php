@@ -6,12 +6,7 @@
                     @forelse($photos as $photo)
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <a href=" {{ $photo->path() }}">
-                            <img src="{{ $photo->src()}}" alt="" style="width:100%">
-                            <div class="caption">
-                                <p> {{ $photo->description }}</p>
-                            </div>
-                            </a>
+                            <img src="{{ asset($photo) }}" alt="" style="width:100%">
                         </div>
                     </div>
                     @empty
