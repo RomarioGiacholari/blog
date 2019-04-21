@@ -15,7 +15,9 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = array_filter(Storage::disk('public')->files(), function ($file) {
+        $filesList = Storage::disk('public')->files();
+        
+        $photos = array_filter($filesList, function ($file) {
             return strpos($file, 'jpg');
         });
         
