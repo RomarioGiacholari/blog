@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
 
@@ -59,6 +59,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href=" {{ route('posts.create') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                                    <li><a href="/home">dashboard</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -70,8 +72,6 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li><a href="/home">dashboard</a></li>
-                                    <li><a href=" {{ route('posts.create') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                                 </ul>
                             </li>
                         @endauth
