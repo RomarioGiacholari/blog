@@ -34,9 +34,9 @@ class Post extends Model
     public function setBodyAttribute($body)
     {
         $this->attributes['body'] = preg_replace(
-            '/@([\w\-]+)/',
-            '<a href="/$1">$0</a>',
-            $body
+        '/@([\w\-]+)/',
+        '<a href="/$1">$0</a>',
+        $body
         );
     }
 
