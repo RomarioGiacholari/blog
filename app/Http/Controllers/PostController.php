@@ -43,17 +43,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:20',
-            'body' => 'required',
-        ]);
+        $this->validatePost($request);
 
-        $post = auth()->user()->posts()->create([
+        $attributes = [
             'title' => $request->title,
             'body' => $request->body,
             'slug' => $request->title,
             'excerpt' => $request->body,
-        ]);
+        ];
+
+        $post = auth()->user()->posts()->create($attributes);
 
         return redirect($post->path());
     }
@@ -89,17 +88,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $this->validate($request, [
-            'title' => 'required|max:20',
-            'body' => 'required',
-        ]);
+        $this->validatePost($request);
 
-        $post->update([
+        $attributes = [
             'title' => $request->title,
             'body' => $request->body,
             'slug' => $request->title,
             'excerpt' => $request->body,
-        ]);
+        ];
+
+        $post->update($attributes);
 
         return redirect('/home');
     }
@@ -115,5 +113,13 @@ class PostController extends Controller
         $post->delete();
 
         return back();
+    }
+
+    private function validatePost($request)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:20',
+            'body' => 'required',
+        ]);
     }
 }
