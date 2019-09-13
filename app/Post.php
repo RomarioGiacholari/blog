@@ -10,10 +10,10 @@ class Post extends Model
     protected $fillable = [
         'title', 'body', 'slug', 'excerpt'
     ];
-    
-    public function creator() 
+
+    public function creator()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function path()
@@ -23,7 +23,7 @@ class Post extends Model
 
     public function setSlugAttribute($title)
     {
-        $this->attributes['slug'] = str_slug($title,'-');
+        $this->attributes['slug'] = str_slug($title, '-');
     }
 
     public function setExcerptAttribute($excerpt)
@@ -34,9 +34,9 @@ class Post extends Model
     public function setBodyAttribute($body)
     {
         $this->attributes['body'] = preg_replace(
-        '/@([\w\-]+)/',
-        '<a href="/$1">$0</a>',
-        $body
+            '/@([\w\-]+)/',
+            '<a href="/$1">$0</a>',
+            $body
         );
     }
 

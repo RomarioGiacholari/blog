@@ -20,13 +20,12 @@
                                 <span class="label label-info">Bootstrap</span> <span class="label label-info">HTML</span>
                                 <span class="label label-info">CSS</span> <span class="label label-info">JavaScript</span>
                                 <span class="label label-info">AWS</span> <span class="label label-info">Heroku</span>
-                                <span class="label label-info">Java</span> <span class="label label-info">Testing</span>
+                                <span class="label label-info">Testing</span> <span class="label label-info">Digital Ocean</span>
                                 <span class="label label-info">Git</span> <span class="label label-info">SQL</span>
                                 <span class="label label-info">Ajax</span>  <span class="label label-info">React - basic</span>
                                 <span class="label label-info">Vue</span> <span class="label label-info">Bash</span>
                                 <span class="label label-info">MVC</span>  <span class="label label-info">Google Analytics</span>
-                                <span class="label label-info">Python</span> <span class="label label-info">Digital Ocean</span>
-                                <span class="label label-info">Nginx</span> <span class="label label-info">C#</span>
+                                <span class="label label-info">Asp.NET</span> <span class="label label-info">C#</span>
                             </p>
                         </div>
                         <p><b>Live projects</b></p>
