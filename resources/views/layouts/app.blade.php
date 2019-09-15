@@ -45,8 +45,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="/posts">blog</a></li>
-                        <!-- <li><a href="/all-photos">photos</a></li> -->
-                        <li><a href="{{ asset('resume.pdf') }}">resume</a></li>
+                        <li><a href="/resume">resume</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -81,9 +80,7 @@
         </nav>
 
         @yield('content')
-
             <hr>
-            
             <div id="contact-links" class="text-center">
                 <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
                 <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
@@ -93,8 +90,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Scripts -->
+     <script src="{{ asset('js/app.js') }}"></script>
      <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

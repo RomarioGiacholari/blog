@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use Storage;
-use App\Photo;
 
 class PhotoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $files = Storage::disk('public')->files();
@@ -20,6 +14,6 @@ class PhotoController extends Controller
             return strpos($file, 'jpg');
         });
         
-        return view('photos.index', compact('photos'));
+        return view('photos.index', ['photos' => $photos]);
     }
 }
