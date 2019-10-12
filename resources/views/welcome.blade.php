@@ -14,7 +14,7 @@
                                     <li> <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer - 2018</li>
                                     <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern - 2017</li>
                             </ul>
-                            <p><b>Those are some of the skills and tools I use to build and monitor web apps.</b></p>
+                            <p><b>Those are some of the skills/tools I use to build, test, deploy and monitor web apps.</b></p>
                             <p>
                                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span> 
