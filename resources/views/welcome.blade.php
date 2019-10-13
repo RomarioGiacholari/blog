@@ -21,7 +21,9 @@
                                 <span class="label label-info">HTML</span> <span class="label label-info">CSS</span>
                                  <span class="label label-info">Bootstrap</span> <span class="label label-info">Vue</span>
                                 <span class="label label-info">SQL</span> <span class="label label-info">Git</span> 
-                                <span class="label label-info">Bash</span> <span class="label label-info">Unit Testing</span> 
+                                <span class="label label-info">GitLab</span> <span class="label label-info">Azure DevOps</span> 
+                                <span class="label label-info">Bash</span> <span class="label label-info">PHP-Unit</span> 
+                                <span class="label label-info">MOQ</span> <span class="label label-info">Visual Studio</span> 
                                 <span class="label label-info">MVC</span> <span class="label label-info">Google Analytics</span>
                                 <span class="label label-info">Asp.NET</span> <span class="label label-info">C#</span>
                                 <span class="label label-info">Heroku</span> <span class="label label-info">Digital Ocean</span>
