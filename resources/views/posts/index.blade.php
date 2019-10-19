@@ -5,21 +5,24 @@
     <h1 style="font-family:Comic Sans MS"><u>Posts</u></h1>
     <hr />
 
-    <div id="pinBoot">
-        @forelse($posts as $post)
-            <div class="thumbnail white-panel">
-                <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
-                 <hr>
-                 <p class="post-body">{{ $post->excerpt }}</p> 
-            </div>
-         @empty
-         <p>Blog posts coming soon.</p>
-        @endforelse
-    </div>
+    @if(! is_null($viewModel) && ! is_null($viewModel->posts) && count($viewModel->posts) > 0)
+        <div id="pinBoot">
+            @foreach($viewModel->posts as $post)
+                <div class="thumbnail white-panel">
+                    <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
+                    <hr>
+                    <p class="post-body">{{ $post->excerpt }}</p> 
+                </div>
+            @endforeach
+        </div>
 
-    <div style="padding:80px">
-        {{ $posts->links() }}
-    </div>
-    
+        <div style="padding:80px">
+            {{ $viewModel->posts->links() }}
+        </div>
+
+    @else
+        <p>Blog posts coming soon</p>
+    @endif
+
 </div>
 @endsection
