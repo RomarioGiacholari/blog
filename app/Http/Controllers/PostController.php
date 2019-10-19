@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('creator')->latest()->paginate(15);
+        $viewModel = new stdClass;
+        $postsCollection = Post::with('creator')->latest()->paginate(15) ?? null;
+        $viewModel->posts = $postsCollection;
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', ['viewModel' => $viewModel]);
     }
 
     /**
@@ -65,7 +68,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $viewModel = new stdClass;
+        $viewModel->post = $post ?? null;
+
+        return view('posts.show', ['viewModel' => $viewModel]);
     }
 
     /**
@@ -76,7 +82,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $viewModel = new stdClass;
+        $viewModel->post = $post ?? null;
+
+        return view('posts.edit', ['viewModel' => $viewModel]);
     }
 
     /**
