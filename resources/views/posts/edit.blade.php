@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-md-offset-0 ">
-                @if(! is_null($viewModel) && ! is_null($viewModel->post))
+                @if($viewModel !== null && $viewModel->post !== null)
                     <h3>Update post</h3>
                     <hr>
                         <form action="{{ route('posts.update', ['post' => $viewModel->post]) }}" method="POST">

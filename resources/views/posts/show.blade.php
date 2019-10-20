@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-                @if (! is_null($viewModel) && ! is_null($viewModel->post))
+                @if ($viewModel !== null && $viewModel->post !== null)
                     <h1 style="font-family:Comic Sans MS;"> <u> {{ $viewModel->post->title }} </u> </h1> 
 
                     {{ $viewModel->post->created_at->diffForHumans() }}
