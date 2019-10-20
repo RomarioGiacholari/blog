@@ -5,7 +5,7 @@
     <h1 style="font-family:Comic Sans MS"><u>Posts</u></h1>
     <hr />
 
-    @if(! is_null($viewModel) && ! is_null($viewModel->posts) && count($viewModel->posts) > 0)
+    @if($viewModel !== null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
         <div id="pinBoot">
             @foreach($viewModel->posts as $post)
                 <div class="thumbnail white-panel">

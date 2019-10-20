@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/resume', function() {
+Route::get('/resume', function () {
     $pathToFile = public_path('resume.pdf');
     
     return response()->file($pathToFile);
