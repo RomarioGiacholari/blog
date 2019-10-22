@@ -24,6 +24,7 @@ class PostController extends Controller
         $viewModel = new stdClass;
         $postsCollection = Post::with('creator')->latest()->paginate(15) ?? null;
         $viewModel->posts = $postsCollection;
+        $viewModel->pageTitle = 'Posts';
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
@@ -70,6 +71,12 @@ class PostController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->post = $post ?? null;
+        $viewModel->pageTitle = '';
+
+        if ($post !== null)
+        {
+            $viewModel->pageTitle = $post->title;
+        }
 
         return view('posts.show', ['viewModel' => $viewModel]);
     }
@@ -84,7 +91,13 @@ class PostController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->post = $post ?? null;
+        $viewModel->pageTitle = '';
 
+        if ($post !== null)
+        {
+            $viewModel->pageTitle = $post->title;
+        }
+        
         return view('posts.edit', ['viewModel' => $viewModel]);
     }
 

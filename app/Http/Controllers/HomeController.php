@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use App\Post;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -24,8 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('user_id', auth()->user()->id)->get();
+        $postCollection = Post::where('user_id', auth()->user()->id)->get() ?? null;
+
+        $viewModel = new stdClass;
+        $viewModel->posts = $postCollection;
+        $viewModel->pageTitle = 'Home';
         
-        return view('home', compact('posts'));
+        return view('home', ['viewModel' => $viewModel]);
     }
 }
