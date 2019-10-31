@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-12">
             @if($viewModel !== null && $viewModel->post !== null)
-                <h1 style="font-family:Comic Sans MS;"> <u> {{ $viewModel->post->title }} </u> </h1> 
+            <h1 style="font-family:Comic Sans MS;"> <u> {{ $viewModel->post->title }} </u> </h1>
 
-                {{ $viewModel->post->created_at->diffForHumans() }}
-            
-                <hr>
-                <p class="post-show-body"> {{ $viewModel->post->body }} </p>
+            {{ $viewModel->post->created_at->diffForHumans() }}
+
+            <hr>
+            <p class="post-show-body"> {{ $viewModel->post->body }} </p>
             @else
-                <p>The post does not exist or it has been removed</p>
+            <p>The post does not exist or it has been removed</p>
             @endif
         </div>
     </div>
