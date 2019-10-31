@@ -56,6 +56,7 @@ class PostController extends Controller
             'excerpt' => $request->body,
         ];
 
+        // user will not be null since there is a middleware for that
         $post = auth()->user()->posts()->create($attributes);
 
         return redirect($post->path());
