@@ -24,12 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $postCollection = Post::where('user_id', auth()->user()->id)->get() ?? null;
+        $currentUser = auth()->user();
+        $postCollection = null;
+
+        if ($currentUser !== null) 
+        {
+            $postCollection = Post::where('user_id', $currentUser->id)->get();
+        }
 
         $viewModel = new stdClass;
         $viewModel->posts = $postCollection;
         $viewModel->pageTitle = 'Home';
-        
+
         return view('home', ['viewModel' => $viewModel]);
     }
 }
