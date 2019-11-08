@@ -1,7 +1,7 @@
 @if($errors->any())
-    <ol class="text-center">
-        @foreach($errors->all() as $error)
-            <p style='color:red'>{{$error}}</p>
-        @endforeach
-    </ol>
+<ol class="text-center">
+    @foreach($errors->all() as $error)
+    <div style='color:red; font-style: italic'>{{ $error }}</div>
+    @endforeach
+</ol>
 @endif
