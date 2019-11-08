@@ -28,8 +28,8 @@
                                 @foreach($viewModel->posts as $post)
                                 <tr>
                                     <td><a href=" {{ route('posts.show' , ['post' => $post] ) }}">{{ $post->title }}</a></td>
-                                    <td> {{ $post->created_at }}</td>
-                                    <td> {{ $post->updated_at }} </td>
+                                    <td> {{ $post->created_at->diffForHumans() }}</td>
+                                    <td> {{ $post->updated_at->diffForHumans() }} </td>
                                     <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-sm btn-primary" role="button">edit</a></td>
                                     <td>
                                         <form action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
