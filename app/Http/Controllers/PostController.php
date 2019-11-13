@@ -142,7 +142,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:20',
-            'body' => 'required',
+            'body' => 'required|max:500',
         ]);
     }
 }
