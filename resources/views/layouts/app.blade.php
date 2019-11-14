@@ -46,6 +46,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/posts">blog</a></li>
                         <li><a href="/resume">resume</a></li>
+                        <li><a href="{{ route('contact.create') }}">contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

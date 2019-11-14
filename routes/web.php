@@ -22,6 +22,10 @@ Route::get('/resume', function () {
 });
 
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/all-photos', 'PhotoController@index');
 Route::resource('posts', 'PostController');
+
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
