@@ -17,13 +17,16 @@
                     <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required>
+                    <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Your email" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject" required>
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" name="message" id="message" rows="8" placeholder="Message" required>{{ old('message') }}</textarea>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" name="answer" id="answer" value="{{ old('answer') }}" min="0" placeholder="3 + 1 =" required>
                 </div>
                 <div class='form-group'>
                     <button type="submit" class="btn btn-primary btn-block ">Send</button>
