@@ -22,17 +22,17 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $data = $this->validateEmail($request);
+        $isValid = $this->validateEmail($request);
         $isSuccess = false;
         $message = null;
 
-        if ($data !== null) 
+        if ($isValid && $request->answer == 4)
         {
             $sendToEmail = config('app.admin_Email');
-            $subject = $data['subject'];
-            $messageData = $data['message'];
-            $emailFrom = $data['email'];
-            $name = $data['name'];
+            $subject = $request->subject;
+            $messageData = $request->message;
+            $emailFrom = $request->email;
+            $name = $request->name;
 
             try 
             {
@@ -62,17 +62,23 @@ class ContactController extends Controller
 
     private function validateEmail($request)
     {
-        $data = null;
+        $isValid = false;
 
         if ($request !== null) {
             $data = $this->validate($request, [
                 'name' => 'required|max:50',
                 'email' => 'required|email',
                 'subject' => 'required|max:100',
-                'message' => 'required|max:500'
+                'message' => 'required|max:500',
+                'answer' => 'required|integer|min:4|max:4'
             ]);
+            
+            if ($data !== null) 
+            {
+                $isValid = true;
+            }
         }
 
-        return $data;
+        return $isValid;
     }
 }

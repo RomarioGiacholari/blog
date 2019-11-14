@@ -26,7 +26,7 @@ class ContactMe extends Mailable
 
     public function build()
     {
-        $subject = $this->subject;
+        $subject = $this->subject ?? 'Not specified';
 
         return $this->subject($subject)->view('emails.contact');
     }
