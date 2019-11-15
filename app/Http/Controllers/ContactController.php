@@ -44,7 +44,6 @@ class ContactController extends Controller
             } 
             catch (Exception $ex) 
             {
-                $isSuccess = false;
                 $message = $ex->getMessage();
             }
 
