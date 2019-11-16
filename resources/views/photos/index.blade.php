@@ -3,15 +3,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @forelse($photos as $photo)
+            @if($viewModel !== null && $viewModel->photos !== null)
+            @foreach($viewModel->photos as $photo)
             <div class="col-md-4">
                 <div class="thumbnail">
                     <img src="{{ asset($photo) }}" alt="" style="width:100%">
                 </div>
             </div>
-            @empty
-            <p>Photos coming soon ..</p>
-            @endforelse
+            @endforeach
+            @else
+            <p>Photos coming soon ...</p>
+            @endif
         </div>
     </div>
 </div>
