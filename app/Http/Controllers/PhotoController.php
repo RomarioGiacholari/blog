@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use stdClass;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -14,7 +14,7 @@ class PhotoController extends Controller
         $viewModel->photos = null;
         $files = Storage::disk('public')->files();
 
-        if ($files !== null && count($files) > 0) 
+        if ($files !== null && is_array($files) && count($files) > 0)
         {
             $photos = array_filter($files, function ($file) {
                 return strpos($file, 'jpg');
