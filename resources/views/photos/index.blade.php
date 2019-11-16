@@ -6,8 +6,8 @@
             @if($viewModel !== null && $viewModel->photos !== null)
             @foreach($viewModel->photos as $photo)
             <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="{{ asset($photo) }}" alt="" style="width:100%">
+                <div class="thumbnail ">
+                    <img src="{{ asset($photo) }}" alt="" style="width:100%l; height:250px">
                 </div>
             </div>
             @endforeach

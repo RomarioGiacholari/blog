@@ -44,8 +44,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="/posts">blog</a></li>
-                        <li><a href="/resume">resume</a></li>
+                        <li><a href="{{ route('posts.index') }}">blog</a></li>
+                        <li><a href="{{ route('photos') }}">photos</a></li>
+                        <li><a href="{{ route('resume') }}">resume</a></li>
                         <li><a href="{{ route('contact.create') }}">contact</a></li>
                     </ul>
 
