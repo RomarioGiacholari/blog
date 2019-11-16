@@ -10,6 +10,7 @@ class PhotoController extends Controller
     public function index()
     {
         $viewModel = new stdClass;
+        $viewModel->pageTitle = 'Photos';
         $viewModel->photos = null;
         $files = Storage::disk('public')->files();
 
