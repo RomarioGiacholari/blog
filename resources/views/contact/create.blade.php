@@ -10,7 +10,7 @@
     @endif
     <div class="row">
         <div class="col-md-12">
-            <h1 style="font-family:Comic Sans MS"><u>Contace me</u></h1>
+            <h1 style="font-family:Comic Sans MS"><u>Contact me</u></h1>
             <hr>
             <form action="{{ route('contact.store') }}" method="POST">
                 {{ csrf_field() }}
