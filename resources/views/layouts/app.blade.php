@@ -82,19 +82,19 @@
         </nav>
 
         @yield('content')
-        <hr>
+        <div style="margin-top:100px">
+            <hr>
+            <div id="contact-links" class="text-center">
+                <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
+                <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
+                <a href = 'https://www.instagram.com/am_giacholari/' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>  
+                <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
 
-        <div id="contact-links" class="text-center">
-            <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
-            <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
-            <a href = 'https://www.instagram.com/am_giacholari/' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>  
-            <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <div class="text-center">
+                <small><b>&copy; Romario Giacholari 2019</b></small>
+            </div>
         </div>
-
-        <div class="text-center">
-            <small><b>&copy; Romario Giacholari 2019</b></small>
-        </div>
-        
     </div>
 
     <!-- Scripts -->
