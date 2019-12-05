@@ -29,7 +29,7 @@
                     <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
                 </p>
             </div>
-            <p><b>Live projects</b></p>
+            <p><b>Websites</b></p>
             <section>
                 <project-list></project-list>
             </section>

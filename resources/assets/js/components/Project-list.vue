@@ -19,7 +19,7 @@
                     {id:2, name:"Astonroom", link:"http://astonroom.herokuapp.com/", image:"photos/astonroom.png"},
                     {id:3, name:"Industry Club", link:"https://cs.aston.ac.uk/industryclub/", image:"photos/cs-industry-portal.png"},
                     {id:4, name:"Picarea", link:"https://picarea.github.io/Porftolio/", image:"photos/picarea.png"},
-                    {id:5, name:"Astonbrite", link:"https://astonbrite.me", image:"photos/astonbrite.png"},
+                    {id:5, name:"Astonbrite", link:"https://github.com/RomarioGiacholari/eventbrite", image:"photos/astonbrite.png"},
                 ]
             }
         }
