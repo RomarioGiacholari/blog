@@ -56,8 +56,8 @@ class PostController extends Controller
             'excerpt' => $request->body,
         ];
 
-        // user will not be null since there is a middleware for that
-        $post = auth()->user()->posts()->create($attributes);
+        $user = auth()->user();
+        $post = $user->posts()->create($attributes);
 
         return redirect($post->path());
     }
@@ -74,8 +74,7 @@ class PostController extends Controller
         $viewModel->post = $post ?? null;
         $viewModel->pageTitle = '';
 
-        if ($post !== null)
-        {
+        if ($post !== null) {
             $viewModel->pageTitle = $post->title;
         }
 
@@ -94,11 +93,10 @@ class PostController extends Controller
         $viewModel->post = $post ?? null;
         $viewModel->pageTitle = '';
 
-        if ($post !== null)
-        {
+        if ($post !== null) {
             $viewModel->pageTitle = $post->title;
         }
-        
+
         return view('posts.edit', ['viewModel' => $viewModel]);
     }
 
@@ -141,7 +139,7 @@ class PostController extends Controller
     private function validatePost($request)
     {
         $this->validate($request, [
-            'title' => 'required|max:20',
+            'title' => 'required|unique:posts|max:20',
             'body' => 'required|max:1500',
         ]);
     }
