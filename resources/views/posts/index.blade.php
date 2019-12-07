@@ -2,7 +2,7 @@
 @section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
-    <h1 style="font-family:Comic Sans MS"><u>Posts</u></h1>
+    <h1 style="font-family:Comic Sans MS"><u>Posts|Snippets</u></h1>
     <hr />
 
     @if($viewModel !== null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
