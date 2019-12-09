@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Romario Giacholari">
     <meta name="description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
-    <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Romario Giacholari">
+    <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Vue.js,Romario Giacholari">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Romario Giacholari</title>
+    <title>Romario Giacholari | @yield('title')</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -44,9 +44,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="/posts">blog</a></li>
-                        <!-- <li><a href="/all-photos">photos</a></li> -->
-                        <li><a href="{{ asset('resume.pdf') }}">resume</a></li>
+                        <li><a href="{{ route('posts.index') }}">blog</a></li>
+                        <li><a href="{{ route('photos') }}">photos</a></li>
+                        <li><a href="{{ route('resume') }}">resume</a></li>
+                        <li><a href="{{ route('contact.create') }}">contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -81,20 +82,23 @@
         </nav>
 
         @yield('content')
-
+        <div style="margin-top:100px">
             <hr>
-            
             <div id="contact-links" class="text-center">
                 <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
                 <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
                 <a href = 'https://www.instagram.com/am_giacholari/' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>  
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
+
+            <div class="text-center">
+                <small><b>&copy; Romario Giacholari 2019</b></small>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Scripts -->
+     <script src="{{ asset('js/app.js') }}"></script>
      <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

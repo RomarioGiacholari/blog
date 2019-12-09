@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->except(['show','index']);
+        $this->middleware('admin')->except(['show', 'index']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +21,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::with('creator')->latest()->paginate(15);
+        $viewModel = new stdClass;
+        $postsCollection = Post::with('creator')->latest()->paginate(15) ?? null;
+        $viewModel->posts = $postsCollection;
+        $viewModel->pageTitle = 'Posts';
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', ['viewModel' => $viewModel]);
     }
 
     /**
@@ -38,22 +42,22 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:20',
-            'body' => 'required',
-        ]);
+        $this->validatePost($request);
 
-        $post = auth()->user()->posts()->create([
+        $attributes = [
             'title' => $request->title,
             'body' => $request->body,
             'slug' => $request->title,
             'excerpt' => $request->body,
-        ]);
+        ];
+
+        $user = auth()->user();
+        $post = $user->posts()->create($attributes);
 
         return redirect($post->path());
     }
@@ -61,45 +65,60 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $viewModel = new stdClass;
+        $viewModel->post = $post ?? null;
+        $viewModel->pageTitle = '';
+
+        if ($post !== null) {
+            $viewModel->pageTitle = $post->title;
+        }
+
+        return view('posts.show', ['viewModel' => $viewModel]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $viewModel = new stdClass;
+        $viewModel->post = $post ?? null;
+        $viewModel->pageTitle = '';
+
+        if ($post !== null) {
+            $viewModel->pageTitle = $post->title;
+        }
+
+        return view('posts.edit', ['viewModel' => $viewModel]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
     {
-        $this->validate($request, [
-            'title' => 'required|max:20',
-            'body' => 'required',
-        ]);
+        $this->validatePost($request);
 
-        $post->update([
+        $attributes = [
             'title' => $request->title,
             'body' => $request->body,
             'slug' => $request->title,
             'excerpt' => $request->body,
-        ]);
+        ];
+
+        $post->update($attributes);
 
         return redirect('/home');
     }
@@ -107,7 +126,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
@@ -115,5 +134,13 @@ class PostController extends Controller
         $post->delete();
 
         return back();
+    }
+
+    private function validatePost($request)
+    {
+        $this->validate($request, [
+            'title' => 'required|unique:posts|max:20',
+            'body' => 'required|max:1500',
+        ]);
     }
 }

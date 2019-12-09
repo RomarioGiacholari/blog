@@ -1,6 +1,14 @@
 <?php
 
 return [
+/*
+    |--------------------------------------------------------------------------
+    | Application Admin Email
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'admin_Email' => env('ADMIN_EMAIL', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +60,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://www.giacholari.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -226,7 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Purify' => 'Stevebauman\Purify\Facades\Purify',
+        'Purify' => Stevebauman\Purify\Facades\Purify::class,
 
     ],
 

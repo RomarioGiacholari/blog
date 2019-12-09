@@ -15,7 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/resume', function () {
+    $pathToFile = public_path('resume.pdf');
+    
+    return response()->file($pathToFile);
+})->name('resume');
+
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/all-photos', 'PhotoController@index');
+Route::get('/all-photos', 'PhotoController@index')->name('photos');
 Route::resource('posts', 'PostController');
+
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');

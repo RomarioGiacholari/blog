@@ -27,13 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts() 
+    public function posts()
     {
         return $this->hasMany(Post::class);
     }
 
     public function isAdmin()
     {
-        return $this->email === "giacholari@gmail.com";
+        $adminEmail = config('app.admin_Email');
+
+        return $this->email === $adminEmail;
     }
 }
