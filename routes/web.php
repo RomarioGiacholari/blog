@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/all-photos', 'PhotoController@index')->name('photos');
+Route::get('/all-photos/{identifier}', 'PhotoController@show')->name('photos.show');
 Route::resource('posts', 'PostController');
 
 Route::get('/contact', 'ContactController@create')->name('contact.create');
