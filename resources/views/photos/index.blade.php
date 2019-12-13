@@ -8,7 +8,9 @@
     <div id="pinBoot">
         @foreach($viewModel->photos as $photo)
         <div class="thumbnail white-panel">
-            <img src="{{ asset($photo) }}" alt="">
+            <a href="{{ route('photos.show', ['identifier' => $photo]) }}">
+                <img src="{{ asset($photo) }}" alt="{{ $photo }}">
+            </a>
         </div>
         @endforeach
     </div>
