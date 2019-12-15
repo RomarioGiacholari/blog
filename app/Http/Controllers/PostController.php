@@ -118,7 +118,8 @@ class PostController extends Controller
             'excerpt' => $request->body,
         ];
 
-        $post->update($attributes);
+        $post->fill($attributes);
+        $post->save();
 
         return redirect('/home');
     }
@@ -136,7 +137,7 @@ class PostController extends Controller
         return back();
     }
 
-    private function validatePost($request)
+    private function validatePost(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|unique:posts|max:20',
