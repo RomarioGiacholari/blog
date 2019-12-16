@@ -36,18 +36,16 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Home
-                    </a>
+                    <a class="navbar-brand" href="{{ url('/') }}">Home</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('posts.index') }}">blog</a></li>
-                        <li><a href="{{ route('photos') }}">photos</a></li>
-                        <li><a href="{{ route('resume') }}">resume</a></li>
-                        <li><a href="{{ route('contact.create') }}">contact</a></li>
+                        <li class="{{ Request::is('posts*') ? 'active' : '' }}"><a href="{{ route('posts.index') }}">blog</a></li>
+                        <li class="{{ Request::is('all-photos*') ? 'active' : '' }}"><a href="{{ route('photos') }}">photos</a></li>
+                        <li class="{{ Request::is('resume') ? 'active' : '' }}"><a href="{{ route('resume') }}">resume</a></li>
+                        <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="{{ route('contact.create') }}">contact</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
