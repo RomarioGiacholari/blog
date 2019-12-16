@@ -91,7 +91,8 @@
             </div>
 
             <div class="text-center">
-                <small><b>&copy; Romario Giacholari 2019</b></small>
+                <small>&copy; Romario Giacholari 2019</small> |
+                <small id="dateElement"></small>
             </div>
         </div>
     </div>
@@ -107,5 +108,19 @@
         ga('create', 'UA-90120268-3', 'auto');
         ga('send', 'pageview');
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(event) {
+            var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var dateElement = document.getElementById("dateElement");
+
+            var today = new Date();
+            var dayIndex = today.getDay();
+            var day = weekday[dayIndex];
+            var message = "Enjoy the rest of your " + day;
+            
+            dateElement.innerText =  message;
+        });
+    </script>
+    @yield('scripts')
 </body>
 </html>
