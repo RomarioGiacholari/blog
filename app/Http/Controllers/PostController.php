@@ -72,10 +72,12 @@ class PostController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->post = $post ?? null;
+        $viewModel->author = null;
         $viewModel->pageTitle = '';
 
         if ($post !== null) {
             $viewModel->pageTitle = $post->title;
+            $viewModel->author = $post->creator->name;
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
