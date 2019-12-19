@@ -88,11 +88,11 @@
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
             <div class="text-center">
-                <small>&copy; Romario Giacholari 2019</small> |
-                <small id="dateElement"></small>
+                <p><b>Fine print: </b><a href="{{ route('privacy-policy.index') }}">Privacy</a></p>
             </div>
             <div class="text-center">
-                <small><a href="{{ route('privacy-policy.index') }}">Privacy</a></small>
+                <p> Copyright &copy;2019 Romario Giacholari. All rights reserved.</p>
+                <p id="dateElement"></p>
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@
             var today = new Date();
             var dayIndex = today.getDay();
             var day = weekday[dayIndex];
-            var message = "Enjoy the rest of your " + day;
+            var message = "Enjoy the rest of your " + day + "!";
             
             dateElement.innerText =  message;
         });
