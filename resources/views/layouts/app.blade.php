@@ -90,7 +90,8 @@
 
             <div class="text-center">
                 <small>&copy; Romario Giacholari 2019</small> |
-                <small id="dateElement"></small>
+                <small id="dateElement"></small> |
+                <small><a href="{{ route('privacy-policy.index') }}">Privacy</a></small>
             </div>
         </div>
     </div>
