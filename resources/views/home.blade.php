@@ -32,7 +32,7 @@
                                     <td> {{ $post->updated_at->diffForHumans() }} </td>
                                     <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-sm btn-primary" role="button">edit</a></td>
                                     <td>
-                                        <form action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
+                                        <form onsubmit="event.preventDefault(); deletePost(event);" action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
 
                                             {{ method_field('DELETE') }}
 
@@ -54,4 +54,17 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script defer>
+    function deletePost(event) {
+        var message = "Do you want to remove the post?";
+        var isSuccess = confirm(message);
+        var form = event.target;
+
+        if (isSuccess) {
+            form.submit();
+        }
+    }
+</script>
 @endsection
