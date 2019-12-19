@@ -106,7 +106,7 @@
         ga('create', 'UA-90120268-3', 'auto');
         ga('send', 'pageview');
     </script>
-    <script>
+    <script defer>
         document.addEventListener('DOMContentLoaded', function(event) {
             var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var dateElement = document.getElementById("dateElement");
