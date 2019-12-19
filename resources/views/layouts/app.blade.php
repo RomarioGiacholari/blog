@@ -87,10 +87,11 @@
                 <a href = 'https://www.instagram.com/am_giacholari/' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> |
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
-
             <div class="text-center">
                 <small>&copy; Romario Giacholari 2019</small> |
-                <small id="dateElement"></small> |
+                <small id="dateElement"></small>
+            </div>
+            <div class="text-center">
                 <small><a href="{{ route('privacy-policy.index') }}">Privacy</a></small>
             </div>
         </div>
