@@ -1,18 +1,15 @@
 @extends('layouts.app')
+@if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
+@endif
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @if($viewModel !== null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
+            @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Posts</div>
                 <div class="panel-body">
-                    @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -49,12 +46,13 @@
                 </div>
             </div>
             @else
-            <p>There are no posts to display</p>
+            <p>There are no posts to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
             @endif
         </div>
     </div>
 </div>
 @endsection
+@if($viewModel != null && $viewModel->posts !== null)
 @section('scripts')
 <script defer>
     function deletePost(event) {
@@ -68,3 +66,4 @@
     }
 </script>
 @endsection
+@endif
