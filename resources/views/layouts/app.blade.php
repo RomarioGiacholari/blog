@@ -91,7 +91,7 @@
                 <p><b>Fine print: </b><a href="{{ route('privacy-policy.index') }}">Privacy</a></p>
             </div>
             <div class="text-center">
-                <p> Copyright &copy;2019 Romario Giacholari. All rights reserved.</p>
+                <p>Copyright &copy;2019 Romario Giacholari.</p>
                 <p id="dateElement"></p>
             </div>
         </div>
