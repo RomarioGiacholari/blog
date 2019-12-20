@@ -4,7 +4,7 @@
 <div class="container">
     <h1 style="font-family:Comic Sans MS"><u>Photos</u></h1>
     <hr />
-    @if($viewModel !== null && $viewModel->photos !== null)
+    @if($viewModel != null && $viewModel->photos !== null)
     <div id="pinBoot">
         @foreach($viewModel->photos as $photo)
         <div class="thumbnail white-panel">
