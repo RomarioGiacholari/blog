@@ -30,7 +30,7 @@ class PhotoController extends Controller
     public function show(string $identifier)
     {
         $viewModel = new stdClass;
-        $viewModel->pageTitle = "Show";
+        $viewModel->pageTitle = null;
         $viewModel->photo = null;
         $files = Storage::disk('public')->files();
 
@@ -44,7 +44,9 @@ class PhotoController extends Controller
                     $arrayKeys = array_keys($photoList);
                     $index = $arrayKeys[0];
                     $fileName = $photoList[$index];
+
                     $viewModel->photo = $fileName;
+                    $viewModel->pageTitle = "Photos | {$fileName}";
                 }
             }
         }

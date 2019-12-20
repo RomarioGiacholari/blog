@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@if($viewModel != null && $viewModel->pageTitle != null && $viewModel->photo !== null)
+@if($viewModel != null && $viewModel->pageTitle !== null && $viewModel->photo !== null)
 @section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
