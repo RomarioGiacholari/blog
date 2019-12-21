@@ -26,24 +26,20 @@ class ContactController extends Controller
         $isSuccess = false;
         $message = null;
 
-        if ($isValid && $request->answer == 4)
-        {
+        if ($isValid && $request->answer == 4) {
             $sendToEmail = config('app.admin_Email');
             $subject = $request->subject;
             $messageData = $request->message;
             $emailFrom = $request->email;
             $name = $request->name;
 
-            try 
-            {
+            try {
                 Mail::to($sendToEmail)
                     ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
 
                 $isSuccess = true;
                 $message = 'Email sent!';
-            } 
-            catch (Exception $ex) 
-            {
+            } catch (Exception $ex) {
                 $message = $ex->getMessage();
             }
 
@@ -62,6 +58,7 @@ class ContactController extends Controller
     private function validateEmail($request)
     {
         $isValid = false;
+        $data = null;
 
         if ($request !== null) {
             $data = $this->validate($request, [
@@ -71,9 +68,8 @@ class ContactController extends Controller
                 'message' => 'required|max:500',
                 'answer' => 'required|integer|min:4|max:4'
             ]);
-            
-            if ($data !== null) 
-            {
+
+            if ($data !== null) {
                 $isValid = true;
             }
         }
