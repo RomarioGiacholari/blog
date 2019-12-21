@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @if($viewModel !== null && $viewModel->post !== null && $viewModel->author !== null)
+            @if($viewModel != null && $viewModel->post !== null && $viewModel->author !== null)
             <h1 style="font-family:Comic Sans MS;"> <u> {{ $viewModel->post->title }} </u> </h1>
 
             {{ $viewModel->post->created_at->diffForHumans() }} by {{ $viewModel->author }}

@@ -71,11 +71,12 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $viewModel = new stdClass;
-        $viewModel->post = $post ?? null;
+        $viewModel->post = null;
         $viewModel->author = null;
         $viewModel->pageTitle = '';
 
-        if ($post !== null) {
+        if ($post != null && $post->title != null && $post->creator != null && $post->creator->name != null) {
+            $viewModel->post = $post;
             $viewModel->pageTitle = $post->title;
             $viewModel->author = $post->creator->name;
         }
@@ -92,10 +93,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $viewModel = new stdClass;
-        $viewModel->post = $post ?? null;
+        $viewModel->post = null;
         $viewModel->pageTitle = '';
 
-        if ($post !== null) {
+        if ($post != null && $post->title != null) {
+            $viewModel->post = $post;
             $viewModel->pageTitle = $post->title;
         }
 

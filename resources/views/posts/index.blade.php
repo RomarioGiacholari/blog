@@ -5,7 +5,7 @@
     <h1 style="font-family:Comic Sans MS"><u>Posts|Snippets</u></h1>
     <hr />
 
-    @if($viewModel !== null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
+    @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
 
     <div id="pinBoot">
         @foreach($viewModel->posts as $post)
