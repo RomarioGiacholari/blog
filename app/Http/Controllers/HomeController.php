@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use stdClass;
 use App\Post;
+use App\Episode;
 
 class HomeController extends Controller
 {
@@ -17,12 +18,7 @@ class HomeController extends Controller
         $this->middleware('admin');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function posts()
     {
         $currentUser = auth()->user();
         $postCollection = null;
@@ -34,8 +30,24 @@ class HomeController extends Controller
 
         $viewModel = new stdClass;
         $viewModel->posts = $postCollection;
-        $viewModel->pageTitle = 'Home';
+        $viewModel->pageTitle = 'Home | Posts';
 
-        return view('home', ['viewModel' => $viewModel]);
+        return view('home.posts', ['viewModel' => $viewModel]);
+    }
+
+    public function episodes()
+    {
+        $currentUser = auth()->user();
+        $episodeCollection = null;
+
+        if ($currentUser != null && $currentUser->id != null && $currentUser->id > 0) {
+            $episodeCollection = $currentUser->podcasts()->first()->episodes()->orderBy('created_at', 'desc')->get();
+        }
+
+        $viewModel = new stdClass;
+        $viewModel->episodes = $episodeCollection;
+        $viewModel->pageTitle = 'Home | Episodes';
+
+        return view('home.episodes', ['viewModel' => $viewModel]);
     }
 }

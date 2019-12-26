@@ -6,9 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
+        <p><a href="{{ route('episodes.create') }}">New episode</a></p>
+        <hr />
+            @if($viewModel != null && $viewModel->episodes !== null && !$viewModel->episodes->isEmpty())
             <div class="panel panel-default">
-                <div class="panel-heading">Posts</div>
+                <div class="panel-heading">Episodes</div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
@@ -22,14 +24,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($viewModel->posts as $post)
+                                @foreach($viewModel->episodes as $episode)
                                 <tr>
-                                    <td><a href=" {{ route('posts.show' , ['post' => $post] ) }}">{{ $post->title }}</a></td>
-                                    <td> {{ $post->created_at->diffForHumans() }}</td>
-                                    <td> {{ $post->updated_at->diffForHumans() }} </td>
-                                    <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-sm btn-primary" role="button">edit</a></td>
+                                    <td><a href=" {{ route('episodes.show' , ['episode' => $episode] ) }}">{{ $episode->title }}</a></td>
+                                    <td> {{ $episode->created_at->diffForHumans() }}</td>
+                                    <td> {{ $episode->updated_at->diffForHumans() }} </td>
+                                    <td><a href=" {{ route('episodes.edit', ['episode' => $episode] ) }} " class="btn btn-sm btn-primary" role="button">edit</a></td>
                                     <td>
-                                        <form onsubmit="event.preventDefault(); deletePost(event);" action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
+                                        <form onsubmit="event.preventDefault(); deleteEpisode(event);" action="{{ route('episodes.destroy', ['episode' => $episode] ) }}" method="POST">
 
                                             {{ method_field('DELETE') }}
 
@@ -46,17 +48,17 @@
                 </div>
             </div>
             @else
-            <p>There are no posts to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
+            <p>There are no episodes to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
             @endif
         </div>
     </div>
 </div>
 @endsection
-@if($viewModel != null && $viewModel->posts !== null)
+@if($viewModel != null && $viewModel->episodes !== null)
 @section('scripts')
 <script defer>
-    function deletePost(event) {
-        var message = "Do you want to remove the post?";
+    function deleteEpisode(event) {
+        var message = "Do you want to remove the episode?";
         var isSuccess = confirm(message);
         var form = event.target;
 
