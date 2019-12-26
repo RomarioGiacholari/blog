@@ -32,6 +32,7 @@ class PhotoController extends Controller
         $viewModel = new stdClass;
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
+        $viewModel->photoFriendlyName = null;
         $files = Storage::disk('public')->files();
 
         if (is_string($identifier) && $identifier != null) {
@@ -44,9 +45,11 @@ class PhotoController extends Controller
                     $arrayKeys = array_keys($photoList);
                     $index = $arrayKeys[0];
                     $fileName = $photoList[$index];
+                    $friendlyFileName = str_replace(".jpg", "", $fileName);
 
                     $viewModel->photo = $fileName;
-                    $viewModel->pageTitle = "Photos | {$fileName}";
+                    $viewModel->photoFriendlyName = $friendlyFileName;
+                    $viewModel->pageTitle = "Photos | {$friendlyFileName}";
                 }
             }
         }
