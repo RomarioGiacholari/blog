@@ -121,7 +121,7 @@ class EpisodeController extends Controller
         $this->validate($request, [
             "title" => "required|max:20|unique:episodes,title,{$episodeId}",
             "description" => "required|max:255",
-            "audioBase64" => "required|mimes:mpga"
+            "audioBase64" => "required|mimes:audio/mpeg,mpga,mp3,m4a,wav,aac"
         ]);
     }
 
