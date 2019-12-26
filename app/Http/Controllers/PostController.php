@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin')->except(['show', 'index']);
@@ -113,7 +112,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $this->validatePost($request);
+        $this->validatePost($request, $post->id);
 
         $attributes = [
             'title' => $request->title,
@@ -141,11 +140,11 @@ class PostController extends Controller
         return back();
     }
 
-    private function validatePost(Request $request)
+    private function validatePost(Request $request, int $postId = null)
     {
         $this->validate($request, [
-            'title' => 'required|unique:posts|max:20',
-            'body' => 'required|max:1500',
+            "title" => "required|max:20|unique:posts,title,{$postId}",
+            "body" => "required|max:1500",
         ]);
     }
 }
