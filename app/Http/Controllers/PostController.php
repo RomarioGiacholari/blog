@@ -124,7 +124,7 @@ class PostController extends Controller
         $post->fill($attributes);
         $post->save();
 
-        return redirect('/home');
+        return redirect(route('home.posts'));
     }
 
     /**
