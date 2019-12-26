@@ -140,7 +140,7 @@ class PostController extends Controller
         return back();
     }
 
-    private function validatePost(Request $request, int $postId = null)
+    private function validatePost(Request $request, int $postId = 0)
     {
         $this->validate($request, [
             "title" => "required|max:20|unique:posts,title,{$postId}",

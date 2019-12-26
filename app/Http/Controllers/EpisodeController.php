@@ -116,7 +116,7 @@ class EpisodeController extends Controller
         return back();
     }
 
-    private function validateEpisode(Request $request, int $episodeId = null): void
+    private function validateEpisode(Request $request, int $episodeId = 0): void
     {
         $this->validate($request, [
             "title" => "required|max:20|unique:episodes,title,{$episodeId}",
