@@ -11,15 +11,19 @@
                 {{csrf_field()}}
 
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title">Title</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" placeholder="Title" required="">
                 </div>
 
                 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+                    <label for="description">Description</label>
                     <textarea class="form-control" name="description" id="description" rows="8" placeholder="Description" required="">{{old('description')}}</textarea>
                 </div>
 
                 <div class="form-group {{ $errors->has('audioBase64') ? ' has-error' : '' }}">
+                    <label for="audioBase64">Audio file</label>
                     <input type="file" name="audioBase64" id="audioBase64" required=""  accept=".mp3,audio/*" />
+                    <p class="help-block">audio file must of type mp3</p>
                 </div>
 
                 <div class='form-group'>
