@@ -10,10 +10,12 @@
                 {{csrf_field()}}
 
                 <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title">Title</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" placeholder="Title" required="">
                 </div>
 
                 <div class="form-group {{ $errors->has('body') ? ' has-error' : '' }}">
+                    <label for="title">Body</label>
                     <textarea class="form-control" name="body" id="body" rows="8" placeholder="Body" required="">{{old('body')}}</textarea>
                 </div>
 
