@@ -131,7 +131,11 @@ class EpisodeController extends Controller
         $base64File = null;
 
         if ($audioFile != null) {
-            $base64File = base64_encode(file_get_contents($audioFile));
+            $file = file_get_contents($audioFile);
+
+            if ($file != null) {
+                $base64File = base64_encode($file);
+            }
         }
 
         return $base64File;
