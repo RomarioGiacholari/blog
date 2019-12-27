@@ -6,46 +6,41 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <p><a href="{{ route('posts.create') }}">New post</a></p>
+        <div><a href="{{ route('posts.create') }}"><i class="fa fa-3x fa-plus-circle" title="New post" aria-hidden="true"></i></a></div>
         <hr />
             @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
-            <div class="panel panel-default">
-                <div class="panel-heading">Posts</div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($viewModel->posts as $post)
-                                <tr>
-                                    <td><a href=" {{ route('posts.show' , ['post' => $post] ) }}">{{ $post->title }}</a></td>
-                                    <td> {{ $post->created_at->diffForHumans() }}</td>
-                                    <td> {{ $post->updated_at->diffForHumans() }} </td>
-                                    <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-sm btn-primary" role="button">edit</a></td>
-                                    <td>
-                                        <form onsubmit="event.preventDefault(); deletePost(event);" action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created at</th>
+                            <th>Updated at</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($viewModel->posts as $post)
+                        <tr>
+                            <td><a href=" {{ route('posts.show' , ['post' => $post] ) }}">{{ $post->title }}</a></td>
+                            <td> {{ $post->created_at->diffForHumans() }}</td>
+                            <td> {{ $post->updated_at->diffForHumans() }} </td>
+                            <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-xs btn-primary" role="button">edit</a></td>
+                            <td>
+                                <form onsubmit="event.preventDefault(); deletePost(event);" action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
 
-                                            {{ method_field('DELETE') }}
+                                    {{ method_field('DELETE') }}
 
-                                            {{ csrf_field() }}
+                                    {{ csrf_field() }}
 
-                                            <button class="btn btn-sm btn-danger" role="button">delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                    <button class="btn btn-xs btn-danger" role="button">delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
             @else
             <p>There are no posts to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
