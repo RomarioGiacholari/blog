@@ -6,6 +6,7 @@ use stdClass;
 use App\Episode;
 use App\Podcast;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class EpisodeController extends Controller
 {
@@ -125,7 +126,7 @@ class EpisodeController extends Controller
         ]);
     }
 
-    private static function convertToBase64($audioFile): ?string
+    private static function convertToBase64(UploadedFile $audioFile): ?string
     {
         $base64File = null;
 
