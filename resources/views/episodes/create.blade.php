@@ -23,7 +23,7 @@
                 <div class="form-group {{ $errors->has('audioBase64') ? ' has-error' : '' }}">
                     <label for="audioBase64">Audio file</label>
                     <input type="file" name="audioBase64" id="audioBase64" required=""  accept=".mp3,audio/*" />
-                    <p class="help-block">audio file must of type mp3</p>
+                    <p class="help-block">the audio file must be of type mp3</p>
                 </div>
 
                 <div class='form-group'>
