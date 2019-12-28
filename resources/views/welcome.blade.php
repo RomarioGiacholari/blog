@@ -11,12 +11,14 @@
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
 
+            <h4>- Work experience</h4>
             <ul class="font-size-16">
                 <li><a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student - 2018/2019</li>
                 <li><a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer - 2018</li>
                 <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern - 2017</li>
             </ul>
-
+            
+            <h4>- Skills & Tools</h4>
             <p class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
@@ -31,7 +33,8 @@
                 <span class="label label-info">Heroku</span> <span class="label label-info">Digital Ocean</span>
                 <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
             </p>
-
+            
+            <h4>- Portfolio</h4>
             <section>
                 <project-list></project-list>
             </section>
