@@ -8,7 +8,7 @@
             <h1>Welcome to the site!</h1>
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
-                See below my work experience, the tools/languages I use and the websites I have built. Feel free to drop me a <a href="{{ route('contact.create') }}">message</a> :))
+                See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
 
             <ul class="font-size-16">
