@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @if($viewModel != null && $viewModel->message !== null)
-    <div class="alert alert-info alert-dismissible" role="alert">
+    <div style="color:white; background-color:#0099ff;" class="alert alert-dismissible" role="alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ $viewModel->message }}
     </div>
