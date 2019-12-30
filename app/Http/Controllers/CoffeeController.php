@@ -21,9 +21,8 @@ class CoffeeController extends Controller
     {
         $this->validate($request, ['amount' => 'required|numeric|min:1']);
 
-        $stripeSecret = config('services.stripe.secret');
-        $stripeKey = $stripeSecret;
-        Stripe::setApiKey($stripeKey);
+        $stripeSecretKey = config('services.stripe.secret');
+        Stripe::setApiKey($stripeSecretKey);
 
         $amount = ($request->amount * 100);
 
@@ -36,7 +35,7 @@ class CoffeeController extends Controller
               'quantity' => 1,
             ]],
             'success_url' => 'https://giacholari.com/coffee/success',
-            'cancel_url' => 'https://giacholari.com/coffee',
+            'cancel_url' => 'https://giacholari.com/coffee/failure',
           ]);
 
         $sessionId = $session->id;
@@ -61,5 +60,15 @@ class CoffeeController extends Controller
         $viewModel->message = 'Your payment has been successfull! Enjoy the rest of your day!';
 
         return view('coffee.thank-you', ['viewModel' => $viewModel]);
+    }
+
+    
+    public function failure()
+    {
+        $viewModel = new stdClass;
+        $viewModel->pageTitle = 'Payment declined';
+        $viewModel->message = 'Your payment was declined! Something went wrong...';
+
+        return view('coffee.failure', ['viewModel' => $viewModel]);
     }
 }
