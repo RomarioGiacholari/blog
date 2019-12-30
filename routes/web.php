@@ -21,6 +21,11 @@ Route::get('/resume', function () {
     return response()->file($pathToFile);
 })->name('resume');
 
+Route::get('/coffee', 'CoffeeController@index')->name('coffee.index');
+Route::post('/coffee', 'CoffeeController@store')->name('coffee.store');
+Route::get('/coffee/confirm/{sessionId}', 'CoffeeController@confirm')->name('coffee.confirm');
+Route::get('/coffee/success', 'CoffeeController@success')->name('coffee.success');
+
 Auth::routes();
 
 Route::get('/home/posts', 'HomeController@posts')->name('home.posts');
