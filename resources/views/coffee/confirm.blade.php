@@ -2,7 +2,7 @@
 @if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
 @endif
-@if($viewModel != null && $viewModel->sessionId != null && $viewModel->stripePublicKey != null)
+@if($viewModel != null && $viewModel->sessionId !== null && $viewModel->stripePublicKey !== null)
 @section('content')
 <div class="container">
     <div class="row">

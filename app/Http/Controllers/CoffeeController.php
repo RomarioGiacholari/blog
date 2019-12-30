@@ -24,13 +24,14 @@ class CoffeeController extends Controller
         $stripeSecretKey = config('services.stripe.secret');
         Stripe::setApiKey($stripeSecretKey);
 
-        $amount = ($request->amount * 100);
+        $requestAmount = (int) $request->amount;
+        $stripeAmount = ($requestAmount * 100);
 
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
               'name' => 'Cup of coffee',
-              'amount' => $amount,
+              'amount' => $stripeAmount,
               'currency' => 'gbp',
               'quantity' => 1,
             ]],
@@ -38,17 +39,25 @@ class CoffeeController extends Controller
             'cancel_url' => 'https://giacholari.com/coffee/failure',
           ]);
 
-        $sessionId = $session->id;
+        if ($session != null && is_string($session->id) && $session->id != null) {
+            $sessionId = $session->id;
 
-        return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+            return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+        }
+
+        return back();
     }
 
     public function confirm(string $sessionId)
     {
         $viewModel = new stdClass;
         $viewModel->pageTitle = "Confirm Payment";
-        $viewModel->sessionId = $sessionId;
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
+        $viewModel->sessionId = null;
+        
+        if (is_string($sessionId) && $sessionId != null) {
+            $viewModel->sessionId = $sessionId;
+        }
 
         return view('coffee.confirm', ['viewModel' => $viewModel]);
     }
