@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="font-family:Comic Sans MS"><u>Buy me a cup of coffee (really testing the stripe API)</u></h1>
+            <h1 style="font-family:Comic Sans MS"><u>Buy me a cup of coffee (really testing the Stripe API)</u></h1>
             <hr>
             <form action="{{ route('coffee.store') }}" method="POST">
 

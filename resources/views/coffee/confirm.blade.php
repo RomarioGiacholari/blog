@@ -9,8 +9,9 @@
         <div class="col-md-12">
             <h1 style="font-family:Comic Sans MS"><u>Confirm payment</u></h1>
             <hr>
-            <p>Next you will be redirected to Stripe and they are going to handle the payment.</p>
-            <button class="btn btn-success btn-block" onclick="pay()">Pay</button>
+            <p>Next, you will be redirected to Stripe and they are going to handle the payment.</p>
+            <button class="btn btn-success btn-block" onclick="pay()">pay</button>
+            <a href="{{ route('coffee.index') }}" class="btn btn-default btn-block" role="button">cancel</a>
         </div>
     </div>
 </div>
