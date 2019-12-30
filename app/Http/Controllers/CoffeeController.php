@@ -39,17 +39,25 @@ class CoffeeController extends Controller
             'cancel_url' => 'https://giacholari.com/coffee/failure',
           ]);
 
-        $sessionId = $session->id;
+        if ($session != null && is_string($session->id) && $session->id != null) {
+            $sessionId = $session->id;
 
-        return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+            return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+        }
+
+        return back();
     }
 
     public function confirm(string $sessionId)
     {
         $viewModel = new stdClass;
         $viewModel->pageTitle = "Confirm Payment";
-        $viewModel->sessionId = $sessionId;
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
+        $viewModel->sessionId = null;
+        
+        if (is_string($sessionId) && $sessionId != null) {
+            $viewModel->sessionId = $sessionId;
+        }
 
         return view('coffee.confirm', ['viewModel' => $viewModel]);
     }
