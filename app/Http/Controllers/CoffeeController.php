@@ -24,13 +24,14 @@ class CoffeeController extends Controller
         $stripeSecretKey = config('services.stripe.secret');
         Stripe::setApiKey($stripeSecretKey);
 
-        $amount = ($request->amount * 100);
+        $requestAmount = (int) $request->amount;
+        $stripeAmount = ($requestAmount * 100);
 
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
               'name' => 'Cup of coffee',
-              'amount' => $amount,
+              'amount' => $stripeAmount,
               'currency' => 'gbp',
               'quantity' => 1,
             ]],
