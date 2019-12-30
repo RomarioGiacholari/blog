@@ -49,6 +49,7 @@
                         <li class="{{ Request::is('all-photos*') ? 'active' : '' }}"><a href="{{ route('photos') }}">photos</a></li>
                         <li class="{{ Request::is('resume') ? 'active' : '' }}"><a href="{{ route('resume') }}">resume</a></li>
                         <li class="{{ Request::is('podcast*') ? 'active' : '' }}"><a href="{{ route('episodes.index') }}">podcast</a></li>
+                        <li class="{{ Request::is('coffee*') ? 'active' : '' }}"><a href="{{ route('coffee.index') }}">coffee</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
