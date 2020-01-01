@@ -14,7 +14,7 @@ Route::get('/coffee', 'CoffeeController@index')->name('coffee.index');
 Route::post('/coffee', 'CoffeeController@store')->name('coffee.store');
 Route::get('/coffee/confirm/{sessionId}', 'CoffeeController@confirm')->name('coffee.confirm');
 Route::get('/coffee/success', 'CoffeeController@success')->name('coffee.success');
-Route::get('/coffee/failure', 'CoffeeController@failure')->name('coffee.failure');
+Route::get('/coffee/cancel', 'CoffeeController@cancel')->name('coffee.cancel');
 
 Auth::routes();
 
