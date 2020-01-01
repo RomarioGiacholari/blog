@@ -64,13 +64,13 @@ class CoffeeController extends Controller
     }
 
     
-    public function failure()
+    public function cancel()
     {
         $viewModel = new stdClass;
-        $viewModel->pageTitle = 'Payment declined';
-        $viewModel->message = 'Your payment was declined! Something went wrong...';
+        $viewModel->pageTitle = 'Payment canceled';
+        $viewModel->message = 'Your payment was canceled!';
 
-        return view('coffee.failure', ['viewModel' => $viewModel]);
+        return view('coffee.cancel', ['viewModel' => $viewModel]);
     }
 
     private static function setStripeApiKey(string $stripeSecretKey): bool
@@ -99,7 +99,7 @@ class CoffeeController extends Controller
                   'quantity' => 1,
                 ]],
                 'success_url' => 'https://giacholari.com/coffee/success',
-                'cancel_url' => 'https://giacholari.com/coffee/failure',
+                'cancel_url' => 'https://giacholari.com/coffee/cancel',
               ]);
         }
        
