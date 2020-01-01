@@ -22,27 +22,19 @@ class CoffeeController extends Controller
         $this->validate($request, ['amount' => 'required|numeric|min:1']);
 
         $stripeSecretKey = config('services.stripe.secret');
-        Stripe::setApiKey($stripeSecretKey);
+        $isSuccess = static::setStripeApiKey($stripeSecretKey);
 
-        $requestAmount = (int) $request->amount;
-        $stripeAmount = ($requestAmount * 100);
-
-        $session = Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-              'name' => 'Cup of coffee',
-              'amount' => $stripeAmount,
-              'currency' => 'gbp',
-              'quantity' => 1,
-            ]],
-            'success_url' => 'https://giacholari.com/coffee/success',
-            'cancel_url' => 'https://giacholari.com/coffee/failure',
-          ]);
-
-        if ($session != null && is_string($session->id) && $session->id != null) {
-            $sessionId = $session->id;
-
-            return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+        if ($isSuccess) {
+            $requestAmount = (int) $request->amount;
+            $stripeAmount = ($requestAmount * 100);
+    
+            $session = static::startSession($stripeAmount);
+            
+            if ($session !== null && is_string($session->id) && $session->id != null) {
+                $sessionId = $session->id;
+    
+                return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
+            }
         }
 
         return back();
@@ -79,5 +71,38 @@ class CoffeeController extends Controller
         $viewModel->message = 'Your payment was declined! Something went wrong...';
 
         return view('coffee.failure', ['viewModel' => $viewModel]);
+    }
+
+    private static function setStripeApiKey(string $stripeSecretKey): bool
+    {
+        $isSuccess = false;
+
+        if (is_string($stripeSecretKey) && $stripeSecretKey != null) {
+            Stripe::setApiKey($stripeSecretKey);
+            $isSuccess = true;
+        }
+        
+        return $isSuccess;
+    }
+
+    private static function startSession(int $amount): ?object
+    {
+        $session = null;
+
+        if ($amount != null && $amount > 0) {
+            $session = Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                  'name' => 'Cup of coffee',
+                  'amount' => $amount,
+                  'currency' => 'gbp',
+                  'quantity' => 1,
+                ]],
+                'success_url' => 'https://giacholari.com/coffee/success',
+                'cancel_url' => 'https://giacholari.com/coffee/failure',
+              ]);
+        }
+       
+        return $session;
     }
 }
