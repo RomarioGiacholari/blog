@@ -95,7 +95,7 @@
                 <p>Fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></p>
             </div>
             <div class="text-center">
-                <p>&copy;2019 Romario Giacholari.</p>
+                <p>&copy;2020 Giacholari.</p>
                 <p id="dateElement"></p>
             </div>
         </div>
