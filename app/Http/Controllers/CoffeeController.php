@@ -94,6 +94,7 @@ class CoffeeController extends Controller
                 'payment_method_types' => ['card'],
                 'line_items' => [[
                   'name' => 'Cup of coffee',
+                  'images' => ['https://images.pexels.com/photos/890515/pexels-photo-890515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'],
                   'amount' => $amount,
                   'currency' => 'gbp',
                   'quantity' => 1,
