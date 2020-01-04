@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./pinBoot');
+require('./greeting')
 
 window.Vue = require('vue');
 
