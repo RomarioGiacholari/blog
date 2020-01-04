@@ -13,16 +13,13 @@
 
     <title>Romario Giacholari | @yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -100,7 +97,8 @@
             </div>
         </div>
     </div>
-     <script>
+    <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
+     <script type="text/javascript" defer>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -108,19 +106,6 @@
 
         ga('create', 'UA-90120268-3', 'auto');
         ga('send', 'pageview');
-    </script>
-    <script defer>
-        document.addEventListener('DOMContentLoaded', function(event) {
-            var weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            var dateElement = document.getElementById("dateElement");
-
-            var today = new Date();
-            var dayIndex = today.getDay();
-            var day = weekday[dayIndex];
-            var message = "Enjoy the rest of your " + day + "!";
-            
-            dateElement.innerText =  message;
-        });
     </script>
     @yield('scripts')
 </body>
