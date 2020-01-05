@@ -14,8 +14,8 @@
     <title>Romario Giacholari | @yield('title')</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
