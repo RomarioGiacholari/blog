@@ -14,7 +14,6 @@
     <title>Romario Giacholari | @yield('title')</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
