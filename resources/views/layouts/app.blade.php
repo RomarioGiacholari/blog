@@ -13,9 +13,6 @@
 
     <title>Romario Giacholari | @yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
@@ -100,6 +97,7 @@
             </div>
         </div>
     </div>
+     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
      <script type="text/javascript" defer>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
