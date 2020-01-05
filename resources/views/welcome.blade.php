@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h1>Welcome to the site!</h1>
+            <h1>Welcome to the site &#x1F44B;</h1>
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
