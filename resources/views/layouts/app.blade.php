@@ -109,12 +109,12 @@
     </script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
     <script>
-    // window.addEventListener("load", function () {
-    //     setTimeout(function () {
-    //         var spinner = document.getElementsByClassName("fa-spin")[0];
-    //         spinner.classList.add("hidden");
-    //     }, 1000);
-    // });
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            var spinner = document.getElementsByClassName("fa-spin")[0];
+            spinner.classList.add("hidden");
+        }, 1000);
+    });
     </script>
     @yield('scripts')
 </body>
