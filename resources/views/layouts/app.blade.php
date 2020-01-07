@@ -114,7 +114,7 @@
             var spinner = document.getElementsByClassName("fa-spin")[0];
             document.querySelector("body").removeAttribute("style");
             spinner.classList.add("hidden");
-        }, 1000);
+        }, 500);
     });
     </script>
     @yield('scripts')
