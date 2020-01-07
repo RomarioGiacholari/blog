@@ -3,7 +3,7 @@
 @section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
-    <h1 style="font-family:Comic Sans MS"><u>{{ $viewModel->photoFriendlyName }}</u></h1>
+    <h1>{{ $viewModel->photoFriendlyName }}</h1>
     <hr />
     <div class="row">
         <div class="col-md-12">

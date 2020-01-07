@@ -2,7 +2,7 @@
 @section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
-    <h1 style="font-family:Comic Sans MS"><u>Photos</u></h1>
+    <h1>Photos</h1>
     <hr />
     @if($viewModel != null && $viewModel->photos !== null)
     <div id="pinBoot">
