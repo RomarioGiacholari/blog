@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
 </head>
-<body>
+<body style="opacity:0.7">
     <div id="app">
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -96,7 +96,7 @@
                 <p id="dateElement"></p>
             </div>
         </div>
-        <span class="centered"><i class="fa fa-circle-o-notch fa-spin fa-2x"></i></span>
+        <span class="centered"><i style="color:black" class="fa fa-circle-o-notch fa-spin fa-2x"></i></span>
     </div>
      <script type="text/javascript" defer>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -110,10 +110,9 @@
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
     <script>
     window.addEventListener("load", function () {
-        setTimeout(function () {
-            var spinner = document.getElementsByClassName("fa-spin")[0];
-            spinner.classList.add("hidden");
-        }, 1000);
+        var spinner = document.getElementsByClassName("fa-spin")[0];
+        document.querySelector("body").removeAttribute("style");
+        spinner.classList.add("hidden");
     });
     </script>
     @yield('scripts')
