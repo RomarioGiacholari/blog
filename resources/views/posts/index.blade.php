@@ -5,7 +5,7 @@
 @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
 @section('content')
 <div class="container">
-    <h1 style="font-family:Comic Sans MS"><u>Posts|Snippets</u></h1>
+    <h1>Snippets</h1>
     <hr />
     <div id="pinBoot">
         @foreach($viewModel->posts as $post)

@@ -5,7 +5,7 @@
 @if($viewModel != null && $viewModel->episodes !== null)
 @section('content')
 <div class="container">
-    <h1 style="font-family:Comic Sans MS"><u>Episodes</u></h1>
+    <h1>Episodes</h1>
     <hr />
 
     <div id="pinBoot">

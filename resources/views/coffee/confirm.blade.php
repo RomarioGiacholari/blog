@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 style="font-family:Comic Sans MS"><u>Confirm payment</u></h1>
+            <h1>Confirm payment</h1>
             <hr>
             <p>Next, you will be redirected to Stripe and they are going to handle the payment.</p>
             <button class="btn btn-success btn-block" onclick="pay()">pay</button>
