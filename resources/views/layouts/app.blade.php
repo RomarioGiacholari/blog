@@ -95,6 +95,7 @@
                 <p id="dateElement"></p>
             </div>
         </div>
+        <span class="centered"><i class="fa fa-circle-o-notch fa-spin fa-2x"></i></span>
     </div>
      <script type="text/javascript" defer>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
