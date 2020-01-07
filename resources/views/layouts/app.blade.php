@@ -107,6 +107,12 @@
         ga('send', 'pageview');
     </script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
+    <script>
+    window.addEventListener("load", function () {
+        var spinner = document.getElementsByClassName("fa-spin")[0];
+        spinner.classList.add("hidden");
+    });
+    </script>
     @yield('scripts')
 </body>
 </html>
