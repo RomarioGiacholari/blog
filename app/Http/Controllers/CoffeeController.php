@@ -58,7 +58,7 @@ class CoffeeController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->pageTitle = 'Thank you';
-        $viewModel->message = 'Your payment has been successfull! Enjoy the rest of your day!';
+        $viewModel->message = 'Your payment has been successful! Enjoy the rest of your day!';
 
         return view('coffee.thank-you', ['viewModel' => $viewModel]);
     }
