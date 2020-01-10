@@ -12,7 +12,7 @@
 
                 <div class="form-group">
                     <label for="amount">Amount in (£) pounds</label>
-                    <input type="number" class="form-control" name="amount" id="amount" value="{{ old('amount') }}" min="0" placeholder="amount in (£) pounds" required>
+                    <input type="number" class="form-control" name="amount" id="amount" value="{{ old('amount') }}" min="1" placeholder="amount in (£) pounds" required>
                 </div>
                 
                 <div class='form-group'>
