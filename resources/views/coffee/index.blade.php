@@ -6,6 +6,11 @@
         <div class="col-md-12">
             <h1>Buy me a cup of coffee (Finding a reason to test the Stripe API)</h1>
             <hr>
+            <p>
+                Select an amount to pay. 
+                No charges will be incurred at this point. 
+                Once you confirm the amount, you then have the option to cancel or continue with the payment.
+            </p>
             <form action="{{ route('coffee.store') }}" method="POST">
 
                 {{ csrf_field() }}
