@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
 </head>
-<body style="opacity:0.7">
+<body class="opacity-is-loading">
     <div id="app">
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -109,13 +109,14 @@
     </script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
     <script>
-    window.addEventListener("load", function () {
-        setTimeout(function () {
-            var spinner = document.getElementsByClassName("fa-spin")[0];
-            document.querySelector("body").removeAttribute("style");
-            spinner.classList.add("hidden");
-        }, 300);
-    });
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                var spinner = document.getElementsByClassName("fa-spin")[0];
+                var body = document.querySelector("body");
+                body.classList.remove("opacity-is-loading");
+                spinner.classList.add("hidden");
+            }, 300);
+        });
     </script>
     @yield('scripts')
 </body>
