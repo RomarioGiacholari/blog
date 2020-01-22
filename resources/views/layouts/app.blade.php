@@ -14,7 +14,7 @@
     <title>Romario Giacholari | @yield('title')</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
@@ -83,10 +83,10 @@
         @yield('content')
         <div style="padding:25px; margin-top:100px">
             <div id="contact-links" class="text-center">
-                <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-                <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href = 'https://www.instagram.com/iamgiacholari/' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                <a href = 'https://www.instagram.com/iamgiacholari/' target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
             </div>
             <div class="text-center">
                 <p>Fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></p>
@@ -96,7 +96,7 @@
                 <p id="dateElement"></p>
             </div>
         </div>
-        <span class="centered"><i style="color:black" class="fa fa-circle-o-notch fa-spin fa-2x"></i></span>
+        <span class="centered"><i class="fas fa-circle-notch fa-spin fa-2x"></i></span>
     </div>
      <script type="text/javascript" defer>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -115,7 +115,7 @@
                 var body = document.querySelector("body");
                 body.classList.remove("opacity-is-loading");
                 spinner.classList.add("hidden");
-            }, 300);
+            }, 200);
         });
     </script>
     @yield('scripts')
