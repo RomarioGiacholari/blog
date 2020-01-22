@@ -108,16 +108,7 @@
         ga('send', 'pageview');
     </script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
-    <script>
-        window.addEventListener("load", function () {
-            setTimeout(function () {
-                var spinner = document.getElementsByClassName("fa-spin")[0];
-                var body = document.querySelector("body");
-                body.classList.remove("opacity-is-loading");
-                spinner.classList.add("hidden");
-            }, 200);
-        });
-    </script>
+    <script src="{{ asset('js/spinner.js') }}" type="text/javascript"></script>
     @yield('scripts')
 </body>
 </html>
