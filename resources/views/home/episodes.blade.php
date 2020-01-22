@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <div><a href="{{ route('episodes.create') }}"><i class="fa fa-3x fa-plus-circle" title="New episode" aria-hidden="true"></i></a></div>
+        <div><a href="{{ route('episodes.create') }}"><i class="fas fa-plus-circle fa-2x" title="New episode" aria-hidden="true"></i></a></div>
         <hr />
             @if($viewModel != null && $viewModel->episodes !== null && !$viewModel->episodes->isEmpty())
             <div class="table-responsive">
