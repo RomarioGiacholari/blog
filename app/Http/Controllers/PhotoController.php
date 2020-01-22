@@ -15,10 +15,8 @@ class PhotoController extends Controller
         $files = Storage::disk('public')->files();
 
         if ($files != null && is_array($files) && count($files) > 0) {
-            $photos = array_filter($files, function ($file) {
-                return strpos($file, 'jpg');
-            });
-
+            $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
+            
             if ($photos != null && count($photos) > 0) {
                 $viewModel->photos = $photos;
             }
@@ -37,9 +35,7 @@ class PhotoController extends Controller
 
         if (is_string($identifier) && $identifier != null) {
             if ($files != null && is_array($files) && count($files) > 0) {
-                $photoList = array_filter($files, function ($fileName) use ($identifier) {
-                    return $fileName == $identifier;
-                });
+                $photoList = array_filter($files, fn ($fileName) => $fileName == $identifier);
 
                 if ($photoList != null && count($photoList) > 0) {
                     $arrayKeys = array_keys($photoList);
