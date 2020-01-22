@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <div><a href="{{ route('posts.create') }}"><i class="fa fa-3x fa-plus-circle" title="New post" aria-hidden="true"></i></a></div>
+        <div><a href="{{ route('posts.create') }}"><i class="fas fa-plus-circle fa-2x" title="New post" aria-hidden="true"></i></a></div>
         <hr />
             @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
             <div class="table-responsive">
