@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 use App\Post;
-use App\Episode;
 
 class HomeController extends Controller
 {

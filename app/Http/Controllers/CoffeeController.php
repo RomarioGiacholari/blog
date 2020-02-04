@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 use Illuminate\Http\Request;

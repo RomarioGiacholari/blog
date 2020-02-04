@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 use Exception;
 use App\Mail\ContactMe;
 use Illuminate\Http\Request;
