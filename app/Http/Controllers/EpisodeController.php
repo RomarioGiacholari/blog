@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 use App\Episode;
 use App\Podcast;
 use Illuminate\Http\Request;

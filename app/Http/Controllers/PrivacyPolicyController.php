@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 
 class PrivacyPolicyController extends Controller
 {

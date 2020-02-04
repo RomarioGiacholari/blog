@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use stdClass;
+use \stdClass;
 use App\Post;
 use Illuminate\Http\Request;
 
