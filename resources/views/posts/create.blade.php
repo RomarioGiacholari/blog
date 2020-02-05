@@ -20,7 +20,7 @@
                 </div>
 
                 <div class='form-group'>
-                    <button type="submit" class="btn btn-primary btn-block ">Publish</button>
+                    <button type="submit" class="btn btn-primary btn-block ">publish</button>
                 </div>
 
             </form>

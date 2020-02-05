@@ -30,7 +30,7 @@
                     <input type="number" class="form-control" name="answer" id="answer" value="{{ old('answer') }}" min="0" placeholder="3 + 1 =" required>
                 </div>
                 <div class='form-group'>
-                    <button type="submit" class="btn btn-primary btn-block ">Send</button>
+                    <button type="submit" class="btn btn-primary btn-block ">send</button>
                 </div>
             </form>
             @include('errors._errors')
