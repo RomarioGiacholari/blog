@@ -85,7 +85,7 @@
             <div id="contact-links" class="text-center">
                 <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
                 <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                <a href = 'https://www.instagram.com/iamgiacholari/' target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href = 'https://www.instagram.com/am.giacholari/' target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                 <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
             </div>
             <div class="text-center">
