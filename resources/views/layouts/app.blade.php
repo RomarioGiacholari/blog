@@ -19,6 +19,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+
+    <!-- AdSense -->
+    <script data-ad-client="ca-pub-6808201610334190" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body class="opacity-is-loading">
     <div id="app">
