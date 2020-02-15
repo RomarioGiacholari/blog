@@ -18,10 +18,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-
-    <!-- AdSense -->
-    <script data-ad-client="ca-pub-6808201610334190" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">    
 </head>
 <body class="opacity-is-loading">
     <div id="app">
