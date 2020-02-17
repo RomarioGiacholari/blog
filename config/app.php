@@ -8,7 +8,7 @@ return [
     |
     */
 
-    'admin_Email' => env('ADMIN_EMAIL', ''),
+    'admin_email' => env('ADMIN_EMAIL', null),
 
     /*
     |--------------------------------------------------------------------------

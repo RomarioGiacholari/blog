@@ -39,8 +39,14 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        $adminEmail = config('app.admin_Email');
+        $isAdmin = false;
 
-        return $this->email === $adminEmail;
+        $adminEmail = config('app.admin_email');
+
+        if ($adminEmail != null) {
+            $isAdmin = ($this->email === $adminEmail);
+        }
+
+        return $isAdmin;
     }
 }
