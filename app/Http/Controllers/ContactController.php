@@ -27,11 +27,12 @@ class ContactController extends Controller
         $message = null;
 
         if ($isValid && $request->answer == 4) {
-            $sendToEmail = config('app.admin_Email');
+            $sendToEmail = config('app.admin_email');
             $subject = $request->subject;
             $messageData = $request->message;
             $emailFrom = $request->email;
             $name = $request->name;
+            dd($sendToEmail);
 
             try {
                 Mail::to($sendToEmail)
