@@ -32,7 +32,6 @@ class ContactController extends Controller
             $messageData = $request->message;
             $emailFrom = $request->email;
             $name = $request->name;
-            dd($sendToEmail);
 
             try {
                 Mail::to($sendToEmail)
