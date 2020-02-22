@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">    
 </head>
-<body class="opacity-is-loading">
+<body>
     <div id="app">
         <nav class="navbar navbar-inverse">
             <div class="container">
@@ -96,19 +96,8 @@
                 <p id="dateElement"></p>
             </div>
         </div>
-        <span class="centered"><i class="fas fa-circle-notch fa-spin fa-2x"></i></span>
     </div>
-     <script type="text/javascript" defer>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-90120268-3', 'auto');
-        ga('send', 'pageview');
-    </script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
-    <script src="{{ asset('js/spinner.js') }}" type="text/javascript"></script>
     @yield('scripts')
 </body>
 </html>
