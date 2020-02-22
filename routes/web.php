@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', fn () => view('welcome'))->name('welcome');
 
 Route::get('/resume', function () {
     $pathToFile = public_path('resume.pdf');
