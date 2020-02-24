@@ -31,10 +31,10 @@ class PhotoController extends Controller
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
-        $files = Storage::disk('public')->files();
+        $files = (array) Storage::disk('public')->files();
 
-        if (is_string($identifier) && $identifier != null) {
-            if ($files != null && is_array($files) && count($files) > 0) {
+        if ($identifier != null) {
+            if ($files != null && count($files) > 0) {
                 $photoList = array_filter($files, fn ($fileName) => $fileName == $identifier);
 
                 if ($photoList != null && count($photoList) > 0) {

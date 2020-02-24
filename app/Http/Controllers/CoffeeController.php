@@ -30,7 +30,7 @@ class CoffeeController extends Controller
     
             $session = static::startSession($stripeAmount);
             
-            if ($session !== null && is_string($session->id) && $session->id != null) {
+            if ($session !== null && $session->id != null) {
                 $sessionId = $session->id;
     
                 return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
@@ -47,7 +47,7 @@ class CoffeeController extends Controller
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
         $viewModel->sessionId = null;
         
-        if (is_string($sessionId) && $sessionId != null) {
+        if ($sessionId != null) {
             $viewModel->sessionId = $sessionId;
         }
 
@@ -77,7 +77,7 @@ class CoffeeController extends Controller
     {
         $isSuccess = false;
 
-        if (is_string($stripeSecretKey) && $stripeSecretKey != null) {
+        if ($stripeSecretKey != null) {
             Stripe::setApiKey($stripeSecretKey);
             $isSuccess = true;
         }
