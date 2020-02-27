@@ -12,7 +12,7 @@ class CoffeeController extends Controller
     public function index()
     {
         $viewModel = new stdClass;
-        $viewModel->pageTitle = "Buy me a coffee";
+        $viewModel->pageTitle = "Buy me a cup of coffee";
     
         return view('coffee.index', ['viewModel' => $viewModel]);
     }
