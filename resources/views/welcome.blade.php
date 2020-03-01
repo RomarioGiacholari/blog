@@ -40,7 +40,7 @@
                 <project-list></project-list>
             </section>
 
-            <p class="font-size-16">Get in touch though social media or shoot me an <a href="{{ route('contact.create') }}">email</a>.</p>
+            <p class="font-size-16">Get in touch through social media or shoot me an <a href="{{ route('contact.create') }}">email</a>.</p>
             <ul class="font-size-16">
                 <li><a href = 'https://github.com/RomarioGiacholari' target="_blank">Github</a></li>
                 <li><a href = 'https://twitter.com/giacholari' target="_blank">Twitter</a></li>
