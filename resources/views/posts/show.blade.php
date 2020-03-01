@@ -7,7 +7,7 @@
             @if($viewModel != null && $viewModel->post !== null && $viewModel->author !== null)
             <h1>{{ $viewModel->post->title }}</h1>
 
-            {{ $viewModel->post->created_at->diffForHumans() }} by {{ $viewModel->author }}
+            <span>{{ $viewModel->post->created_at->diffForHumans() }} by {{ $viewModel->author }}</span>
 
             <hr>
             <p class="post-show-body"> {{ $viewModel->post->body }} </p>

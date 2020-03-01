@@ -14,7 +14,6 @@
     <title>Romario Giacholari | @yield('title')</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
@@ -82,19 +81,9 @@
 
         @yield('content')
         <div style="padding:25px; margin-top:100px">
-            <div id="contact-links" class="text-center">
-                <a href = 'https://github.com/RomarioGiacholari' target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href = 'https://twitter.com/giacholari' target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                <a href = 'https://www.instagram.com/am.giacholari/' target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-            </div>
-            <div class="text-center">
-                <p>Fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></p>
-            </div>
-            <div class="text-center">
-                <p>&copy;2020 Giacholari.</p>
-                <p id="dateElement"></p>
-            </div>
+            <p class="text-center">fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></p>
+            <p class="text-center">&copy;2020 Giacholari.</p>
+            <p class="text-center" id="dateElement"></p>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}" type="text/javascript" defer></script>
