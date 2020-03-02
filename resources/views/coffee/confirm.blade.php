@@ -21,7 +21,7 @@
 <script defer>
     function pay() {
         var stripe = Stripe('{{ $viewModel->stripePublicKey }}');
-        stripe.redirectToCheckout({sessionId: '{{ $viewModel->sessionId }}'}).then(function (result) {});
+        stripe.redirectToCheckout({sessionId:'{{ $viewModel->sessionId }}'}).then(function (result) {});
     }   
 </script>
 @endsection
