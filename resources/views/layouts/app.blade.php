@@ -86,7 +86,7 @@
             <p class="text-center" id="dateElement"></p>
         </div>
     </div>
-    <script src="{{ asset('js/app.js') }}" type="text/javascript" defer=""></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('scripts')
 </body>
 </html>
