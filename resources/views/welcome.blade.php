@@ -22,12 +22,13 @@
             </ul>
         </div>
         <div class="col-md-6">
-            <h4>- Get in touch through social media or shoot me an <a href="{{ route('contact.create') }}">email</a></h4>
+            <h4>- Contact me</h4>
             <ul class="font-size-16">
-                <li><a href = 'https://github.com/RomarioGiacholari' target="_blank">Github</a></li>
-                <li><a href = 'https://twitter.com/giacholari' target="_blank">Twitter</a></li>
-                <li><a href = 'https://www.instagram.com/am.giacholari/' target="_blank">Instagram</a></li>
-                <li><a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank">Linkedin</a></li>
+                <li><a href="https://github.com/RomarioGiacholari" target="_blank">Github</a></li>
+                <li><a href="https://twitter.com/giacholari" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com/am.giacholari/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name" target="_blank">Linkedin</a></li>
+                <li><a href="{{ route('contact.create') }}">Email</a></li>
             </ul>
         </div>
     </div>
