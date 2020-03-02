@@ -4,20 +4,36 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
             <h1>Welcome to the site &#x1F44B;</h1>
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-6">
             <h4>- Work experience</h4>
             <ul class="font-size-16">
-                <li><a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student - 2018/2019</li>
-                <li><a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer - 2018</li>
-                <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern - 2017</li>
+                <li><a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2019</li>
+                <li><a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018</li>
+                <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017</li>
             </ul>
-            
+        </div>
+        <div class="col-md-6">
+            <h4>- Get in touch through social media or shoot me an <a href="{{ route('contact.create') }}">email</a></h4>
+            <ul class="font-size-16">
+                <li><a href = 'https://github.com/RomarioGiacholari' target="_blank">Github</a></li>
+                <li><a href = 'https://twitter.com/giacholari' target="_blank">Twitter</a></li>
+                <li><a href = 'https://www.instagram.com/am.giacholari/' target="_blank">Instagram</a></li>
+                <li><a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
             <h4>- Skills & Tools</h4>
             <p class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
@@ -34,20 +50,15 @@
                 <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
                 <span class="label label-info">Stripe</span>
             </p>
-            
-            <h4>- Portfolio</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
             <section>
+                <h4>- Portfolio</h4>
                 <project-list></project-list>
             </section>
-
-            <p class="font-size-16">Get in touch through social media or shoot me an <a href="{{ route('contact.create') }}">email</a>.</p>
-            <ul class="font-size-16">
-                <li><a href = 'https://github.com/RomarioGiacholari' target="_blank">Github</a></li>
-                <li><a href = 'https://twitter.com/giacholari' target="_blank">Twitter</a></li>
-                <li><a href = 'https://www.instagram.com/am.giacholari/' target="_blank">Instagram</a></li>
-                <li><a href = 'https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name' target="_blank">Linkedin</a></li>
-            </ul>
-
         </div>
     </div>
 </div>
