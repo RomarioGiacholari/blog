@@ -12,9 +12,9 @@ class PhotoController extends Controller
         $viewModel = new stdClass;
         $viewModel->pageTitle = 'Photos';
         $viewModel->photos = null;
-        $files = Storage::disk('public')->files();
+        $files = (array) Storage::disk('public')->files();
 
-        if ($files != null && is_array($files) && count($files) > 0) {
+        if ($files != null && count($files) > 0) {
             $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
             
             if ($photos != null && count($photos) > 0) {
