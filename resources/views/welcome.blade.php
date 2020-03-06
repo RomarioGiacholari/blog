@@ -4,7 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Welcome to the site &#x1F44B;</h1>
+            <h1>Romario Giacholari</h1>
+            <p>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</p>
+            <hr />
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
