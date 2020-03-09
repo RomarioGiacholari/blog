@@ -7,6 +7,11 @@
     <meta name="author" content="Romario Giacholari">
     <meta name="description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
     <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Vue.js,Romario Giacholari">
+    <meta property="og:site_name" content="Romario Giacholari">
+    <meta property="og:title" content="Romario Giacholari">
+    <meta property="og:description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://giacholari.com">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
