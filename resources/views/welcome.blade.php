@@ -54,5 +54,18 @@
             </section>
         </div>
     </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <h4>- Social links</h4>
+            <ul class="font-size-16">
+                <li><a href="https://github.com/RomarioGiacholari" target="_blank">Github</a></li>
+                <li><a href="https://twitter.com/giacholari" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com/am.giacholari/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name" target="_blank">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 @endsection
