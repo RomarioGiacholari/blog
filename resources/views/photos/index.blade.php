@@ -4,18 +4,26 @@
 <div class="container">
     <h1>Photos</h1>
     <hr />
-    @if($viewModel != null && $viewModel->photos !== null)
-    <div id="pinBoot">
-        @foreach($viewModel->photos as $photo)
-        <div class="thumbnail white-panel">
-            <a href="{{ route('photos.show', ['identifier' => $photo]) }}">
-                <img src="{{ asset($photo) }}" title="{{ $photo }}" alt="{{ $photo }}">
-            </a>
-        </div>
-        @endforeach
+    <div id="pinBoot" data-identifier="js-photos-partial">
+        
     </div>
-    @else
-    <p>Photos coming soon ...</p>
-    @endif
 </div>
+@endsection
+@section('scripts')
+<script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        var targetElement = document.getElementById('pinBoot');
+
+        fetch('/all-photos/partial')
+            .then(function (response) { 
+                return response.text(); 
+            })
+            .then(function (html) {
+                 targetElement.innerHTML = html; 
+            })
+            .catch (function (error) {
+                console.log(error);
+            });
+    });
+</script>
 @endsection
