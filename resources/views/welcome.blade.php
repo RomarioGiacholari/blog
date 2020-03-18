@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <img class="img-circle img-thumbnail" src="{{ asset('me-posing.jpg') }}" height="150" width="150" title="Romario Giacholari" alt="Romario Giacholari" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
             <h1>Romario Giacholari</h1>
             <p>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</p>
             <hr />
