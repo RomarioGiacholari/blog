@@ -20,7 +20,9 @@ Route::get('/home/posts', 'HomeController@posts')->name('home.posts');
 Route::get('/home/episodes', 'HomeController@episodes')->name('home.episodes');
 
 Route::get('/all-photos', 'PhotoController@index')->name('photos');
-Route::get('/all-photos/{identifier}', 'PhotoController@show')->name('photos.show');
+Route::get('/all-photos/partial', 'PhotoController@photos')->name('photos.partial');
+Route::get('/all-photos/{identifier}', 'PhotoController@show')->name('photos.show'); 
+
 Route::resource('posts', 'PostController');
 
 Route::get('/contact', 'ContactController@create')->name('contact.create');

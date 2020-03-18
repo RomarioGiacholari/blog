@@ -11,16 +11,6 @@ class PhotoController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->pageTitle = 'Photos';
-        $viewModel->photos = null;
-        $files = (array) Storage::disk('public')->files();
-
-        if ($files != null && count($files) > 0) {
-            $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
-            
-            if ($photos != null && count($photos) > 0) {
-                $viewModel->photos = $photos;
-            }
-        }
 
         return view('photos.index', ['viewModel' => $viewModel]);
     }
@@ -51,5 +41,22 @@ class PhotoController extends Controller
         }
 
         return view('photos.show', ['viewModel' => $viewModel]);
+    }
+
+    public function photos()
+    {
+        $viewModel = new stdClass;
+        $viewModel->photos = null;
+        $files = (array) Storage::disk('public')->files();
+
+        if ($files != null && count($files) > 0) {
+            $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
+            
+            if ($photos != null && count($photos) > 0) {
+                $viewModel->photos = $photos;
+            }
+        }
+
+        return view('photos._photos-partial', ['viewModel' => $viewModel]);
     }
 }
