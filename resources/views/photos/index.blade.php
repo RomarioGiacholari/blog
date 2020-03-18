@@ -10,20 +10,5 @@
 </div>
 @endsection
 @section('scripts')
-<script defer>
-    document.addEventListener("DOMContentLoaded", function() {
-        var targetElement = document.getElementById('pinBoot');
-
-        fetch('/all-photos/partial')
-            .then(function (response) { 
-                return response.text(); 
-            })
-            .then(function (html) {
-                 targetElement.innerHTML = html; 
-            })
-            .catch (function (error) {
-                console.log(error);
-            });
-    });
-</script>
+<script src="{{ asset('js/photos/fetchPhotos.js') }}" defer></script>
 @endsection
