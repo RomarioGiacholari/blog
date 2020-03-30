@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var targetElement = document.getElementById('pinBoot');
+    var identifier = 'js-photos-partial-container';
+    var targetElement = document.querySelector(`[data-identifier='${identifier}']`);
 
     fetch('/all-photos/partial')
         .then(function (response) {
