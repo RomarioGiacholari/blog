@@ -16,8 +16,8 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="amount">Amount in (£) pounds</label>
-                    <input type="number" class="form-control" name="amount" id="amount" value="{{ old('amount') }}" min="1" placeholder="amount in (£) pounds" required>
+                    <label for="amount">Amount in (£) <span id="currentAmount"></span></label>
+                    <input type="range" name="amount" id="amount" value="{{ old('amount') }}" min="1" max="100" step="1" required>
                 </div>
                 
                 <div class='form-group'>
@@ -29,4 +29,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="{{ asset('js/coffee/updateSlider.js') }}" defer></script>
 @endsection
