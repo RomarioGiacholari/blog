@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('photos.show', ['identifier' => 'me-posing.jpg']) }}">
-                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="30" width="30" title="Romario Giacholari" alt="Romario Giacholari" />
+                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
                     </a>
                 </div>
 
@@ -89,9 +89,8 @@
 
         @yield('content')
         <div class="footer-links text-center">
-            <span>fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></span>
+            <span>fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></span> |
             <span>&copy;2020 Giacholari.</span>
-            <span id="dateElement"></span>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
