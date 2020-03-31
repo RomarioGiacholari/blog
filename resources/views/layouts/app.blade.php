@@ -88,10 +88,10 @@
         </nav>
 
         @yield('content')
-        <div style="padding:25px; margin-top:100px">
-            <p class="text-center">fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></p>
-            <p class="text-center">&copy;2020 Giacholari.</p>
-            <p class="text-center" id="dateElement"></p>
+        <div class="footer-links text-center">
+            <span>fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></span>
+            <span>&copy;2020 Giacholari.</span>
+            <span id="dateElement"></span>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
