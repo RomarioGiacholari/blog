@@ -17,7 +17,7 @@
 
                 <div class="form-group">
                     <label for="amount">Amount in (£) <span id="currentAmount"></span></label>
-                    <input type="range" name="amount" id="amount" value="{{ old('amount') }}" min="1" max="100" step="1" required>
+                    <input type="range" name="amount" id="amount" value="{{ old('amount') ?? 1 }}" min="1" max="100" step="1" required>
                 </div>
                 
                 <div class='form-group'>
