@@ -7,7 +7,7 @@
     <hr />
     <div class="row">
         <div class="col-md-12">
-            <img src="{{ asset($viewModel->photo) }}" class="img-responsive" title="{{ $viewModel->photoFriendlyName }}" alt="{{ $viewModel->photoFriendlyName }}">
+            <img src="{{ asset($viewModel->photo) }}" height="200" width="400" class="img-responsive" title="{{ $viewModel->photoFriendlyName }}" alt="{{ $viewModel->photoFriendlyName }}">
         </div>
     </div>
 </div>
