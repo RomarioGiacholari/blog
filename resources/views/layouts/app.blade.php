@@ -39,6 +39,9 @@
                     </button>
 
                     <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ route('photos.show', ['identifier' => 'me-posing.jpg']) }}">
+                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="30" width="30" title="Romario Giacholari" alt="Romario Giacholari" />
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
