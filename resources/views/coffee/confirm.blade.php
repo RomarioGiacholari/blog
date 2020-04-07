@@ -2,12 +2,12 @@
 @if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
 @endif
-@if($viewModel != null && $viewModel->sessionId !== null && $viewModel->stripePublicKey !== null)
+@if($viewModel != null && $viewModel->friendlyAmount != null && $viewModel->friendlyAmount > 0 && $viewModel->sessionId !== null && $viewModel->stripePublicKey !== null)
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Confirm payment</h1>
+            <h1>Confirm payment of (£{{ $viewModel->friendlyAmount }})</h1>
             <hr>
             <p>Next, you will be redirected to Stripe and they are going to handle the payment.</p>
             <button class="btn btn-success btn-block" onclick="pay()">pay</button>
