@@ -39,7 +39,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('photos.show', ['identifier' => 'me-posing.jpg']) }}">
+                    <a class="navbar-brand" href="{{ route('welcome') }}">
                         <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
                     </a>
                 </div>
