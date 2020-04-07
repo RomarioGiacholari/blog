@@ -46,9 +46,23 @@ class CoffeeController extends Controller
         $viewModel->pageTitle = "Confirm Payment";
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
         $viewModel->sessionId = null;
+        $viewModel->friendlyAmount = null;
         
         if ($sessionId != null) {
             $viewModel->sessionId = $sessionId;
+
+            $stripeSecretKey = config('services.stripe.secret');
+            $isSuccess = static::setStripeApiKey($stripeSecretKey);
+            $session = Session::retrieve($sessionId);
+
+            if ($isSuccess && $session != null && $session->display_items != null) {
+                $items = $session->display_items[0];
+
+                if ($items != null && $items->amount != null && $items->amount > 0) {
+                    $amount = $items->amount;
+                    $viewModel->friendlyAmount = ($amount / 100);
+                }
+            }
         }
 
         return view('coffee.confirm', ['viewModel' => $viewModel]);
