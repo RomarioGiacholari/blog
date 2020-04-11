@@ -8,5 +8,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/photos/fetchPhotos.js') }}" defer></script>
+<script src="{{ secure_asset('js/photos/fetchPhotos.js') }}" defer></script>
 @endsection
