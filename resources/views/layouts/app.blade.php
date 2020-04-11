@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">    
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" type="text/css">    
 </head>
 <body>
     <div id="app">
@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('welcome') }}">
-                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
+                        <img class="img-circle" src="{{ secure_asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
                     </a>
                 </div>
 
@@ -93,7 +93,7 @@
             <span>&copy;2020 Giacholari.</span>
         </div>
     </div>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
     @yield('scripts')
 </body>
 </html>
