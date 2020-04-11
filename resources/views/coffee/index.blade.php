@@ -31,5 +31,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="{{ asset('js/coffee/updateAmount.js') }}" defer></script>
+<script src="{{ secure_asset('js/coffee/updateAmount.js') }}" defer></script>
 @endsection
