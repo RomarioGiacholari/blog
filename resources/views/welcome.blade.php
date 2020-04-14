@@ -6,7 +6,6 @@
         <div class="col-md-12">
             <h1>Romario Giacholari</h1>
             <p>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</p>
-            <hr />
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
@@ -52,19 +51,6 @@
                 <h4>- Portfolio</h4>
                 <project-list></project-list>
             </section>
-        </div>
-    </div>
-
-    <hr />
-    <div class="row">
-        <div class="col-md-12">
-            <h4>- Social links</h4>
-            <ul class="font-size-16">
-                <li><a href="https://github.com/RomarioGiacholari" target="_blank">Github</a></li>
-                <li><a href="https://twitter.com/giacholari" target="_blank">Twitter</a></li>
-                <li><a href="https://www.instagram.com/am.giacholari/" target="_blank">Instagram</a></li>
-                <li><a href="https://www.linkedin.com/in/romario-giacholari-71130b11b?trk=hp-identity-name" target="_blank">Linkedin</a></li>
-            </ul>
         </div>
     </div>
 </div>
