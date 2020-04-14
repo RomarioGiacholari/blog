@@ -93,7 +93,7 @@
             <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram" aria-hidden="true"></i></a> |
             <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin" aria-hidden="true"></i></a> |
             <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github" aria-hidden="true"></i></a> |
-            <span><a href="{{ route('privacy-policy.index') }}">privacy</a></span> |
+            <a href="{{ route('privacy-policy.index') }}">privacy</a> |
             <span>&copy;2020 Giacholari.</span>
         </div>
         
