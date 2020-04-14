@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" type="text/css">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -89,9 +90,13 @@
 
         @yield('content')
         <div class="footer-links text-center">
-            <span>fine print: <a href="{{ route('privacy-policy.index') }}">privacy</a></span> |
+            <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram" aria-hidden="true"></i></a> |
+            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin" aria-hidden="true"></i></a> |
+            <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github" aria-hidden="true"></i></a> |
+            <span><a href="{{ route('privacy-policy.index') }}">privacy</a></span> |
             <span>&copy;2020 Giacholari.</span>
         </div>
+        
     </div>
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
     @yield('scripts')
