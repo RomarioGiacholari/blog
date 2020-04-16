@@ -28,7 +28,7 @@
                 </table>
             </div>
             @else
-            <p>There are no episodes to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
+            <p>There are no resources to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
             @endif
         </div>
     </div>
