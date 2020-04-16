@@ -37,3 +37,5 @@ Route::post('/podcast/episodes', 'EpisodeController@store')->name('episodes.stor
 Route::get('/podcast/episodes/{episode}/edit', 'EpisodeController@edit')->name('episodes.edit');
 Route::patch('/podcast/episodes/{episode}', 'EpisodeController@update')->name('episodes.update');
 Route::delete('/podcast/episodes/{episode}', 'EpisodeController@destroy')->name('episodes.destroy');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');

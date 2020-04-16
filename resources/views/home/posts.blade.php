@@ -43,7 +43,7 @@
                 </table>
             </div>
             @else
-            <p>There are no posts to display. <a href="{{ route('welcome') }}">Redirect to welcome page</a></p>
+            <p>There are no posts to display. <a href="{{ route('dashboard.index') }}">Redirect to dashboard</a></p>
             @endif
         </div>
     </div>
