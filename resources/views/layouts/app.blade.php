@@ -52,7 +52,6 @@
                         <li class="{{ Request::is('posts*') ? 'active' : '' }}"><a href="{{ route('posts.index') }}">blog</a></li>
                         <li class="{{ Request::is('all-photos*') ? 'active' : '' }}"><a href="{{ route('photos') }}">photos</a></li>
                         <li class="{{ Request::is('resume') ? 'active' : '' }}"><a href="{{ route('resume') }}">resume</a></li>
-                        <!-- <li class="{{ Request::is('podcast*') ? 'active' : '' }}"><a href="{{ route('episodes.index') }}">podcast</a></li> -->
                         <li class="{{ Request::is('coffee*') ? 'active' : '' }}"><a href="{{ route('coffee.index') }}">coffee</a></li>
                         <li class="{{ Request::is('contact*') ? 'active' : '' }}"><a href="{{ route('contact.create') }}">contact</a></li>
                     </ul>
@@ -67,8 +66,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="/home/posts">posts</a></li>
-                                    <li><a href="/home/episodes">episodes</a></li>
+                                    <li><a href="{{ route('dashboard.index') }}">dashboard</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
