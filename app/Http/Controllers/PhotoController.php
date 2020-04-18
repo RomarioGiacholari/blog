@@ -23,20 +23,18 @@ class PhotoController extends Controller
         $viewModel->photoFriendlyName = null;
         $files = (array) Storage::disk('public')->files();
 
-        if ($identifier != null) {
-            if ($files != null && count($files) > 0) {
-                $photoList = array_filter($files, fn ($fileName) => $fileName == $identifier);
+        if ($identifier != null && $files != null && count($files) > 0) {
+            $photoList = array_filter($files, fn ($fileName) => $fileName == $identifier);
 
-                if ($photoList != null && count($photoList) > 0) {
-                    $arrayKeys = array_keys($photoList);
-                    $index = $arrayKeys[0];
-                    $fileName = $photoList[$index];
-                    $friendlyFileName = str_replace(".jpg", "", $fileName);
+            if ($photoList != null && count($photoList) > 0) {
+                $arrayKeys = array_keys($photoList);
+                $index = $arrayKeys[0];
+                $fileName = $photoList[$index];
+                $friendlyFileName = str_replace(".jpg", "", $fileName);
 
-                    $viewModel->photo = $fileName;
-                    $viewModel->photoFriendlyName = $friendlyFileName;
-                    $viewModel->pageTitle = "Photos | {$friendlyFileName}";
-                }
+                $viewModel->photo = $fileName;
+                $viewModel->photoFriendlyName = $friendlyFileName;
+                $viewModel->pageTitle = "Photos | {$friendlyFileName}";
             }
         }
 
