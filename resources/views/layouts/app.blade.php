@@ -23,7 +23,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    @if(app()->env == 'local')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+    @else
     <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" type="text/css">
+    @endif
 </head>
 <body>
     <div id="app">
@@ -41,7 +45,11 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('welcome') }}">
+                        @if(app()->env = 'local')
+                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
+                        @else
                         <img class="img-circle" src="{{ secure_asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
+                        @endif
                     </a>
                 </div>
 
@@ -96,7 +104,11 @@
         </div>
         
     </div>
+    @if(app()->env == 'local')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @else
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    @endif
     @yield('scripts')
 </body>
 </html>
