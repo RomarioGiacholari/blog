@@ -21,7 +21,7 @@ Route::get('/home/episodes', 'HomeController@episodes')->name('home.episodes');
 
 Route::get('/all-photos', 'PhotoController@index')->name('photos');
 Route::get('/all-photos/partial', 'PhotoController@photos')->name('photos.partial');
-Route::get('/all-photos/{identifier}', 'PhotoController@show')->name('photos.show'); 
+Route::get('/all-photos/{identifier}', 'PhotoController@show')->name('photos.show');
 
 Route::resource('posts', 'PostController');
 
@@ -39,3 +39,7 @@ Route::patch('/podcast/episodes/{episode}', 'EpisodeController@update')->name('e
 Route::delete('/podcast/episodes/{episode}', 'EpisodeController@destroy')->name('episodes.destroy');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+
+Route::prefix('/api')->group(function () {
+    Route::get('/projects', 'ProjectApiController@index')->name('api.projects.index');
+});
