@@ -31,5 +31,9 @@
 </div>
 @endsection
 @section('scripts')
+@if(app()->env == 'local')
+<script src="{{ asset('js/coffee/updateAmount.js') }}" defer></script>
+@else
 <script src="{{ secure_asset('js/coffee/updateAmount.js') }}" defer></script>
+@endif
 @endsection
