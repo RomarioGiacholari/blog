@@ -38,7 +38,7 @@ class ContactController extends Controller
                     ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
 
                 $isSuccess = true;
-                $message = 'Email sent!';
+                $message = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
             } catch (Exception $ex) {
                 $message = $ex->getMessage();
             }
