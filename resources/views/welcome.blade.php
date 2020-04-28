@@ -3,8 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Romario Giacholari</h1>
+        <div class="col-md-12 text-center">
+            @if(app()->env = 'local')
+            <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="150" width="150" title="Romario Giacholari" alt="Romario Giacholari" />
+            @else
+            <img class="img-circle" src="{{ secure_asset('me-posing.jpg') }}" height="150" width="150" title="Romario Giacholari" alt="Romario Giacholari" />
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Romario Giacholari</h2>
             <p>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</p>
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
@@ -14,18 +23,18 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <h4>- Work experience</h4>
-            <ul class="font-size-16">
-                <li><a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2019</li>
-                <li><a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018</li>
-                <li><a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017</li>
-            </ul>
+            <div>
+                <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2019 |
+                <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
+                <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017
+            </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <h4>- Skills & Tools</h4>
             <p class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
@@ -46,7 +55,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <section>
                 <h4>- Portfolio</h4>
                 <project-list></project-list>
