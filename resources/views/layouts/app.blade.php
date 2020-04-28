@@ -44,13 +44,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('welcome') }}">
-                        @if(app()->env = 'local')
-                        <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
-                        @else
-                        <img class="img-circle" src="{{ secure_asset('me-posing.jpg') }}" height="25" width="25" title="Romario Giacholari" alt="Romario Giacholari" />
-                        @endif
-                    </a>
+                    <a class="navbar-brand" href="{{ route('welcome') }}">#</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
