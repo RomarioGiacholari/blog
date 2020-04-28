@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-12 text-center">
             @if(app()->env = 'local')
-            <img class="img-circle" src="{{ asset('me-posing.jpg') }}" height="150" width="150" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-circle" id="thumbnail" src="{{ asset('me-posing.jpg') }}" height="200" width="200" title="Romario Giacholari" alt="Romario Giacholari" />
             @else
-            <img class="img-circle" src="{{ secure_asset('me-posing.jpg') }}" height="150" width="150" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-circle" id="thumbnail" src="{{ secure_asset('me-posing.jpg') }}" height="200" width="200" title="Romario Giacholari" alt="Romario Giacholari" />
             @endif
         </div>
     </div>
@@ -63,4 +63,11 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+@if(app()->env == 'local')
+<script src="{{ asset('js/photos/refreshPhoto.js') }}" defer></script>
+@else
+<script src="{{ secure_asset('js/photos/refreshPhoto.js') }}" defer></script>
+@endif
 @endsection
