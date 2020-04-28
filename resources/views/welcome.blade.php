@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-12 text-center">
             @if(app()->env = 'local')
-            <img class="img-circle" id="thumbnail" src="{{ asset('me-posing.jpg') }}" height="200" width="200" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-circle" id="thumbnail" src="{{ asset('me-posing.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
             @else
-            <img class="img-circle" id="thumbnail" src="{{ secure_asset('me-posing.jpg') }}" height="200" width="200" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-circle" id="thumbnail" src="{{ secure_asset('me-posing.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
             @endif
         </div>
     </div>
