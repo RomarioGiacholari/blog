@@ -42,4 +42,5 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 Route::prefix('/api')->group(function () {
     Route::get('/projects', 'ProjectApiController@index')->name('api.projects.index');
+    Route::get('/photos', 'PhotoApiController@index')->name('api.photos.index');
 });
