@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h2>Romario Giacholari</h2>
-            <p>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</p>
+            <p><b>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</b></p>
             <p class="font-size-16">
                 My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h4>- Work experience</h4>
-            <div>
+            <div class="font-size-16">
                 <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2019 |
                 <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
                 <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017
