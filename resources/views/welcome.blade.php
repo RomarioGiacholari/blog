@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Welcome')
+@section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center">
+    <div class="row text-center">
+        <div class="col-md-12">
             @if(app()->env = 'local')
             <img class="img-circle" id="thumbnail" src="{{ asset('me-posing.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
             @else
@@ -11,20 +11,19 @@
             @endif
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h2>Romario Giacholari</h2>
-            <p><b>web developer, student, html, css, laravel, php, javaScript, vue.js, c#, Asp.Net core, Mysql</b></p>
+    <div class="row text-center">
+        <h2>Romario Giacholari</h2>
+        <div class="col-md-12">
             <p class="font-size-16">
-                My name is Romario. I am an ambitious student and web enthusiast from Aston University (final year).
+                My name is Romario. I am a student and web developer from Aston University (final year).
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h4>- Work experience</h4>
+    <div class="row text-center">
+        <h4>- Work experience</h4>
+        <div class="col-md-12">
             <div class="font-size-16">
                 <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2019 |
                 <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
@@ -33,9 +32,9 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h4>- Skills & Tools</h4>
+    <div class="row text-center">
+        <h4>- Skills & Tools</h4>
+        <div class="col-md-12">
             <p class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
@@ -54,14 +53,31 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 text-center">
+    <div class="row text-center">
+        <h4>- Portfolio</h4>
+        <div class="col-md-12">
+        <p>This a list of the web applications I have built over the years.</p>
             <section>
-                <h4>- Portfolio</h4>
                 <project-list></project-list>
             </section>
         </div>
     </div>
+
+    <div class="row text-center" style="margin-top:50px;">
+        <h4>- Testimonials</h4>
+        <p>See below testimonials from people that know me and have worked together.</p>
+        @if($viewModel != null && $viewModel->testimonials != null && count($viewModel->testimonials) > 0)
+        @foreach($viewModel->testimonials as $name => $data)
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <a href="{{ $data['link'] }}">
+                <img class="img-circle" id="thumbnail" src="{{ $data['imageUrl'] }}" height="150" width="150" title="{{ $name }}" alt="{{ $name }}" />
+            </a>
+            <p>{{ $data['testimonial'] }}</p>
+        </div>
+        @endforeach
+        @endif
+    </div>
+
 </div>
 @endsection
 @section('scripts')
