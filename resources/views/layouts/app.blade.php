@@ -90,11 +90,11 @@
 
         @yield('content')
         <div class="footer-links text-center">
-            <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram" aria-hidden="true"></i></a> |
-            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin" aria-hidden="true"></i></a> |
-            <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github" aria-hidden="true"></i></a> |
-            <a href="{{ route('privacy-policy.index') }}">privacy</a> |
-            <span>&copy;2020 Giacholari.</span>
+            <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+            <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+            <span class="font-size-16"> | &copy;2020 Giacholari.</span>
+            <a href="{{ route('privacy-policy.index') }}" class="font-size-16"><u>privacy</u></a>
         </div>
         
     </div>
