@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/coffee/updateAmount.js": "/js/coffee/updateAmount.js",
+    "/js/photos/fetchPhotos.js": "/js/photos/fetchPhotos.js",
+    "/js/photos/refreshPhoto.js": "/js/photos/refreshPhoto.js"
 }

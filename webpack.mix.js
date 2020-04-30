@@ -12,4 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+   .js('resources/assets/js/coffee/updateAmount.js', 'public/js/coffee')
+   .js('resources/assets/js/photos/refreshPhoto.js', 'public/js/photos')
+   .js('resources/assets/js/photos/fetchPhotos.js', 'public/js/photos')
    .sass('resources/assets/sass/app.scss', 'public/css');
