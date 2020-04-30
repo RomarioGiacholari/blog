@@ -56,7 +56,6 @@
     <div class="row text-center">
         <h4>- Portfolio</h4>
         <div class="col-md-12">
-        <p>This a list of the web applications I have built over the years.</p>
             <section>
                 <project-list></project-list>
             </section>
@@ -65,7 +64,6 @@
 
     <div class="row text-center" style="margin-top:50px;">
         <h4>- Testimonials</h4>
-        <p>See below testimonials from people that know me and have worked together.</p>
         @if($viewModel != null && $viewModel->testimonials != null && count($viewModel->testimonials) > 0)
         @foreach($viewModel->testimonials as $name => $data)
         <div class="col-md-4 col-sm-6 col-xs-6">
