@@ -12,13 +12,13 @@
     <div class="row">
         <div class="col-md-4">
             @if(app()->env = 'local')
-            <img class="img-rounded" id="thumbnail" src="{{ asset('me-driving-certificate.jpg') }}" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img  style="padding:10px;" class="img-rounded" id="thumbnail" src="{{ asset('me-driving-certificate.jpg') }}" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
             @else
-            <img class="img-circle" id="thumbnail" src="{{ secure_asset('romario-giacholari.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img  style="padding:10px;" class="img-circle" id="thumbnail" src="{{ secure_asset('romario-giacholari.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
             @endif
         </div>
         <div class="col-md-8">
-            <p>
+            <p style="padding:10px;">
                 Thank you for visiting the site. My name is Romario and I am a web developer based in Birmingham, UK. 
                 My passion is web development and I really enjoy solving programming tasks.
                 Apart from that, I am also a big fan of football.
