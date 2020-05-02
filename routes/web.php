@@ -72,6 +72,8 @@ Route::delete('/podcast/episodes/{episode}', 'EpisodeController@destroy')->name(
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
+Route::get('/about', 'AboutController@index')->name('about.index');
+
 Route::prefix('/api')->group(function () {
     Route::get('/projects', 'ProjectApiController@index')->name('api.projects.index');
     Route::get('/photos', 'PhotoApiController@index')->name('api.photos.index');
