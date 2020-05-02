@@ -28,7 +28,7 @@
                             <td> {{ $episode->updated_at->diffForHumans() }} </td>
                             <td><a href=" {{ route('episodes.edit', ['episode' => $episode] ) }} " class="btn btn-xs btn-primary" role="button">edit</a></td>
                             <td>
-                                <form onsubmit="event.preventDefault(); deleteEpisode(event);" action="{{ route('episodes.destroy', ['episode' => $episode] ) }}" method="POST">
+                                <form action="{{ route('episodes.destroy', ['episode' => $episode] ) }}" method="POST">
 
                                     {{ method_field('DELETE') }}
 
@@ -51,16 +51,10 @@
 @endsection
 @if($viewModel != null && $viewModel->episodes !== null)
 @section('scripts')
-<script defer>
-    function deleteEpisode(event) {
-        var message = "Do you want to remove the episode?";
-        var isSuccess = confirm(message);
-        var form = event.target;
-
-        if (isSuccess) {
-            form.submit();
-        }
-    }
-</script>
+@if(app()->env == 'local')
+<script src="{{ asset('js/forms/delete.js') }}" defer></script>
+@else
+<script src="{{ secure_asset('js/forms/delete.js') }}" defer></script>
+@endif
 @endsection
 @endif

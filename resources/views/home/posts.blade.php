@@ -28,7 +28,7 @@
                             <td> {{ $post->updated_at->diffForHumans() }} </td>
                             <td><a href=" {{ route('posts.edit', ['post' => $post] ) }} " class="btn btn-xs btn-primary" role="button">edit</a></td>
                             <td>
-                                <form onsubmit="event.preventDefault(); deletePost(event);" action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
+                                <form action="{{ route('posts.destroy', ['post' => $post] ) }}" method="POST">
 
                                     {{ method_field('DELETE') }}
 
@@ -51,16 +51,10 @@
 @endsection
 @if($viewModel != null && $viewModel->posts !== null)
 @section('scripts')
-<script defer>
-    function deletePost(event) {
-        var message = "Do you want to remove the post?";
-        var isSuccess = confirm(message);
-        var form = event.target;
-
-        if (isSuccess) {
-            form.submit();
-        }
-    }
-</script>
+@if(app()->env == 'local')
+<script src="{{ asset('js/forms/delete.js') }}" defer></script>
+@else
+<script src="{{ secure_asset('js/forms/delete.js') }}" defer></script>
+@endif
 @endsection
 @endif
