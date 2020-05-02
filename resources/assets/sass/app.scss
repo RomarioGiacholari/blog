@@ -84,8 +84,11 @@ body {
   right: 0;
   bottom: 0;
   height: 50px;
-  color: white;
+  color: #9d9d9d;
   a {
+    color: #9d9d9d;
+  }
+  a:hover {
     color: white;
   }
 }
