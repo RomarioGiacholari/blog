@@ -61,7 +61,7 @@
             </section>
         </div>
     </div>
-
+<!-- 
     <div class="row text-center" style="margin-top:50px;">
         <h4>- Testimonials</h4>
         @if($viewModel != null && $viewModel->testimonials != null && count($viewModel->testimonials) > 0)
@@ -74,7 +74,7 @@
         </div>
         @endforeach
         @endif
-    </div>
+    </div> -->
 
 </div>
 @endsection
