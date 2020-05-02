@@ -35,8 +35,7 @@
             <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
             <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
             <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
-            <span class="font-size-16"> | &copy;2020 Giacholari.</span>
-            <a href="{{ route('privacy-policy.index') }}" class="font-size-16"><u>privacy</u></a>
+            <span class="font-size-16"> | &copy;2020 Giacholari</span>
         </div>
         <nav class="navbar navbar-inverse">
             <div class="container">
