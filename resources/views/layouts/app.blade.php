@@ -37,7 +37,7 @@
                 <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
         </div>
         <nav class="nav">
-            <div class="text-left">
+            <div class="text-center">
                 <a href="{{ route('welcome') }}"        class="{{ Request::is('/') ? 'active' : '' }}"><u>home</u></a>
                 <a href="{{ route('posts.index') }}"    class="{{ Request::is('posts*') ? 'active' : '' }}"><u>blog</u></a>
                 <a href="{{ route('photos') }}"         class="{{ Request::is('all-photos*') ? 'active' : '' }}"><u>photos</u></a>
