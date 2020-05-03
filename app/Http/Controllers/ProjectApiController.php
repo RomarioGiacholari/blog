@@ -14,7 +14,7 @@ class ProjectApiController extends Controller
             ['id' => 5, 'name' => 'Eye-Contractor', 'link' => 'https://github.com/RomarioGiacholari/eye-contractor', 'image' => 'photos/eye-contractor.png'],
             ['id' => 6, 'name' => 'Sparehouse-live', 'link' => 'https://www.sparehouse.live', 'image' => 'photos/sparehouse-live.png'],
             ['id' => 7, 'name' => 'Astonbrite', 'link' => 'https://github.com/RomarioGiacholari/eventbrite', 'image' => 'photos/astonbrite.png'],
-            ['id' => 8, 'name' => 'Personal CRM', 'link ' => 'https://github.com/RomarioGiacholari/notebook', 'image' => 'photos/notebook.png']
+            ['id' => 8, 'name' => 'Personal CRM', 'link' => 'https://github.com/RomarioGiacholari/notebook', 'image' => 'photos/notebook.png']
         ];
         
         return response($projects, 200);
