@@ -31,8 +31,13 @@
 </head>
 <body>
     <div id="app">
+        <div class="text-center social">
+                <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        </div>
         <nav class="nav">
-            <div class="text-left" style="float:left;">
+            <div class="text-left">
                 <a href="{{ route('welcome') }}"        class="{{ Request::is('/') ? 'active' : '' }}"><u>home</u></a>
                 <a href="{{ route('posts.index') }}"    class="{{ Request::is('posts*') ? 'active' : '' }}"><u>blog</u></a>
                 <a href="{{ route('photos') }}"         class="{{ Request::is('all-photos*') ? 'active' : '' }}"><u>photos</u></a>
@@ -41,16 +46,12 @@
                 <a href="{{ route('about.index') }}"    class="{{ Request::is('about*') ? 'active' : '' }}"><u>about</u></a>
                 <a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}"><u>contact</u></a>
                 @auth
-                <a href="{{ route('logout') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><u>logout</u></a>
+                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}"><u>dashboard</u></a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><u>logout</u></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
                 @endauth
-            </div>
-            <div class="text-right">
-                <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
             </div>
         </nav>
 
