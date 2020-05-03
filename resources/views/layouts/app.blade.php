@@ -31,67 +31,26 @@
 </head>
 <body>
     <div id="app">
-        <div class="text-center top-links">
-            <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-            <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
-            <span class="font-size-16"> | &copy;2020 Giacholari</span>
-        </div>
-        <nav class="navbar navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('welcome') }}">#</a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ route('welcome') }}">home</a></li>
-                        <li class="{{ Request::is('posts*') ? 'active' : '' }}"><a href="{{ route('posts.index') }}">blog</a></li>
-                        <li class="{{ Request::is('all-photos*') ? 'active' : '' }}"><a href="{{ route('photos') }}">photos</a></li>
-                        <li class="{{ Request::is('resume') ? 'active' : '' }}"><a href="{{ route('resume') }}">resume</a></li>
-                        <li class="{{ Request::is('coffee*') ? 'active' : '' }}"><a href="{{ route('coffee.index') }}">coffee</a></li>
-                        <li class="{{ Request::is('about*') ? 'active' : '' }}"><a href="{{ route('about.index') }}">about</a></li>
-                        <li class="{{ Request::is('contact*') ? 'active' : '' }}"><a href="{{ route('contact.create') }}">contact</a></li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @auth
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('dashboard.index') }}">dashboard</a></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endauth
-                    </ul>
-                </div>
+        <nav class="nav">
+            <div class="text-left" style="float:left;">
+                <a href="{{ route('welcome') }}"        class="{{ Request::is('/') ? 'active' : '' }}"><u>home</u></a>
+                <a href="{{ route('posts.index') }}"    class="{{ Request::is('posts*') ? 'active' : '' }}"><u>blog</u></a>
+                <a href="{{ route('photos') }}"         class="{{ Request::is('all-photos*') ? 'active' : '' }}"><u>photos</u></a>
+                <a href="{{ route('resume') }}"         class="{{ Request::is('resume') ? 'active' : '' }}"><u>resume</u></a>
+                <a href="{{ route('coffee.index') }}"   class="{{ Request::is('coffee*') ? 'active' : '' }}"><u>coffee</u></a>
+                <a href="{{ route('about.index') }}"    class="{{ Request::is('about*') ? 'active' : '' }}"><u>about</u></a>
+                <a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}"><u>contact</u></a>
+                @auth
+                <a href="{{ route('logout') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><u>logout</u></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @endauth
+            </div>
+            <div class="text-right">
+                <a href="https://www.instagram.com/am.giacholari/"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                <a href="https://github.com/RomarioGiacholari"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
             </div>
         </nav>
 
