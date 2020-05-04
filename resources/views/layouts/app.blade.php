@@ -38,16 +38,16 @@
         </div>
         <nav class="nav">
             <div class="text-center">
-                <a href="{{ route('welcome') }}"        class="{{ Request::is('/') ? 'active' : '' }}"><u>home</u></a>
-                <a href="{{ route('posts.index') }}"    class="{{ Request::is('posts*') ? 'active' : '' }}"><u>blog</u></a>
-                <a href="{{ route('photos') }}"         class="{{ Request::is('all-photos*') ? 'active' : '' }}"><u>photos</u></a>
-                <a href="{{ route('resume') }}"         class="{{ Request::is('resume') ? 'active' : '' }}"><u>resume</u></a>
-                <a href="{{ route('coffee.index') }}"   class="{{ Request::is('coffee*') ? 'active' : '' }}"><u>coffee</u></a>
-                <a href="{{ route('about.index') }}"    class="{{ Request::is('about*') ? 'active' : '' }}"><u>about</u></a>
-                <a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}"><u>contact</u></a>
+                <a href="{{ route('welcome') }}" class="{{ Request::is('/') ? 'active' : '' }}"><u>Home</u></a>
+                <a href="{{ route('posts.index') }}" class="{{ Request::is('posts*') ? 'active' : '' }}"><u>Blog</u></a>
+                <a href="{{ route('photos') }}" class="{{ Request::is('all-photos*') ? 'active' : '' }}"><u>Photos</u></a>
+                <a href="{{ route('resume') }}" class="{{ Request::is('resume') ? 'active' : '' }}"><u>Resume</u></a>
+                <a href="{{ route('coffee.index') }}" class="{{ Request::is('coffee*') ? 'active' : '' }}"><u>Coffee</u></a>
+                <a href="{{ route('about.index') }}" class="{{ Request::is('about*') ? 'active' : '' }}"><u>About</u></a>
+                <a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}"><u>Contact</u></a>
                 @auth
-                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}"><u>dashboard</u></a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><u>logout</u></a>
+                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}"><u>Dashboard</u></a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><u>Logout</u></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
