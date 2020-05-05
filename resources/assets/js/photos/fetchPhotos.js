@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(function (html) {
             setTimeout(function () {
                 targetElement.innerHTML = html;
-            }, 500);
+            }, 1000);
 
         })
         .catch(function (error) {
