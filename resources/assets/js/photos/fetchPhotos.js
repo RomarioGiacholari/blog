@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.text();
         })
         .then(function (html) {
-            targetElement.innerHTML = html;
+            setTimeout(function () {
+                targetElement.innerHTML = html;
+            }, 500);
+
         })
         .catch(function (error) {
             console.log(error);
