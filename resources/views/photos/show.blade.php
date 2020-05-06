@@ -7,11 +7,7 @@
     <hr />
     <div class="row">
         <div class="col-md-12">
-            @if(app()->env == 'local')
             <img src="{{ asset($viewModel->photo) }}" class="img-responsive" title="{{ $viewModel->photoFriendlyName }}" alt="{{ $viewModel->photoFriendlyName }}">
-            @else
-            <img src="{{ secure_asset($viewModel->photo) }}" class="img-responsive" title="{{ $viewModel->photoFriendlyName }}" alt="{{ $viewModel->photoFriendlyName }}">
-            @endif
         </div>
     </div>
 </div>

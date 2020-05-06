@@ -20,11 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    @if(app()->env == 'local')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-    @else
-    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}" type="text/css">
-    @endif
+    <link rel="stylesheet" href="https://romariogiacholari.github.io/static/css/blog/app.css" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -54,11 +50,7 @@
 
         @yield('content')
     </div>
-    @if(app()->env == 'local')
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @else
-    <script src="{{ secure_asset('js/app.js') }}" defer></script>
-    @endif
+    <script src="https://romariogiacholari.github.io/static/js/blog/app.js" defer></script>
     @yield('scripts')
 </body>
 </html>

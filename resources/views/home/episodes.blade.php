@@ -51,10 +51,6 @@
 @endsection
 @if($viewModel != null && $viewModel->episodes !== null)
 @section('scripts')
-@if(app()->env == 'local')
-<script src="{{ asset('js/forms/delete.js') }}" defer></script>
-@else
-<script src="{{ secure_asset('js/forms/delete.js') }}" defer></script>
-@endif
+<script src="https://romariogiacholari.github.io/static/js/blog/forms/delete.js" defer></script>
 @endsection
 @endif
