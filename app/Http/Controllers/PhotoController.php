@@ -21,18 +21,16 @@ class PhotoController extends Controller
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
-        $files = (array) Storage::disk('public')->files();
+        $files = file_get_contents('https://romariogiacholari.github.io/static/json/images-meta-data.json');
 
-        if ($identifier != null && $files != null && count($files) > 0) {
-            $photoList = array_filter($files, fn ($fileName) => $fileName == $identifier);
+        if ($identifier != null && $files != null) {
+            $photoList = json_decode($files, true);
 
             if ($photoList != null && count($photoList) > 0) {
-                $arrayKeys = array_keys($photoList);
-                $index = $arrayKeys[0];
-                $fileName = $photoList[$index];
-                $friendlyFileName = str_replace(".jpg", "", $fileName);
+                $filePath = $photoList[$identifier];
+                $friendlyFileName = $identifier;
 
-                $viewModel->photo = $fileName;
+                $viewModel->photo = $filePath;
                 $viewModel->photoFriendlyName = $friendlyFileName;
                 $viewModel->pageTitle = "Photos | {$friendlyFileName}";
             }
@@ -55,6 +53,6 @@ class PhotoController extends Controller
             }
         }
 
-        return view('photos._photos-partial', ['viewModel' => $viewModel]);
+        return view('photos.partial', ['viewModel' => $viewModel]);
     }
 }
