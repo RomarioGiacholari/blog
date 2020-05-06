@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-12">
-            <img class="img-circle" id="thumbnail" src="https://romariogiacholari.github.io/static/images/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-circle" id="thumbnail" src="https://romariogiacholari.github.io/static/images/gallery/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
     </div>
     <div class="row text-center">
