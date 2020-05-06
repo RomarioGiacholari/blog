@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use \stdClass;
-use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
