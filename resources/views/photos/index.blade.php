@@ -12,9 +12,5 @@
 </div>
 @endsection
 @section('scripts')
-@if(app()->env == 'local')
-<script src="{{ asset('js/photos/fetchPhotos.js') }}" defer></script>
-@else
-<script src="{{ secure_asset('js/photos/fetchPhotos.js') }}" defer></script>
-@endif
+<script src="https://romariogiacholari.github.io/static/js/blog/photos/fetchPhotos.js" defer></script>
 @endsection

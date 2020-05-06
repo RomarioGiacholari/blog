@@ -60,9 +60,5 @@
 </div>
 @endsection
 @section('scripts')
-@if(app()->env == 'local')
-<script src="{{ asset('js/photos/refreshPhoto.js') }}" defer></script>
-@else
-<script src="{{ secure_asset('js/photos/refreshPhoto.js') }}" defer></script>
-@endif
+<script src="https://romariogiacholari.github.io/static/js/blog/photos/refreshPhoto.js" defer></script>
 @endsection
