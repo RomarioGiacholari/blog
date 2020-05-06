@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
-
 class PhotoApiController extends Controller
 {
     public function index()
     {
         $photos = [];
-        $files = (array) Storage::disk('public')->files();
+        $files = file_get_contents('https://romariogiacholari.github.io/static/json/images-meta-data.json');
 
-        if ($files != null && count($files) > 0) {
-            $photosList = array_filter($files, fn ($file) => strpos($file, 'jpg'));
-            
-            if ($photosList != null && count($photosList) > 0) {
-                $photos = $photosList;
-            }
+        if ($files != null) {
+            $photos = json_decode($files, true);
         }
 
         return response($photos, 200);

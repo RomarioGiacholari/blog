@@ -8,7 +8,7 @@ class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $privacyFile = file_get_contents('privacy.json');
+        $privacyFile = file_get_contents('https://romariogiacholari.github.io/static/json/privacy.json');
         $appName = config('app.name') ?? 'giacholari.com';
 
         $viewModel = new stdClass;

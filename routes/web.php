@@ -35,9 +35,9 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/resume', function () {
-    $pathToFile = public_path('resume.pdf');
+    $pathToFile = "https://romariogiacholari.github.io/static/pdf/resume.pdf";
     
-    return response()->file($pathToFile);
+    return redirect($pathToFile);
 })->name('resume');
 
 Route::get('/coffee', 'CoffeeController@index')->name('coffee.index');
