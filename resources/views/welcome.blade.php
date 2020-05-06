@@ -4,11 +4,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-12">
-            @if(app()->env = 'local')
-            <img class="img-circle" id="thumbnail" src="{{ asset('me-posing.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
-            @else
-            <img class="img-circle" id="thumbnail" src="{{ secure_asset('me-posing.jpg') }}" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
-            @endif
+            <img class="img-circle" id="thumbnail" src="https://romariogiacholari.github.io/static/images/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
     </div>
     <div class="row text-center">
@@ -61,21 +57,6 @@
             </section>
         </div>
     </div>
-<!-- 
-    <div class="row text-center" style="margin-top:50px;">
-        <h4>- Testimonials</h4>
-        @if($viewModel != null && $viewModel->testimonials != null && count($viewModel->testimonials) > 0)
-        @foreach($viewModel->testimonials as $name => $data)
-        <div class="col-md-4 col-sm-6 col-xs-6">
-            <a href="{{ $data['link'] }}">
-                <img class="img-circle" id="thumbnail" src="{{ $data['imageUrl'] }}" height="150" width="150" title="{{ $name }}" alt="{{ $name }}" />
-            </a>
-            <p>{{ $data['testimonial'] }}</p>
-        </div>
-        @endforeach
-        @endif
-    </div> -->
-
 </div>
 @endsection
 @section('scripts')

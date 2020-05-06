@@ -4,12 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var targetElement = document.getElementById(identifier);
     var refreshPhoto = function (photos, targetElement) {
         if (photos && targetElement) {
-            var origin = window.location.origin;
             var keys = Object.keys(photos);
-            var selectedKey = keys[Math.floor(Math.random() * keys.length)]
-            var photo = photos[selectedKey];
-            var src = `${origin}/${photo}`;
-            var photoFriendlyName = photo.replace(".jpg", "");
+            var selectedPhoto = keys[Math.floor(Math.random() * keys.length)]
+            var photoPath = photos[selectedPhoto];
+            var src = photoPath;
+            var photoFriendlyName = selectedPhoto;
 
             targetElement.src = src;
             targetElement.title = photoFriendlyName;

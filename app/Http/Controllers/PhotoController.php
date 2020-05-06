@@ -45,10 +45,10 @@ class PhotoController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->photos = null;
-        $files = (array) Storage::disk('public')->files();
+        $files = file_get_contents('https://romariogiacholari.github.io/static/json/images-meta-data.json');
 
-        if ($files != null && count($files) > 0) {
-            $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
+        if ($files != null) {
+            $photos = json_decode($files, true);
             
             if ($photos != null && count($photos) > 0) {
                 $viewModel->photos = $photos;
