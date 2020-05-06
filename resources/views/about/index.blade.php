@@ -14,7 +14,7 @@
             <img  style="padding:10px;" class="img-rounded" id="thumbnail" src="https://romariogiacholari.github.io/static/images/gallery/me-driving-certificate.jpg" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
         <div class="col-md-8">
-            <p style="padding:10px;">
+            <p class="font-size-16" style="padding:10px;">
                 Thank you for visiting the site. My name is Romario and I am a web developer based in Birmingham, UK. 
                 My passion is web development and I really enjoy solving programming tasks.
                 Apart from that, I am also a big fan of football.
