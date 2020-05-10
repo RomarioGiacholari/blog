@@ -60,7 +60,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.giacholari.com'),
+    'url' => env('APP_URL', 'https://giacholari.com'),
 
     /*
     |--------------------------------------------------------------------------
