@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <img  style="padding:10px;" class="img-rounded" id="thumbnail" src="https://romariogiacholari.github.io/static/images/gallery/me-driving-certificate.jpg" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img  style="padding:10px;" class="img-thumbnail" id="thumbnail" src="https://romariogiacholari.github.io/static/images/gallery/me-driving-certificate.jpg" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
         <div class="col-md-8">
             <p class="font-size-16" style="padding:10px;">
