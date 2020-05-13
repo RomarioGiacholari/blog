@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @if($viewModel != null && $viewModel->message !== null)
-    <div class="alert alert-dismissible alert-success" role="alert">
+    <div class="alert alert-dismissible {{ $viewModel->isSuccess ? 'alert-success' : 'alert-danger' }}" role="alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ $viewModel->message }}
     </div>
