@@ -25,9 +25,10 @@
 <body>
     <div id="app">
         <div class="text-center social">
-                <a href="https://www.instagram.com/am.giacholari/" title="instagram"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a href="https://github.com/RomarioGiacholari" title="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b" title="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/am.giacholari/" title="instagram"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+            <a href="https://github.com/RomarioGiacholari" title="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b" title="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a> |
+            <a href="#">&copy; giacholari</a>
         </div>
         <nav class="nav">
             <div class="text-center">
