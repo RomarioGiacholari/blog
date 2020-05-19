@@ -60,7 +60,6 @@ Route::resource('posts', 'PostController');
 Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact', 'ContactController@store')->name('contact.store');
 
-Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy.index');
 Route::get('/privacy-policy/content', 'PrivacyPolicyController@content')->name('privacy-policy.content');
 
 Route::get('/podcast/episodes', 'EpisodeController@index')->name('episodes.index');
