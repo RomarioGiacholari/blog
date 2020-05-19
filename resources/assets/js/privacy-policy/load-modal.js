@@ -1,7 +1,7 @@
 var utilities = require('./../utilities/cookies');
 
 document.addEventListener("DOMContentLoaded", function () {
-    var cookie = utilities.getCookie("privacy-policy-accepted");
+    var cookie = utilities.getCookie("__privacy_policy_accepted");
 
     if (!cookie) {
         var modal = '#privacy-policy-modal';
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         acceptedButton.addEventListener("click", function () {
             var month = 30*24*60*60;
-            document.cookie = `privacy-policy-accepted=${true}; max-age=${month}`;
+            document.cookie = `__privacy_policy_accepted=${true}; max-age=${month}`;
         })
 
         fetch(endpoint)
