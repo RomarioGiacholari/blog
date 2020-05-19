@@ -7,7 +7,7 @@
       </div>
       <div id="js-privacy-policy-modal-body" class="modal-body"></div>
       <div class="modal-footer">
-        <button id="accept-cookie" type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+        <button id="accept-cookie" type="button" class="btn btn-primary btn-block" data-dismiss="modal">Ok</button>
       </div>
     </div>
   </div>
