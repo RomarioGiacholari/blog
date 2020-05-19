@@ -35,7 +35,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/resume', function () {
-    $pathToFile = "https://romariogiacholari.github.io/static/pdf/resume.pdf";
+    $pathToFile = "https://assets.giacholari.com/pdf/resume.pdf";
     
     return redirect($pathToFile);
 })->name('resume');
