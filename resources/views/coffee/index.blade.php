@@ -31,5 +31,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="https://romariogiacholari.github.io/static/js/blog/coffee/updateAmount.js" defer></script>
+<script src="https://assets.giacholari.com/js/blog/coffee/updateAmount.js" defer></script>
 @endsection

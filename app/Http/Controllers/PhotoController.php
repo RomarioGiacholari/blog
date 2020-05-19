@@ -20,7 +20,7 @@ class PhotoController extends Controller
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
-        $files = file_get_contents('https://romariogiacholari.github.io/static/json/images-meta-data.json');
+        $files = file_get_contents('https://assets.giacholari.com/json/images-meta-data.json');
 
         if ($identifier != null && $files != null) {
             $photoList = json_decode($files, true);
@@ -42,7 +42,7 @@ class PhotoController extends Controller
     {
         $viewModel = new stdClass;
         $viewModel->photos = null;
-        $files = file_get_contents('https://romariogiacholari.github.io/static/json/images-meta-data.json');
+        $files = file_get_contents('https://assets.giacholari.com/json/images-meta-data.json');
 
         if ($files != null) {
             $photos = json_decode($files, true);
