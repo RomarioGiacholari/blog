@@ -50,6 +50,7 @@
         </nav>
 
         @yield('content')
+        @include('modals.privacy-policy')
     </div>
     <script src="https://assets.giacholari.com/js/blog/app.js" defer></script>
     @yield('scripts')
