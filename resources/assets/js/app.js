@@ -8,6 +8,7 @@
 require('./bootstrap');
 require('./pinBoot');
 require('./analytics');
+require('./privacy-policy/load-modal');
 
 window.Vue = require('vue');
 
