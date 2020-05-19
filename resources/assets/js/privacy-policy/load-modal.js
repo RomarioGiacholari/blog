@@ -1,23 +1,31 @@
-var utilities = require('./../utilities/cookies');
+var utilities = require('./../utilities/cookies').default;
 
 document.addEventListener("DOMContentLoaded", function () {
-    var cookie = utilities.getCookie("__privacy_policy_accepted");
+    var cookieName = '__privacy';
+    var isCookie = utilities.getCookie(cookieName);
 
-    if (!cookie) {
+    if (!isCookie) {
         var modal = '#privacy-policy-modal';
         var _ = $(`${modal}`).modal('show');
-
-        var identifier = 'js-privacy-policy-modal-body';
-        var content = document.getElementById(identifier);
         var endpoint = '/privacy-policy/content';
+        var contentIdentifier = 'js-privacy-policy-modal-body';
+        var content = document.getElementById(contentIdentifier);
+        var accpetIdentifier = 'accept-cookie';
+        var accept = document.getElementById(accpetIdentifier);
+        var cookie = {
+            name: cookieName,
+            value: true,
+            age: 30,
+        };
+        var setCookie = function (cookie) {
+            if (cookie && cookie.name && cookie.value && cookie.age) {
+                var days = cookie.age;
+                var length = days * 24 * 60 * 60;
+                document.cookie = `${cookie.name}=${cookie.value}; max-age=${length}`;
+            }
+        };
 
-        var accpetedButtonIdentifier = 'accept-cookie';
-        var acceptedButton = document.getElementById(accpetedButtonIdentifier);
-
-        acceptedButton.addEventListener("click", function () {
-            var month = 30*24*60*60;
-            document.cookie = `__privacy_policy_accepted=${true}; max-age=${month}`;
-        })
+        accept.addEventListener("click", setCookie(cookie));
 
         fetch(endpoint)
             .then(function (response) {
