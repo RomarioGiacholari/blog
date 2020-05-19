@@ -20,7 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="https://romariogiacholari.github.io/static/css/blog/app.css" type="text/css">
+    <link rel="stylesheet" href="https://assets.giacholari.com/css/blog/app.css" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -51,7 +51,7 @@
 
         @yield('content')
     </div>
-    <script src="https://romariogiacholari.github.io/static/js/blog/app.js" defer></script>
+    <script src="https://assets.giacholari.com/js/blog/app.js" defer></script>
     @yield('scripts')
 </body>
 </html>

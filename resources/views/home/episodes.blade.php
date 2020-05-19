@@ -51,6 +51,6 @@
 @endsection
 @if($viewModel != null && $viewModel->episodes !== null)
 @section('scripts')
-<script src="https://romariogiacholari.github.io/static/js/blog/forms/delete.js" defer></script>
+<script src="https://assets.giacholari.com/js/blog/forms/delete.js" defer></script>
 @endsection
 @endif

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row text-center">
         <div class="col-md-12">
-            <img class="img-thumbnail" id="thumbnail" src="https://romariogiacholari.github.io/static/images/gallery/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
+            <img class="img-thumbnail" id="thumbnail" src="https://assets.giacholari.com/images/gallery/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
     </div>
     <div class="row text-center">
@@ -60,5 +60,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="https://romariogiacholari.github.io/static/js/blog/photos/refreshPhoto.js" defer></script>
+<script src="https://assets.giacholari.com/js/blog/photos/refreshPhoto.js" defer></script>
 @endsection
