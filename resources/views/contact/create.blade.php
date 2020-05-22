@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Contact me</h1>
-            <p>Feel free to ask any questions. I would also appreciate feedback about the site - if you find any bugs please let me know.</p>
             <hr>
+            <p>Feel free to ask any questions. I would also appreciate feedback about the site - if you find any bugs please let me know.</p>
             <form action="{{ route('contact.store') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
