@@ -6,6 +6,14 @@ use \stdClass;
 
 class PrivacyPolicyController extends Controller
 {
+    public function index()
+    {
+        $viewModel = new stdClass;
+        $viewModel->pageTitle = "Privacy policy";
+
+        return view('privacy-policy.index', ['viewModel' => $viewModel]);
+    }
+
     public function content()
     {
         $privacyFile = file_get_contents('https://assets.giacholari.com/json/privacy.json');
