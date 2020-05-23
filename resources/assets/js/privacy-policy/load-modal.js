@@ -20,10 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     name: cookieName,
                     value: true,
                     age: 30,
+                    domain: ".giacholari.com",
+                    path: "/"
                 };
                 var days = cookie.age;
                 var length = days * 24 * 60 * 60;
-                document.cookie = `${cookie.name}=${cookie.value}; max-age=${length}`;
+                document.cookie = `${cookie.name}=${cookie.value}; max-age=${length}; domain=${cookie.domain}; path=${cookie.path}`;
             };
 
             accept.addEventListener("click", setCookie);
