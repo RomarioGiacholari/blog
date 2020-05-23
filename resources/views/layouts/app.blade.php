@@ -52,7 +52,7 @@
         @yield('content')
         <privacy-modal></privacy-modal>
     </div>
-    <script src="js/app.js" defer></script>
+    <script src="https://assets.giacholari.com/js/blog/app.js" defer></script>
     @yield('scripts')
 </body>
 </html>
