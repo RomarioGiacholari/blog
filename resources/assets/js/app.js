@@ -8,7 +8,6 @@
 require('./bootstrap');
 require('./pinBoot');
 require('./analytics');
-require('./privacy-policy/load-modal');
 
 window.Vue = require('vue');
 
@@ -19,6 +18,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('project-list', require('./components/Project-list.vue').default);
+Vue.component('privacy-modal', require('./components/Privacy-Modal.vue').default);
 
 const app = new Vue({
     el: '#app'
