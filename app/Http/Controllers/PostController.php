@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use \stdClass;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -13,37 +14,23 @@ class PostController extends Controller
         $this->middleware('admin')->except(['show', 'index']);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $viewModel = new stdClass;
-        $postsCollection = Post::with('creator')->latest()->paginate(15) ?? null;
+        $postsCollection = Cache::remember('posts', $minutes = 60 * 24, function () {
+            return Post::with('creator')->latest()->paginate(15) ?? null;
+        });
         $viewModel->posts = $postsCollection;
         $viewModel->pageTitle = 'Posts';
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('posts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validatePost($request);
@@ -61,12 +48,6 @@ class PostController extends Controller
         return redirect($post->path());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post $post
-     * @return \Illuminate\Http\Response
-     */
     public function show(Post $post)
     {
         $viewModel = new stdClass;
@@ -83,12 +64,6 @@ class PostController extends Controller
         return view('posts.show', ['viewModel' => $viewModel]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post $post
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Post $post)
     {
         $viewModel = new stdClass;
@@ -103,13 +78,6 @@ class PostController extends Controller
         return view('posts.edit', ['viewModel' => $viewModel]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Post $post
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Post $post)
     {
         $this->validatePost($request, $post->id);
@@ -127,12 +95,6 @@ class PostController extends Controller
         return redirect(route('home.posts'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Post $post
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Post $post)
     {
         $post->delete();
