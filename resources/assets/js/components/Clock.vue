@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      clock: ""
+      clock: "00:00:00"
     };
   },
 
