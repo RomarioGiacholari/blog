@@ -6,7 +6,9 @@
         <div class="col-md-12">
             <h1>Privacy policy</h1>
             <hr />
-            <div id="js-privacy-policy-content-placeholder"></div>
+            <div id="js-privacy-policy-content-placeholder">
+                @include('components._spinner')
+            </div>
         </div>
     </div>
 </div>

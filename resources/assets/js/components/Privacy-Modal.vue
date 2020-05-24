@@ -29,7 +29,7 @@ export default {
       endpoint: "/privacy-policy/content",
       modal: "#privacy-policy-modal",
       cookieName: "__privacy",
-      content: ""
+      content: "<div class='text-center'><i class='fa fa-circle-o-notch fa-2x fa-spin'></i></div>"
     };
   },
 
