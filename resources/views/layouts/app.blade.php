@@ -31,7 +31,6 @@
             <a href="https://github.com/RomarioGiacholari" title="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
             <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b" title="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
             <a href="{{ route('privacy-policy.index') }}">&copy; giacholari</a>
-            <clock></clock>
         </div>
         <nav class="nav">
             <div class="text-center">
