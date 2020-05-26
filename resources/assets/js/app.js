@@ -20,6 +20,7 @@ window.Vue = require('vue');
 Vue.component('project-list', require('./components/Project-list.vue').default);
 Vue.component('privacy-modal', require('./components/Privacy-Modal.vue').default);
 Vue.component('clock', require('./components/Clock.vue').default);
+Vue.component('trix', require('./components/Trix.vue').default);
 
 const app = new Vue({
     el: '#app'

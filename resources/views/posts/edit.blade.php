@@ -18,7 +18,7 @@
 
                 <div class="form-group {{ $errors->has('body') ? ' has-error' : '' }}">
                     <label for="body">Body</label>
-                    <textarea class="form-control" name="body" id="body" rows="8" required="">{{ $viewModel->post->body }}</textarea>
+                    <trix name="body" value="{{ $viewModel->post->body }}"></trix>
                 </div>
 
                 <div class='form-group'>

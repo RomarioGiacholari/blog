@@ -16,7 +16,7 @@
 
                 <div class="form-group {{ $errors->has('body') ? ' has-error' : '' }}">
                     <label for="title">Body</label>
-                    <textarea class="form-control" name="body" id="body" rows="8" placeholder="Body" required="">{{old('body')}}</textarea>
+                    <trix name="body"></trix>
                 </div>
 
                 <div class='form-group'>

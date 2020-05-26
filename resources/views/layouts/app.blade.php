@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css" type="text/css">
     <link rel="stylesheet" href="https://assets.giacholari.com/css/blog/app.css" type="text/css">
 </head>
 <body>

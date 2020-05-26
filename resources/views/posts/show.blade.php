@@ -10,7 +10,7 @@
             <span>{{ $viewModel->post->created_at->diffForHumans() }} by {{ $viewModel->author }}</span>
 
             <hr>
-            <p class="post-show-body"> {{ $viewModel->post->body }} </p>
+            <p class="post-show-body"> {!! $viewModel->post->body !!} </p>
             @else
             <p>The post does not exist or it has been removed</p>
             @endif
