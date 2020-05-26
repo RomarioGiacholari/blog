@@ -27,8 +27,12 @@ class Post extends Model
     }
 
     public function setExcerptAttribute($excerpt)
-    {
-        $this->attributes['excerpt'] = Str::words($excerpt, 20, ' ...');
+    {   
+        $exclude = ['<div>','</div>', '<p>', '</p>'];
+        $output = Str::words($excerpt, 20, ' ...');
+        $cleaned = str_replace($exclude, '', $output);
+
+        $this->attributes['excerpt'] = $cleaned;
     }
 
     public function setBodyAttribute($body)
