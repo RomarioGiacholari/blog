@@ -28,11 +28,9 @@ class Post extends Model
 
     public function setExcerptAttribute($excerpt)
     {   
-        $exclude = ['<div>','</div>', '<p>', '</p>'];
-        $output = Str::words($excerpt, 20, ' ...');
-        $cleaned = str_replace($exclude, '', $output);
+        $output = strip_tags(Str::words($excerpt, 20, ' ...'));
 
-        $this->attributes['excerpt'] = $cleaned;
+        $this->attributes['excerpt'] = $output;
     }
 
     public function setBodyAttribute($body)
