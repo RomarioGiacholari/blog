@@ -9,7 +9,7 @@
         <li class="errors" v-for="key of Object.keys(errors)" :key="key" v-text="errors[key][0]"></li>
     </ul>
 
-    <form :action="endpoint" method="POST" @submit.prevent="onSubmit">
+    <form v-if="!sending":action="endpoint" method="POST" @submit.prevent="onSubmit">
         <div class="form-group">
             <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="Name" required>
         </div>
@@ -29,6 +29,7 @@
             <button type="submit" class="btn btn-primary btn-block">send</button>
         </div>
     </form>
+    <div v-else class="text-center"><i class='fa fa-circle-o-notch fa-2x fa-spin'></i></div>
 </div>
 </template>
 
@@ -47,19 +48,26 @@ export default {
             answer: ''
         },
         errors: {},
-        response: {}
+        response: {},
+        sending: false,
     };
   },
 
   methods: {
     onSubmit() {
+        this.sending = true;
+
         axios.post(this.endpoint, this.form)
             .then((response) => {
                 this.response = response.data;
                 this.form = {};
                 this.errors = {};
+                this.sending = false;
             })
-            .catch((error) => this.errors = error.response.data.errors);
+            .catch((error) => { 
+                this.errors = error.response.data.errors;
+                this.sending = false;
+            });
     },
   }
 }
