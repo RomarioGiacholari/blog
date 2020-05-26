@@ -13,8 +13,6 @@ class ContactController extends Controller
     public function create()
     {
         $viewModel = new stdClass;
-        $viewModel->isSuccess = request('isSuccess') ?? false;
-        $viewModel->message = request('message') ?? null;
         $viewModel->pageTitle = 'Contact me';
 
         return view('contact.create', ['viewModel' => $viewModel]);
@@ -43,16 +41,13 @@ class ContactController extends Controller
                 $message = $ex->getMessage();
             }
 
-            return redirect(route(
-                'contact.create',
-                [
-                    'isSuccess' => $isSuccess,
-                    'message' => $message
-                ]
-            ));
-        }
+            $data = [
+                'isSuccess' => $isSuccess,
+                'message' => $message
+            ];
 
-        return back();
+            return response($data , 200);
+        }
     }
 
     private function validateEmail($request)
