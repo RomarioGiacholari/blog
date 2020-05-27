@@ -3,33 +3,6 @@
 Route::get('/', function () {
     $viewModel = new stdClass;
     $viewModel->pageTitle = 'Welcome';
-    $viewModel->testimonials = [
-        'Ermir Hasanbelliu' => [
-            'imageUrl' => 'https://media-exp1.licdn.com/dms/image/C4D03AQE2G-PN3ojdew/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=jjdXzXKVjhXcmHpwbHwkC-Lzd10ZL7FcT0IxrY0wDJM',
-            'testimonial' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            'link' => 'https://www.linkedin.com/in/ermir-hasanbelliu-a4865a130'
-        ],
-        'Artiol Kouloli' => [
-            'imageUrl' => 'https://media-exp1.licdn.com/dms/image/C4D03AQHkSPMIMtOftg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=_lKLcCphHtZAkrBI-gPsPGC-1SzIpPr6f44tZd1Xu-M',
-            'testimonial' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            'link' => 'https://www.linkedin.com/in/artiol-kouloli-15716515b'
-        ],
-        'Dmitrijs Vasilcenko' => [
-            'imageUrl' => 'https://media-exp1.licdn.com/dms/image/C4D03AQGSH8UzopGGLg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=pTQHli8_VIHii6Z6372zN2QVceYia-leJxrfqqGerag',
-            'testimonial' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            'link' => 'https://www.linkedin.com/in/vasilced/en'
-        ],
-        'Emil Odagiu' => [
-            'imageUrl' => 'https://media-exp1.licdn.com/dms/image/C5603AQFAZHiBk_51iA/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=wq3Xt4kbizxiUjoZvoFNdKEUlgkhyHF4OebQpVadB5I',
-            'testimonial' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            'link' => 'https://www.linkedin.com/in/emil-odagiu'
-        ],
-        'Mario Ramic' => [
-            'imageUrl' => 'https://media-exp1.licdn.com/dms/image/C4D03AQF0X2USgdvvJA/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=W6IptkGOtv22pMrJXTNrHMfiKQ9BnvO9Ppg5mnudcZg',
-            'testimonial' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            'link' => 'https://www.linkedin.com/in/mario-rami%C4%87-1a9642142'
-        ]
-    ];
 
     return view('welcome', ['viewModel' => $viewModel]);
 })->name('welcome');
