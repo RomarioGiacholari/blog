@@ -1,15 +1,17 @@
 <template>
 <div>
+    <div class="loading" v-if="sending"><i class='fa fa-circle-o-notch fa-2x fa-spin'></i></div>
+    
     <div v-if="response && response.message" class="alert alert-dismissible" :class="response.isSuccess ? 'alert-success' : 'alert-danger'" role="alert">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         <span v-text="response.message"></span>
     </div>
     
-    <ul v-if="errors">
+    <ul v-if="errors && Object.keys(errors).length > 0">
         <li class="errors" v-for="key of Object.keys(errors)" :key="key" v-text="errors[key][0]"></li>
     </ul>
-
-    <form v-if="!sending":action="endpoint" method="POST" @submit.prevent="onSubmit">
+    
+    <form :action="endpoint" method="POST" @submit.prevent="onSubmit">
         <div class="form-group">
             <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="Name" required>
         </div>
@@ -29,7 +31,6 @@
             <button type="submit" class="btn btn-primary btn-block">send</button>
         </div>
     </form>
-    <div v-else class="text-center"><i class='fa fa-circle-o-notch fa-2x fa-spin'></i></div>
 </div>
 </template>
 
@@ -56,12 +57,12 @@ export default {
   methods: {
     onSubmit() {
         this.sending = true;
+        this.errors = {};
 
         axios.post(this.endpoint, this.form)
             .then((response) => {
                 this.response = response.data;
                 this.form = {};
-                this.errors = {};
                 this.sending = false;
             })
             .catch((error) => { 
@@ -76,5 +77,10 @@ export default {
 .errors {
     color:red;
     font-style: italic;
+}
+.loading {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 </style>
