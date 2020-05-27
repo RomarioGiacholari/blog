@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Support\Facades\Storage;
 
 class PhotosTest extends TestCase
 {
@@ -26,18 +25,9 @@ class PhotosTest extends TestCase
         $response->assertSee($this->photos[$this->photoIds[1]]);
     }
 
-    public function test_it_renders_a_specific_photo()
-    {
-        $identifier = $this->photos[$this->photoIds[0]];
-        $endpoint = route('photos.show', ['identifier' => $identifier]);
-        $response = $this->get($endpoint);
-
-        $response->assertSee($identifier);
-    }
-
     private function fetchPhotos() : array
     {
-        $files = (array) Storage::disk('public')->files();
+        $files = $this->get(route('api.photos.index'))->json();
         $photos = [];
 
         if ($files != null && count($files) > 0) {
