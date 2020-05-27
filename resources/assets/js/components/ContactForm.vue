@@ -58,6 +58,7 @@ export default {
     onSubmit() {
         this.sending = true;
         this.errors = {};
+        this.response = {};
 
         axios.post(this.endpoint, this.form)
             .then((response) => {
