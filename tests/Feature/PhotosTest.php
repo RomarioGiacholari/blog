@@ -7,13 +7,11 @@ use Tests\TestCase;
 class PhotosTest extends TestCase
 {
     private $photos = [];
-    private $photoIds = [];
 
     public function setUp()
     {
         parent::setUp();
         $this->photos = $this->fetchPhotos();
-        $this->photoIds = array_keys($this->photos);
     }
 
     public function test_it_renders_the_photos_on_the_page()
@@ -21,8 +19,10 @@ class PhotosTest extends TestCase
         $endpoint = route('photos.partial');
         $response = $this->get($endpoint);
 
-        $response->assertSee($this->photos[$this->photoIds[0]]);
-        $response->assertSee($this->photos[$this->photoIds[1]]);
+        foreach($this->photos as $key => $value) 
+        {
+            $response->assertSee($key);
+        }
     }
 
     private function fetchPhotos() : array
