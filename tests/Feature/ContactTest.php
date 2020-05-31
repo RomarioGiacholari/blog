@@ -25,6 +25,7 @@ class ContactTest extends TestCase
             'message' => 'World',
             'answer' => 4
         ];
+
         $response = $this->json('POST', $endpoint, $request);
         
         $response->assertStatus(200);
@@ -33,5 +34,23 @@ class ContactTest extends TestCase
         Mail::assertSent(ContactMe::class, function ($mail) use ($request) {
             return $request['name'] === $mail->name;
         });
+    }
+
+    public function test_it_validates_a_contact_me_email_request()
+    {
+        $endpoint = route('contact.store');
+        $request = [
+            'name'    => null,
+            'email'   => null,
+            'subject' => null,
+            'message' => null,
+            'answer'  => null
+        ];
+
+        $response = $this->json('POST', $endpoint, $request);
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors(array_keys($request));
+
+        Mail::assertNotSent(ContactMe::class);
     }
 }
