@@ -7,7 +7,7 @@
             <h1>Contact me</h1>
             <hr>
             <p>Feel free to ask any questions. I would also appreciate feedback about the site - if you find any bugs please let me know.</p>
-            <contact-form endpoint="{{ route('contact.store') }}"></contact-form>
+            <contact-form endpoint="{{ route('contact.store') }}" method="POST"></contact-form>
         </div>
     </div>
 </div>

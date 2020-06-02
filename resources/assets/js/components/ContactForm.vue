@@ -11,7 +11,7 @@
         <li class="errors" v-for="key of Object.keys(errors)" :key="key" v-text="errors[key][0]"></li>
     </ul>
     
-    <form :action="endpoint" method="POST" @submit.prevent="onSubmit">
+    <form :action="endpoint" :method="method" @submit.prevent="onSubmit">
         <div class="form-group">
             <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="Name" required>
         </div>
@@ -37,7 +37,7 @@
 <script>
 export default {
   
-  props: ['endpoint'],
+  props: ['endpoint', 'method'],
 
   data() {
     return {
