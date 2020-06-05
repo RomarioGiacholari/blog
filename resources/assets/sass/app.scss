@@ -75,47 +75,8 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.nav {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #222;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  color: #9d9d9d;
-  a {
-    margin: 5px;
-    color: #9d9d9d;
-  }
-  a:hover {
-    color: white;
-  }
-}
-
 .active {
   color: white !important;
-}
-
-.social {
-  padding: 10px;
-  background: #222;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 50px;
-  border-bottom: 1px #9d9d9d solid;
-  a {
-    margin: 5px;
-    color: #9d9d9d;
-  }
-  a:hover {
-    color: white;
-  }
 }
 
 #photos-placeholder {
