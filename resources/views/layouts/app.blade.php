@@ -26,32 +26,7 @@
 </head>
 <body>
     <div id="app">
-        <div class="text-center social">
-            <a href="tel:+447587735380" title="call"><i class="fa fa-phone-square fa-2x"></i></a>
-            <a href="mailto:giacholari@gmail.com" title="email"><i class="fa fa-envelope fa-2x"></i></a>
-            <a href="https://www.instagram.com/am.giacholari/" title="instagram"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-            <a href="https://github.com/RomarioGiacholari" title="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-            <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b" title="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
-            <a href="{{ route('privacy-policy.index') }}">&copy; giacholari</a>
-        </div>
-        <nav class="nav">
-            <div class="text-center">
-                <a href="{{ route('welcome') }}" class="{{ Request::is('/') ? 'active' : '' }}">home</a>
-                <a href="{{ route('posts.index') }}" class="{{ Request::is('posts*') ? 'active' : '' }}">blog</a>
-                <a href="{{ route('photos') }}" class="{{ Request::is('all-photos*') ? 'active' : '' }}">photos</a>
-                <a href="{{ route('resume') }}" class="{{ Request::is('resume') ? 'active' : '' }}">resume</a>
-                <a href="{{ route('coffee.index') }}" class="{{ Request::is('coffee*') ? 'active' : '' }}">coffee</a>
-                <a href="{{ route('about.index') }}" class="{{ Request::is('about*') ? 'active' : '' }}">about</a>
-                <a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}">contact</a>
-                @auth
-                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}">dashboard</a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-                @endauth
-            </div>
-        </nav>
+        @include('navbar.navbar')
 
         @yield('content')
         <privacy-modal></privacy-modal>
