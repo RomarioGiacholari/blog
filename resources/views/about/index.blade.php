@@ -26,4 +26,7 @@
     </div>
 </div>
 @endsection
+@section('scripts')
+<script src="https://assets.giacholari.com/js/blog/photos/refreshPhoto.js" defer></script>
+@endsection
 @endif

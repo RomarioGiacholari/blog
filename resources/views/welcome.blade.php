@@ -3,10 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-3" style="margin-top:25px">
-            <img class="img-thumbnail" id="thumbnail" src="https://assets.giacholari.com/images/gallery/me-posing.jpg" height="250" width="250" title="Romario Giacholari" alt="Romario Giacholari" />
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
             <h2>Romario Giacholari</h2>
             <p class="font-size-16">
                 My name is Romario. I am a student and web developer from Aston University (final year).
@@ -44,7 +41,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-<script src="https://assets.giacholari.com/js/blog/photos/refreshPhoto.js" defer></script>
 @endsection
