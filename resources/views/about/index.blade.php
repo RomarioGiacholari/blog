@@ -20,7 +20,7 @@
                 Apart from that, I am also a big fan of football - I dare you challenge me on a 5-aside game :).
                 I come from Albania. However I grew up in Kardamyli, a small village south of Greece.
                 This summer I am about to graduate from Aston University - BSC Computing with business.
-                If you are interested in working together, do not hesitate to contact me.
+                If you are interested in working together, do not hesitate to <a href="{{ route('contact.create') }}">contact me</a>.
             </blockquote>
         </div>
     </div>
