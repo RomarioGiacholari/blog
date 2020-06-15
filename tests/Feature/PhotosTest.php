@@ -11,6 +11,7 @@ class PhotosTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        
         $this->photos = $this->fetchPhotos();
     }
 
