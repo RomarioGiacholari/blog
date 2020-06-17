@@ -16,24 +16,25 @@
         <li><a href="{{ route('coffee.index') }}" class="{{ Request::is('coffee*') ? 'active' : '' }}">coffee</a></li>
         <li><a href="{{ route('about.index') }}" class="{{ Request::is('about*') ? 'active' : '' }}">about</a></li>
         <li><a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}">contact</a></li>
-    </ul>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         @auth
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('dashboard.index') }}">dashboard</a></li>
-                <li><a href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); 
-                        document.getElementById('logout-form').submit();"
-                        >
-                        logout
-                    </a>
-                </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </ul>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ route('dashboard.index') }}">dashboard</a></li>
+            <li>
+              <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault(); 
+                      document.getElementById('logout-form').submit();"
+                      >
+                      logout
+                </a>
+            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+          </ul>
         </li>
         @endauth
       </ul>
