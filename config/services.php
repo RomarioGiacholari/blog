@@ -33,6 +33,8 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+        'success_url' => env('STRIPE_SUCCESS_URL', 'https://giacholari.com/coffee/success'),
+        'cancel_url' => env('STRIPE_CANCEL_URL', 'https://giacholari.com/coffee/cancel')
     ],
 
 ];
