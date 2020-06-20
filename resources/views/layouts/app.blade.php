@@ -25,11 +25,7 @@
     <link rel="stylesheet" href="https://assets.giacholari.com/css/blog/app.css" type="text/css">
 
     <!-- JavaScript App Settings -->
-    <script defer>
-          window.app = {
-              cookieDomain: "{{ config('app.cookie_domain') }}"
-          };
-    </script>
+    <script defer>window.app = { cookieDomain: "{{ config('app.cookie_domain') }}" };</script>
 </head>
 <body>
     <div id="app">
