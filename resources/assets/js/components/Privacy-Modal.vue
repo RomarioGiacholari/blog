@@ -59,7 +59,7 @@ export default {
         name: this.cookieName,
         value: true,
         age: 30,
-        domain: `${process.env.MIX_COOKIE_DOMAIN}`,
+        domain: process.env.MIX_COOKIE_DOMAIN,
         path: "/"
       };
 
