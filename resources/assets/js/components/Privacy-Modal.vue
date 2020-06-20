@@ -59,9 +59,10 @@ export default {
         name: this.cookieName,
         value: true,
         age: 30,
-        domain: ".giacholari.com",
+        domain: `${process.env.MIX_COOKIE_DOMAIN}`,
         path: "/"
       };
+
       let days = cookie.age;
       let length = days * 24 * 60 * 60;
 
