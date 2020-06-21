@@ -8,6 +8,13 @@ use App\Services\Payment\IPaymentService;
 
 class CoffeeController extends Controller
 {
+    private IPaymentService $paymentService;
+
+    public function __construct(IPaymentService $service)
+    {
+        $this->paymentService = $service ?? null;
+    }
+
     public function index()
     {
         $viewModel = new stdClass;
@@ -16,14 +23,14 @@ class CoffeeController extends Controller
         return view('coffee.index', ['viewModel' => $viewModel]);
     }
 
-    public function store(Request $request, IPaymentService $paymentService)
+    public function store(Request $request)
     {
         $this->validate($request, ['amount' => 'required|numeric|min:1']);
 
         $requestAmount = (int) $request->amount;
         $stripeAmount = ($requestAmount * 100);
 
-        $session = $paymentService->startSession($stripeAmount);
+        $session = $this->paymentService->startSession($stripeAmount);
         
         if ($session !== null && $session->id != null) {
             $sessionId = $session->id;
@@ -34,7 +41,7 @@ class CoffeeController extends Controller
         return back();
     }
 
-    public function confirm(string $sessionId, IPaymentService $paymentService)
+    public function confirm(string $sessionId)
     {
         $viewModel = new stdClass;
         $viewModel->pageTitle = "Confirm Payment";
@@ -45,7 +52,7 @@ class CoffeeController extends Controller
         if ($sessionId != null) {
             $viewModel->sessionId = $sessionId;
 
-            $session = $paymentService->retrieveSession($sessionId);
+            $session = $this->paymentService->retrieveSession($sessionId);
 
             if ($session != null && $session->display_items != null) {
                 $items = $session->display_items[0];
