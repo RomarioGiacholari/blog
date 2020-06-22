@@ -29,9 +29,7 @@
 </head>
 <body>
     <div id="app">
-        @include('components._social')
         @include('navbar.navbar')
-
         @yield('content')
         <privacy-modal></privacy-modal>
     </div>
