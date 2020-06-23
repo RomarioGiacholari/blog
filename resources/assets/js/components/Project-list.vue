@@ -1,4 +1,5 @@
 <template>
+<div v-if="projects && projects.length > 0">
   <div id="pinBoot">
     <project
       v-for="project in projects"
@@ -8,6 +9,12 @@
       :image="project.image"
     ></project>
   </div>
+</div>
+<div v-else>
+  <div id="pinBoot">
+    <div v-for="i in 6" :key="i" id="pinboot-placeholder" class="thumbnail projects white-panel"></div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -18,16 +25,16 @@ export default {
 
   data() {
     return {
-      projects: []
+      projects: [],
     };
   },
 
   mounted() {
-    this.fetchProjects();
+    this.initialize();
   },
 
   methods: {
-    fetchProjects() {
+    initialize() {
       var endpoint = "api/projects";
 
       axios
