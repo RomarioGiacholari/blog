@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use \stdClass;
+use App\Services\Photos\IPhotoService;
 use Illuminate\Support\Facades\Cache;
 
 class PhotoController extends Controller
 {
-    private string $files;
+    private array $photos;
 
-    public function __construct()
+    public function __construct(IPhotoService $service)
     {
-        $this->files = Cache::remember('files', $minutes = 60 * 24, function () {
-            return file_get_contents('https://assets.giacholari.com/json/images-meta-data.json');
-        });
+        $this->photos = Cache::remember('photos', $minutes = 60 * 24, fn () => $service->all());
     }
 
     public function index()
@@ -31,17 +30,13 @@ class PhotoController extends Controller
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
 
-        if ($identifier != null && $this->files != null) {
-            $photoList = json_decode($this->files, true);
+        if ($identifier != null && $this->photos != null && count($this->photos) > 0) {
+            $filePath = $this->photos[$identifier];
+            $friendlyFileName = $identifier;
 
-            if ($photoList != null && count($photoList) > 0) {
-                $filePath = $photoList[$identifier];
-                $friendlyFileName = $identifier;
-
-                $viewModel->photo = $filePath;
-                $viewModel->photoFriendlyName = $friendlyFileName;
-                $viewModel->pageTitle = "Photos | {$friendlyFileName}";
-            }
+            $viewModel->photo = $filePath;
+            $viewModel->photoFriendlyName = $friendlyFileName;
+            $viewModel->pageTitle = "Photos | {$friendlyFileName}";
         }
 
         return view('photos.show', ['viewModel' => $viewModel]);
@@ -52,12 +47,8 @@ class PhotoController extends Controller
         $viewModel = new stdClass;
         $viewModel->photos = null;
 
-        if ($this->files != null) {
-            $photos = json_decode($this->files, true);
-            
-            if ($photos != null && count($photos) > 0) {
-                $viewModel->photos = $photos;
-            }
+        if ($this->photos != null && count($this->photos) > 0) {
+            $viewModel->photos = $this->photos;
         }
 
         return view('photos.partial', ['viewModel' => $viewModel]);
