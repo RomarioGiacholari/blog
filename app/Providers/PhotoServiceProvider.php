@@ -11,7 +11,7 @@ class PhotoServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->singleton(IPhotoService::class, function () {
-            return new PhotoService;
+            return new PhotoService(config('services.photos.gallery.endpoint'));
         });
     }
 }

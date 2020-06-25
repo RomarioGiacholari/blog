@@ -37,4 +37,9 @@ return [
         'cancel_url' => env('STRIPE_CANCEL_URL', 'https://giacholari.com/coffee/cancel')
     ],
 
+    'photos' => [
+        'gallery' => [
+            'endpoint' => 'https://assets.giacholari.com/json/images-meta-data.json',
+        ],
+    ],
 ];
