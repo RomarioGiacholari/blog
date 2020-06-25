@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Cache;
+use App\Services\Photos\IPhotoService;
 
 class PhotoApiController extends Controller
 {
+    private IPhotoService $photoService;
+
+    public function __construct(IPhotoService $service)
+    {
+        $this->photoService = $service ?? null;
+    }
+
     public function index()
     {
-        $photos = [];
-        $files = Cache::remember('files', $minutes = 60 * 24, function () {
-            return file_get_contents('https://assets.giacholari.com/json/images-meta-data.json');
-
-        });
-
-        if ($files != null) {
-            $photos = json_decode($files, true);
-        }
+        $photos = Cache::remember('photos', $minutes = 60 * 24, fn () => $this->photoService->all());
 
         return response($photos, 200);
     }
