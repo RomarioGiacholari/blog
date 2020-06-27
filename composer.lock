@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a7e9a1fd6cb88487e4390411a30f628",
+    "content-hash": "d98f4b1522037c6a6c151a3f713565cf",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -416,6 +416,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -462,6 +463,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -1375,6 +1377,133 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "rollbar/rollbar",
+            "version": "v1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rollbar/rollbar-php.git",
+                "reference": "8a57ad9574d85bd818eaedfc8049fdcb16795f31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/8a57ad9574d85bd818eaedfc8049fdcb16795f31",
+                "reference": "8a57ad9574d85bd818eaedfc8049fdcb16795f31",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "monolog/monolog": "^1",
+                "psr/log": "^1"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "mockery/mockery": "0.9.*",
+                "packfire/php5.3-compat": "*",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "4.8.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "fluent/logger": "Needed to use the 'fluent' handler for fluentd support",
+                "packfire/php5.3-compat": "for backward compatibility with PHP 5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rollbar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rollbar, Inc.",
+                    "email": "support@rollbar.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Monitors errors and exceptions and reports them to Rollbar",
+            "homepage": "http://github.com/rollbar/rollbar-php",
+            "keywords": [
+                "debugging",
+                "errors",
+                "exceptions",
+                "logging",
+                "monitoring"
+            ],
+            "time": "2019-05-06T11:31:11+00:00"
+        },
+        {
+            "name": "rollbar/rollbar-laravel",
+            "version": "v2.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rollbar/rollbar-php-laravel.git",
+                "reference": "e581cd9a175d0b3fa0568893026e38c1d94329b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php-laravel/zipball/e581cd9a175d0b3fa0568893026e38c1d94329b2",
+                "reference": "e581cd9a175d0b3fa0568893026e38c1d94329b2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^4.0|^5.0",
+                "php": ">=5.4",
+                "rollbar/rollbar": "^1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0|~5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rollbar\\Laravel\\RollbarServiceProvider"
+                    ],
+                    "aliases": {
+                        "Rollbar": "Rollbar\\Laravel\\Facades\\Rollbar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rollbar\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "https://jenssegers.com"
+                },
+                {
+                    "name": "Artur Moczulski",
+                    "email": "artur.moczulski@gmail.com",
+                    "role": "Contractor @ Rollbar, Inc."
+                }
+            ],
+            "description": "Rollbar error monitoring integration for Laravel projects",
+            "homepage": "https://github.com/rollbar/rollbar-php-laravel",
+            "keywords": [
+                "error",
+                "laravel",
+                "logging",
+                "monitoring",
+                "rollbar"
+            ],
+            "time": "2019-01-01T22:20:05+00:00"
         },
         {
             "name": "stevebauman/purify",
