@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (!app()->isLocal()) {
+            $this->app->register(\Rollbar\Laravel\RollbarServiceProvider::class);
+        }
     }
 }
