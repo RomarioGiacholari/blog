@@ -39,7 +39,8 @@
                 <span class="label label-info">Asp.NET</span> <span class="label label-info">C#</span>
                 <span class="label label-info">Heroku</span> <span class="label label-info">Digital Ocean</span>
                 <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
-                <span class="label label-info">Stripe</span>
+                <span class="label label-info">Stripe</span> <span class="label label-info">Rollbar</span>
+                <span class="label label-info">New Relic</span> <span class="label label-info">Papertrail</span>
             </p>
 
             <h4>Portfolio</h4>
