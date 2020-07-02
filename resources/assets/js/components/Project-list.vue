@@ -12,7 +12,7 @@
 </div>
 <div v-else>
   <div id="pinBoot">
-    <div v-for="i in 6" :key="i" id="pinboot-placeholder" class="thumbnail projects white-panel"></div>
+    <div v-for="i in 6" :key="i" class="thumbnail projects white-panel pinboot-placeholder"></div>
   </div>
 </div>
 </template>
