@@ -14,22 +14,16 @@ class AppStatus extends Command
 
     protected $description = 'Email admin app status';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle()
     {
         try 
         {   
             $endpoint = route('app.status');
             $response = json_decode(file_get_contents($endpoint), true);
-            $appName = config('app.name');
 
-            $messageData = "Status for {$appName}, status: {$response['status']}, code: {$response['code']}";
+            $messageData = "Status for giacholari.com, status: {$response['status']}, code: {$response['code']}";
             $sendToEmail = config('app.admin_email');
-            $emailFrom = 'giacholari.com';
+            $emailFrom = config('app.admin_email');
             $name = 'Romario Giacholari';
             $subject = 'App status notification';
 
