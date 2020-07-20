@@ -13,6 +13,13 @@ Route::get('/resume', function () {
     return redirect($pathToFile);
 })->name('resume');
 
+Route::get('/app/status', function () {
+    return [
+        'status' => 'ok',
+        'code' => 200,
+    ];
+})->name('app.status');
+
 Route::get('/coffee', 'CoffeeController@index')->name('coffee.index');
 Route::post('/coffee', 'CoffeeController@store')->name('coffee.store');
 Route::get('/coffee/confirm/{sessionId}', 'CoffeeController@confirm')->name('coffee.confirm');
