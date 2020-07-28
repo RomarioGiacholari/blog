@@ -14,7 +14,7 @@
             </div>
             <h2>Romario Giacholari</h2>
             <p class="font-size-16">
-                My name is Romario. I am a student and web developer from Aston University (final year).
+                My name is Romario. I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
 
