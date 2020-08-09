@@ -54,7 +54,7 @@ class CoffeeController extends Controller
 
             $session = $this->paymentService->retrieveSession($sessionId);
 
-            if ($session != null && $session->display_items != null) {
+            if ($session != null && isset($session->display_items)) {
                 $items = $session->display_items[0];
 
                 if ($items != null && $items->amount != null && $items->amount > 0) {
