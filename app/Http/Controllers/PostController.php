@@ -17,11 +17,10 @@ class PostController extends Controller
     public function index()
     {
         $viewModel = new stdClass;
-        $postsCollection = Cache::remember('posts', $minutes = 60 * 24, function () {
+        $viewModel->pageTitle = 'Posts';
+        $viewModel->posts = Cache::remember('posts', $minutes = 60 * 24, function () {
             return Post::with('creator')->latest()->paginate(15) ?? null;
         });
-        $viewModel->posts = $postsCollection;
-        $viewModel->pageTitle = 'Posts';
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
