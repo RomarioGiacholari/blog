@@ -30,7 +30,7 @@ class PhotoController extends Controller
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
 
-        if ($identifier != null && $this->photos != null && count($this->photos) > 0) {
+        if (isset($identifier) && isset($this->photos) && count($this->photos) > 0) {
             $filePath = $this->photos[$identifier];
             $friendlyFileName = $identifier;
 
@@ -47,7 +47,7 @@ class PhotoController extends Controller
         $viewModel = new stdClass;
         $viewModel->photos = null;
 
-        if ($this->photos != null && count($this->photos) > 0) {
+        if (isset($this->photos) && count($this->photos) > 0) {
             $viewModel->photos = $this->photos;
         }
 
