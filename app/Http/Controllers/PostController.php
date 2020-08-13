@@ -54,7 +54,7 @@ class PostController extends Controller
         $viewModel->author = null;
         $viewModel->pageTitle = '';
 
-        if ($post != null && $post->title != null && $post->creator != null && $post->creator->name != null) {
+        if ($post && isset($post->title) && isset($post->creator) && isset($post->creator->name)) {
             $viewModel->post = $post;
             $viewModel->pageTitle = $post->title;
             $viewModel->author = $post->creator->name;
@@ -69,7 +69,7 @@ class PostController extends Controller
         $viewModel->post = null;
         $viewModel->pageTitle = '';
 
-        if ($post != null && $post->title != null) {
+        if ($post && isset($post->title)) {
             $viewModel->post = $post;
             $viewModel->pageTitle = $post->title;
         }

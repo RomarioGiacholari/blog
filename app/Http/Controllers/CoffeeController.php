@@ -32,7 +32,7 @@ class CoffeeController extends Controller
 
         $session = $this->paymentService->startSession($stripeAmount);
         
-        if ($session !== null && $session->id != null) {
+        if ($session != null && isset($session->id)) {
             $sessionId = $session->id;
 
             return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
@@ -49,7 +49,7 @@ class CoffeeController extends Controller
         $viewModel->sessionId = null;
         $viewModel->friendlyAmount = null;
         
-        if ($sessionId != null) {
+        if (isset($sessionId)) {
             $viewModel->sessionId = $sessionId;
 
             $session = $this->paymentService->retrieveSession($sessionId);
@@ -57,7 +57,7 @@ class CoffeeController extends Controller
             if ($session != null && isset($session->display_items)) {
                 $items = $session->display_items[0];
 
-                if ($items != null && $items->amount != null && $items->amount > 0) {
+                if ($items && isset($items->amount) && $items->amount > 0) {
                     $amount = $items->amount;
                     $viewModel->friendlyAmount = ($amount / 100);
                 }

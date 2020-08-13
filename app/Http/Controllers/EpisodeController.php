@@ -21,12 +21,12 @@ class EpisodeController extends Controller
         $viewModel->pageTitle = "Podcast | Episodes";
         $viewModel->episodes = null;
 
-        $podcast = Podcast::first() ?? null;
+        $podcast = Podcast::first();
 
-        if ($podcast !== null) {
+        if ($podcast) {
             $episodeList = $podcast->episodes()->paginate(24);
 
-            if ($episodeList != null && count($episodeList) > 0) {
+            if ($episodeList && count($episodeList) > 0) {
                 $viewModel->episodes = $episodeList;
             }
         }
@@ -40,7 +40,7 @@ class EpisodeController extends Controller
         $viewModel->pageTitle = null;
         $viewModel->episode = null;
 
-        if ($episode != null) {
+        if ($episode && isset($episode->title)) {
             $viewModel->pageTitle = "Podcast | Episodes | {$episode->title}";
             $viewModel->episode = $episode;
         }
@@ -85,7 +85,7 @@ class EpisodeController extends Controller
         $viewModel->episode = null;
         $viewModel->pageTitle = null;
 
-        if ($episode != null && $episode->title != null) {
+        if ($episode && isset($episode->title)) {
             $viewModel->episode = $episode;
             $viewModel->pageTitle = $episode->title;
         }
@@ -130,10 +130,10 @@ class EpisodeController extends Controller
     {
         $base64File = null;
 
-        if ($audioFile != null) {
+        if (isset($audioFile)) {
             $file = file_get_contents($audioFile);
 
-            if ($file != null) {
+            if (isset($file)) {
                 $base64File = base64_encode($file);
             }
         }

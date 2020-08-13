@@ -17,7 +17,7 @@ class HomeController extends Controller
         $currentUser = auth()->user();
         $postCollection = null;
 
-        if ($currentUser != null && $currentUser->id != null && $currentUser->id > 0) {
+        if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
             $postCollection = Post::where('user_id', $currentUser->id)
                 ->orderBy('created_at', 'desc')->get();
         }
@@ -34,7 +34,7 @@ class HomeController extends Controller
         $currentUser = auth()->user();
         $episodeCollection = null;
 
-        if ($currentUser != null && $currentUser->id != null && $currentUser->id > 0) {
+        if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
             $episodeCollection = $currentUser->podcasts()->first()->episodes()->orderBy('created_at', 'desc')->get();
         }
 
