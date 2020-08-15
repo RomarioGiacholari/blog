@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\ViewModels\Post\ShowViewModel;
+use App\ViewModels\Post\EditViewModel;
+use App\ViewModels\Post\IndexViewModel;
+use App\ViewModels\Post\CreateViewModel;
 
 class PostController extends Controller
 {
@@ -16,7 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Posts';
         $viewModel->posts = Cache::remember('posts', $minutes = 60 * 24, function () {
             return Post::with('creator')->latest()->paginate(15) ?? null;
@@ -27,7 +30,10 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $viewModel = new CreateViewModel;
+        $viewModel->pageTitle = 'New Post';
+
+        return view('posts.create', ['viewModel' => $viewModel]);
     }
 
     public function store(Request $request)
@@ -49,10 +55,10 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $viewModel = new stdClass;
+        $viewModel = new ShowViewModel;
         $viewModel->post = null;
         $viewModel->author = null;
-        $viewModel->pageTitle = '';
+        $viewModel->pageTitle = null;
 
         if ($post && isset($post->title) && isset($post->creator) && isset($post->creator->name)) {
             $viewModel->post = $post;
@@ -65,9 +71,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $viewModel = new stdClass;
+        $viewModel = new EditViewModel;
         $viewModel->post = null;
-        $viewModel->pageTitle = '';
+        $viewModel->pageTitle = null;
 
         if ($post && isset($post->title)) {
             $viewModel->post = $post;

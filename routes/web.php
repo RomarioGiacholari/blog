@@ -1,11 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    $viewModel = new stdClass;
-    $viewModel->pageTitle = 'Welcome';
-
-    return view('welcome', ['viewModel' => $viewModel]);
-})->name('welcome');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('/resume', function () {
     $pathToFile = "https://assets.giacholari.com/pdf/resume.pdf";

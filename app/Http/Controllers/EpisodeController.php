@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use App\Episode;
 use App\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use App\ViewModels\Episode\EditViewModel;
+use App\ViewModels\Episode\ShowViewModel;
+use App\ViewModels\Episode\IndexViewModel;
+use App\ViewModels\Episode\CreateViewModel;
 
 class EpisodeController extends Controller
 {
@@ -17,7 +20,7 @@ class EpisodeController extends Controller
 
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = "Podcast | Episodes";
         $viewModel->episodes = null;
 
@@ -36,7 +39,7 @@ class EpisodeController extends Controller
 
     public function show(Episode $episode)
     {
-        $viewModel = new stdClass;
+        $viewModel = new ShowViewModel;
         $viewModel->pageTitle = null;
         $viewModel->episode = null;
 
@@ -50,7 +53,7 @@ class EpisodeController extends Controller
 
     public function create()
     {
-        $viewModel = new stdClass;
+        $viewModel = new CreateViewModel;
         $viewModel->pageTitle = "New episode";
 
         return view("episodes.create", ["viewModel" => $viewModel]);
@@ -81,7 +84,7 @@ class EpisodeController extends Controller
 
     public function edit(Episode $episode)
     {
-        $viewModel = new stdClass;
+        $viewModel = new EditViewModel;
         $viewModel->episode = null;
         $viewModel->pageTitle = null;
 

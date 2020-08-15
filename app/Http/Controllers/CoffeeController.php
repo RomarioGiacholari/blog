@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use Illuminate\Http\Request;
 use App\Services\Payment\IPaymentService;
+use App\ViewModels\Coffee\CancelViewModel;
+use App\ViewModels\Coffee\IndexViewModel;
+use App\ViewModels\Coffee\ConfirmViewModel;
+use App\ViewModels\Coffee\SuccessViewModel;
 
 class CoffeeController extends Controller
 {
@@ -17,7 +20,7 @@ class CoffeeController extends Controller
 
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = "Buy me a cup of coffee";
     
         return view('coffee.index', ['viewModel' => $viewModel]);
@@ -43,7 +46,7 @@ class CoffeeController extends Controller
 
     public function confirm(string $sessionId)
     {
-        $viewModel = new stdClass;
+        $viewModel = new ConfirmViewModel;
         $viewModel->pageTitle = "Confirm Payment";
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
         $viewModel->sessionId = null;
@@ -69,7 +72,7 @@ class CoffeeController extends Controller
 
     public function success()
     {
-        $viewModel = new stdClass;
+        $viewModel = new SuccessViewModel;
         $viewModel->pageTitle = 'Thank you';
         $viewModel->message = 'Your payment has been successful! Enjoy the rest of your day!';
 
@@ -79,7 +82,7 @@ class CoffeeController extends Controller
     
     public function cancel()
     {
-        $viewModel = new stdClass;
+        $viewModel = new CancelViewModel;
         $viewModel->pageTitle = 'Payment canceled';
         $viewModel->message = 'Your payment was canceled!';
 

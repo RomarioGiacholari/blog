@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'New post')
+@section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
     <div class="row">
