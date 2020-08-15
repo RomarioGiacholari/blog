@@ -17,11 +17,13 @@ class PostController extends Controller
         $this->middleware('admin')->except(['show', 'index']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $page = $request->query('page') ?? 1;
+
         $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts = Cache::remember('posts', $minutes = 60 * 24, function () {
+        $viewModel->posts = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
             return Post::with('creator')->latest()->paginate(15) ?? null;
         });
 
