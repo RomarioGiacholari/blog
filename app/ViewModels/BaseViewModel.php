@@ -4,5 +4,5 @@ namespace App\ViewModels;
 
 abstract class BaseViewModel
 {
-    public string $pageTitle;
+    public ?string $pageTitle;
 }

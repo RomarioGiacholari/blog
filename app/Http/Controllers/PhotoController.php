@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
-use App\Services\Photos\IPhotoService;
 use Illuminate\Support\Facades\Cache;
+use App\Services\Photos\IPhotoService;
+use App\ViewModels\Photo\IndexViewModel;
+use App\ViewModels\Photo\ShowViewModel;
+use App\ViewModels\Photo\PhotoListViewModel;
 
 class PhotoController extends Controller
 {
@@ -17,7 +19,7 @@ class PhotoController extends Controller
 
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Photos';
 
         return view('photos.index', ['viewModel' => $viewModel]);
@@ -25,7 +27,7 @@ class PhotoController extends Controller
 
     public function show(string $identifier)
     {
-        $viewModel = new stdClass;
+        $viewModel = new ShowViewModel;
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
         $viewModel->photoFriendlyName = null;
@@ -44,7 +46,7 @@ class PhotoController extends Controller
 
     public function photos()
     {
-        $viewModel = new stdClass;
+        $viewModel = new PhotoListViewModel;
         $viewModel->photos = null;
 
         if (isset($this->photos) && count($this->photos) > 0) {

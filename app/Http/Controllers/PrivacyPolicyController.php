@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use Illuminate\Support\Facades\Cache;
+use App\ViewModels\Privacy\IndexViewModel;
+use App\ViewModels\Privacy\ContentViewModel;
 
 class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = "Privacy policy";
 
         return view('privacy-policy.index', ['viewModel' => $viewModel]);
@@ -22,7 +23,7 @@ class PrivacyPolicyController extends Controller
             return file_get_contents('https://assets.giacholari.com/json/privacy.json');
         });
 
-        $viewModel = new stdClass;
+        $viewModel = new ContentViewModel;
         $viewModel->introduction = "This privacy policy applies to the website {$appName}";
         $viewModel->content = json_decode($privacyFile, true);
         $viewModel->contactEmail = "giacholari@gmail.com";
