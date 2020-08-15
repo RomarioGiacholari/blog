@@ -1,19 +1,23 @@
 <?php
 
+use App\User;
+use App\Post;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        factory(App\User::class,10)->create()->each(function($user){
+        DB::transaction (function () {
+            $user = new User;
+            $user->name = 'giacholari';
+            $user->email = 'giacholari@gmail.com';
+            $user->password = bcrypt('password');
+            
+            $user->save();
 
-            $user->posts()->save(factory(App\Post::class)->create());
+            $user->posts()->saveMany(factory(Post::class, 30)->make());
         });
     }
 }
