@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
+use App\ViewModels\Dashboard\IndexViewModel;
 
 class DashboardController extends Controller
 {
@@ -13,7 +13,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Dashboard';
         $viewModel->resources = [
             'Posts' => route('home.posts'),

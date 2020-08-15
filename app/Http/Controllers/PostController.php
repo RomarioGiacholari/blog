@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\ViewModels\Post\ShowViewModel;
 use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
-use App\ViewModels\Post\ShowViewModel;
+use App\ViewModels\Post\CreateViewModel;
 
 class PostController extends Controller
 {
@@ -29,7 +30,10 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $viewModel = new CreateViewModel;
+        $viewModel->pageTitle = 'New Post';
+
+        return view('posts.create', ['viewModel' => $viewModel]);
     }
 
     public function store(Request $request)

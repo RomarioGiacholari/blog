@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use App\Post;
+use App\ViewModels\Home\PostsViewModel;
+use App\ViewModels\Home\EpisodesViewModel;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,7 @@ class HomeController extends Controller
                 ->orderBy('created_at', 'desc')->get();
         }
 
-        $viewModel = new stdClass;
+        $viewModel = new PostsViewModel;
         $viewModel->posts = $postCollection;
         $viewModel->pageTitle = 'Home | Posts';
 
@@ -38,7 +39,7 @@ class HomeController extends Controller
             $episodeCollection = $currentUser->podcasts()->first()->episodes()->orderBy('created_at', 'desc')->get();
         }
 
-        $viewModel = new stdClass;
+        $viewModel = new EpisodesViewModel;
         $viewModel->episodes = $episodeCollection;
         $viewModel->pageTitle = 'Home | Episodes';
 
