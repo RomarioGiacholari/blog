@@ -5,13 +5,12 @@ use Faker\Generator as Faker;
 $factory->define(App\Post::class, function (Faker $faker) {
     
     $title = $faker->title;
+    $body =  $faker->paragraph;
 
     return [
         'title' => $title,
-        'body' => $faker->paragraph,
+        'body' => $body,
+        'excerpt' => $body,
         'slug' => $title,
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;
-        }
     ];
 });
