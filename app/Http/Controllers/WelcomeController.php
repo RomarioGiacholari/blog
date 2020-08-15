@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
+use App\ViewModels\Welcome\IndexViewModel;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Welcome';
     
         return view('welcome', ['viewModel' => $viewModel]);

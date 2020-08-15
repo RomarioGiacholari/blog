@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use \stdClass;
 use Exception;
 use App\Mail\ContactMe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\ViewModels\Contact\IndexViewModel;
 
 class ContactController extends Controller
 {
     public function create()
     {
-        $viewModel = new stdClass;
+        $viewModel = new IndexViewModel;
         $viewModel->pageTitle = 'Contact me';
 
         return view('contact.create', ['viewModel' => $viewModel]);
