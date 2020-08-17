@@ -35,7 +35,7 @@ class CoffeeController extends Controller
 
         $session = $this->paymentService->startSession($stripeAmount);
         
-        if ($session != null && isset($session->id)) {
+        if ($session !== null && isset($session->id)) {
             $sessionId = $session->id;
 
             return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
