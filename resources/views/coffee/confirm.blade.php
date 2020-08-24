@@ -10,7 +10,7 @@
             <h1>Confirm payment of (£{{ $viewModel->friendlyAmount }})</h1>
             <hr>
             <p>Next, you will be redirected to Stripe and they are going to handle the payment.</p>
-            <button id="payButton" class="btn btn-success btn-block" onclick="pay()">pay</button>
+            <button id="payButton" class="btn btn-success btn-block">pay</button>
             <a href="{{ route('coffee.index') }}" class="btn btn-default btn-block" role="button">cancel</a>
         </div>
     </div>
