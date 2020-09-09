@@ -7,17 +7,19 @@
 <div class="container">
     <h1>Snippets</h1>
     <hr />
-    <div id="pinBoot">
+    <div class="row">
         @foreach($viewModel->posts as $post)
-        <div class="thumbnail white-panel">
-            <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
-            <hr>
-            <p class="post-body">{!! $post->excerpt !!}</p>
+        <div class="col-md-12">
+            <div class="thumbnail">
+                <div class="caption">
+                    <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
+                    <p class="post-body">{!! $post->excerpt !!}</p>
+                </div>
+            </div>
         </div>
         @endforeach
     </div>
-
-    <div style="padding:80px">
+    <div>
         {{ $viewModel->posts->links() }}
     </div>
 </div>
