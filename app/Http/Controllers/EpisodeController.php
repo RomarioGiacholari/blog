@@ -24,7 +24,7 @@ class EpisodeController extends Controller
         $viewModel->pageTitle = "Podcast | Episodes";
         $viewModel->episodes = null;
 
-        $podcast = Podcast::first();
+        $podcast = Podcast::query()->first();
 
         if ($podcast) {
             $episodeList = $podcast->episodes()->paginate(24);

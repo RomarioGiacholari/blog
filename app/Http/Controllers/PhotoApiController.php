@@ -11,7 +11,7 @@ class PhotoApiController extends Controller
 
     public function __construct(IPhotoService $service)
     {
-        $this->photoService = $service ?? null;
+        $this->photoService = $service;
     }
 
     public function index()

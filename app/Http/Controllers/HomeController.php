@@ -19,7 +19,7 @@ class HomeController extends Controller
         $postCollection = null;
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
-            $postCollection = Post::where('user_id', $currentUser->id)
+            $postCollection = Post::query()->where('user_id', $currentUser->id)
                 ->orderBy('created_at', 'desc')->get();
         }
 

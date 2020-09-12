@@ -15,7 +15,7 @@ class CoffeeController extends Controller
 
     public function __construct(IPaymentService $service)
     {
-        $this->paymentService = $service ?? null;
+        $this->paymentService = $service;
     }
 
     public function index()

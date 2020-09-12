@@ -20,9 +20,10 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $_ = $this->validateEmail($request);
         $isSuccess = false;
         $message = null;
+
+        $this->validateEmail($request);
 
         if ($request->answer == 4) {
             $sendToEmail = config('app.admin_email');
