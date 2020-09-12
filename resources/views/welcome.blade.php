@@ -4,14 +4,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="social">
-                <a href="tel:+447587735380" title="call"><i class="fa fa-phone-square fa-2x"></i></a>
-                <a href="mailto:giacholari@gmail.com" title="email"><i class="fa fa-envelope fa-2x"></i></a>
-                <a href="https://www.instagram.com/am.giacholari/" title="instagram"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a href="https://github.com/RomarioGiacholari" title="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                <a href="https://uk.linkedin.com/in/romario-giacholari-71130b11b" title="linkedin"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a> 
-                <a href="{{ route('privacy-policy.index') }}" title="privacy"><i class="fa fa-copyright fa-2x"></i></a>
-            </div>
             <h2>Romario Giacholari</h2>
             <p class="font-size-16">
                 My name is Romario. I am a graduate student and web developer from Aston University.
