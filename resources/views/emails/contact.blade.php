@@ -16,13 +16,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if($name && $email && $messageData)
+                    <h3>Email from {{ $name }} with email - {{ $email }}</h3>
 
-                <h3>Email from {{ $name }} with email - {{ $email }}</h3>
+                    <hr />
 
-                <hr />
-
-                <p> {{ $messageData }} </p>
-
+                    <p> {{ $messageData }} </p>
+                @endif
             </div>
         </div>
     </div>
