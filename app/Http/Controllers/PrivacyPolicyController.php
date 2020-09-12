@@ -19,7 +19,7 @@ class PrivacyPolicyController extends Controller
     public function content()
     {
         $appName = config('app.name') ?? 'giacholari.com';
-        $privacyFile = Cache::remember('privacyFile', $minutes = 60 * 24, function () {
+        $privacyFile = Cache::rememberForever('privacyFile', function () {
             return file_get_contents('https://assets.giacholari.com/json/privacy.json');
         });
 
