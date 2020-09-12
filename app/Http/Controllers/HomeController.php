@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\ViewModels\Home\PostsViewModel;
 use App\ViewModels\Home\EpisodesViewModel;
+use App\ViewModels\Home\PostsViewModel;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function posts()
     {
-        $currentUser = auth()->user();
+        $currentUser    = auth()->user();
         $postCollection = null;
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
@@ -23,8 +23,8 @@ class HomeController extends Controller
                 ->orderBy('created_at', 'desc')->get();
         }
 
-        $viewModel = new PostsViewModel;
-        $viewModel->posts = $postCollection;
+        $viewModel            = new PostsViewModel();
+        $viewModel->posts     = $postCollection;
         $viewModel->pageTitle = 'Home | Posts';
 
         return view('home.posts', ['viewModel' => $viewModel]);
@@ -32,15 +32,15 @@ class HomeController extends Controller
 
     public function episodes()
     {
-        $currentUser = auth()->user();
+        $currentUser       = auth()->user();
         $episodeCollection = null;
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
             $episodeCollection = $currentUser->podcasts()->first()->episodes()->orderBy('created_at', 'desc')->get();
         }
 
-        $viewModel = new EpisodesViewModel;
-        $viewModel->episodes = $episodeCollection;
+        $viewModel            = new EpisodesViewModel();
+        $viewModel->episodes  = $episodeCollection;
         $viewModel->pageTitle = 'Home | Episodes';
 
         return view('home.episodes', ['viewModel' => $viewModel]);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
 use App\Services\Photos\IPhotoService;
+use Illuminate\Support\Facades\Cache;
 
 class PhotoApiController extends Controller
 {

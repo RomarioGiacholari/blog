@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use App\ViewModels\Post\ShowViewModel;
+use App\ViewModels\Post\CreateViewModel;
 use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
-use App\ViewModels\Post\CreateViewModel;
+use App\ViewModels\Post\ShowViewModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -21,9 +21,9 @@ class PostController extends Controller
     {
         $page = $request->query('page') ?? 1;
 
-        $viewModel = new IndexViewModel;
+        $viewModel            = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
+        $viewModel->posts     = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
             return Post::with('creator')->latest()->paginate(15) ?? null;
         });
 
@@ -32,7 +32,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $viewModel = new CreateViewModel;
+        $viewModel            = new CreateViewModel();
         $viewModel->pageTitle = 'New Post';
 
         return view('posts.create', ['viewModel' => $viewModel]);
@@ -43,9 +43,9 @@ class PostController extends Controller
         $this->validatePost($request);
 
         $attributes = [
-            'title' => $request->title,
-            'body' => $request->body,
-            'slug' => $request->title,
+            'title'   => $request->title,
+            'body'    => $request->body,
+            'slug'    => $request->title,
             'excerpt' => $request->body,
         ];
 
@@ -57,15 +57,15 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $viewModel = new ShowViewModel;
-        $viewModel->post = null;
-        $viewModel->author = null;
+        $viewModel            = new ShowViewModel();
+        $viewModel->post      = null;
+        $viewModel->author    = null;
         $viewModel->pageTitle = null;
 
-        if ($post && isset($post->title) && isset($post->creator) && isset($post->creator->name)) {
-            $viewModel->post = $post;
+        if ($post && isset($post->title, $post->creator, $post->creator->name)) {
+            $viewModel->post      = $post;
             $viewModel->pageTitle = $post->title;
-            $viewModel->author = $post->creator->name;
+            $viewModel->author    = $post->creator->name;
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
@@ -73,12 +73,12 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $viewModel = new EditViewModel;
-        $viewModel->post = null;
+        $viewModel            = new EditViewModel();
+        $viewModel->post      = null;
         $viewModel->pageTitle = null;
 
         if ($post && isset($post->title)) {
-            $viewModel->post = $post;
+            $viewModel->post      = $post;
             $viewModel->pageTitle = $post->title;
         }
 
@@ -90,9 +90,9 @@ class PostController extends Controller
         $this->validatePost($request, $post->id);
 
         $attributes = [
-            'title' => $request->title,
-            'body' => $request->body,
-            'slug' => $request->title,
+            'title'   => $request->title,
+            'body'    => $request->body,
+            'slug'    => $request->title,
             'excerpt' => $request->body,
         ];
 
@@ -112,8 +112,8 @@ class PostController extends Controller
     private function validatePost(Request $request, int $postId = 0)
     {
         $this->validate($request, [
-            "title" => "required|max:20|unique:posts,title,{$postId}",
-            "body" => "required|max:1500",
+            'title' => "required|max:20|unique:posts,title,{$postId}",
+            'body'  => 'required|max:1500',
         ]);
     }
 }
