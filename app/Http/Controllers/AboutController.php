@@ -8,7 +8,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $viewModel = new IndexViewModel;
+        $viewModel            = new IndexViewModel();
         $viewModel->pageTitle = 'About me';
 
         return view('about.index', ['viewModel' => $viewModel]);

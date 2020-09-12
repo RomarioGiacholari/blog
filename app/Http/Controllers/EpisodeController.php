@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Episode;
 use App\Podcast;
+use App\ViewModels\Episode\CreateViewModel;
+use App\ViewModels\Episode\EditViewModel;
+use App\ViewModels\Episode\IndexViewModel;
+use App\ViewModels\Episode\ShowViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\ViewModels\Episode\EditViewModel;
-use App\ViewModels\Episode\ShowViewModel;
-use App\ViewModels\Episode\IndexViewModel;
-use App\ViewModels\Episode\CreateViewModel;
 
 class EpisodeController extends Controller
 {
@@ -20,43 +20,43 @@ class EpisodeController extends Controller
 
     public function index()
     {
-        $viewModel = new IndexViewModel;
-        $viewModel->pageTitle = "Podcast | Episodes";
-        $viewModel->episodes = null;
+        $viewModel            = new IndexViewModel();
+        $viewModel->pageTitle = 'Podcast | Episodes';
+        $viewModel->episodes  = null;
 
         $podcast = Podcast::query()->first();
 
         if ($podcast) {
             $episodeList = $podcast->episodes()->paginate(24);
 
-            if ($episodeList && count($episodeList) > 0) {
+            if ($episodeList && \count($episodeList) > 0) {
                 $viewModel->episodes = $episodeList;
             }
         }
 
-        return view("episodes.index", ["viewModel" => $viewModel]);
+        return view('episodes.index', ['viewModel' => $viewModel]);
     }
 
     public function show(Episode $episode)
     {
-        $viewModel = new ShowViewModel;
+        $viewModel            = new ShowViewModel();
         $viewModel->pageTitle = null;
-        $viewModel->episode = null;
+        $viewModel->episode   = null;
 
         if ($episode && isset($episode->title)) {
             $viewModel->pageTitle = "Podcast | Episodes | {$episode->title}";
-            $viewModel->episode = $episode;
+            $viewModel->episode   = $episode;
         }
 
-        return view("episodes.show", ["viewModel" => $viewModel]);
+        return view('episodes.show', ['viewModel' => $viewModel]);
     }
 
     public function create()
     {
-        $viewModel = new CreateViewModel;
-        $viewModel->pageTitle = "New episode";
+        $viewModel            = new CreateViewModel();
+        $viewModel->pageTitle = 'New episode';
 
-        return view("episodes.create", ["viewModel" => $viewModel]);
+        return view('episodes.create', ['viewModel' => $viewModel]);
     }
 
     public function store(Request $request)
@@ -64,19 +64,19 @@ class EpisodeController extends Controller
         $this->validateEpisode($request);
 
         $attributes = [
-            'title' => $request->title,
+            'title'       => $request->title,
             'description' => $request->description,
-            'slug' => $request->title,
+            'slug'        => $request->title,
             'audioBase64' => static::convertToBase64($request->audioBase64),
         ];
 
-        $user = auth()->user();
+        $user    = auth()->user();
         $podcast = $user->podcasts()->first() ?? null;
 
-        if ($podcast !== null) {
+        if (null !== $podcast) {
             $episode = $podcast->episodes()->create($attributes);
 
-            return redirect(route("episodes.show", ["episode" => $episode]));
+            return redirect(route('episodes.show', ['episode' => $episode]));
         }
 
         return back();
@@ -84,12 +84,12 @@ class EpisodeController extends Controller
 
     public function edit(Episode $episode)
     {
-        $viewModel = new EditViewModel;
-        $viewModel->episode = null;
+        $viewModel            = new EditViewModel();
+        $viewModel->episode   = null;
         $viewModel->pageTitle = null;
 
         if ($episode && isset($episode->title)) {
-            $viewModel->episode = $episode;
+            $viewModel->episode   = $episode;
             $viewModel->pageTitle = $episode->title;
         }
 
@@ -101,15 +101,15 @@ class EpisodeController extends Controller
         $this->validateEpisode($request, $episode->id);
 
         $attributes = [
-            'title' => $request->title,
+            'title'       => $request->title,
             'description' => $request->description,
-            'slug' => $request->title,
+            'slug'        => $request->title,
             'audioBase64' => static::convertToBase64($request->audioBase64),
         ];
 
         $episode->fill($attributes);
         $episode->save();
-        
+
         return redirect(route('home.episodes'));
     }
 
@@ -123,9 +123,9 @@ class EpisodeController extends Controller
     private function validateEpisode(Request $request, int $episodeId = 0): void
     {
         $this->validate($request, [
-            "title" => "required|max:20|unique:episodes,title,{$episodeId}",
-            "description" => "required|max:255",
-            "audioBase64" => "required|mimes:audio/mpeg,mpga,mp3,m4a,wav,aac"
+            'title'       => "required|max:20|unique:episodes,title,{$episodeId}",
+            'description' => 'required|max:255',
+            'audioBase64' => 'required|mimes:audio/mpeg,mpga,mp3,m4a,wav,aac',
         ]);
     }
 

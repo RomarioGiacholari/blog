@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\Payment\IPaymentService;
 use App\ViewModels\Coffee\CancelViewModel;
-use App\ViewModels\Coffee\IndexViewModel;
 use App\ViewModels\Coffee\ConfirmViewModel;
+use App\ViewModels\Coffee\IndexViewModel;
 use App\ViewModels\Coffee\SuccessViewModel;
+use Illuminate\Http\Request;
 
 class CoffeeController extends Controller
 {
@@ -20,9 +20,9 @@ class CoffeeController extends Controller
 
     public function index()
     {
-        $viewModel = new IndexViewModel;
-        $viewModel->pageTitle = "Buy me a cup of coffee";
-    
+        $viewModel            = new IndexViewModel();
+        $viewModel->pageTitle = 'Buy me a cup of coffee';
+
         return view('coffee.index', ['viewModel' => $viewModel]);
     }
 
@@ -31,11 +31,11 @@ class CoffeeController extends Controller
         $this->validate($request, ['amount' => 'required|numeric|min:1']);
 
         $requestAmount = (int) $request->amount;
-        $stripeAmount = ($requestAmount * 100);
+        $stripeAmount  = ($requestAmount * 100);
 
         $session = $this->paymentService->startSession($stripeAmount);
-        
-        if ($session !== null && isset($session->id)) {
+
+        if (null !== $session && isset($session->id)) {
             $sessionId = $session->id;
 
             return redirect(route('coffee.confirm', ['sessionId' => $sessionId]));
@@ -46,22 +46,22 @@ class CoffeeController extends Controller
 
     public function confirm(string $sessionId)
     {
-        $viewModel = new ConfirmViewModel;
-        $viewModel->pageTitle = "Confirm Payment";
+        $viewModel                  = new ConfirmViewModel();
+        $viewModel->pageTitle       = 'Confirm Payment';
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
-        $viewModel->sessionId = null;
-        $viewModel->friendlyAmount = null;
-        
+        $viewModel->sessionId       = null;
+        $viewModel->friendlyAmount  = null;
+
         if (isset($sessionId)) {
             $viewModel->sessionId = $sessionId;
 
             $session = $this->paymentService->retrieveSession($sessionId);
 
-            if ($session !== null && isset($session->display_items) && count($session->display_items) > 0) {
+            if (null !== $session && isset($session->display_items) && \count($session->display_items) > 0) {
                 $items = $session->display_items[0];
 
                 if ($items && isset($items->amount) && $items->amount > 0) {
-                    $amount = $items->amount;
+                    $amount                    = $items->amount;
                     $viewModel->friendlyAmount = ($amount / 100);
                 }
             }
@@ -72,19 +72,18 @@ class CoffeeController extends Controller
 
     public function success()
     {
-        $viewModel = new SuccessViewModel;
+        $viewModel            = new SuccessViewModel();
         $viewModel->pageTitle = 'Thank you';
-        $viewModel->message = 'Your payment has been successful! Enjoy the rest of your day!';
+        $viewModel->message   = 'Your payment has been successful! Enjoy the rest of your day!';
 
         return view('coffee.thank-you', ['viewModel' => $viewModel]);
     }
 
-    
     public function cancel()
     {
-        $viewModel = new CancelViewModel;
+        $viewModel            = new CancelViewModel();
         $viewModel->pageTitle = 'Payment canceled';
-        $viewModel->message = 'Your payment was canceled!';
+        $viewModel->message   = 'Your payment was canceled!';
 
         return view('coffee.cancel', ['viewModel' => $viewModel]);
     }
