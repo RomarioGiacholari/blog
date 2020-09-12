@@ -16,7 +16,7 @@ class PhotoApiController extends Controller
 
     public function index()
     {
-        $photos = Cache::remember('photos', $minutes = 60 * 24, fn () => $this->photoService->all());
+        $photos = Cache::rememberForever('photos', fn () => $this->photoService->all());
 
         return response($photos, 200);
     }
