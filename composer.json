@@ -11,7 +11,8 @@
         "laravel/tinker": "~1.0",
         "rollbar/rollbar-laravel": "2.*",
         "stevebauman/purify": "2.0.*",
-        "stripe/stripe-php": "^7.14"
+        "stripe/stripe-php": "^7.14",
+        "ext-json": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
