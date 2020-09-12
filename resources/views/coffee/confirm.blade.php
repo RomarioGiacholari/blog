@@ -21,10 +21,12 @@
 <script defer>
     document.addEventListener("DOMContentLoaded", function () {
         var paymentButton = document.getElementById('paymentButton');
-        paymentButton.addEventListener('click', function () {
+        var stripeHandler = function () {
             var stripe = Stripe('{{ $viewModel->stripePublicKey }}');
             stripe.redirectToCheckout({sessionId:'{{ $viewModel->sessionId }}'}).then(function (result) {});
-        });
+        };
+
+        paymentButton.addEventListener('click', stripeHandler);
     });
 </script>
 @endsection
