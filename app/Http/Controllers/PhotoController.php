@@ -7,6 +7,7 @@ use App\Services\Photos\IPhotoService;
 use App\ViewModels\Photo\IndexViewModel;
 use App\ViewModels\Photo\ShowViewModel;
 use App\ViewModels\Photo\PhotoListViewModel;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PhotoController extends Controller
 {
@@ -27,6 +28,10 @@ class PhotoController extends Controller
 
     public function show(string $identifier)
     {
+        if (!array_key_exists($identifier, $this->photos)) {
+            throw new NotFoundHttpException();
+        }
+
         $viewModel = new ShowViewModel;
         $viewModel->pageTitle = null;
         $viewModel->photo = null;
