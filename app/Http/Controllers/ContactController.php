@@ -47,7 +47,7 @@ class ContactController extends Controller
                 'message' => $message
             ];
 
-            return response($data , 200);
+            return response($data, 200);
         }
     }
 

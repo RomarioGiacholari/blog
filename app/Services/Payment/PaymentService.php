@@ -38,7 +38,7 @@ class PaymentService implements IPaymentService
     {
         $session = null;
 
-        if ($sessionId!= null) {
+        if ($sessionId != null) {
             $session = Session::retrieve($sessionId);
         }
 
