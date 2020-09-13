@@ -106,7 +106,7 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return back();
+        return redirect(route('home.posts'));
     }
 
     private function validatePost(Request $request, int $postId = 0)
