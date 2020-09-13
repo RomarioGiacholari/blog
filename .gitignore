@@ -15,3 +15,4 @@ yarn-error.log
 .env
 /storage/purify
 /.vscode
+.php_cs.cache
