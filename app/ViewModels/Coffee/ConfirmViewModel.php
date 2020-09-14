@@ -8,5 +8,5 @@ class ConfirmViewModel extends BaseViewModel
 {
     public ?string $stripePublicKey;
     public ?string $sessionId;
-    public ?int $friendlyAmount;
+    public ?float $friendlyAmount;
 }
