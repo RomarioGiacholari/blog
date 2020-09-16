@@ -112,8 +112,8 @@ class PostController extends Controller
     private function validatePost(Request $request, int $postId = 0)
     {
         $this->validate($request, [
-            'title' => "required|max:20|unique:posts,title,{$postId}",
-            'body'  => 'required|max:1500',
+            'title' => "required|max:25|unique:posts,title,{$postId}",
+            'body'  => 'required|max:6000',
         ]);
     }
 }
