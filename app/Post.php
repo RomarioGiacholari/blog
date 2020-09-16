@@ -2,13 +2,13 @@
 
 namespace App;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'body', 'slug', 'excerpt'
+        'title', 'body', 'slug', 'excerpt',
     ];
 
     public function creator()
@@ -16,24 +16,24 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function path()
+    public function path(): string
     {
         return "posts/{$this->slug}";
     }
 
-    public function setSlugAttribute($title)
+    public function setSlugAttribute(string $title): void
     {
         $this->attributes['slug'] = str_slug($title, '-');
     }
 
-    public function setExcerptAttribute($excerpt)
-    {   
-        $output = strip_tags(Str::words($excerpt, 20, ' ...'));
+    public function setExcerptAttribute(string $excerpt): void
+    {
+        $output = strip_tags(Str::limit($excerpt, 100, ' ...'));
 
         $this->attributes['excerpt'] = $output;
     }
 
-    public function setBodyAttribute($body)
+    public function setBodyAttribute(string $body): void
     {
         $this->attributes['body'] = preg_replace(
             '/@([\w\-]+)/',
@@ -42,12 +42,12 @@ class Post extends Model
         );
     }
 
-    public function getBodyAttribute($body)
+    public function getBodyAttribute(string $body)
     {
         return \Purify::clean($body);
     }
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
