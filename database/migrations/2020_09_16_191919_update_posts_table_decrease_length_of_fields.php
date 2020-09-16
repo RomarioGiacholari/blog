@@ -16,7 +16,7 @@ class UpdatePostsTableDecreaseLengthOfFields extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->string('slug', '25')->change();
             $table->string('title', '25')->change();
-            $table->string('excerpt', '25')->change();
+            $table->string('excerpt', '100')->change();
         });
     }
 
