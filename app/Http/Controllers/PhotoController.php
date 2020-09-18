@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PhotoController extends Controller
 {
-    private array $photos;
+    private ?array $photos;
 
     public function __construct(IPhotoService $service)
     {
@@ -28,16 +28,16 @@ class PhotoController extends Controller
 
     public function show(string $identifier)
     {
-        if (!\array_key_exists($identifier, $this->photos)) {
-            throw new NotFoundHttpException();
-        }
-
         $viewModel                    = new ShowViewModel();
         $viewModel->pageTitle         = null;
         $viewModel->photo             = null;
         $viewModel->photoFriendlyName = null;
 
-        if (isset($identifier, $this->photos) && \count($this->photos) > 0) {
+        if (isset($this->photos) && \count($this->photos) > 0) {
+            if (!\array_key_exists($identifier, $this->photos)) {
+                throw new NotFoundHttpException();
+            }
+
             $filePath         = $this->photos[$identifier];
             $friendlyFileName = $identifier;
 
