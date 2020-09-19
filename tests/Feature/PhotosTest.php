@@ -4,14 +4,17 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class PhotosTest extends TestCase
 {
-    private $photos = [];
+    private array $photos = [];
 
     public function setUp()
     {
         parent::setUp();
-        
+
         $this->photos = $this->fetchPhotos();
     }
 
@@ -20,18 +23,17 @@ class PhotosTest extends TestCase
         $endpoint = route('photos.partial');
         $response = $this->get($endpoint);
 
-        foreach($this->photos as $key => $value) 
-        {
+        foreach ($this->photos as $key => $value) {
             $response->assertSee($key);
         }
     }
 
-    private function fetchPhotos() : array
+    private function fetchPhotos(): array
     {
-        $files = $this->get(route('api.photos.index'))->json();
+        $files  = $this->get(route('api.photos.index'))->json();
         $photos = [];
 
-        if ($files != null && count($files) > 0) {
+        if (null != $files && \count($files) > 0) {
             $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
         }
 

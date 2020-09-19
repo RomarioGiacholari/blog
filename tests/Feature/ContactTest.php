@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Mail\ContactMe;
 use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class ContactTest extends TestCase
 {
     public function setUp()
@@ -18,16 +21,16 @@ class ContactTest extends TestCase
     public function test_it_sends_a_contact_me_email()
     {
         $endpoint = route('contact.store');
-        $request = [
-            'name' => 'John Doe',
-            'email' => 'johnDoe@example.com',
+        $request  = [
+            'name'    => 'John Doe',
+            'email'   => 'johnDoe@example.com',
             'subject' => 'Hello',
             'message' => 'World',
-            'answer' => 4
+            'answer'  => 4,
         ];
 
         $response = $this->json('POST', $endpoint, $request);
-        
+
         $response->assertStatus(200);
         $response->assertJson(['isSuccess' => true]);
 
@@ -39,12 +42,12 @@ class ContactTest extends TestCase
     public function test_it_validates_a_contact_me_email_request()
     {
         $endpoint = route('contact.store');
-        $request = [
+        $request  = [
             'name'    => null,
             'email'   => null,
             'subject' => null,
             'message' => null,
-            'answer'  => null
+            'answer'  => null,
         ];
 
         $response = $this->json('POST', $endpoint, $request);
