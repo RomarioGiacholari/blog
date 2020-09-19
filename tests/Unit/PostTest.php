@@ -28,9 +28,9 @@ class PostTest extends TestCase
     public function test_a_post_belongs_to_a_user()
     {
         $user          = factory(User::class)->create();
-        $inMemoryPosts = factory(Post::class)->make();
+        $inMemoryPost  = factory(Post::class)->make();
 
-        $post = $user->posts()->save($inMemoryPosts);
+        $post = $user->posts()->save($inMemoryPost);
 
         $this->assertSame($post->creator->id, $user->id);
     }
