@@ -11,14 +11,16 @@ class PhotoService implements IPhotoService
         $this->endpoint = $endpoint;
     }
 
-    public function all() : array
+    public function all() : ?array
     {
-        $photos = [];
+        $photos = null;
 
-        $files = file_get_contents($this->endpoint);
+        if (isset($this->endpoint)) {
+            $files = file_get_contents($this->endpoint);
 
-        if ($files != null) {
-            $photos = json_decode($files, true);
+            if ($files != null) {
+                $photos = json_decode($files, true);
+            }
         }
 
         return $photos;

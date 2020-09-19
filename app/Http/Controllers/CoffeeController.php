@@ -52,19 +52,16 @@ class CoffeeController extends Controller
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
         $viewModel->sessionId       = null;
         $viewModel->friendlyAmount  = null;
+        $viewModel->sessionId       = $sessionId;
 
-        if (isset($sessionId)) {
-            $viewModel->sessionId = $sessionId;
+        $session = $this->paymentService->retrieveSession($sessionId);
 
-            $session = $this->paymentService->retrieveSession($sessionId);
+        if (null !== $session && isset($session->display_items) && \count($session->display_items) > 0) {
+            $items = $session->display_items[0];
 
-            if (null !== $session && isset($session->display_items) && \count($session->display_items) > 0) {
-                $items = $session->display_items[0];
-
-                if ($items && isset($items->amount) && $items->amount > 0) {
-                    $amount                    = $items->amount;
-                    $viewModel->friendlyAmount = ($amount / 100);
-                }
+            if ($items && isset($items->amount) && $items->amount > 0) {
+                $amount                    = $items->amount;
+                $viewModel->friendlyAmount = ($amount / 100);
             }
         }
 

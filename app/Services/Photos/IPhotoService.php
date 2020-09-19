@@ -4,5 +4,5 @@ namespace App\Services\Photos;
 
 interface IPhotoService
 {
-    public function all() : array;
+    public function all() : ?array;
 }
