@@ -29,9 +29,9 @@ class PhotoController extends Controller
     public function show(string $identifier)
     {
         $viewModel                    = new ShowViewModel();
-        $viewModel->pageTitle         = null;
+        $viewModel->pageTitle         = "Photos | {$identifier}";
         $viewModel->photo             = null;
-        $viewModel->photoFriendlyName = null;
+        $viewModel->photoFriendlyName = $identifier;
 
         if (isset($this->photos) && \count($this->photos) > 0) {
             if (!\array_key_exists($identifier, $this->photos)) {
@@ -39,11 +39,7 @@ class PhotoController extends Controller
             }
 
             $filePath         = $this->photos[$identifier];
-            $friendlyFileName = $identifier;
-
-            $viewModel->photo             = $filePath;
-            $viewModel->photoFriendlyName = $friendlyFileName;
-            $viewModel->pageTitle         = "Photos | {$friendlyFileName}";
+            $viewModel->photo = $filePath;
         }
 
         return view('photos.show', ['viewModel' => $viewModel]);
