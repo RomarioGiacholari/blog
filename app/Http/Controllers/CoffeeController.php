@@ -50,9 +50,8 @@ class CoffeeController extends Controller
         $viewModel                  = new ConfirmViewModel();
         $viewModel->pageTitle       = 'Confirm Payment';
         $viewModel->stripePublicKey = config('services.stripe.key') ?? null;
-        $viewModel->sessionId       = null;
-        $viewModel->friendlyAmount  = null;
         $viewModel->sessionId       = $sessionId;
+        $viewModel->friendlyAmount  = null;
 
         $session = $this->paymentService->retrieveSession($sessionId);
 
