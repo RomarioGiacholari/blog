@@ -3,15 +3,15 @@
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('/resume', function () {
-    $pathToFile = "https://assets.giacholari.com/pdf/resume.pdf";
-    
+    $pathToFile = 'https://assets.giacholari.com/pdf/resume.pdf';
+
     return redirect($pathToFile);
 })->name('resume');
 
 Route::get('/app/status', function () {
     return [
         'status' => 'ok',
-        'code' => 200,
+        'code'   => 200,
     ];
 })->name('app.status');
 
