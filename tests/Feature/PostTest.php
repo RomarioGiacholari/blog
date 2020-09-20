@@ -35,7 +35,7 @@ class PostTest extends TestCase
         $response->assertRedirect($post->path());
     }
 
-    public function test_an_authenticated_user_can_delte_a_post()
+    public function test_an_authenticated_user_can_delete_a_post()
     {
         $email = config('app.admin_email');
         $user  = factory(User::class)->create(['email' => $email]);
@@ -78,7 +78,7 @@ class PostTest extends TestCase
         $response->assertRedirect(route('home.posts'));
     }
 
-    public function test_an_anuthenticated_user_cannot_create_a_post()
+    public function test_an_unauthenticated_user_cannot_create_a_post()
     {
         $user  = factory(User::class)->create();
 
@@ -96,7 +96,7 @@ class PostTest extends TestCase
         $response->assertRedirect(route('welcome'));
     }
 
-    public function test_the_body_and_title_attrubutes_are_required()
+    public function test_the_body_and_title_attributes_are_required()
     {
         $email = config('app.admin_email');
         $user  = factory(User::class)->create(['email' => $email]);

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -37,14 +37,13 @@ class User extends Authenticatable
         return $this->hasMany(Podcast::class);
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         $isAdmin = false;
+        $email   = config('app.admin_email');
 
-        $adminEmail = config('app.admin_email');
-
-        if ($adminEmail != null) {
-            $isAdmin = ($this->email === $adminEmail);
+        if (isset($email)) {
+            $isAdmin = ($this->email === $email);
         }
 
         return $isAdmin;
