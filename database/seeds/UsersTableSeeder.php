@@ -1,8 +1,8 @@
 <?php
 
-use App\User;
-use App\Post;
 use App\Podcast;
+use App\Post;
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -10,15 +10,15 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::transaction (function () {
-            $user = new User;
+        DB::transaction(function () {
+            $user = new User();
             $user->name = 'giacholari';
             $user->email = 'giacholari@gmail.com';
             $user->password = bcrypt('password');
-            
+
             $user->save();
 
-            $podcast = new Podcast;
+            $podcast = new Podcast();
             $podcast->title = 'Romario Giacholari';
             $podcast->description = 'Podcast of Romario Giacholari';
 
