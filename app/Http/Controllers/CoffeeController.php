@@ -31,10 +31,8 @@ class CoffeeController extends Controller
         $this->validate($request, ['amount' => 'required|numeric|min:1']);
 
         $requestAmount = (float) $request->amount;
-
         $stripeAmount  = ($requestAmount * 100);
-
-        $session = $this->paymentService->startSession($stripeAmount);
+        $session       = $this->paymentService->startSession($stripeAmount);
 
         if (null !== $session && isset($session->id)) {
             $sessionId = $session->id;

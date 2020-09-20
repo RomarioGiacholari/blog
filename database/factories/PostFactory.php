@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(App\Post::class, function (Faker $faker) {
-    $title = $faker->title;
+    $title = $faker->word;
     $body =  $faker->paragraph;
 
     return [
