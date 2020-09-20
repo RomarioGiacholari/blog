@@ -26,7 +26,7 @@ class PostController extends Controller
         $viewModel->posts     = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
             $paginator = Post::with('creator')->latest()->paginate(15);
 
-            if (isset($paginator) && $paginator->items() && \count($paginator->items()) > 0) {
+            if ($paginator && !$paginator->isEmpty()) {
                 return $paginator;
             }
 
