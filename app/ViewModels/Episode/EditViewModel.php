@@ -7,5 +7,5 @@ use App\ViewModels\BaseViewModel;
 
 class EditViewModel extends BaseViewModel
 {
-    public ?Episode $post;
+    public ?Episode $episode;
 }

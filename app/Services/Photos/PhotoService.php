@@ -2,6 +2,8 @@
 
 namespace App\Services\Photos;
 
+use Illuminate\Support\Facades\Log;
+
 class PhotoService implements IPhotoService
 {
     private string $endpoint;
@@ -11,15 +13,19 @@ class PhotoService implements IPhotoService
         $this->endpoint = $endpoint;
     }
 
-    public function all() : ?array
+    public function all(): ?array
     {
         $photos = null;
 
         if (isset($this->endpoint)) {
-            $files = file_get_contents($this->endpoint);
+            try {
+                $files = file_get_contents($this->endpoint);
 
-            if ($files != null) {
-                $photos = json_decode($files, true);
+                if (null != $files) {
+                    $photos = json_decode($files, true);
+                }
+            } catch (\Exception $exception) {
+                abort(500, $exception->getMessage());
             }
         }
 

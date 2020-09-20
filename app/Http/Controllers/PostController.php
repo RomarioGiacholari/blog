@@ -26,7 +26,7 @@ class PostController extends Controller
         $viewModel->posts     = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
             $paginator = Post::with('creator')->latest()->paginate(15);
 
-            if (isset($paginator) && $paginator->items() && \count($paginator->items()) > 0) {
+            if ($paginator && !$paginator->isEmpty()) {
                 return $paginator;
             }
 
@@ -68,7 +68,7 @@ class PostController extends Controller
         $viewModel->author    = null;
         $viewModel->pageTitle = null;
 
-        if ($post && isset($post->title, $post->creator, $post->creator->name)) {
+        if (isset($post->title, $post->creator, $post->creator->name)) {
             $viewModel->post      = $post;
             $viewModel->pageTitle = $post->title;
             $viewModel->author    = $post->creator->name;
@@ -83,7 +83,7 @@ class PostController extends Controller
         $viewModel->post      = null;
         $viewModel->pageTitle = null;
 
-        if ($post && isset($post->title)) {
+        if (isset($post->title)) {
             $viewModel->post      = $post;
             $viewModel->pageTitle = $post->title;
         }

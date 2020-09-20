@@ -26,10 +26,10 @@ class EpisodeController extends Controller
 
         $podcast = Podcast::query()->first();
 
-        if ($podcast) {
+        if ($podcast && isset($posdcast->episodes)) {
             $episodeList = $podcast->episodes()->paginate(24);
 
-            if ($episodeList && \count($episodeList) > 0) {
+            if ($episodeList && !$episodeList->isEmpty()) {
                 $viewModel->episodes = $episodeList;
             }
         }
@@ -41,11 +41,10 @@ class EpisodeController extends Controller
     {
         $viewModel            = new ShowViewModel();
         $viewModel->pageTitle = null;
-        $viewModel->episode   = null;
+        $viewModel->episode   = $episode;
 
-        if ($episode && isset($episode->title)) {
+        if (isset($episode->title)) {
             $viewModel->pageTitle = "Podcast | Episodes | {$episode->title}";
-            $viewModel->episode   = $episode;
         }
 
         return view('episodes.show', ['viewModel' => $viewModel]);
@@ -71,12 +70,15 @@ class EpisodeController extends Controller
         ];
 
         $user    = auth()->user();
-        $podcast = $user->podcasts()->first() ?? null;
 
-        if (null !== $podcast) {
-            $episode = $podcast->episodes()->create($attributes);
+        if ($user && isset($user->podcasts)) {
+            $podcast = $user->podcasts()->first() ?? null;
 
-            return redirect(route('episodes.show', ['episode' => $episode]));
+            if (null !== $podcast) {
+                $episode = $podcast->episodes()->create($attributes);
+
+                return redirect(route('episodes.show', ['episode' => $episode]));
+            }
         }
 
         return back();
@@ -88,7 +90,7 @@ class EpisodeController extends Controller
         $viewModel->episode   = null;
         $viewModel->pageTitle = null;
 
-        if ($episode && isset($episode->title)) {
+        if (isset($episode->title)) {
             $viewModel->episode   = $episode;
             $viewModel->pageTitle = $episode->title;
         }
