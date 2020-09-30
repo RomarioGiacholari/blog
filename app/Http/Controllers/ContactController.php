@@ -26,10 +26,10 @@ class ContactController extends Controller
         $this->validateEmail($request);
 
         $sendToEmail = config('app.admin_email');
-        $subject     = $request->subject;
-        $messageData = $request->message;
-        $emailFrom   = $request->email;
-        $name        = $request->name;
+        $subject     = $request->input('subject');
+        $messageData = $request->input('message');
+        $emailFrom   = $request->input('email');
+        $name        = $request->input('name');
 
         try {
             Mail::to($sendToEmail)

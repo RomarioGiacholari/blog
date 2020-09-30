@@ -40,8 +40,8 @@ class EpisodeController extends Controller
     public function show(Episode $episode)
     {
         $viewModel            = new ShowViewModel();
-        $viewModel->pageTitle = null;
         $viewModel->episode   = $episode;
+        $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {
             $viewModel->pageTitle = "Podcast | Episodes | {$episode->title}";
@@ -63,10 +63,10 @@ class EpisodeController extends Controller
         $this->validateEpisode($request);
 
         $attributes = [
-            'title'       => $request->title,
-            'description' => $request->description,
-            'slug'        => $request->title,
-            'audioBase64' => static::convertToBase64($request->audioBase64),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug'        => $request->input('title'),
+            'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
         $user    = auth()->user();
@@ -87,11 +87,10 @@ class EpisodeController extends Controller
     public function edit(Episode $episode)
     {
         $viewModel            = new EditViewModel();
-        $viewModel->episode   = null;
+        $viewModel->episode   = $episode;
         $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {
-            $viewModel->episode   = $episode;
             $viewModel->pageTitle = $episode->title;
         }
 
@@ -103,10 +102,10 @@ class EpisodeController extends Controller
         $this->validateEpisode($request, $episode->id);
 
         $attributes = [
-            'title'       => $request->title,
-            'description' => $request->description,
-            'slug'        => $request->title,
-            'audioBase64' => static::convertToBase64($request->audioBase64),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug'        => $request->input('title'),
+            'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
         $episode->fill($attributes);
