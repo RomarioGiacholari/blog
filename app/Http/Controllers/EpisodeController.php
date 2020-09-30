@@ -63,10 +63,10 @@ class EpisodeController extends Controller
         $this->validateEpisode($request);
 
         $attributes = [
-            'title'       => $request->title,
-            'description' => $request->description,
-            'slug'        => $request->title,
-            'audioBase64' => static::convertToBase64($request->audioBase64),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug'        => $request->input('title'),
+            'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
         $user    = auth()->user();
@@ -103,10 +103,10 @@ class EpisodeController extends Controller
         $this->validateEpisode($request, $episode->id);
 
         $attributes = [
-            'title'       => $request->title,
-            'description' => $request->description,
-            'slug'        => $request->title,
-            'audioBase64' => static::convertToBase64($request->audioBase64),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug'        => $request->input('title'),
+            'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
         $episode->fill($attributes);

@@ -49,10 +49,10 @@ class PostController extends Controller
         $this->validatePost($request);
 
         $attributes = [
-            'title'   => $request->title,
-            'body'    => $request->body,
-            'slug'    => $request->title,
-            'excerpt' => $request->body,
+            'title'   => $request->input('title'),
+            'body'    => $request->input('body'),
+            'slug'    => $request->input('title'),
+            'excerpt' => $request->input('body'),
         ];
 
         $user = auth()->user();
@@ -96,10 +96,10 @@ class PostController extends Controller
         $this->validatePost($request, $post->id);
 
         $attributes = [
-            'title'   => $request->title,
-            'body'    => $request->body,
-            'slug'    => $request->title,
-            'excerpt' => $request->body,
+            'title'   => $request->input('title'),
+            'body'    => $request->input('body'),
+            'slug'    => $request->input('title'),
+            'excerpt' => $request->input('body'),
         ];
 
         $post->fill($attributes);
