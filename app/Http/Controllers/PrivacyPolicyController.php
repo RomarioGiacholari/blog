@@ -21,7 +21,9 @@ class PrivacyPolicyController extends Controller
         $appName      = config('app.name') ?? 'giacholari.com';
         $contactEmail = config('app.admin_email') ?? 'giacholari@gmail.com';
         $privacyJson  = Cache::rememberForever('privacyFile', function () {
-            return file_get_contents('https://assets.giacholari.com/json/privacy.json');
+            $privacyEndpoint = config('services.privacy.endpoint');
+
+            return file_get_contents($privacyEndpoint);
         });
 
         $viewModel               = new ContentViewModel();

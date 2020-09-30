@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -20,7 +19,7 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
@@ -30,16 +29,24 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+        'model'       => App\User::class,
+        'key'         => env('STRIPE_KEY'),
+        'secret'      => env('STRIPE_SECRET'),
         'success_url' => env('STRIPE_SUCCESS_URL', 'https://giacholari.com/coffee/success'),
-        'cancel_url' => env('STRIPE_CANCEL_URL', 'https://giacholari.com/coffee/cancel')
+        'cancel_url'  => env('STRIPE_CANCEL_URL', 'https://giacholari.com/coffee/cancel'),
     ],
 
     'photos' => [
         'gallery' => [
             'endpoint' => 'https://assets.giacholari.com/json/images-meta-data.json',
         ],
+    ],
+
+    'resume' => [
+        'endpoint' => 'https://assets.giacholari.com/pdf/resume.pdf',
+    ],
+
+    'privacy' => [
+        'endpoint' => 'https://assets.giacholari.com/json/privacy.json',
     ],
 ];
