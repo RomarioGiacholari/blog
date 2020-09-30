@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('/resume', function () {
-    $pathToFile = 'https://assets.giacholari.com/pdf/resume.pdf';
+    $resumeEndpoint = config('services.resume.endpoint');
 
-    return redirect($pathToFile);
+    return redirect($resumeEndpoint);
 })->name('resume');
 
 Route::get('/app/status', function () {
