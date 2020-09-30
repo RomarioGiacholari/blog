@@ -40,8 +40,8 @@ class EpisodeController extends Controller
     public function show(Episode $episode)
     {
         $viewModel            = new ShowViewModel();
-        $viewModel->pageTitle = null;
         $viewModel->episode   = $episode;
+        $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {
             $viewModel->pageTitle = "Podcast | Episodes | {$episode->title}";
@@ -87,11 +87,10 @@ class EpisodeController extends Controller
     public function edit(Episode $episode)
     {
         $viewModel            = new EditViewModel();
-        $viewModel->episode   = null;
+        $viewModel->episode   = $episode;
         $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {
-            $viewModel->episode   = $episode;
             $viewModel->pageTitle = $episode->title;
         }
 
