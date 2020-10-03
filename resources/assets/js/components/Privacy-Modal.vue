@@ -13,7 +13,7 @@
             type="button"
             class="btn btn-primary btn-block"
             data-dismiss="modal"
-          >Ok</button>
+          >OK</button>
         </div>
       </div>
     </div>
