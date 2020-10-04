@@ -30,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
         if (!app()->isLocal()) {
             $this->app->register(RollbarServiceProvider::class);
         }
+
+        if ($this->app->isLocal()) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 }
