@@ -1,16 +1,25 @@
 <?php
 
-use Faker\Generator as Faker;
+namespace Database\Factories;
+
+use App\Post;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-$factory->define(App\Post::class, function (Faker $faker) {
-    $title = $faker->word;
-    $body =  $faker->paragraph;
+class PostFactory extends Factory
+{
+    protected $model = Post::class;
 
-    return [
-        'title'   => $title,
-        'body'    => $body,
-        'excerpt' => strip_tags(Str::limit($body, 50, ' ...')),
-        'slug'    => Str::slug($title, '-'),
-    ];
-});
+    public function definition()
+    {
+        $title = $this->faker->word;
+        $body  =  $this->faker->paragraph;
+
+        return [
+            'title'   => $title,
+            'body'    => $body,
+            'excerpt' => strip_tags(Str::limit($body, 50, ' ...')),
+            'slug'    => Str::slug($title, '-'),
+        ];
+    }
+}
