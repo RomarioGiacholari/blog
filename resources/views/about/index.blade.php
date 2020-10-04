@@ -19,7 +19,7 @@
                 My passion is web development and I really enjoy solving programming tasks.
                 Apart from that, I am also a big fan of football - I dare you challenge me on a 5-aside game :)
                 I come from Albania. However I grew up in Kardamyli, a small village which is located south of Greece.
-                I am officially now a graduate from Aston University - BSc Computing with business.
+                I am officially now a graduate from Aston University - BSc Computing for Business.
                 If you are interested in working together or just because you want to get in touch, do not hesitate to <a href="{{ route('contact.create') }}">contact me</a>.
             </blockquote>
         </div>
