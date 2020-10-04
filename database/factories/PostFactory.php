@@ -11,6 +11,6 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'title'   => $title,
         'body'    => $body,
         'excerpt' => strip_tags(Str::limit($body, 50, ' ...')),
-        'slug'    => str_slug($title, '-'),
+        'slug'    => Str::slug($title, '-'),
     ];
 });

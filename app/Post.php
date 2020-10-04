@@ -23,7 +23,7 @@ class Post extends Model
 
     public function setSlugAttribute(string $title): void
     {
-        $this->attributes['slug'] = str_slug($title, '-');
+        $this->attributes['slug'] = Str::slug($title, '-');
     }
 
     public function setExcerptAttribute(string $excerpt): void
