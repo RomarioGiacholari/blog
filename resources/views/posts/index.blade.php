@@ -19,7 +19,7 @@
         </div>
         @endforeach
     </div>
-    <div>
+    <div class="text-center" style="padding:15px;">
         {{ $viewModel->posts->links() }}
     </div>
 </div>
