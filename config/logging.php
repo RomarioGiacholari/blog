@@ -1,6 +1,8 @@
 <?php
 
+use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
+use Rollbar\Laravel\MonologHandler;
 
 return [
     /*
@@ -33,8 +35,9 @@ return [
 
     'channels' => [
         'stack' => [
-            'driver'   => 'stack',
-            'channels' => ['single'],
+            'driver'            => 'stack',
+            'channels'          => ['single', 'rollbar'],
+            'ignore_exceptions' => false,
         ],
 
         'single' => [
@@ -74,6 +77,18 @@ return [
         'errorlog' => [
             'driver' => 'errorlog',
             'level'  => 'debug',
+        ],
+
+        'null' => [
+            'driver'  => 'monolog',
+            'handler' => NullHandler::class,
+        ],
+
+        'rollbar' => [
+            'driver'       => 'monolog',
+            'handler'      => MonologHandler::class,
+            'access_token' => env('ROLLBAR_TOKEN'),
+            'level'        => 'debug',
         ],
     ],
 ];

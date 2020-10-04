@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use \Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Rollbar\Laravel\RollbarServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,9 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!app()->isLocal()) {
-            URL::forceScheme('https');
-        }
     }
 
     /**
@@ -27,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if (!app()->isLocal()) {
-            $this->app->register(\Rollbar\Laravel\RollbarServiceProvider::class);
+            $this->app->register(RollbarServiceProvider::class);
         }
     }
 }
