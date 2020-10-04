@@ -42,11 +42,6 @@ class Post extends Model
         );
     }
 
-    public function getBodyAttribute(string $body)
-    {
-        return \Purify::clean($body);
-    }
-
     public function getRouteKeyName(): string
     {
         return 'slug';
