@@ -23,7 +23,7 @@ class PostController extends Controller
 
         $viewModel            = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts     = Cache::remember("posts.page.{$page}", $minutes = 60 * 24, function () {
+        $viewModel->posts     = Cache::remember("posts.page.{$page}", $seconds = 60 * 60 * 24, function () {
             $paginator = Post::with('creator')->latest()->paginate(15);
 
             if ($paginator && !$paginator->isEmpty()) {

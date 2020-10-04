@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Episode extends Model
 {
@@ -15,7 +16,7 @@ class Episode extends Model
 
     public function setSlugAttribute($title)
     {
-        $this->attributes['slug'] = str_slug($title, '-');
+        $this->attributes['slug'] = Str::slug($title, '-');
     }
 
     public function getRouteKeyName()

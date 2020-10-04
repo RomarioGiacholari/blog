@@ -11,7 +11,7 @@ class PhotosTest extends TestCase
 {
     private array $photos = [];
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

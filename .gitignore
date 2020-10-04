@@ -16,3 +16,4 @@ yarn-error.log
 /storage/purify
 /.vscode
 .php_cs.cache
+.phpunit.result.cache
