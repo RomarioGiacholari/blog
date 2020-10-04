@@ -17,7 +17,7 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_create_a_post()
     {
         $email = config('app.admin_email');
-        $user  = factory(User::class)->create(['email' => $email]);
+        $user  = User::factory()->create(['email' => $email]);
 
         $this->actingAs($user);
 
@@ -38,11 +38,11 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_delete_a_post()
     {
         $email = config('app.admin_email');
-        $user  = factory(User::class)->create(['email' => $email]);
+        $user  = User::factory()->create(['email' => $email]);
 
         $this->actingAs($user);
 
-        $data = $data = factory(Post::class)->make();
+        $data = $data = Post::factory()->make();
 
         $post = $user->posts()->save($data);
 
@@ -57,11 +57,11 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_update_a_post()
     {
         $email = config('app.admin_email');
-        $user  = factory(User::class)->create(['email' => $email]);
+        $user  = User::factory()->create(['email' => $email]);
 
         $this->actingAs($user);
 
-        $data = factory(Post::class)->make();
+        $data = Post::factory()->make();
 
         $updateData = [
             'title' => 'changed title',
@@ -80,7 +80,7 @@ class PostTest extends TestCase
 
     public function test_an_unauthenticated_user_cannot_create_a_post()
     {
-        $user  = factory(User::class)->create();
+        $user  = User::factory()->create();
 
         $this->actingAs($user);
 
@@ -99,7 +99,7 @@ class PostTest extends TestCase
     public function test_the_body_and_title_attributes_are_required()
     {
         $email = config('app.admin_email');
-        $user  = factory(User::class)->create(['email' => $email]);
+        $user  = User::factory()->create(['email' => $email]);
 
         $this->actingAs($user);
 

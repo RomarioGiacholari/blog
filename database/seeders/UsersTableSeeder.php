@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Podcast;
 use App\Post;
 use App\User;
@@ -22,7 +24,7 @@ class UsersTableSeeder extends Seeder
             $podcast->title = 'Romario Giacholari';
             $podcast->description = 'Podcast of Romario Giacholari';
 
-            $posts = factory(Post::class, 30)->make();
+            $posts = Post::factory()->count(30)->make();
 
             $user->podcasts()->save($podcast);
 

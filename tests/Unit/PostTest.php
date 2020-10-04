@@ -16,8 +16,8 @@ class PostTest extends TestCase
 
     public function test_a_user_has_many_posts()
     {
-        $user          = factory(User::class)->create();
-        $inMemoryPosts = factory(Post::class, 2)->make();
+        $user          = User::factory()->create();
+        $inMemoryPosts = Post::factory()->count(2)->make();
 
         $posts = $user->posts()->saveMany($inMemoryPosts);
 
@@ -27,8 +27,8 @@ class PostTest extends TestCase
 
     public function test_a_post_belongs_to_a_user()
     {
-        $user          = factory(User::class)->create();
-        $inMemoryPost  = factory(Post::class)->make();
+        $user          = User::factory()->create();
+        $inMemoryPost  = Post::factory()->make();
 
         $post = $user->posts()->save($inMemoryPost);
 
