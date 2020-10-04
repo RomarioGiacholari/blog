@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Post;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 /**
@@ -12,7 +12,7 @@ use Tests\TestCase;
  */
 class PostTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     public function test_an_authenticated_user_can_create_a_post()
     {
