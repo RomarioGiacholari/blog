@@ -5,7 +5,7 @@
     <meta property="og:title" content="{{ $viewModel->post->title }}">
     <meta property="og:description" content=" {{ $viewModel->post->excerpt }} ">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:url" content="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}">
 @endsection
 @section('title', $viewModel->pageTitle)
 @section('content')
@@ -23,6 +23,7 @@
                     <script type="IN/Share" data-url="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}" defer></script>
                 </div>
                 <hr>
+
                 {!! $viewModel->post->body !!}
             @else
                 <p>The post does not exist or it has been removed</p>
