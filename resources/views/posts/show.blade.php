@@ -12,7 +12,7 @@
                 </div>
                 <div>
                     <script src="https://platform.linkedin.com/in.js" type="text/javascript" defer>lang: en_US</script>
-                    <script type="IN/Share" data-url="https://www.linkedin.com" defer></script>
+                    <script type="IN/Share" data-url="{{ url()->current() }}" defer></script>
                 </div>
                 <hr>
                 {!! $viewModel->post->body !!}
