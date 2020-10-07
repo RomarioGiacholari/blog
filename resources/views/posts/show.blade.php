@@ -12,7 +12,7 @@
                 </div>
                 <div>
                     <script src="https://platform.linkedin.com/in.js" type="text/javascript" defer>lang: en_US</script>
-                    <script type="IN/Share" data-url="{{ url()->current() }}" defer></script>
+                    <script type="IN/Share" data-url="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}" defer></script>
                 </div>
                 <hr>
                 {!! $viewModel->post->body !!}
