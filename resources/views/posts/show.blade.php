@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('meta-tags')
+    <meta name="description" content="{{ $viewModel->post->excerpt }}">
+    <meta name="keywords" content="{{ sprintf('HTML,CSS,JavaScript,PHP,Laravel,Vue.js,Romario Giacholari,%s', $viewModel->post->title) }}">
+    <meta property="og:title" content="{{ $viewModel->post->title }}">
+    <meta property="og:description" content=" {{ $viewModel->post->excerpt }} ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+@endsection
 @section('title', $viewModel->pageTitle)
 @section('content')
 <div class="container">
