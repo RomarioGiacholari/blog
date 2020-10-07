@@ -7,9 +7,6 @@
             @if($viewModel != null && $viewModel->post !== null && $viewModel->author !== null)
                 <h1>{{ $viewModel->post->title }}</h1>
                 <div>{{ $viewModel->post->created_at->diffForHumans() }} by {{ $viewModel->author }}</div>
-                <hr>
-                {!! $viewModel->post->body !!}
-            
                 <div style="margin-top:10px;">
                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
                 </div>
@@ -17,6 +14,8 @@
                     <script src="https://platform.linkedin.com/in.js" type="text/javascript" defer>lang: en_US</script>
                     <script type="IN/Share" data-url="https://www.linkedin.com" defer></script>
                 </div>
+                <hr>
+                {!! $viewModel->post->body !!}
             @else
                 <p>The post does not exist or it has been removed</p>
             @endif
