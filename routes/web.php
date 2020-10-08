@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('/resume', function () {
-    $resumeEndpoint = config('services.resume.endpoint');
+Route::get('/cv', function () {
+    $cvEndpoint = config('services.cv.endpoint');
 
-    return redirect($resumeEndpoint);
-})->name('resume');
+    return redirect($cvEndpoint);
+})->name('cv');
 
 Route::get('/app/status', function () {
     return [

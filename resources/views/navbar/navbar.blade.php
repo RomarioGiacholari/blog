@@ -12,7 +12,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ route('posts.index') }}" class="{{ Request::is('posts*') ? 'active' : '' }}">blog</a></li>
         <li><a href="{{ route('photos') }}" class="{{ Request::is('all-photos*') ? 'active' : '' }}">photos</a></li>
-        <li><a href="{{ route('resume') }}" class="{{ Request::is('resume') ? 'active' : '' }}">resume</a></li>
+        <li><a href="{{ route('cv') }}" class="{{ Request::is('cv') ? 'active' : '' }}">cv</a></li>
         <li><a href="{{ route('coffee.index') }}" class="{{ Request::is('coffee*') ? 'active' : '' }}">coffee</a></li>
         <li><a href="{{ route('about.index') }}" class="{{ Request::is('about*') ? 'active' : '' }}">about</a></li>
         <li><a href="{{ route('contact.create') }}" class="{{ Request::is('contact*') ? 'active' : '' }}">contact</a></li>
