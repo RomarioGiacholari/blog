@@ -12,6 +12,7 @@
                 My name is Romario. I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
+            <hr />
 
             <h4 class="text-center"><b>Below is a list of all the places I have worked.</b></h4>
             <div class="font-size-16">
@@ -20,6 +21,7 @@
                 <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
                 <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017
             </div>
+            <hr />
 
             <h4 class="text-center"><b>Next, are the skills and tools I use to develop web applications.</b></h4>
             <p class="font-size-16">
@@ -38,6 +40,7 @@
                 <span class="label label-info">Stripe</span> <span class="label label-info">Rollbar</span>
                 <span class="label label-info">New Relic</span> <span class="label label-info">Papertrail</span>
             </p>
+            <hr />
 
             <h4 class="text-center"><b>Finally, this is my portfolio.</b></h4>
             <section>
