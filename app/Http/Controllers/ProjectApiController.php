@@ -8,7 +8,7 @@ class ProjectApiController extends Controller
 {
     public function index()
     {
-        $projects = Cache::rememberForever('projects', function () {
+        $projects = Cache::remember('projects', $seconds = 60 * 60 * 24, function () {
             return [
                 ['id' => 1, 'name' => 'Discusslab', 'link' => 'https://github.com/RomarioGiacholari/forum', 'image' => 'https://assets.giacholari.com/images/projects/discusslab.png'],
                 ['id' => 2, 'name' => 'Astonroom', 'link' => 'https://github.com/RomarioGiacholari/astoonroom', 'image' => 'https://assets.giacholari.com/images/projects/astonroom.png'],
