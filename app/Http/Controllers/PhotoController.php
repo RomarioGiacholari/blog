@@ -15,7 +15,7 @@ class PhotoController extends Controller
 
     public function __construct(IPhotoService $service)
     {
-        $this->photos = Cache::rememberForever('photos', fn () => $service->all());
+        $this->photos = Cache::remember('photos', $seconds = 60 * 60 * 24, fn () => $service->all());
     }
 
     public function index()
