@@ -42,7 +42,7 @@ return [
         ],
     ],
 
-    'resume' => [
+    'cv' => [
         'endpoint' => 'https://assets.giacholari.com/pdf/resume.pdf',
     ],
 
