@@ -24,7 +24,7 @@
     <script defer>window.app = { cookieDomain: "{{ config('app.cookie_domain') }}" };</script>
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="margin-bottom: 10px;">
         @include('components._social')
         @include('navbar.navbar')
         @yield('content')
