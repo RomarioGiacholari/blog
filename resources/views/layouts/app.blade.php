@@ -8,6 +8,8 @@
     <meta name="author" content="Romario Giacholari">
     <meta name="description" content="Personal website of Romario Giacholari. Web Developer and Student in Birmingham, UK.">
     <meta name="keywords" content="HTML,CSS,JavaScript,PHP,Laravel,Vue.js,Romario Giacholari">
+
+    <!-- Open Graph Meta Tags -->
     @yield('meta-tags', View::make('components._meta-tags'))
 
     <!-- CSRF Token -->
