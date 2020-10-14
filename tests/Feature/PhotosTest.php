@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Services\Photos\IPhotoService;
 use Tests\TestCase;
 
 /**
@@ -9,34 +10,23 @@ use Tests\TestCase;
  */
 class PhotosTest extends TestCase
 {
-    private array $photos = [];
+    private IPhotoService $photoService;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->photos = $this->fetchPhotos();
+        $this->photoService = resolve(IPhotoService::class);
     }
 
     public function test_it_renders_the_photos_on_the_page()
     {
         $endpoint = route('photos.partial');
         $response = $this->get($endpoint);
+        $photos   = $photos   = $this->photoService->all() ?? [];
 
-        foreach ($this->photos as $key => $value) {
+        foreach ($photos as $key => $value) {
             $response->assertSee($key);
         }
-    }
-
-    private function fetchPhotos(): array
-    {
-        $files  = $this->get(route('api.photos.index'))->json();
-        $photos = [];
-
-        if (null != $files && \count($files) > 0) {
-            $photos = array_filter($files, fn ($file) => strpos($file, 'jpg'));
-        }
-
-        return $photos;
     }
 }
