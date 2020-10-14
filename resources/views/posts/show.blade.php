@@ -24,7 +24,7 @@
                 </div>
                 <hr>
 
-                {!! $viewModel->post->body !!}
+                <div class="post-show-body">{!! $viewModel->post->body !!}</div>
             @else
                 <p>The post does not exist or it has been removed</p>
             @endif

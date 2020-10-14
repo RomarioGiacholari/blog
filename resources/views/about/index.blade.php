@@ -14,7 +14,7 @@
             <img class="img-responsive" id="thumbnail" src="https://assets.giacholari.com/images/gallery/me-driving-certificate.jpg" height="450" width="350" title="Romario Giacholari" alt="Romario Giacholari" />
         </div>
         <div class="col-md-8" style="margin-top:23px">
-            <p>
+            <p class="post-show-body">
                 Thank you for visiting the site. My name is Romario and I am a web developer based in Brighton, UK.
                 My passion is web development and I really enjoy solving programming tasks.
                 Apart from that, I am also a big fan of football - I dare you challenge me on a 5-aside game :)
