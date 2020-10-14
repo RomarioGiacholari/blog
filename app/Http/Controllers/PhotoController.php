@@ -8,6 +8,8 @@ use App\ViewModels\Photo\PhotoListViewModel;
 use App\ViewModels\Photo\ShowViewModel;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function array_key_exists;
+use function count;
 
 class PhotoController extends Controller
 {
@@ -33,8 +35,8 @@ class PhotoController extends Controller
         $viewModel->photo             = null;
         $viewModel->photoFriendlyName = $identifier;
 
-        if (isset($this->photos) && \count($this->photos) > 0) {
-            if (!\array_key_exists($identifier, $this->photos)) {
+        if (isset($this->photos) && count($this->photos) > 0) {
+            if (!array_key_exists($identifier, $this->photos)) {
                 throw new NotFoundHttpException();
             }
 
@@ -50,7 +52,7 @@ class PhotoController extends Controller
         $viewModel         = new PhotoListViewModel();
         $viewModel->photos = null;
 
-        if (isset($this->photos) && \count($this->photos) > 0) {
+        if (isset($this->photos) && count($this->photos) > 0) {
             $viewModel->photos = $this->photos;
         }
 

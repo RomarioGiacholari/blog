@@ -7,15 +7,15 @@
             <img class="img-circle" src="https://assets.giacholari.com/images/gallery/me-traxila-greece.jpg" height="180" width="180"  alt="me-driving-licence.jpg">
         </div>
         <div class="col-md-12">
-            <h2 class="text-center">Romario Giacholari</h2>
-            <p>
+            <h3 class="text-center">Romario Giacholari</h3>
+            <p class="post-show-body">
                 My name is Romario. I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
             <hr />
 
-            <h5 class="text-center"><b>Below is a list of all the places I have worked.</b></h5>
-            <div>
+            <h3 class="text-center">Below is a list of all the places I have worked</h3>
+            <div class="post-show-body">
                 <a href="https://tillo.io/">Tillo</a> - Software Developer 2020 |
                 <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2020 |
                 <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
@@ -23,8 +23,8 @@
             </div>
             <hr />
 
-            <h5 class="text-center"><b>Next, are the skills and tools I use to develop web applications.</b></h5>
-            <p>
+            <h3 class="text-center">Next, are the skills and tools I use to develop web applications</h3>
+            <p class="post-show-body">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
                 <span class="label label-info">HTML</span> <span class="label label-info">CSS</span>
@@ -42,7 +42,7 @@
             </p>
             <hr />
 
-            <h5 class="text-center"><b>Finally, this is my portfolio.</b></h5>
+            <h3 class="text-center">Finally, this is my portfolio</h3>
             <section>
                 <project-list></project-list>
             </section>
