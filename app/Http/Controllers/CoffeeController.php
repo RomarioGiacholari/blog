@@ -8,6 +8,7 @@ use App\ViewModels\Coffee\ConfirmViewModel;
 use App\ViewModels\Coffee\IndexViewModel;
 use App\ViewModels\Coffee\SuccessViewModel;
 use Illuminate\Http\Request;
+use function count;
 
 class CoffeeController extends Controller
 {
@@ -53,7 +54,7 @@ class CoffeeController extends Controller
 
         $session = $this->paymentService->retrieveSession($sessionId);
 
-        if (null !== $session && isset($session->display_items) && \count($session->display_items) > 0) {
+        if (null !== $session && isset($session->display_items) && count($session->display_items) > 0) {
             $items = $session->display_items[0];
 
             if ($items && isset($items->amount) && $items->amount > 0) {
