@@ -3,18 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 text-center">
-            <img class="img-circle" src="https://assets.giacholari.com/images/gallery/me-traxila-greece.jpg" height="180" width="180"  alt="me-traxila-greece.jpg">
-        </div>
         <div class="col-md-12">
-            <h3 class="text-center">Romario Giacholari</h3>
+            <h3>Romario Giacholari</h3>
             <p class="font-size-16">
-                My name is Romario. I am a graduate student and web developer from Aston University.
+                Hi, I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
             <hr />
 
-            <h3 class="text-center">Below is a list of all the places I have worked</h3>
+            <h4>Employment</h4>
             <div class="font-size-16">
                 <a href="https://tillo.io/">Tillo</a> - Software Developer 2020 |
                 <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2020 |
@@ -23,7 +20,7 @@
             </div>
             <hr />
 
-            <h3 class="text-center">Next, are the skills and tools I use to develop web applications</h3>
+            <h4>Technologies</h4>
             <p class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
@@ -42,7 +39,7 @@
             </p>
             <hr />
 
-            <h3 class="text-center">Finally, this is my portfolio</h3>
+            <h4>Portfolio</h4>
             <section>
                 <project-list></project-list>
             </section>
