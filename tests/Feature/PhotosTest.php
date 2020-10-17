@@ -15,7 +15,7 @@ class PhotosTest extends TestCase
         parent::setUp();
 
         $data     = ['alps.jpg' => 'https://assets.giacholari.com/images/gallery/alps.jpg'];
-        $callback = fn ($mock) => $mock->shouldReceive()->all()->twice()->andReturn($data);
+        $callback = fn ($mock) => $mock->shouldReceive()->all()->andReturn($data);
 
         $this->mock(IPhotoService::class, $callback);
     }

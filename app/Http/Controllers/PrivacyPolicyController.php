@@ -18,17 +18,23 @@ class PrivacyPolicyController extends Controller
 
     public function content()
     {
-        $websiteName  = 'giacholari.com';
-        $contactEmail = config('app.admin_email') ?? 'giacholari@gmail.com';
-        $privacyJson  = Cache::remember('privacyFile', $seconds = 60 * 60 * 24, function () {
+        $websiteName     = 'giacholari.com';
+        $contactEmail    = config('app.admin_email') ?? 'giacholari@gmail.com';
+        $privacyContent  = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () {
+            $decodedContent  = null;
             $privacyEndpoint = config('services.privacy.endpoint');
+            $privacyJson     = file_get_contents($privacyEndpoint);
 
-            return file_get_contents($privacyEndpoint);
+            if ($privacyJson) {
+                $decodedContent = json_decode($privacyJson, true);
+            }
+
+            return $decodedContent;
         });
 
         $viewModel               = new ContentViewModel();
         $viewModel->introduction = "This privacy policy applies to the website {$websiteName}";
-        $viewModel->content      = json_decode($privacyJson, true);
+        $viewModel->content      = $privacyContent;
         $viewModel->contactEmail = $contactEmail;
 
         return view('privacy-policy.content', ['viewModel' => $viewModel]);
