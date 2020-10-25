@@ -46,7 +46,7 @@ class ContactController extends Controller
             'message'   => $message,
         ];
 
-        return response($data);
+        return response($data, 200);
     }
 
     private function validateEmail($request): void
