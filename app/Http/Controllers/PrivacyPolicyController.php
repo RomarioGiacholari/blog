@@ -28,7 +28,7 @@ class PrivacyPolicyController extends Controller
         });
 
         $viewModel               = new ContentViewModel();
-        $viewModel->introduction = "This privacy policy applies to the website {$websiteName}";
+        $viewModel->introduction = "This privacy policy applies to the website {$websiteName}.";
         $viewModel->content      = $privacyContent;
         $viewModel->contactEmail = $contactEmail;
 
