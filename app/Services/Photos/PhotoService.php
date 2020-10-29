@@ -2,7 +2,7 @@
 
 namespace App\Services\Photos;
 
-use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class PhotoService implements IPhotoService
 {
@@ -21,10 +21,10 @@ class PhotoService implements IPhotoService
             try {
                 $files = file_get_contents($this->endpoint);
 
-                if (null != $files) {
+                if ($files) {
                     $photos = json_decode($files, true);
                 }
-            } catch (\Exception $exception) {
+            } catch (Throwable $exception) {
                 abort(500, $exception->getMessage());
             }
         }

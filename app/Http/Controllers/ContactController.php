@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactMe;
 use App\ViewModels\Contact\IndexViewModel;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class ContactController extends Controller
 {
@@ -37,7 +37,7 @@ class ContactController extends Controller
 
             $isSuccess = true;
             $message   = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
-        } catch (Exception $ex) {
+        } catch (Throwable $ex) {
             $message = $ex->getMessage();
         }
 
@@ -46,7 +46,7 @@ class ContactController extends Controller
             'message'   => $message,
         ];
 
-        return response($data);
+        return response($data, 200);
     }
 
     private function validateEmail($request): void

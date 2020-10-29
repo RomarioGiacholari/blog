@@ -171,6 +171,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PaymentServiceProvider::class,
         App\Providers\PhotoServiceProvider::class,
+        App\Providers\PrivacyServiceProvider::class,
         Rollbar\Laravel\RollbarServiceProvider::class,
     ],
 

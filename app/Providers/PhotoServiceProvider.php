@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class PhotoServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->app->singleton(IPhotoService::class, function () {
             return new PhotoService(config('services.photos.gallery.endpoint'));
