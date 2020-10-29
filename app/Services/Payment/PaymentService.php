@@ -4,6 +4,7 @@ namespace App\Services\Payment;
 
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
+use Throwable;
 
 class PaymentService implements IPaymentService
 {
@@ -30,7 +31,7 @@ class PaymentService implements IPaymentService
                     'success_url' => config('services.stripe.success_url'),
                     'cancel_url'  => config('services.stripe.cancel_url'),
                 ]);
-            } catch (\Exception $exception) {
+            } catch (Throwable $exception) {
                 abort(500, $exception->getMessage());
             }
         }
@@ -45,7 +46,7 @@ class PaymentService implements IPaymentService
         if (null != $sessionId) {
             try {
                 $session = Session::retrieve($sessionId);
-            } catch (\Exception $exception) {
+            } catch (Throwable $exception) {
                 abort(500, $exception->getMessage());
             }
         }

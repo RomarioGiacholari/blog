@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Privacy\IPrivacyService;
 use App\ViewModels\Privacy\ContentViewModel;
 use App\ViewModels\Privacy\IndexViewModel;
 use Illuminate\Support\Facades\Cache;
@@ -16,20 +17,14 @@ class PrivacyPolicyController extends Controller
         return view('privacy-policy.index', ['viewModel' => $viewModel]);
     }
 
-    public function content()
+    public function content(IPrivacyService $privacyService)
     {
         $websiteName     = 'giacholari.com';
         $contactEmail    = config('app.admin_email') ?? 'giacholari@gmail.com';
-        $privacyContent  = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () {
-            $decodedContent  = null;
-            $privacyEndpoint = config('services.privacy.endpoint');
-            $privacyJson     = file_get_contents($privacyEndpoint);
+        $privacyContent  = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyService) {
+            $content  = $privacyService->get();
 
-            if ($privacyJson) {
-                $decodedContent = json_decode($privacyJson, true);
-            }
-
-            return $decodedContent;
+            return $content;
         });
 
         $viewModel               = new ContentViewModel();

@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class PaymentServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->app->singleton(IPaymentService::class, function () {
             return new PaymentService(config('services.stripe.secret'));
