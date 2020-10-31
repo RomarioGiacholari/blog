@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(function (html) {
             targetElement.innerHTML = html;
-
         })
         .catch(function (error) {
             console.log(error);

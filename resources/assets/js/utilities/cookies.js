@@ -1,7 +1,7 @@
 export default {
     getCookie: function getCookie(name) {
         var cookieList = document.cookie.split(";");
-        var cookie = null
+        var cookie = null;
 
         for (var i = 0; i < cookieList.length; i++) {
             var cookiePair = cookieList[i].split("=");
