@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Adapters\Post\PostRequestAdapter;
+use App\Services\Post\IPostService;
 use App\ViewModels\Post\CreateViewModel;
 use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
 use App\ViewModels\Post\ShowViewModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
-    public function __construct()
+    private IPostService $postService;
+
+    public function __construct(IPostService $service)
     {
+        $this->postService = $service;
         $this->middleware('admin')->except(['show', 'index']);
     }
 
@@ -21,16 +26,10 @@ class PostController extends Controller
     {
         $page = $request->query('page') ?? 1;
 
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts     = Cache::remember("posts.page.{$page}", $seconds = 60 * 60 * 24, function () {
-            $paginator = Post::with('creator')->latest()->paginate(15);
-
-            if ($paginator && !$paginator->isEmpty()) {
-                return $paginator;
-            }
-
-            return null;
+        $viewModel->posts = Cache::remember("posts.page.{$page}", $seconds = 60 * 60 * 24, function () {
+            return $this->postService->get(15);
         });
 
         return view('posts.index', ['viewModel' => $viewModel]);
@@ -38,7 +37,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $viewModel            = new CreateViewModel();
+        $viewModel = new CreateViewModel();
         $viewModel->pageTitle = 'New Post';
 
         return view('posts.create', ['viewModel' => $viewModel]);
@@ -48,73 +47,86 @@ class PostController extends Controller
     {
         $this->validatePost($request);
 
-        $attributes = [
-            'title'   => $request->input('title'),
-            'body'    => $request->input('body'),
-            'slug'    => $request->input('title'),
-            'excerpt' => $request->input('body'),
-        ];
+        $postEntity         = PostRequestAdapter::toPostEntity($request);
+        $postEntity->userId = Auth::id();
+        $postSlug           = $this->postService->store($postEntity);
 
-        $user = auth()->user();
-        $post = $user->posts()->create($attributes);
+        if ($postSlug !== null) {
+            $post = $this->postService->findBy($postSlug);
 
-        return redirect($post->path());
+            if ($post !== null) {
+                return redirect($post->path());
+            }
+        }
+
+        return back();
     }
 
-    public function show(Post $post)
+    public function show(string $slug)
     {
         $viewModel            = new ShowViewModel();
-        $viewModel->post      = $post;
+        $viewModel->post      = $this->postService->findBy($slug);
         $viewModel->author    = null;
         $viewModel->pageTitle = null;
 
-        if (isset($post->title, $post->creator, $post->creator->name)) {
-            $viewModel->pageTitle = $post->title;
-            $viewModel->author    = $post->creator->name;
+        if ($viewModel->post !== null) {
+            $viewModel->pageTitle = $viewModel->post->title;
+            $viewModel->author    = $viewModel->post->creator->name;
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
     }
 
-    public function edit(Post $post)
+    public function edit(string $slug)
     {
         $viewModel            = new EditViewModel();
-        $viewModel->post      = $post;
+        $viewModel->post      = $this->postService->findBy($slug);
         $viewModel->pageTitle = null;
 
-        if (isset($post->title)) {
-            $viewModel->pageTitle = $post->title;
+        if ($viewModel->post !== null) {
+            $viewModel->pageTitle = $viewModel->post->title;
         }
 
         return view('posts.edit', ['viewModel' => $viewModel]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(Request $request, string $slug)
     {
-        $this->validatePost($request, $post->id);
+        $this->validatePost($request, $slug);
 
-        $attributes = [
-            'title'   => $request->input('title'),
-            'body'    => $request->input('body'),
-            'slug'    => $request->input('title'),
-            'excerpt' => $request->input('body'),
-        ];
+        $postEntity = PostRequestAdapter::toPostEntity($request);
+        $isSuccess  = $this->postService->update($postEntity, $slug);
 
-        $post->fill($attributes);
-        $post->save();
+        if ($isSuccess) {
+            return redirect(route('home.posts'));
+        }
 
-        return redirect(route('home.posts'));
+        return back();
     }
 
-    public function destroy(Post $post)
+    public function destroy(string $slug)
     {
-        $post->delete();
+        $isSuccess = $this->postService->destroy($slug);
 
-        return redirect(route('home.posts'));
+        if ($isSuccess) {
+            return redirect(route('home.posts'));
+        }
+
+        return back();
     }
 
-    private function validatePost(Request $request, int $postId = 0)
+    private function validatePost(Request $request, string $slug = ''): void
     {
+        $postId = 0;
+
+        if ($slug !== '') {
+            $post = $this->postService->findBy($slug);
+
+            if ($post !== null) {
+                $postId = $post->id;
+            }
+        }
+
         $this->validate($request, [
             'title' => "required|max:25|unique:posts,title,{$postId}",
             'body'  => 'required|max:6000',

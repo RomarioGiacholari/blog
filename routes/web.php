@@ -33,7 +33,14 @@ Route::get('/all-photos', [\App\Http\Controllers\PhotoController::class, 'index'
 Route::get('/all-photos/partial', [\App\Http\Controllers\PhotoController::class, 'photos'])->name('photos.partial');
 Route::get('/all-photos/{identifier}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photos.show');
 
-Route::resource('posts', \App\Http\Controllers\PostController::class);
+Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
+Route::get('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
+Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{slug}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
+Route::patch('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
+
 
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
