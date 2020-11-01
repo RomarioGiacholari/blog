@@ -2,13 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasFactory;
+    use Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -41,10 +42,10 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         $isAdmin = false;
-        $email   = config('app.admin_email');
+        $email = config('app.admin_email');
 
-        if (isset($email)) {
-            $isAdmin = ($this->email === $email);
+        if ($email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $isAdmin = ($this->attributes['email'] === $email);
         }
 
         return $isAdmin;

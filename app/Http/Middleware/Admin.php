@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Admin
 {
@@ -16,8 +18,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->isAdmin()) {
-            return $next($request);
+        if ($userId = Auth::id()) {
+            $user = User::query()->where('id', '=', $userId)->first();
+
+            if ($user !== null && $user->isAdmin()) {
+                return $next($request);
+            }
         }
 
         return redirect(route('welcome'));
