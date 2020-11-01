@@ -23,12 +23,12 @@
                     <tbody>
                         @foreach($viewModel->posts as $post)
                         <tr>
-                            <td><a href="{{ route('posts.show' , ['post' => $post]) }}">{{ $post->title }}</a></td>
+                            <td><a href="{{ route('posts.show' , ['slug' => $post->slug]) }}">{{ $post->title }}</a></td>
                             <td> {{ $post->created_at->diffForHumans() }}</td>
                             <td> {{ $post->updated_at->diffForHumans() }} </td>
-                            <td><a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-xs btn-primary" role="button">edit</a></td>
+                            <td><a href="{{ route('posts.edit', ['slug' => $post->slug]) }}" class="btn btn-xs btn-primary" role="button">edit</a></td>
                             <td>
-                                <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                                <form action="{{ route('posts.destroy', ['slug' => $post->slug]) }}" method="POST">
 
                                     {{ method_field('DELETE') }}
 

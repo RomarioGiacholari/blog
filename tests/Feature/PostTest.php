@@ -46,7 +46,7 @@ class PostTest extends TestCase
 
         $post = $user->posts()->save($data);
 
-        $endpoint = route('posts.destroy', $post);
+        $endpoint = route('posts.destroy', $post->slug);
 
         $response = $this->delete($endpoint);
 
@@ -57,23 +57,17 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_update_a_post()
     {
         $email = config('app.admin_email');
-        $user  = User::factory()->create(['email' => $email]);
-
-        $this->actingAs($user);
-
-        $data = Post::factory()->make();
-
+        $user = User::factory()->create(['email' => $email]);
+        $post = Post::factory()->create(['user_id' => $user->id]);
+        $endpoint = route('posts.update', $post->slug);
         $updateData = [
             'title' => 'changed title',
             'body'  => 'changed body',
         ];
 
-        $post = $user->posts()->save($data);
-
-        $endpoint =  route('posts.update', $post);
+        $this->actingAs($user);
 
         $response = $this->patch($endpoint, $updateData);
-
         $response->assertStatus(302);
         $response->assertRedirect(route('home.posts'));
     }

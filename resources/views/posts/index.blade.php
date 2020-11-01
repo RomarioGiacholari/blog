@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="thumbnail">
                 <div class="caption">
-                    <a href="{{ route('posts.show',['post' => $post]) }}">{{ $post->title }} </a>
+                    <a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ $post->title }} </a>
                     <p class="post-body">{!! $post->excerpt !!}</p>
                 </div>
             </div>

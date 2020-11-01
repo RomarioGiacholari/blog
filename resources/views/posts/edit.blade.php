@@ -7,7 +7,7 @@
             @if($viewModel != null && $viewModel->post !== null)
             <h3>Update post</h3>
             <hr>
-            <form action="{{ route('posts.update', ['post' => $viewModel->post]) }}" method="POST">
+            <form action="{{ route('posts.update', ['slug' => $viewModel->post->slug]) }}" method="POST">
                 {{csrf_field()}}
                 {{method_field('PATCH')}}
 
