@@ -9,7 +9,6 @@ use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
 use App\ViewModels\Post\ShowViewModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
@@ -47,9 +46,8 @@ class PostController extends Controller
     {
         $this->validatePost($request);
 
-        $postEntity         = PostRequestAdapter::toPostEntity($request);
-        $postEntity->userId = Auth::id();
-        $postSlug           = $this->postService->store($postEntity);
+        $postEntity = PostRequestAdapter::toPostEntity($request);
+        $postSlug = $this->postService->store($postEntity);
 
         if ($postSlug !== null) {
             $post = $this->postService->findBy($postSlug);

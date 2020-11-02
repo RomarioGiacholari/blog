@@ -22,7 +22,7 @@ class PostRepository implements IPostRepository
         $postCollection = null;
 
         DB::transaction(function () use (&$postCollection, $perPage, $orderByColumn, $direction) {
-            $postData = $this->repository->query()->orderBy($orderByColumn, $direction)->paginate($perPage);
+            $postData = $this->repository::query()->orderBy($orderByColumn, $direction)->paginate($perPage);
 
             if (!$postData->isEmpty()) {
                 $postCollection = $postData;
@@ -60,8 +60,8 @@ class PostRepository implements IPostRepository
         $postData = null;
 
         DB::transaction(function () use (&$postData, $slug) {
-            if ($slug && trim($slug) !== '') {
-                $postData = $this->repository->query()->where('slug', '=', $slug)->first();
+            if (trim($slug) !== '') {
+                $postData = $this->repository::query()->where('slug', '=', $slug)->first();
             }
         });
 

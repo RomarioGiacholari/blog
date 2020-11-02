@@ -1,5 +1,7 @@
 @extends('layouts.app')
+@if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
+@endif
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,7 +18,7 @@
 
                 <div class="form-group {{ $errors->has('body') ? ' has-error' : '' }}">
                     <label for="title">Body</label>
-                    <trix name="body"></trix>
+                    <trix name="body" value="{{old('body')}}"></trix>
                 </div>
 
                 <div class='form-group'>

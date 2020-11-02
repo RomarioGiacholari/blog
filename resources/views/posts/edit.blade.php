@@ -1,5 +1,7 @@
 @extends('layouts.app')
+@if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
+@endif
 @section('content')
 <div class="container">
     <div class="row">
