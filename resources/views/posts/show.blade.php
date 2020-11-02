@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('meta-tags')
     <meta property="og:site_name" content="Romario Giacholari">
+    @if($viewModel->post !== null)
     <meta property="og:title" content="{{ $viewModel->post->title }}">
     <meta property="og:description" content=" {{ $viewModel->post->excerpt }} ">
+    @endif
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}">
     <meta property="og:image" content="https://assets.giacholari.com/images/gallery/me-traxila-greece.jpg">
 @endsection
+@if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
+@endif
 @section('content')
 <div class="container">
     <div class="row">

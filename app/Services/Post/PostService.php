@@ -36,7 +36,7 @@ class PostService implements IPostService
     {
         $post = null;
 
-        if ($slug && trim($slug) !== '') {
+        if (trim($slug) !== '') {
             $post = $this->repository->findBy($slug);
         }
 
@@ -58,7 +58,7 @@ class PostService implements IPostService
     {
         $isSuccess = false;
 
-        if ($slug && trim($slug) !== '') {
+        if (trim($slug) !== '') {
             $isSuccess  = $this->repository->destroy($slug);
         }
 
