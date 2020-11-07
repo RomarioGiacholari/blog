@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+/**
+ * Class Episode
+ * @package App
+ * @property int $id
+ * @property int $podcast_id
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ * @property string $audioBase64
+ */
 class Episode extends Model
 {
     protected $fillable = ['title', 'slug', 'description', 'audioBase64'];

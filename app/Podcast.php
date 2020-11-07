@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class Podcast
+ * @package App
+ * @property int $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $description
+ */
 class Podcast extends Model
 {
     protected $fillable = ['title', 'description'];
