@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+/**
+ * Class Post
+ * @package App
+ * @property int $id
+ * @property int $user_id
+ * @property string $title
+ * @property string $body
+ * @property string $slug
+ * @property string $excerpt
+ */
 class Post extends Model
 {
     use HasFactory;
