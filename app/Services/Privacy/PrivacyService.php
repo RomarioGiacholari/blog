@@ -2,7 +2,7 @@
 
 namespace App\Services\Privacy;
 
-use Throwable;
+use Exception;
 
 class PrivacyService implements IPrivacyService
 {
@@ -23,7 +23,7 @@ class PrivacyService implements IPrivacyService
             if ($privacyJson) {
                 $decodedPrivacy = json_decode($privacyJson, true);
             }
-        } catch (Throwable $exception) {
+        } catch (Exception $exception) {
             abort($exception->getMessage(), 500);
         }
 
