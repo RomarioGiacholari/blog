@@ -61,6 +61,7 @@ class PostRepository implements IPostRepository
 
         DB::transaction(function () use (&$postData, $slug) {
             if (trim($slug) !== '') {
+                /** @var Post $postData */
                 $postData = $this->repository::query()->where('slug', '=', $slug)->first();
             }
         });
