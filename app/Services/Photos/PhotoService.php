@@ -2,7 +2,7 @@
 
 namespace App\Services\Photos;
 
-use Throwable;
+use Exception;
 
 class PhotoService implements IPhotoService
 {
@@ -24,7 +24,7 @@ class PhotoService implements IPhotoService
                 if ($files) {
                     $photos = json_decode($files, true);
                 }
-            } catch (Throwable $exception) {
+            } catch (Exception $exception) {
                 abort(500, $exception->getMessage());
             }
         }

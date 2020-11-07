@@ -2,9 +2,9 @@
 
 namespace App\Services\Payment;
 
+use Exception;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
-use Throwable;
 
 class PaymentService implements IPaymentService
 {
@@ -23,7 +23,7 @@ class PaymentService implements IPaymentService
                     'payment_method_types' => ['card'],
                     'line_items'           => [[
                         'name'     => 'Cup of coffee',
-                        'images'   => ['https://images.pexels.com/photos/890515/pexels-photo-890515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'],
+                        'images'   => ['https://cdn.pixabay.com/photo/2015/11/07/11/16/coffee-1030971_1280.jpg'],
                         'amount'   => $amount,
                         'currency' => 'gbp',
                         'quantity' => 1,
@@ -31,7 +31,7 @@ class PaymentService implements IPaymentService
                     'success_url' => config('services.stripe.success_url'),
                     'cancel_url'  => config('services.stripe.cancel_url'),
                 ]);
-            } catch (Throwable $exception) {
+            } catch (Exception $exception) {
                 abort(500, $exception->getMessage());
             }
         }
@@ -46,7 +46,7 @@ class PaymentService implements IPaymentService
         if (null != $sessionId) {
             try {
                 $session = Session::retrieve($sessionId);
-            } catch (Throwable $exception) {
+            } catch (Exception $exception) {
                 abort(500, $exception->getMessage());
             }
         }
