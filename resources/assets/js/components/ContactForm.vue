@@ -10,7 +10,7 @@
     <ul v-if="errors && Object.keys(errors).length > 0">
         <li class="errors" v-for="key of Object.keys(errors)" :key="key" v-text="errors[key][0]"></li>
     </ul>
-    
+
     <form :action="endpoint" :method="method" @submit.prevent="onSubmit">
         <div class="form-group">
             <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="Name" required>
@@ -25,8 +25,12 @@
             <textarea v-model="form.message" class="form-control" name="message" id="message" rows="8" placeholder="Message" required></textarea>
         </div>
         <div class="form-group">
-            <input v-model="form.answer" type="number" class="form-control" name="answer" id="answer" value="" min="0" placeholder="3 + 1 =" required>
+            <input v-model="form.answer" type="number" class="form-control" name="answer" id="answer" value="" min="0" placeholder="3 + 1 = ?" required>
         </div>
+      <div class="form-group">
+          <input v-model="form.privacy" type="checkbox" name="privacy" id="privacy" required>
+          <small>I have read and accepted the <a href="/privacy-policy"><u>privacy policy.</u></a></small>
+      </div>
         <div class='form-group'>
             <button type="submit" class="btn btn-primary btn-block">send</button>
         </div>
@@ -46,7 +50,8 @@ export default {
             email: '',
             message: '',
             subject: '',
-            answer: ''
+            answer: '',
+            privacy: false
         },
         errors: {},
         response: {},
