@@ -27,6 +27,7 @@ class ContactTest extends TestCase
             'subject' => 'Hello',
             'message' => 'World',
             'answer'  => 4,
+            'privacy' => true
         ];
 
         $response = $this->json('POST', $endpoint, $request);
@@ -48,6 +49,7 @@ class ContactTest extends TestCase
             'subject' => null,
             'message' => null,
             'answer'  => null,
+            'privacy' => false
         ];
 
         $response = $this->json('POST', $endpoint, $request);
