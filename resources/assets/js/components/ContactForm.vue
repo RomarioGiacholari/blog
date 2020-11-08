@@ -28,8 +28,8 @@
             <input v-model="form.answer" type="number" class="form-control" name="answer" id="answer" value="" min="0" placeholder="3 + 1 = ?" required>
         </div>
       <div class="form-group">
-          <input v-model="form.privacy" type="checkbox" name="privacy" id="privacy" required>
-          <small>I have read and accepted the <a href="/privacy-policy"><u>privacy policy.</u></a></small>
+          <input v-model="form.privacy" type="checkbox" name="privacy" id="privacy" value="false" required>
+          <label>I have read and accepted the <a :href="privacyEndpoint"><u>privacy policy.</u></a></label>
       </div>
         <div class='form-group'>
             <button type="submit" class="btn btn-primary btn-block">send</button>
@@ -56,6 +56,7 @@ export default {
         errors: {},
         response: {},
         sending: false,
+        privacyEndpoint: '/privacy-policy'
     };
   },
 
