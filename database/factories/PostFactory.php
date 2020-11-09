@@ -18,7 +18,7 @@ class PostFactory extends Factory
         return [
             'title'   => $title,
             'body'    => $body,
-            'excerpt' => strip_tags(Str::limit($body, 50, ' ...')),
+            'excerpt' => strip_tags(Str::limit($body, 96, ' ...')),
             'slug'    => Str::slug($title, '-'),
         ];
     }
