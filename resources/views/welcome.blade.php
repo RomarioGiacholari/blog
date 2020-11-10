@@ -4,9 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Romario Giacholari</h3>
             <p class="font-size-16">
-                Hi, I am a graduate student and web developer from Aston University.
+                Hi, I am Romario, a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
             </p>
             <hr />
