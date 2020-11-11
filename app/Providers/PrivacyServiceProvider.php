@@ -11,7 +11,9 @@ class PrivacyServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton(IPrivacyService::class, function () {
-            return new PrivacyService(config('services.privacy.endpoint'));
+            $endpoint = config('services.privacy.endpoint');
+
+            return new PrivacyService($endpoint);
         });
     }
 }
