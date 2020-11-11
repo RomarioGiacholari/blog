@@ -11,7 +11,9 @@ class PaymentServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton(IPaymentService::class, function () {
-            return new PaymentService(config('services.stripe.secret'));
+            $secret = config('services.stripe.secret');
+
+            return new PaymentService($secret);
         });
     }
 }

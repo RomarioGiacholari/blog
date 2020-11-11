@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/cv', function () {
-    $cvEndpoint = config('services.cv.endpoint');
+    $endpoint = config('services.cv.endpoint');
 
-    return redirect($cvEndpoint);
+    return redirect($endpoint);
 })->name('cv');
 
 Route::get('/app/status', function () {
