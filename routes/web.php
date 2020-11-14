@@ -12,12 +12,7 @@ Route::group(['middleware' => ['throttle:global']], function () {
         return redirect($endpoint);
     })->name('cv');
 
-    Route::get('/app/status', function () {
-        return [
-            'status' => 'ok',
-            'code'   => 200,
-        ];
-    })->name('app.status');
+    Route::get('/app/status', fn () => ['status' => 'OK', 'code' => 200])->name('app.status');
 
     Route::get('/coffee', [\App\Http\Controllers\CoffeeController::class, 'index'])->name('coffee.index');
     Route::post('/coffee', [\App\Http\Controllers\CoffeeController::class, 'store'])->name('coffee.store');
