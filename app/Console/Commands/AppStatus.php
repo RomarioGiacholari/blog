@@ -21,7 +21,7 @@ class AppStatus extends Command
             $endpoint = route('app.status');
             $response = json_decode(file_get_contents($endpoint), true);
 
-            $messageData = sprintf('Status for %s, status: %s, code: %s', config('app.url'), $response['status'], $response['code']);
+            $messageData = sprintf('Status for %s, Status: %s, Code: %s', config('app.url'), $response['status'], $response['code']);
             $sendToEmail = $email;
             $emailFrom   = $email;
             $name        = 'Romario Giacholari';
@@ -29,7 +29,11 @@ class AppStatus extends Command
 
             Mail::to($sendToEmail)
                 ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
+
+            $this->info('The app status email was sent successfully.');
         } catch (Exception $exception) {
+            $this->error($exception->getMessage());
+
             Log::error($exception->getMessage());
         }
     }
