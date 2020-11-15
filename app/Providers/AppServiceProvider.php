@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\IPostRepository;
 use App\Services\Post\IPostService;
 use App\Services\Post\PostService;
 use Illuminate\Pagination\Paginator;
@@ -12,30 +11,20 @@ use Rollbar\Laravel\RollbarServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
-        if (!app()->isLocal()) {
+        Paginator::useBootstrap();
+
+        if (!$this->app->isLocal()) {
             URL::forceScheme('https');
         }
-
-        Paginator::useBootstrap();
 
         $this->app->singleton(IPostService::class, PostService::class);
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
-        if (!app()->isLocal()) {
+        if (!$this->app->isLocal()) {
             $this->app->register(RollbarServiceProvider::class);
         }
 
