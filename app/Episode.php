@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 /**
- * Class Episode
- * @package App
- * @property int $id
- * @property int $podcast_id
+ * Class Episode.
+ *
+ * @property int    $id
+ * @property int    $podcast_id
  * @property string $title
  * @property string $slug
  * @property string $description

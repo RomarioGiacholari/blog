@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 /**
- * Class Post
- * @package App
- * @property int $id
- * @property int $user_id
+ * Class Post.
+ *
+ * @property int    $id
+ * @property int    $user_id
  * @property string $title
  * @property string $body
  * @property string $slug
