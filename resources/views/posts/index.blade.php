@@ -14,11 +14,11 @@
                 <a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ $post->title }} </a>
                 <p class="post-body">{!! $post->excerpt !!}</p>
             </div>
+            <hr />
         </div>
         @endforeach
     </div>
 
-    <hr />
     <div>
         {{ $viewModel->posts->links() }}
     </div>
