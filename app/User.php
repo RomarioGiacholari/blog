@@ -3,9 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
+/**
+ * Class User.
+ *
+ * @property int        $id
+ * @property string     $name
+ * @property string     $email
+ * @property string     $password
+ * @property Collection $posts
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -29,12 +40,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function podcasts()
+    public function podcasts(): HasMany
     {
         return $this->hasMany(Podcast::class);
     }
@@ -42,9 +53,9 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         $isAdmin = false;
-        $email = config('app.admin_email');
+        $email   = config('app.admin_email');
 
-        if ($email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (null !== $email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $isAdmin = ($this->attributes['email'] === $email);
         }
 

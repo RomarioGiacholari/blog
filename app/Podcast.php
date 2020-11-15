@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Class Podcast
- * @package App
- * @property int $id
- * @property int $user_id
+ * Class Podcast.
+ *
+ * @property int    $id
+ * @property int    $user_id
  * @property string $title
  * @property string $description
  */

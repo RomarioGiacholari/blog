@@ -30,6 +30,7 @@ class PostTest extends TestCase
 
         $response = $this->post($endpoint, $data);
 
+        /** @var Post $post */
         $post = Post::query()->first();
 
         $response->assertRedirect($post->path());
@@ -38,12 +39,15 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_delete_a_post()
     {
         $email = config('app.admin_email');
-        $user  = User::factory()->create(['email' => $email]);
+
+        /** @var User $user */
+        $user = User::factory()->create(['email' => $email]);
 
         $this->actingAs($user);
 
         $data = $data = Post::factory()->make();
 
+        /** @var Post $post */
         $post = $user->posts()->save($data);
 
         $endpoint = route('posts.destroy', $post->slug);
@@ -57,9 +61,13 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_update_a_post()
     {
         $email = config('app.admin_email');
+
+        /** @var User $user */
         $user = User::factory()->create(['email' => $email]);
-        $post = Post::factory()->create(['user_id' => $user->id]);
-        $endpoint = route('posts.update', $post->slug);
+
+        /** @var Post $post */
+        $post       = Post::factory()->create(['user_id' => $user->id]);
+        $endpoint   = route('posts.update', $post->slug);
         $updateData = [
             'title' => 'changed title',
             'body'  => 'changed body',
@@ -74,7 +82,7 @@ class PostTest extends TestCase
 
     public function test_an_unauthenticated_user_cannot_create_a_post()
     {
-        $user  = User::factory()->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user);
 
