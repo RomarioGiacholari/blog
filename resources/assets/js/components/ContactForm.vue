@@ -29,7 +29,7 @@
         </div>
       <div class="form-group">
           <input v-model="form.privacy" type="checkbox" name="privacy" id="privacy" value="false" required>
-          <label>I have read and accepted the <a :href="privacyEndpoint"><u>privacy policy.</u></a></label>
+          <label for="privacy">I have read and accept the <a :href="privacyEndpoint" target="_blank"><u>privacy policy.</u></a></label>
       </div>
         <div class='form-group'>
             <button type="submit" class="btn btn-primary btn-block">send</button>
