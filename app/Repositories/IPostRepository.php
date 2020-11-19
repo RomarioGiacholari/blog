@@ -8,7 +8,7 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 interface IPostRepository
 {
-    public function get(int $perPage): ?Paginator;
+    public function get(int $perPage, string $orderByColumn, string $direction): ?Paginator;
 
     public function store(PostEntity $postEntity): ?string;
 
