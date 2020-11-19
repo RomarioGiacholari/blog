@@ -17,7 +17,7 @@ class PostRepository implements IPostRepository
         $this->repository = $repository;
     }
 
-    public function get(int $perPage, $orderByColumn = 'created_at', $direction = 'desc'): ?Paginator
+    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator
     {
         $postCollection = null;
 
