@@ -56,7 +56,7 @@ class ContactController extends Controller
             'email'   => 'required|email',
             'subject' => 'required|max:100',
             'message' => 'required|max:500',
-            'answer'  => 'required|integer|min:4|max:4',
+            'answer'  => 'required|integer|in:4',
             'privacy' => 'required|accepted'
         ]);
     }
