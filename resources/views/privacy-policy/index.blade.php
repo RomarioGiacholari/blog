@@ -7,7 +7,7 @@
             <h1>Privacy policy</h1>
             <hr />
             <div id="js-privacy-policy-content-placeholder">
-                @include('components._spinner')
+               @include('privacy-policy.placeholder')
             </div>
         </div>
     </div>

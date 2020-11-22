@@ -1,5 +1,6 @@
 <template>
-  <div class="modal fade" id="privacy-policy-modal" tabindex="-1" data-backdrop="static" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="privacy-policy-modal" tabindex="-1" data-backdrop="static" role="dialog"
+       aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -8,11 +9,12 @@
         <div id="js-privacy-policy-modal-body" class="modal-body" v-html="content"></div>
         <div class="modal-footer">
           <button
-            @click="setCookie"
-            type="button"
-            class="btn btn-primary btn-block"
-            data-dismiss="modal"
-          >OK</button>
+              @click="setCookie"
+              type="button"
+              class="btn btn-primary btn-block"
+              data-dismiss="modal"
+          >OK
+          </button>
         </div>
       </div>
     </div>
@@ -28,7 +30,12 @@ export default {
       endpoint: "/privacy-policy/content",
       modal: "#privacy-policy-modal",
       cookieName: "__privacy",
-      content: "<div class='text-center'><i class='fa fa-circle-o-notch fa-2x fa-spin'></i></div>"
+      content: `<div class='jumbotron'></div>
+                <div class='jumbotron'></div>
+                <div class='jumbotron'></div>
+                <div class='jumbotron'></div>
+                <div class='jumbotron'></div>
+               `,
     };
   },
 
@@ -41,15 +48,13 @@ export default {
       let isPrivacyPage = this.isPrivacyPage();
       let isCookie = this.isCookie();
 
-      if (!isPrivacyPage) {
-        if (!isCookie || isCookie == null) {
-          $(`${this.modal}`).modal("show");
+      if (!isPrivacyPage && !isCookie) {
+        $(`${this.modal}`).modal("show");
 
-          axios
+        axios
             .get(this.endpoint)
-            .then(({ data }) => (this.content = data))
+            .then(({data}) => (this.content = data))
             .catch(error => console.log(error));
-        }
       }
     },
 
