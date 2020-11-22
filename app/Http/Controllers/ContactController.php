@@ -25,8 +25,10 @@ class ContactController extends Controller
 
         $this->validateEmail($request);
 
+        $appUrl      = config('app.url');
+        $environment = app()->environment();
         $sendToEmail = config('app.admin_email');
-        $subject     = $request->input('subject');
+        $subject     = "[{$environment}][{$appUrl}][Support]";
         $messageData = $request->input('message');
         $emailFrom   = $request->input('email');
         $name        = $request->input('name');
@@ -54,8 +56,7 @@ class ContactController extends Controller
         $this->validate($request, [
             'name'    => 'required|max:50',
             'email'   => 'required|email',
-            'subject' => 'required|max:100',
-            'message' => 'required|max:500',
+            'message' => 'required|max:1000',
             'answer'  => 'required|integer|in:4',
             'privacy' => 'required|accepted'
         ]);
