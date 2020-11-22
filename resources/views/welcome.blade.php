@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Hi, I am Romario, a web enthusiast!</h1>
-            <p class="font-size-16">
+            <div class="font-size-16">
                 I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
-            </p>
+            </div>
             <hr />
 
             <h4>Employment</h4>
@@ -21,7 +21,7 @@
             <hr />
 
             <h4>Technologies</h4>
-            <p class="font-size-16">
+            <div class="font-size-16">
                 <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
                 <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
                 <span class="label label-info">HTML</span> <span class="label label-info">CSS</span>
@@ -36,7 +36,7 @@
                 <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
                 <span class="label label-info">Stripe</span> <span class="label label-info">Rollbar</span>
                 <span class="label label-info">New Relic</span> <span class="label label-info">Papertrail</span>
-            </p>
+            </div>
             <hr />
 
             <h4>Portfolio</h4>
