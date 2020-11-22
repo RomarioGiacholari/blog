@@ -13,16 +13,13 @@
 
     <form :action="endpoint" :method="method" @submit.prevent="onSubmit">
         <div class="form-group">
-            <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="Name" required>
+            <input v-model="form.name" type="text" class="form-control" name="name" id="name" value="" placeholder="What is your name?" required>
         </div>
         <div class="form-group">
-            <input v-model="form.email" type="email" class="form-control" name="email" id="email" value="" placeholder="Your email" required>
+            <input v-model="form.email" type="email" class="form-control" name="email" id="email" value="" placeholder="Which email should we respond to?" required>
         </div>
         <div class="form-group">
-            <input v-model="form.subject" type="text" class="form-control" name="subject" id="subject" value="" placeholder="Subject" required>
-        </div>
-        <div class="form-group">
-            <textarea v-model="form.message" class="form-control" name="message" id="message" rows="8" placeholder="Message" required></textarea>
+            <textarea v-model="form.message" class="form-control" name="message" id="message" rows="8" placeholder="What is your question?" required></textarea>
         </div>
         <div class="form-group">
             <input v-model="form.answer" type="number" class="form-control" name="answer" id="answer" value="" min="0" placeholder="3 + 1 = ?" required>
@@ -49,7 +46,6 @@ export default {
             name: '',
             email: '',
             message: '',
-            subject: '',
             answer: '',
             privacy: false
         },
