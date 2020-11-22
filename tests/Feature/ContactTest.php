@@ -24,7 +24,6 @@ class ContactTest extends TestCase
         $request  = [
             'name'    => 'John Doe',
             'email'   => 'johnDoe@example.com',
-            'subject' => 'Hello',
             'message' => 'World',
             'answer'  => 4,
             'privacy' => true
@@ -46,7 +45,6 @@ class ContactTest extends TestCase
         $request  = [
             'name'    => null,
             'email'   => null,
-            'subject' => null,
             'message' => null,
             'answer'  => null,
             'privacy' => false
