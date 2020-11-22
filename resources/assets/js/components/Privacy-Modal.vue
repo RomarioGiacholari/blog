@@ -30,16 +30,12 @@ export default {
       endpoint: "/privacy-policy/content",
       modal: "#privacy-policy-modal",
       cookieName: "__privacy",
-      content: `<div class='jumbotron'></div>
-                <div class='jumbotron'></div>
-                <div class='jumbotron'></div>
-                <div class='jumbotron'></div>
-                <div class='jumbotron'></div>
-               `,
+      content: '',
     };
   },
 
   mounted() {
+    this.setContentPlaceholder();
     this.load();
   },
 
@@ -71,6 +67,12 @@ export default {
       let length = days * 24 * 60 * 60;
 
       document.cookie = `${cookie.name}=${cookie.value}; max-age=${length}; domain=${cookie.domain}; path=${cookie.path}`;
+    },
+
+    setContentPlaceholder() {
+      for (let i = 0; i < 10; i++) {
+        this.content += "<div class='jumbotron'></div>";
+      }
     },
 
     isPrivacyPage() {
