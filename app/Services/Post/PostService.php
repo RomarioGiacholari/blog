@@ -16,7 +16,7 @@ class PostService implements IPostService
         $this->repository = $repository;
     }
 
-    public function get(int $perPage): ?Paginator
+    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator
     {
         return $this->repository->get($perPage);
     }
