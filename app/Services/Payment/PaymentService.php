@@ -17,7 +17,7 @@ class PaymentService implements IPaymentService
     {
         $session = null;
 
-        if (null != $amount && $amount > 0) {
+        if ($amount > 0) {
             try {
                 $session = Session::create([
                     'payment_method_types' => ['card'],
@@ -43,7 +43,7 @@ class PaymentService implements IPaymentService
     {
         $session = null;
 
-        if (null != $sessionId) {
+        if (trim($sessionId) !== '') {
             try {
                 $session = Session::retrieve($sessionId);
             } catch (Exception $exception) {
