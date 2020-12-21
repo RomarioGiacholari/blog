@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Mail\ContactMe;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -19,18 +20,28 @@ class AppStatus extends Command
         try {
             $email    = config('app.admin_email');
             $endpoint = route('app.status');
-            $response = json_decode(file_get_contents($endpoint), true);
+            $response = Http::get($endpoint);
 
-            $messageData = sprintf('Status for %s, Status: %s, Code: %s', config('app.url'), $response['status'], $response['code']);
-            $sendToEmail = $email;
-            $emailFrom   = $email;
-            $name        = 'Romario Giacholari';
-            $subject     = 'App status notification';
+            if ($response && $response->status() === 200) {
+                $data = $response->body();
 
-            Mail::to($sendToEmail)
-                ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
+                if ($data) {
+                    $decodedData = json_decode($data, true);
 
-            $this->info('The app status email was sent successfully.');
+                    if (!empty($decodedData) && isset($decodedData['status'], $decodedData['code'])) {
+                        $messageData = sprintf('Status for %s, Status: %s, Code: %s', config('app.url'), $decodedData['status'], $decodedData['code']);
+                        $sendToEmail = $email;
+                        $emailFrom   = $email;
+                        $name        = 'Romario Giacholari';
+                        $subject     = 'App status notification';
+
+                        Mail::to($sendToEmail)
+                            ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
+
+                        $this->info('The app status email was sent successfully.');
+                    }
+                }
+            }
         } catch (Exception $exception) {
             $this->error($exception->getMessage());
 

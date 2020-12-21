@@ -3,6 +3,7 @@
 namespace App\Services\Privacy;
 
 use Exception;
+use Illuminate\Support\Facades\Http;
 
 class PrivacyService implements IPrivacyService
 {
@@ -18,10 +19,14 @@ class PrivacyService implements IPrivacyService
         $decodedPrivacy = null;
 
         try {
-            $privacyJson = file_get_contents($this->endpoint);
+            $response = Http::get($this->endpoint);
 
-            if ($privacyJson) {
-                $decodedPrivacy = json_decode($privacyJson, true);
+            if ($response && $response->status() === 200) {
+                $data = $response->body();
+
+                if ($data) {
+                    $decodedPrivacy = json_decode($data, true);
+                }
             }
         } catch (Exception $exception) {
             abort($exception->getMessage(), 500);
