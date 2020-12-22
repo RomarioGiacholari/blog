@@ -3,6 +3,7 @@
 namespace App\Services\Photos;
 
 use Exception;
+use Illuminate\Support\Facades\Http;
 
 class PhotoService implements IPhotoService
 {
@@ -19,10 +20,14 @@ class PhotoService implements IPhotoService
 
         if (isset($this->endpoint)) {
             try {
-                $files = file_get_contents($this->endpoint);
+                $response = Http::get($this->endpoint);
 
-                if ($files) {
-                    $photos = json_decode($files, true);
+                if ($response && $response->status() === 200) {
+                    $data = $response->body();
+
+                    if ($data) {
+                        $photos = json_decode($data, true);
+                    }
                 }
             } catch (Exception $exception) {
                 abort(500, $exception->getMessage());
