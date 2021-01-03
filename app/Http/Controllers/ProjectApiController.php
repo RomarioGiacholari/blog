@@ -22,6 +22,9 @@ class ProjectApiController extends Controller
             ];
         });
 
-        return response($projects, 200);
+        $status = 200;
+        $headers = ['Content-Type' => 'application/json'];
+
+        return response($projects, $status, $headers);
     }
 }

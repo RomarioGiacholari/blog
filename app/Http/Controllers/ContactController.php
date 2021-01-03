@@ -22,6 +22,8 @@ class ContactController extends Controller
     {
         $isSuccess = false;
         $message   = null;
+        $headers = ['Content-Type' => 'application/json'];
+        $status = 500;
 
         $this->validateEmail($request);
 
@@ -39,6 +41,7 @@ class ContactController extends Controller
 
             $isSuccess = true;
             $message   = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
+            $status = 200;
         } catch (Exception $exception) {
             $message = $exception->getMessage();
         }
@@ -48,7 +51,7 @@ class ContactController extends Controller
             'message'   => $message,
         ];
 
-        return response($data, 200);
+        return response($data, $status, $headers);
     }
 
     private function validateEmail($request): void

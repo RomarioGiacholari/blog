@@ -17,7 +17,9 @@ class PhotoApiController extends Controller
     public function index()
     {
         $photos = Cache::remember('photos', $seconds = 60 * 60 * 24, fn () => $this->photoService->all());
+        $status = 200;
+        $headers = ['Content-Type' => 'application/json'];
 
-        return response($photos, 200);
+        return response($photos, $status, $headers);
     }
 }
