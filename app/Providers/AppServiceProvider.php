@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\Post\IPostService;
-use App\Services\Post\PostService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -18,8 +16,6 @@ class AppServiceProvider extends ServiceProvider
         if (!$this->app->isLocal()) {
             URL::forceScheme('https');
         }
-
-        $this->app->singleton(IPostService::class, PostService::class);
     }
 
     public function register(): void
