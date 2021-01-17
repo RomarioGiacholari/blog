@@ -14,7 +14,8 @@ class PhotosTest extends TestCase
     {
         parent::setUp();
 
-        $data     = ['alps.jpg' => 'https://assets.giacholari.com/images/gallery/alps.jpg'];
+        $json     = file_get_contents(__DIR__."/Data/Photos/data.json");
+        $data     = json_decode($json, true);
         $callback = fn ($mock) => $mock->shouldReceive()->all()->andReturn($data);
 
         $this->mock(IPhotoService::class, $callback);
