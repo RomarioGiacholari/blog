@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Hi, I am Romario, a web enthusiast!</h1>
+            <h1>Hi, I am <span style=" border-bottom: 2px solid #008080">Romario</span>, a web enthusiast!</h1>
             <hr />
 
             <div class="font-size-16">
@@ -24,21 +24,21 @@
 
             <h4>Technologies</h4>
             <div class="font-size-16">
-                <span class="label label-info">Python</span>
-                <span class="label label-info">PHP</span> <span class="label label-info">Laravel</span>
-                <span class="label label-info">JavaScript</span> <span class="label label-info">Ajax</span>
-                <span class="label label-info">HTML</span> <span class="label label-info">CSS</span>
-                <span class="label label-info">Bootstrap</span> <span class="label label-info">Vue</span>
-                <span class="label label-info">SQL</span> <span class="label label-info">PhpStorm</span>
-                <span class="label label-info">GitLab</span> <span class="label label-info">Azure DevOps</span>
-                <span class="label label-info">Bash</span> <span class="label label-info">Git</span>
-                <span class="label label-info">PHP-Unit</span> <span class="label label-info">MOQ</span>
-                <span class="label label-info">MVC</span> <span class="label label-info">Visual Studio</span>
-                <span class="label label-info">Asp.NET</span> <span class="label label-info">C#</span>
-                <span class="label label-info">Heroku</span> <span class="label label-info">Digital Ocean</span>
-                <span class="label label-info">Google Analytics</span> <span class="label label-info">Cloudflare</span>
-                <span class="label label-info">Stripe</span> <span class="label label-info">Rollbar</span>
-                <span class="label label-info">New Relic</span> <span class="label label-info">Papertrail</span>
+                <span class="label label-primary">Python</span>
+                <span class="label label-primary">PHP</span> <span class="label label-primary">Laravel</span>
+                <span class="label label-primary">JavaScript</span> <span class="label label-primary">Ajax</span>
+                <span class="label label-primary">HTML</span> <span class="label label-primary">CSS</span>
+                <span class="label label-primary">Bootstrap</span> <span class="label label-success">Vue</span>
+                <span class="label label-primary">SQL</span> <span class="label label-primary">PhpStorm</span>
+                <span class="label label-primary">GitLab</span> <span class="label label-primary">Azure DevOps</span>
+                <span class="label label-success">Bash</span> <span class="label label-success">Git</span>
+                <span class="label label-primary">PHP-Unit</span> <span class="label label-primary">MOQ</span>
+                <span class="label label-primary">MVC</span> <span class="label label-primary">Visual Studio</span>
+                <span class="label label-primary">Asp.NET</span> <span class="label label-primary">C#</span>
+                <span class="label label-primary">Heroku</span> <span class="label label-primary">Digital Ocean</span>
+                <span class="label label-primary">Google Analytics</span> <span class="label label-primary">Cloudflare</span>
+                <span class="label label-primary">Stripe</span> <span class="label label-primary">Rollbar</span>
+                <span class="label label-success">New Relic</span> <span class="label label-primary">Papertrail</span>
             </div>
             <hr />
 
