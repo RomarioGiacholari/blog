@@ -24,7 +24,7 @@
 
             <h4>Technologies</h4>
             <div class="font-size-16">
-                <span class="label label-primary">Python</span>
+                <span class="label label-success">Python</span>
                 <span class="label label-primary">PHP</span> <span class="label label-primary">Laravel</span>
                 <span class="label label-success">JavaScript</span> <span class="label label-primary">Ajax</span>
                 <span class="label label-primary">HTML</span> <span class="label label-primary">CSS</span>
