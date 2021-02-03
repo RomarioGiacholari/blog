@@ -26,7 +26,7 @@
             <div class="font-size-16">
                 <span class="label label-primary">Python</span>
                 <span class="label label-primary">PHP</span> <span class="label label-primary">Laravel</span>
-                <span class="label label-primary">JavaScript</span> <span class="label label-primary">Ajax</span>
+                <span class="label label-success">JavaScript</span> <span class="label label-primary">Ajax</span>
                 <span class="label label-primary">HTML</span> <span class="label label-primary">CSS</span>
                 <span class="label label-primary">Bootstrap</span> <span class="label label-success">Vue</span>
                 <span class="label label-primary">SQL</span> <span class="label label-primary">PhpStorm</span>
@@ -38,7 +38,7 @@
                 <span class="label label-primary">Heroku</span> <span class="label label-primary">Digital Ocean</span>
                 <span class="label label-primary">Google Analytics</span> <span class="label label-primary">Cloudflare</span>
                 <span class="label label-primary">Stripe</span> <span class="label label-primary">Rollbar</span>
-                <span class="label label-success">New Relic</span> <span class="label label-primary">Papertrail</span>
+                <span class="label label-primary">New Relic</span> <span class="label label-primary">Papertrail</span>
             </div>
             <hr />
 
