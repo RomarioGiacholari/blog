@@ -17,7 +17,9 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_create_a_post()
     {
         $email = config('app.admin_email');
-        $user  = User::factory()->create(['email' => $email]);
+
+         /** @var User $user */
+         $user  = static::createUser(['email' => $email]);
 
         $this->actingAs($user);
 
@@ -31,7 +33,7 @@ class PostTest extends TestCase
         $response = $this->post($endpoint, $data);
 
         /** @var Post $post */
-        $post = Post::query()->first();
+        $post = Post::query()->where('title', '=', $data['title'])->firstOrFail();
 
         $response->assertRedirect($post->path());
     }
@@ -41,7 +43,7 @@ class PostTest extends TestCase
         $email = config('app.admin_email');
 
         /** @var User $user */
-        $user = User::factory()->create(['email' => $email]);
+        $user  = static::createUser(['email' => $email]);
 
         $this->actingAs($user);
 
@@ -63,7 +65,7 @@ class PostTest extends TestCase
         $email = config('app.admin_email');
 
         /** @var User $user */
-        $user = User::factory()->create(['email' => $email]);
+        $user  = static::createUser(['email' => $email]);
 
         /** @var Post $post */
         $post       = Post::factory()->create(['user_id' => $user->id]);
@@ -101,7 +103,7 @@ class PostTest extends TestCase
     public function test_the_body_and_title_attributes_are_required()
     {
         $email = config('app.admin_email');
-        $user  = User::factory()->create(['email' => $email]);
+        $user  = static::createUser(['email' => $email]);
 
         $this->actingAs($user);
 
@@ -115,5 +117,16 @@ class PostTest extends TestCase
         $response = $this->post($endpoint, $data);
 
         $response->assertStatus(302);
+    }
+
+    private static function createUser(array $attributes): User
+    {
+        $user = User::where($attributes)->first();
+        
+        if ($user === null) {
+            $user = User::factory()->create($attributes);
+        }
+
+        return $user;
     }
 }
