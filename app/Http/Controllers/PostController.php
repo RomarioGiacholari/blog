@@ -28,7 +28,7 @@ class PostController extends Controller
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts = Cache::remember("posts.page.{$page}", $seconds = 60 * 5, function () {
+        $viewModel->posts = Cache::tags(['posts'])->remember("posts.page.{$page}", $seconds = 60 * 30, function () {
             return $this->postService->get(15);
         });
 
@@ -76,7 +76,7 @@ class PostController extends Controller
             $isSuccess  = $this->postService->incrementViews($postEntity, $slug);
 
             if ($isSuccess) {
-               // clear the cache in the posts.index page, to show a fresh copy of the views.
+                Cache::tags(['posts'])->flush();
             }
         }
 
