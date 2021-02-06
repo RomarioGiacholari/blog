@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\Post\PostAdapter;
 use App\Adapters\Post\PostRequestAdapter;
 use App\Services\Post\IPostService;
 use App\ViewModels\Post\CreateViewModel;
@@ -70,6 +71,13 @@ class PostController extends Controller
         if ($viewModel->post !== null) {
             $viewModel->pageTitle = $viewModel->post->title;
             $viewModel->author    = $viewModel->post->creator->name;
+
+            $postEntity = PostAdapter::toPostEntity($viewModel->post);
+            $isSuccess  = $this->postService->incrementViews($postEntity, $slug);
+
+            if ($isSuccess) {
+               // clear the cache in the posts.index page, to show a fresh copy of the views.
+            }
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);

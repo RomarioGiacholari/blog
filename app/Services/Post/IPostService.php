@@ -17,4 +17,6 @@ interface IPostService
     public function update(PostEntity $postEntity, string $slug): bool;
 
     public function destroy(string $slug): bool;
+
+    public function incrementViews(PostEntity $postEntity, string $slug): bool;
 }

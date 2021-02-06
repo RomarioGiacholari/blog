@@ -16,6 +16,7 @@ class PostRequestAdapter
         $postEntity->body    = $request->get('body');
         $postEntity->slug    = $request->get('title');
         $postEntity->excerpt = $request->get('body');
+        $postEntity->views   = 0;
 
         return $postEntity;
     }
