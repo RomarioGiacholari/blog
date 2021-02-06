@@ -143,7 +143,7 @@ class PostTest extends TestCase
 
     private static function createUser(array $attributes): User
     {
-        $user = User::where($attributes)->first();
+        $user = User::query()->where($attributes)->first();
         
         if ($user === null) {
             $user = User::factory()->create($attributes);
