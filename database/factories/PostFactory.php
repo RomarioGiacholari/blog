@@ -20,6 +20,7 @@ class PostFactory extends Factory
             'body'    => $body,
             'excerpt' => strip_tags(Str::limit($body, 96, ' ...')),
             'slug'    => Str::slug($title, '-'),
+            'views'   => 0,
         ];
     }
 }
