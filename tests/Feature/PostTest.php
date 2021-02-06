@@ -17,8 +17,6 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_create_a_post()
     {
         $email = config('app.admin_email');
-
-         /** @var User $user */
          $user  = static::createUser(['email' => $email]);
 
         $this->actingAs($user);
@@ -41,8 +39,6 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_delete_a_post()
     {
         $email = config('app.admin_email');
-
-        /** @var User $user */
         $user  = static::createUser(['email' => $email]);
 
         $this->actingAs($user);
@@ -63,8 +59,6 @@ class PostTest extends TestCase
     public function test_an_authenticated_user_can_update_a_post()
     {
         $email = config('app.admin_email');
-
-        /** @var User $user */
         $user  = static::createUser(['email' => $email]);
 
         /** @var Post $post */
@@ -119,9 +113,37 @@ class PostTest extends TestCase
         $response->assertStatus(302);
     }
 
+    public function test_the_views_of_a_post_can_be_incremented()
+    {
+        $email = config('app.admin_email');
+        $user  = static::createUser(['email' => $email]);
+
+        $this->actingAs($user);
+
+        $data = [
+            'title' => 'some title',
+            'body'  => 'some body',
+        ];
+
+        $endpoint = route('posts.store');
+
+        $_ = $this->post($endpoint, $data);
+
+        /** @var Post $post */
+        $post = Post::query()->where('title', '=', $data['title'])->firstOrFail();
+
+        $this->get(route('posts.show', ['slug' => $post->slug]));
+
+        $this->assertSame(1, (int) $post->fresh()->views);
+
+        $this->get(route('posts.show', ['slug' => $post->slug]));
+
+        $this->assertSame(2, (int) $post->fresh()->views);
+    }
+
     private static function createUser(array $attributes): User
     {
-        $user = User::where($attributes)->first();
+        $user = User::query()->where($attributes)->first();
         
         if ($user === null) {
             $user = User::factory()->create($attributes);

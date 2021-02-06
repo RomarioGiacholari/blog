@@ -44,6 +44,7 @@ class PostRepository implements IPostRepository
                 $postData->body = $postEntity->body;
                 $postData->excerpt = strip_tags(Str::limit($postEntity->excerpt, 100, ' ...'));
                 $postData->slug = Str::slug($postEntity->slug, '-');
+                $postData->views = 0;
                 $isSuccess = $postData->save();
 
                 if ($isSuccess) {
