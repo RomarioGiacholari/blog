@@ -9,4 +9,5 @@ class PostEntity
     public string $body;
     public string $slug;
     public string $excerpt;
+    public int $views;
 }

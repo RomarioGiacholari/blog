@@ -100,4 +100,19 @@ class PostRepository implements IPostRepository
 
         return $isSuccess;
     }
+
+    public function incrementViews(PostEntity $postEntity, string $slug): bool
+    {
+        $isSuccess = false;
+        $postData = $this->findBy($slug);
+
+        if ($postData !== null) {
+            DB::transaction(function () use (&$isSuccess, $postEntity, $postData) {
+                $postData->views += 1;
+                $isSuccess = $postData->save();
+            });
+        }
+
+        return $isSuccess;
+    }
 }

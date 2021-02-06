@@ -11,7 +11,7 @@
         @foreach($viewModel->posts as $post)
         <div class="col-md-12">
             <div class="caption">
-                <a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ $post->title }} </a> | posted: <span>{{ $post->created_at->diffForHumans() }}</span>
+                <a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ $post->title }} </a> | <b>posted:</b> <span>{{ $post->created_at->diffForHumans() }}</span> | <b>views:</b> <span>{{ $post->views }}</span>
                 <p class="post-body">{!! $post->excerpt !!}</p>
             </div>
             <hr />

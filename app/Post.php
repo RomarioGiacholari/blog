@@ -16,13 +16,14 @@ use Illuminate\Support\Str;
  * @property string $body
  * @property string $slug
  * @property string $excerpt
+ * @property int    $views
  */
 class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title', 'body', 'slug', 'excerpt',
+        'title', 'body', 'slug', 'excerpt', 'views',
     ];
 
     public function creator(): BelongsTo
