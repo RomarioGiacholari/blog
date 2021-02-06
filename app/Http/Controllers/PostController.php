@@ -28,7 +28,7 @@ class PostController extends Controller
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts = Cache::remember("posts.page.{$page}", $seconds = 60 * 60 * 24, function () {
+        $viewModel->posts = Cache::remember("posts.page.{$page}", $seconds = 60 * 5, function () {
             return $this->postService->get(15);
         });
 
