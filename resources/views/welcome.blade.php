@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Hi, I am <span style=" border-bottom: 2px solid #008080">Romario</span>, a web enthusiast!</h1>
+            <h1>Hi, I am Romario, a web enthusiast!</h1>
             <hr />
 
             <div class="font-size-16">
