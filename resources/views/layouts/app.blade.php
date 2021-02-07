@@ -28,6 +28,7 @@
 <body>
     <div id="app" style="margin-bottom: 150px;">
         @include('components._social')
+        @include('components._divider')
         @include('navbar.navbar')
         @yield('content')
         <privacy-modal></privacy-modal>
