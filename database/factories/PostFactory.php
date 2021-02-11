@@ -16,7 +16,7 @@ class PostFactory extends Factory
         $body          =  $this->faker->paragraph;
         $randomInteger = random_int(1, 10);
         $hash          = bcrypt("{$title}{$randomInteger}");
-        $partOfTheHash = substr($hash, 0, 5);
+        $partOfTheHash = substr($hash, 0, 10);
 
         return [
             'title'   => $partOfTheHash,
