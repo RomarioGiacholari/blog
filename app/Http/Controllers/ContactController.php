@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
     public function create()
     {
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Contact me';
 
         return view('contact.create', ['viewModel' => $viewModel]);
@@ -21,26 +21,26 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $isSuccess = false;
-        $message   = null;
+        $message = null;
         $headers = ['Content-Type' => 'application/json'];
         $status = 500;
 
         $this->validateEmail($request);
 
-        $appUrl      = config('app.url');
+        $appUrl = config('app.url');
         $environment = app()->environment();
         $sendToEmail = config('app.admin_email');
-        $subject     = "[{$environment}][{$appUrl}][Support]";
+        $subject = "[{$environment}][{$appUrl}][Support]";
         $messageData = $request->input('message');
-        $emailFrom   = $request->input('email');
-        $name        = $request->input('name');
+        $emailFrom = $request->input('email');
+        $name = $request->input('name');
 
         try {
             Mail::to($sendToEmail)
                 ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
 
             $isSuccess = true;
-            $message   = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
+            $message = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
             $status = 200;
         } catch (Exception $exception) {
             $message = $exception->getMessage();

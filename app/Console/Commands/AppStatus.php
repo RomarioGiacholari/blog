@@ -18,7 +18,7 @@ class AppStatus extends Command
     public function handle()
     {
         try {
-            $email    = config('app.admin_email');
+            $email = config('app.admin_email');
             $endpoint = route('app.status');
             $response = Http::get($endpoint);
 
@@ -31,9 +31,9 @@ class AppStatus extends Command
                     if (!empty($decodedData) && isset($decodedData['status'], $decodedData['code'])) {
                         $messageData = sprintf('Status for %s, Status: %s, Code: %s', config('app.url'), $decodedData['status'], $decodedData['code']);
                         $sendToEmail = $email;
-                        $emailFrom   = $email;
-                        $name        = 'Romario Giacholari';
-                        $subject     = 'App status notification';
+                        $emailFrom = $email;
+                        $name = 'Romario Giacholari';
+                        $subject = 'App status notification';
 
                         Mail::to($sendToEmail)
                             ->send(new ContactMe($messageData, $emailFrom, $name, $subject));

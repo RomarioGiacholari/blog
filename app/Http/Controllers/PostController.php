@@ -63,17 +63,17 @@ class PostController extends Controller
 
     public function show(string $slug)
     {
-        $viewModel            = new ShowViewModel();
-        $viewModel->post      = $this->postService->findBy($slug);
-        $viewModel->author    = null;
+        $viewModel = new ShowViewModel();
+        $viewModel->post = $this->postService->findBy($slug);
+        $viewModel->author = null;
         $viewModel->pageTitle = null;
 
         if ($viewModel->post !== null) {
             $viewModel->pageTitle = $viewModel->post->title;
-            $viewModel->author    = $viewModel->post->creator->name;
+            $viewModel->author = $viewModel->post->creator->name;
 
             $postEntity = PostAdapter::toPostEntity($viewModel->post);
-            $isSuccess  = $this->postService->incrementViews($postEntity, $slug);
+            $isSuccess = $this->postService->incrementViews($postEntity, $slug);
 
             if ($isSuccess) {
                 Cache::tags(['posts'])->flush();
@@ -85,8 +85,8 @@ class PostController extends Controller
 
     public function edit(string $slug)
     {
-        $viewModel            = new EditViewModel();
-        $viewModel->post      = $this->postService->findBy($slug);
+        $viewModel = new EditViewModel();
+        $viewModel->post = $this->postService->findBy($slug);
         $viewModel->pageTitle = null;
 
         if ($viewModel->post !== null) {
@@ -101,7 +101,7 @@ class PostController extends Controller
         $this->validatePost($request, $slug);
 
         $postEntity = PostRequestAdapter::toPostEntity($request);
-        $isSuccess  = $this->postService->update($postEntity, $slug);
+        $isSuccess = $this->postService->update($postEntity, $slug);
 
         if ($isSuccess) {
             return redirect(route('home.posts'));

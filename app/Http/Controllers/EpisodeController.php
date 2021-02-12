@@ -20,9 +20,9 @@ class EpisodeController extends Controller
 
     public function index()
     {
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Podcast | Episodes';
-        $viewModel->episodes  = null;
+        $viewModel->episodes = null;
 
         $podcast = Podcast::query()->first();
 
@@ -39,8 +39,8 @@ class EpisodeController extends Controller
 
     public function show(Episode $episode)
     {
-        $viewModel            = new ShowViewModel();
-        $viewModel->episode   = $episode;
+        $viewModel = new ShowViewModel();
+        $viewModel->episode = $episode;
         $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {
@@ -52,7 +52,7 @@ class EpisodeController extends Controller
 
     public function create()
     {
-        $viewModel            = new CreateViewModel();
+        $viewModel = new CreateViewModel();
         $viewModel->pageTitle = 'New episode';
 
         return view('episodes.create', ['viewModel' => $viewModel]);
@@ -69,12 +69,12 @@ class EpisodeController extends Controller
             'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
-        $user    = auth()->user();
+        $user = auth()->user();
 
         if ($user && isset($user->podcasts)) {
             $podcast = $user->podcasts()->first() ?? null;
 
-            if (null !== $podcast) {
+            if ($podcast !== null) {
                 $episode = $podcast->episodes()->create($attributes);
 
                 return redirect(route('episodes.show', ['episode' => $episode]));
@@ -86,8 +86,8 @@ class EpisodeController extends Controller
 
     public function edit(Episode $episode)
     {
-        $viewModel            = new EditViewModel();
-        $viewModel->episode   = $episode;
+        $viewModel = new EditViewModel();
+        $viewModel->episode = $episode;
         $viewModel->pageTitle = null;
 
         if (isset($episode->title)) {

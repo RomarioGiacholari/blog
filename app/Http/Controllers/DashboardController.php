@@ -13,7 +13,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Dashboard';
         $viewModel->resources = [
             'Posts'    => route('home.posts'),
