@@ -22,7 +22,7 @@ class PhotoController extends Controller
 
     public function index()
     {
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Photos';
 
         return view('photos.index', ['viewModel' => $viewModel]);
@@ -30,9 +30,9 @@ class PhotoController extends Controller
 
     public function show(string $identifier)
     {
-        $viewModel                    = new ShowViewModel();
-        $viewModel->pageTitle         = "Photos | {$identifier}";
-        $viewModel->photo             = null;
+        $viewModel = new ShowViewModel();
+        $viewModel->pageTitle = "Photos | {$identifier}";
+        $viewModel->photo = null;
         $viewModel->photoFriendlyName = $identifier;
 
         if (isset($this->photos) && count($this->photos) > 0) {
@@ -40,7 +40,7 @@ class PhotoController extends Controller
                 throw new NotFoundHttpException();
             }
 
-            $filePath         = $this->photos[$identifier];
+            $filePath = $this->photos[$identifier];
             $viewModel->photo = $filePath;
         }
 
@@ -49,7 +49,7 @@ class PhotoController extends Controller
 
     public function photos()
     {
-        $viewModel         = new PhotoListViewModel();
+        $viewModel = new PhotoListViewModel();
         $viewModel->photos = null;
 
         if (isset($this->photos) && count($this->photos) > 0) {

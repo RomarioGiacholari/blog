@@ -19,15 +19,15 @@ class ContactMe extends Mailable
     public function __construct(string $message, string $email, string $name, string $subject)
     {
         $this->messageData = $message;
-        $this->email       = $email;
-        $this->name        = $name;
-        $this->subject     = $subject;
+        $this->email = $email;
+        $this->name = $name;
+        $this->subject = $subject;
     }
 
     public function build()
     {
         $subject = $this->subject ?? 'Not specified';
-        $view    = 'emails.contact';
+        $view = 'emails.contact';
 
         return $this->subject($subject)->view($view);
     }

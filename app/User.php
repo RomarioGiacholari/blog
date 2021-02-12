@@ -55,7 +55,7 @@ class User extends Authenticatable
         $isAdmin = false;
         $email   = config('app.admin_email');
 
-        if (null !== $email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if ($email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $isAdmin = ($this->attributes['email'] === $email);
         }
 

@@ -11,7 +11,7 @@ class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $viewModel            = new IndexViewModel();
+        $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Privacy policy';
 
         return view('privacy-policy.index', ['viewModel' => $viewModel]);
@@ -19,17 +19,17 @@ class PrivacyPolicyController extends Controller
 
     public function content(IPrivacyService $privacyService)
     {
-        $websiteName     = 'giacholari.com';
-        $contactEmail    = config('app.admin_email') ?? 'giacholari@gmail.com';
-        $privacyContent  = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyService) {
-            $content  = $privacyService->get();
+        $websiteName = 'giacholari.com';
+        $contactEmail = config('app.admin_email') ?? 'giacholari@gmail.com';
+        $privacyContent = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyService) {
+            $content = $privacyService->get();
 
             return $content;
         });
 
-        $viewModel               = new ContentViewModel();
+        $viewModel = new ContentViewModel();
         $viewModel->introduction = "This privacy policy applies to the website {$websiteName}.";
-        $viewModel->content      = $privacyContent;
+        $viewModel->content = $privacyContent;
         $viewModel->contactEmail = $contactEmail;
 
         return view('privacy-policy.content', ['viewModel' => $viewModel]);
