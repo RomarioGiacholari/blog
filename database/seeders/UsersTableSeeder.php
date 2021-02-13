@@ -26,12 +26,6 @@ class UsersTableSeeder extends Seeder
             $podcast->description = 'Podcast of Romario Giacholari';
             $podcast->save();
 
-            $attributes = [
-                'user_id' => $user->id,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ];
-
             $posts = [];
             $userId = $user->id;
             $views = 0;
