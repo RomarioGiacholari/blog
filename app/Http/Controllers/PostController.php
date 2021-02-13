@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Adapters\Post\PostAdapter;
 use App\Adapters\Post\PostRequestAdapter;
 use App\Services\Post\IPostService;
 use App\ViewModels\Post\CreateViewModel;
