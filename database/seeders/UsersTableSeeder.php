@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             $podcast->title = 'Romario Giacholari';
             $podcast->description = 'Podcast of Romario Giacholari';
 
-            $posts = Post::factory()->count(30)->make();
+            $posts = Post::factory()->count(45)->make();
 
             $user->podcasts()->save($podcast);
 
