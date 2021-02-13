@@ -18,5 +18,5 @@ interface IPostRepository
 
     public function destroy(string $slug): bool;
 
-    public function incrementViews(PostEntity $postEntity, string $slug): bool;
+    public function incrementViews(string $slug): bool;
 }

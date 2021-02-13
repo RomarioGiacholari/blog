@@ -47,6 +47,7 @@ class PostController extends Controller
     {
         $this->validatePost($request);
 
+        $redirectPath = back();
         $postEntity = PostRequestAdapter::toPostEntity($request);
         $postSlug = $this->postService->store($postEntity);
 
@@ -54,11 +55,11 @@ class PostController extends Controller
             $post = $this->postService->findBy($postSlug);
 
             if ($post !== null) {
-                return redirect($post->path());
+                $redirectPath = redirect($post->path());
             }
         }
 
-        return back();
+        return $redirectPath;
     }
 
     public function show(string $slug)
@@ -72,10 +73,9 @@ class PostController extends Controller
             $viewModel->pageTitle = $viewModel->post->title;
             $viewModel->author = $viewModel->post->creator->name;
 
-            $postEntity = PostAdapter::toPostEntity($viewModel->post);
-            $isSuccess = $this->postService->incrementViews($postEntity, $slug);
+            $isIncremented = $this->postService->incrementViews($slug);
 
-            if ($isSuccess) {
+            if ($isIncremented) {
                 Cache::tags(['posts'])->flush();
             }
         }
@@ -98,27 +98,29 @@ class PostController extends Controller
 
     public function update(Request $request, string $slug)
     {
+        $redirectPath = back();
         $this->validatePost($request, $slug);
 
         $postEntity = PostRequestAdapter::toPostEntity($request);
         $isSuccess = $this->postService->update($postEntity, $slug);
 
         if ($isSuccess) {
-            return redirect(route('home.posts'));
+            $redirectPath = redirect(route('home.posts'));
         }
 
-        return back();
+        return $redirectPath;
     }
 
     public function destroy(string $slug)
     {
+        $redirectPath = back();
         $isSuccess = $this->postService->destroy($slug);
 
         if ($isSuccess) {
-            return redirect(route('home.posts'));
+            $redirectPath = redirect(route('home.posts'));
         }
 
-        return back();
+        return $redirectPath;
     }
 
     private function validatePost(Request $request, string $slug = ''): void
