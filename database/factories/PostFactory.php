@@ -12,17 +12,14 @@ class PostFactory extends Factory
 
     public function definition()
     {
-        $title         = $this->faker->word;
-        $body          =  $this->faker->paragraph;
-        $randomInteger = random_int(1, 10);
-        $hash          = bcrypt("{$title}{$randomInteger}");
-        $partOfTheHash = substr($hash, 0, 10);
+        $title = Str::random(10);
+        $body = Str::random(100);
 
         return [
-            'title'   => $partOfTheHash,
+            'title'   => $title,
             'body'    => $body,
             'excerpt' => strip_tags(Str::limit($body, 96, ' ...')),
-            'slug'    => Str::slug($partOfTheHash, '-'),
+            'slug'    => Str::slug($title, '-'),
             'views'   => 0,
         ];
     }

@@ -65,12 +65,12 @@ class PostService implements IPostService
         return $isSuccess;
     }
 
-    public function incrementViews(PostEntity $postEntity, string $slug): bool
+    public function incrementViews(string $slug): bool
     {
         $isSuccess = false;
 
-        if ($postEntity !== null && trim($slug) !== '') {
-            $isSuccess = $this->repository->incrementViews($postEntity, $slug);
+        if (trim($slug) !== '') {
+            $isSuccess = $this->repository->incrementViews($slug);
         }
 
         return $isSuccess;
