@@ -50,10 +50,10 @@ class User extends Authenticatable
         return $this->hasMany(Podcast::class);
     }
 
-    public function isAdmin(): bool
+    public function isAdministrator(): bool
     {
         $isAdmin = false;
-        $email   = config('app.admin_email');
+        $email = config('app.admin_email');
 
         if ($email !== null && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $isAdmin = ($this->attributes['email'] === $email);

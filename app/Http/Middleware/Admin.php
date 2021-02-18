@@ -9,19 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Admin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param Request $request
-     * @param Closure $next
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         if ($userId = Auth::id()) {
+            /* @var $user User*/
             $user = User::query()->where('id', '=', $userId)->first();
 
-            if ($user !== null && $user->isAdmin()) {
+            if ($user !== null && $user->isAdministrator()) {
                 return $next($request);
             }
         }
