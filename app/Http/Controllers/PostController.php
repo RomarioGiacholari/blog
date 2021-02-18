@@ -68,14 +68,14 @@ class PostController extends Controller
         $viewModel->author = null;
         $viewModel->pageTitle = null;
 
-        if ($viewModel->post !== null) {
+        if ($viewModel->post !== null && isset($viewModel->post->creator)) {
             $viewModel->pageTitle = $viewModel->post->title;
             $viewModel->author = $viewModel->post->creator->name;
 
             $isIncremented = $this->postService->incrementViews($slug);
 
             if ($isIncremented) {
-                Cache::tags(['posts'])->flush();
+                $_ = Cache::tags(['posts'])->flush();
             }
         }
 
