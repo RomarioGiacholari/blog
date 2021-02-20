@@ -1,19 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
     var allowedKeysForOrderBy = ['created_at', 'views'];
-    var defaultOrderBy = allowedKeysForOrderBy[0];
+    var allowedKeysForOrderByDirection = ['desc', 'asc'];
+    var defaultOrderByKey = allowedKeysForOrderBy[0];
+    var defaultOrderByDirection = allowedKeysForOrderByDirection[0];
     var orderByInput = document.getElementById("orderBy");
 
     orderByInput.addEventListener("change", function () {
-        var currentValue = this.value;
+        var currentOrderBy = this.value;
 
-        if (currentValue !== undefined && currentValue !== '') {
-            if (!allowedKeysForOrderBy.includes(currentValue)) {
-                currentValue = defaultOrderBy;
+        if (currentOrderBy !== undefined && currentOrderBy !== '') {
+            var splitOrderBy = currentOrderBy.split("|");
+            var orderByKey = splitOrderBy[0];
+            var orderByDirection = splitOrderBy[1];
+
+            if (!allowedKeysForOrderBy.includes(orderByKey)) {
+                orderByKey = defaultOrderByKey;
             }
 
-            var uri = "/posts?orderBy=" + currentValue;
-            var encodedUri = encodeURI(uri);
-            window.location.href = encodedUri;
+            if (!allowedKeysForOrderByDirection.includes(orderByDirection)) {
+                orderByDirection = defaultOrderByDirection;
+            }
+
+            var uri = "/posts?orderBy=" + orderByKey + "&direction=" + orderByDirection;
+            window.location.href = encodeURI(uri);
         }
     });
 });

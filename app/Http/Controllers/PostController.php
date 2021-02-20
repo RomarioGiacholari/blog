@@ -22,18 +22,13 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $allowedKeysForOrderBy = ['created_at', 'views'];
-        $defaultOrderBy = $allowedKeysForOrderBy[0];
-        $orderBy = $request->query('orderBy') ?? $defaultOrderBy;
-
-        if (!in_array($orderBy, $allowedKeysForOrderBy)) {
-            $orderBy = $defaultOrderBy;
-        }
+        $orderBy = static::getOrderByKey($request);
+        $orderByDirection = static::getOrderByDirection($request);
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->orderBy = $orderBy;
-        $viewModel->posts = $this->postService->get(15, $orderBy);
+        $viewModel->orderBy = "{$orderBy}|{$orderByDirection}";
+        $viewModel->posts = $this->postService->get(15, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
@@ -138,5 +133,31 @@ class PostController extends Controller
             'title' => "required|max:25|unique:posts,title,{$postId}",
             'body'  => 'required|max:6000',
         ]);
+    }
+
+    private static function getOrderByKey(Request $request): string
+    {
+        $allowedKeys = ['created_at', 'views'];
+        $default = $allowedKeys[0];
+        $orderBy = $request->query('orderBy') ?? $default;
+
+        if (!in_array($orderBy, $allowedKeys)) {
+            $orderBy = $default;
+        }
+
+        return $orderBy;
+    }
+
+    private static function getOrderByDirection(Request $request): string
+    {
+        $allowedKeys = ['desc', 'asc'];
+        $default = $allowedKeys[0];
+        $direction = $request->query('direction') ?? $default;
+
+        if (!in_array($direction, $allowedKeys)) {
+            $direction = $default;
+        }
+
+        return $direction;
     }
 }
