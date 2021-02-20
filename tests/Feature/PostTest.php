@@ -141,7 +141,7 @@ class PostTest extends TestCase
         $this->assertSame(2, (int) $post->fresh()->views);
     }
 
-    public function test_the_post_can_be_sorted_by_the_date_they_were_created()
+    public function test_posts_can_be_sorted_by_the_date_they_were_created()
     {
         $email = config('app.admin_email');
         $user = static::createUser(['email' => $email]);
@@ -161,7 +161,7 @@ class PostTest extends TestCase
         $response->assertSeeTextInOrder([$postCreatedNow->title, $postCreatedInThePast->title]);
     }
 
-    public function test_the_post_can_be_sorted_by_views()
+    public function test_posts_can_be_sorted_by_views()
     {
         $email = config('app.admin_email');
         $user = static::createUser(['email' => $email]);
