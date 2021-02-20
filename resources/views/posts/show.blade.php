@@ -23,8 +23,8 @@
                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
                 </div>
                 <div>
-                    <script src="https://platform.linkedin.com/in.js" type="text/javascript" defer>lang: en_US</script>
-                    <script type="IN/Share" data-url="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}" defer></script>
+                    <script defer src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                    <script defer type="IN/Share" data-url="{{ sprintf("%s?refresh=%s", url()->current(), random_int(1, 1000000)) }}"></script>
                 </div>
                 <hr>
 
@@ -37,5 +37,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="https://platform.twitter.com/widgets.js" charset="utf-8" defer></script>
+<script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 @endsection

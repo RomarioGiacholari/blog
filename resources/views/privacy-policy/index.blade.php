@@ -14,5 +14,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="https://assets.giacholari.com/js/blog/privacy-policy/fetchContent.js" defer></script>
+<script defer src="https://assets.giacholari.com/js/blog/privacy-policy/fetchContent.js"></script>
 @endsection

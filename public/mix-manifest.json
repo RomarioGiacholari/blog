@@ -5,5 +5,6 @@
     "/js/forms/delete.js": "/js/forms/delete.js",
     "/js/photos/fetchPhotos.js": "/js/photos/fetchPhotos.js",
     "/js/photos/refreshPhoto.js": "/js/photos/refreshPhoto.js",
+    "/js/posts/orderBy.js": "/js/posts/orderBy.js",
     "/js/privacy-policy/fetchContent.js": "/js/privacy-policy/fetchContent.js"
 }
