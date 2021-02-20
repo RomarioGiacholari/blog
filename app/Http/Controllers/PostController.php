@@ -9,7 +9,6 @@ use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
 use App\ViewModels\Post\ShowViewModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -23,13 +22,18 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $page = $request->query('page') ?? 1;
+        $allowedKeysForOrderBy = ['created_at', 'views'];
+        $defaultOrderBy = $allowedKeysForOrderBy[0];
+        $orderBy = $request->query('orderBy') ?? $defaultOrderBy;
+
+        if (!in_array($orderBy, $allowedKeysForOrderBy)) {
+            $orderBy = $defaultOrderBy;
+        }
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->posts = Cache::tags(['posts'])->remember("posts.page.{$page}", $seconds = 60 * 30, function () {
-            return $this->postService->get(15);
-        });
+        $viewModel->orderBy = $orderBy;
+        $viewModel->posts = $this->postService->get(15, $orderBy);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
@@ -72,11 +76,7 @@ class PostController extends Controller
             $viewModel->pageTitle = $viewModel->post->title;
             $viewModel->author = $viewModel->post->creator->name;
 
-            $isIncremented = $this->postService->incrementViews($slug);
-
-            if ($isIncremented) {
-                $_ = Cache::tags(['posts'])->flush();
-            }
+            $_ = $this->postService->incrementViews($slug);
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
