@@ -141,6 +141,46 @@ class PostTest extends TestCase
         $this->assertSame(2, (int) $post->fresh()->views);
     }
 
+    public function test_the_post_can_be_sorted_by_the_date_they_were_created()
+    {
+        $email = config('app.admin_email');
+        $user = static::createUser(['email' => $email]);
+
+        $this->actingAs($user);
+
+        /** @var Post $postCreatedInThePast */
+        $postCreatedInThePast = Post::factory()->create(['user_id' => $user->id, 'created_at' => now()->subDay()]);
+
+
+        /** @var Post $postCreatedNow */
+        $postCreatedNow = Post::factory()->create(['user_id' => $user->id]);
+
+        $endpoint = route('posts.index', ['orderBy' => 'created_at', 'direction' => 'desc']);
+        $response = $this->get($endpoint);
+
+        $response->assertSeeTextInOrder([$postCreatedNow->title, $postCreatedInThePast->title]);
+    }
+
+    public function test_the_post_can_be_sorted_by_views()
+    {
+        $email = config('app.admin_email');
+        $user = static::createUser(['email' => $email]);
+
+        $this->actingAs($user);
+
+        /** @var Post $postWithTenViews */
+        $postWithTenViews = Post::factory()->create(['user_id' => $user->id, 'views' => 10]);
+
+
+        /** @var Post $postWithTwentyViews */
+        $postWithTwentyViews = Post::factory()->create(['user_id' => $user->id, 'views' => 20]);
+
+        $endpoint = route('posts.index', ['orderBy' => 'views', 'direction' => 'desc']);
+        $response = $this->get($endpoint);
+
+        $response->assertSeeTextInOrder([$postWithTwentyViews->views, $postWithTenViews->views]);
+    }
+
     private static function createUser(array $attributes): User
     {
         $user = User::query()->where($attributes)->first();
