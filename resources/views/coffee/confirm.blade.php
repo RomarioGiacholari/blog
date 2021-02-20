@@ -17,7 +17,7 @@
 </div>
 @endsection
 @section('scripts')
-<script src="https://js.stripe.com/v3/" defer></script>
+<script defer src="https://js.stripe.com/v3/"></script>
 <script defer>
     document.addEventListener("DOMContentLoaded", function () {
         var paymentButton = document.getElementById('paymentButton');
