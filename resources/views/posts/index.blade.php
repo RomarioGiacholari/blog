@@ -7,6 +7,7 @@
 <div class="container">
     <h1>Snippets</h1>
     <hr />
+    @if($viewModel->orderBy !== '')
     <div class="row">
         <div class="col-md-2">
             <div class="form-group">
@@ -19,6 +20,7 @@
             </div>
         </div>
     </div>
+    @endif
     <div class="row">
         @foreach($viewModel->posts as $post)
         <div class="col-md-12">

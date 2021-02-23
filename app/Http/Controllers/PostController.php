@@ -27,7 +27,7 @@ class PostController extends Controller
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->orderBy = "{$orderBy}|{$orderByDirection}";
+        $viewModel->orderBy = trim("{$orderBy}|{$orderByDirection}");
         $viewModel->posts = $this->postService->get(15, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
