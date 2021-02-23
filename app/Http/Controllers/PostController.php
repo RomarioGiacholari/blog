@@ -22,13 +22,15 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        $perPage = 15;
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
+        $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->orderBy = "{$orderBy}|{$orderByDirection}";
-        $viewModel->posts = $this->postService->get(15, $orderBy, $orderByDirection);
+        $viewModel->orderBy = $formattedOrderBy;
+        $viewModel->posts = $this->postService->get($perPage, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
