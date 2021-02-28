@@ -70,7 +70,7 @@ class CoffeeController extends Controller
     {
         $viewModel = new SuccessViewModel();
         $viewModel->pageTitle = 'Thank you';
-        $viewModel->message = 'Your payment has been successful! Enjoy the rest of your day!';
+        $viewModel->message = 'Your payment has been successful. Enjoy the rest of your day.';
 
         return view('coffee.thank-you', ['viewModel' => $viewModel]);
     }
@@ -79,7 +79,7 @@ class CoffeeController extends Controller
     {
         $viewModel = new CancelViewModel();
         $viewModel->pageTitle = 'Payment canceled';
-        $viewModel->message = 'Your payment was canceled!';
+        $viewModel->message = 'Your payment was canceled.';
 
         return view('coffee.cancel', ['viewModel' => $viewModel]);
     }
