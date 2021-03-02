@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Enumerable\Dictionary;
 use App\Services\Photos\IPhotoService;
 use App\ViewModels\Photo\IndexViewModel;
 use App\ViewModels\Photo\PhotoListViewModel;
@@ -53,7 +54,8 @@ class PhotoController extends Controller
         $viewModel->photos = null;
 
         if (isset($this->photos) && count($this->photos) > 0) {
-            $viewModel->photos = $this->photos;
+            $photos = Dictionary::shuffle($this->photos);
+            $viewModel->photos = $photos;
         }
 
         return view('photos.partial', ['viewModel' => $viewModel]);
