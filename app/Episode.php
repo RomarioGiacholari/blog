@@ -25,7 +25,7 @@ class Episode extends Model
         return $this->belongsTo(Podcast::class);
     }
 
-    public function setSlugAttribute($title): void
+    public function setSlugAttribute(string $title): void
     {
         $this->attributes['slug'] = Str::slug($title, '-');
     }
