@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <h1>Confirm payment of (£{{ $viewModel->friendlyAmount }})</h1>
             <hr>
-            <p>Next, you will be redirected to Stripe and they are going to handle the payment.</p>
+            <p>Next, you will be redirected to <a href="https://stripe.com/"><u>Stripe and they are going to handle the payment.</u></a></p>
             <button id="paymentButton" class="btn btn-success btn-block">pay</button>
             <a href="{{ route('coffee.index') }}" class="btn btn-default btn-block" role="button">cancel</a>
         </div>
