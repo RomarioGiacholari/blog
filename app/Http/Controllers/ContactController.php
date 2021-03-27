@@ -6,6 +6,7 @@ use App\Mail\ContactMe;
 use App\ViewModels\Contact\IndexViewModel;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -43,7 +44,8 @@ class ContactController extends Controller
             $message = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
             $status = 200;
         } catch (Exception $exception) {
-            $message = $exception->getMessage();
+            $message = 'Something went wrong...';
+            Log::error($exception->getMessage());
         }
 
         $data = [
