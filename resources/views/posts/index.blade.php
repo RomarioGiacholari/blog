@@ -2,7 +2,7 @@
 @if($viewModel != null && $viewModel->pageTitle != null)
 @section('title', $viewModel->pageTitle)
 @endif
-@if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
+@if($viewModel != null && !empty($viewModel->posts))
 @section('content')
 <div class="container">
     <h1>Snippets</h1>
@@ -31,10 +31,6 @@
             <hr />
         </div>
         @endforeach
-    </div>
-
-    <div>
-        {{ $viewModel->posts->withQueryString()->links() }}
     </div>
 </div>
 @endsection

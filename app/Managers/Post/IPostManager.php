@@ -4,11 +4,10 @@ namespace App\Managers\Post;
 
 use App\Entities\Post\PostEntity;
 use App\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 
 interface IPostManager
 {
-    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator;
+    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
     public function store(PostEntity $postEntity): ?string;
 

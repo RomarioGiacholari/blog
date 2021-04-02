@@ -16,6 +16,8 @@ class PostRequestAdapter
         $postEntity->body = $request->get('body');
         $postEntity->slug = $request->get('title');
         $postEntity->excerpt = $request->get('body');
+        $postEntity->created_at = now();
+        $postEntity->updated_at = now();
         $postEntity->views = 0;
 
         return $postEntity;

@@ -2,51 +2,60 @@
 
 namespace App\Repositories;
 
+use App\Adapters\Post\PostAdapter;
 use App\Entities\Post\PostEntity;
 use App\Post;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class PostRepository implements IPostRepository
 {
-    private Post $repository;
+    private DatabaseManager $repository;
+    private static string $table = "posts";
 
-    public function __construct(Post $repository)
+    public function __construct(DatabaseManager $repository)
     {
         $this->repository = $repository;
     }
 
-    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator
+    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
-        $postCollection = null;
+        $postEntities = [];
 
-        $postData = $this->repository::query()->orderBy($orderByColumn, $direction)->paginate($perPage);
+        $postData = $this->repository->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->get();
 
         if (!$postData->isEmpty()) {
-            $postCollection = $postData;
+            foreach ($postData as $postDataItem) {
+                $postEntities[] = PostAdapter::toPostEntity($postDataItem);
+            }
         }
 
-        return $postCollection;
+        return $postEntities;
     }
 
-    public function store(PostEntity $postEntity): ?string
+    public function store(object $postData): ?string
     {
         $postSlug = null;
 
-        if ($postEntity) {
-            DB::transaction(function () use (&$postSlug, $postEntity) {
-                $postData = new Post();
-                $postData->user_id = $postEntity->userId;
-                $postData->title = $postEntity->title;
-                $postData->body = $postEntity->body;
-                $postData->excerpt = strip_tags(Str::limit($postEntity->excerpt, 100, ' ...'));
-                $postData->slug = Str::slug($postEntity->slug, '-');
-                $postData->views = 0;
-                $isSuccess = $postData->save();
+        if ($postData) {
+            DB::transaction(function () use (&$postSlug, $postData) {
+                $values = [
+                    'user_id' => $postData->userId,
+                    'title' => $postData->title,
+                    'body' => $postData->body,
+                    'excerpt' => $postData->excerpt,
+                    'slug' => $postData->slug,
+                    'views' => 0,
+                    'created_at' => $postData->created_at,
+                    'updated_at' => $postData->updated_at
+                ];
+
+                $isSuccess = $this->repository->table(static::$table)->insert($values);
 
                 if ($isSuccess) {
-                    $postSlug = $postData->slug;
+                    $postSlug = $values['slug'];
                 }
             });
         }
@@ -54,30 +63,35 @@ class PostRepository implements IPostRepository
         return $postSlug;
     }
 
-    public function findBy(string $slug): ?Post
+    public function findBy(string $slug): ?PostEntity
     {
-        $postData = null;
+        $postEntity = null;
 
         if (trim($slug) !== '') {
             /** @var Post $postData */
-            $postData = $this->repository::query()->where('slug', '=', $slug)->sole();
+            $postData = $this->repository->table(static::$table)->where('slug', '=', $slug)->sole();
+
+            $postEntity = PostAdapter::toPostEntity($postData);
         }
 
-        return $postData;
+        return $postEntity;
     }
 
-    public function update(PostEntity $postEntity, string $slug): bool
+    public function update(object $postData, string $slug): bool
     {
         $isSuccess = false;
-        $postData = $this->findBy($slug);
 
-        if ($postData !== null) {
-            DB::transaction(function () use (&$isSuccess, $postEntity, $postData) {
-                $postData->title = $postEntity->title;
-                $postData->body = $postEntity->body;
-                $postData->excerpt = strip_tags(Str::limit($postEntity->excerpt, 100, ' ...'));
-                $postData->slug = Str::slug($postEntity->slug, '-');
-                $isSuccess = $postData->save();
+        if (trim($slug) !== '') {
+            DB::transaction(function () use (&$isSuccess, $postData, $slug) {
+                $values = [
+                    'title' => $postData->title,
+                    'body' => $postData->body,
+                    'excerpt' => $postData->excerpt,
+                    'slug' => $postData->slug,
+                    'updated_at' => $postData->updated_at,
+                ];
+
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->update($values);
             });
         }
 
@@ -90,8 +104,8 @@ class PostRepository implements IPostRepository
         $postData = $this->findBy($slug);
 
         if ($postData !== null) {
-            DB::transaction(function () use (&$isSuccess, $postData) {
-                $isSuccess = $postData->delete();
+            DB::transaction(function () use (&$isSuccess, $slug) {
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->delete();
             });
         }
 
@@ -104,9 +118,12 @@ class PostRepository implements IPostRepository
         $postData = $this->findBy($slug);
 
         if ($postData !== null) {
-            DB::transaction(function () use (&$isSuccess, $postData) {
-                $postData->views += 1;
-                $isSuccess = $postData->save();
+            DB::transaction(function () use (&$isSuccess, $postData,  $slug) {
+                $values = [
+                    'views' => $postData->views + 1
+                ];
+
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->update($values);
             });
         }
 

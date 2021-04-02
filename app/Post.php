@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,6 +18,8 @@ use Illuminate\Support\Str;
  * @property string $slug
  * @property string $excerpt
  * @property int    $views
+ * @property Carbon|mixed created_at
+ * @property Carbon|mixed updated_at
  */
 class Post extends Model
 {

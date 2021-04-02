@@ -3,18 +3,16 @@
 namespace App\Repositories;
 
 use App\Entities\Post\PostEntity;
-use App\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 
 interface IPostRepository
 {
-    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator;
+    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
-    public function store(PostEntity $postEntity): ?string;
+    public function store(object $postData): ?string;
 
-    public function findBy(string $slug): ?Post;
+    public function findBy(string $slug): ?PostEntity;
 
-    public function update(PostEntity $postEntity, string $slug): bool;
+    public function update(object $postData, string $slug): bool;
 
     public function destroy(string $slug): bool;
 
