@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Enumerable\Dictionary;
-use App\Services\Photos\IPhotoService;
+use App\Managers\Photos\IPhotoManager;
 use App\ViewModels\Photo\IndexViewModel;
 use App\ViewModels\Photo\PhotoListViewModel;
 use App\ViewModels\Photo\ShowViewModel;
@@ -16,9 +16,9 @@ class PhotoController extends Controller
 {
     private ?array $photos;
 
-    public function __construct(IPhotoService $service)
+    public function __construct(IPhotoManager $photoManager)
     {
-        $this->photos = Cache::remember('photos', $seconds = 60 * 60 * 24, fn () => $service->all());
+        $this->photos = Cache::remember('photos', $seconds = 60 * 60 * 24, fn () => $photoManager->all());
     }
 
     public function index()

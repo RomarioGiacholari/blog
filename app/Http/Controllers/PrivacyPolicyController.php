@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Privacy\IPrivacyService;
+use App\Managers\Privacy\IPrivacyManager;
 use App\ViewModels\Privacy\ContentViewModel;
 use App\ViewModels\Privacy\IndexViewModel;
 use Illuminate\Support\Facades\Cache;
@@ -17,12 +17,12 @@ class PrivacyPolicyController extends Controller
         return view('privacy-policy.index', ['viewModel' => $viewModel]);
     }
 
-    public function content(IPrivacyService $privacyService)
+    public function content(IPrivacyManager $privacyManager)
     {
         $websiteName = 'giacholari.com';
         $contactEmail = config('app.admin_email') ?? 'giacholari@gmail.com';
-        $privacyContent = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyService) {
-            $content = $privacyService->get();
+        $privacyContent = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyManager) {
+            $content = $privacyManager->get();
 
             return $content;
         });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Adapters\Post\PostRequestAdapter;
-use App\Services\Post\IPostService;
+use App\Managers\Post\IPostManager;
 use App\ViewModels\Post\CreateViewModel;
 use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
@@ -12,11 +12,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    private IPostService $postService;
+    private IPostManager $postManager;
 
-    public function __construct(IPostService $service)
+    public function __construct(IPostManager $service)
     {
-        $this->postService = $service;
+        $this->postManager = $service;
         $this->middleware('admin')->except(['show', 'index']);
     }
 
@@ -30,7 +30,7 @@ class PostController extends Controller
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
-        $viewModel->posts = $this->postService->get($perPage, $orderBy, $orderByDirection);
+        $viewModel->posts = $this->postManager->get($perPage, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
@@ -49,10 +49,10 @@ class PostController extends Controller
 
         $redirectPath = back();
         $postEntity = PostRequestAdapter::toPostEntity($request);
-        $postSlug = $this->postService->store($postEntity);
+        $postSlug = $this->postManager->store($postEntity);
 
         if ($postSlug !== null) {
-            $post = $this->postService->findBy($postSlug);
+            $post = $this->postManager->findBy($postSlug);
 
             if ($post !== null) {
                 $redirectPath = redirect($post->path());
@@ -65,7 +65,7 @@ class PostController extends Controller
     public function show(string $slug)
     {
         $viewModel = new ShowViewModel();
-        $viewModel->post = $this->postService->findBy($slug);
+        $viewModel->post = $this->postManager->findBy($slug);
         $viewModel->author = null;
         $viewModel->pageTitle = null;
 
@@ -73,7 +73,7 @@ class PostController extends Controller
             $viewModel->pageTitle = $viewModel->post->title;
             $viewModel->author = $viewModel->post->creator->name;
 
-            $_ = $this->postService->incrementViews($slug);
+            $_ = $this->postManager->incrementViews($slug);
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
@@ -82,7 +82,7 @@ class PostController extends Controller
     public function edit(string $slug)
     {
         $viewModel = new EditViewModel();
-        $viewModel->post = $this->postService->findBy($slug);
+        $viewModel->post = $this->postManager->findBy($slug);
         $viewModel->pageTitle = null;
 
         if ($viewModel->post !== null) {
@@ -98,7 +98,7 @@ class PostController extends Controller
         $this->validatePost($request, $slug);
 
         $postEntity = PostRequestAdapter::toPostEntity($request);
-        $isSuccess = $this->postService->update($postEntity, $slug);
+        $isSuccess = $this->postManager->update($postEntity, $slug);
 
         if ($isSuccess) {
             $redirectPath = redirect(route('home.posts'));
@@ -110,7 +110,7 @@ class PostController extends Controller
     public function destroy(string $slug)
     {
         $redirectPath = back();
-        $isSuccess = $this->postService->destroy($slug);
+        $isSuccess = $this->postManager->destroy($slug);
 
         if ($isSuccess) {
             $redirectPath = redirect(route('home.posts'));
@@ -124,7 +124,7 @@ class PostController extends Controller
         $postId = 0;
 
         if ($slug !== '') {
-            $post = $this->postService->findBy($slug);
+            $post = $this->postManager->findBy($slug);
 
             if ($post !== null) {
                 $postId = $post->id;

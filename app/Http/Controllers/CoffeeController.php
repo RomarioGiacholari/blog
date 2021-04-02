@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Payment\IPaymentService;
+use App\Managers\Payment\IPaymentManager;
 use App\ViewModels\Coffee\CancelViewModel;
 use App\ViewModels\Coffee\ConfirmViewModel;
 use App\ViewModels\Coffee\IndexViewModel;
@@ -12,11 +12,11 @@ use function count;
 
 class CoffeeController extends Controller
 {
-    private IPaymentService $paymentService;
+    private IPaymentManager $paymentManager;
 
-    public function __construct(IPaymentService $service)
+    public function __construct(IPaymentManager $paymentManager)
     {
-        $this->paymentService = $service;
+        $this->paymentManager = $paymentManager;
     }
 
     public function index()
@@ -33,7 +33,7 @@ class CoffeeController extends Controller
 
         $requestAmount = (float) $request->input('amount');
         $stripeAmount = ($requestAmount * 100);
-        $session = $this->paymentService->startSession($stripeAmount);
+        $session = $this->paymentManager->startSession($stripeAmount);
 
         if ($session !== null  && isset($session->id)) {
             $sessionId = $session->id;
@@ -52,7 +52,7 @@ class CoffeeController extends Controller
         $viewModel->sessionId = $sessionId;
         $viewModel->friendlyAmount = null;
 
-        $session = $this->paymentService->retrieveSession($sessionId);
+        $session = $this->paymentManager->retrieveSession($sessionId);
 
         if ($session !== null && isset($session->display_items) && count($session->display_items) > 0) {
             $items = $session->display_items[0];
