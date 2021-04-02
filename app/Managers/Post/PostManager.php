@@ -2,10 +2,10 @@
 
 namespace App\Managers\Post;
 
+use App\Adapters\Post\PostAdapter;
 use App\Entities\Post\PostEntity;
 use App\Post;
 use App\Repositories\IPostRepository;
-use Illuminate\Contracts\Pagination\Paginator;
 
 class PostManager implements IPostManager
 {
@@ -16,9 +16,16 @@ class PostManager implements IPostManager
         $this->repository = $repository;
     }
 
-    public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator
+    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
-        return $this->repository->get($perPage, $orderByColumn, $direction);
+        $posts = [];
+        $postEntities =  $this->repository->get($limit, $orderByColumn, $direction);
+
+        foreach ($postEntities as $postEntity) {
+            $posts[] = PostAdapter::toPost($postEntity);
+        }
+
+        return $posts;
     }
 
     public function store(PostEntity $postEntity): ?string
@@ -26,7 +33,8 @@ class PostManager implements IPostManager
         $postSlug = null;
 
         if ($postEntity) {
-            $postSlug = $this->repository->store($postEntity);
+            $postData = PostAdapter::toPostData($postEntity);
+            $postSlug = $this->repository->store($postData);
         }
 
         return $postSlug;
@@ -37,7 +45,11 @@ class PostManager implements IPostManager
         $post = null;
 
         if (trim($slug) !== '') {
-            $post = $this->repository->findBy($slug);
+            $postEntity = $this->repository->findBy($slug);
+
+            if ($postEntity !== null) {
+                $post = PostAdapter::toPost($postEntity);
+            }
         }
 
         return $post;
@@ -48,7 +60,8 @@ class PostManager implements IPostManager
         $isSuccess = false;
 
         if ($postEntity && trim($slug) !== '') {
-            $isSuccess = $this->repository->update($postEntity, $slug);
+            $postData = PostAdapter::toPostData($postEntity);
+            $isSuccess = $this->repository->update($postData, $slug);
         }
 
         return $isSuccess;

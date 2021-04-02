@@ -8,7 +8,7 @@
         <div class="col-md-12">
         <div><a href="{{ route('posts.create') }}" class="btn btn-success btn-xs" title="New post">New post</a></div>
         <hr />
-            @if($viewModel != null && $viewModel->posts !== null && !$viewModel->posts->isEmpty())
+            @if($viewModel != null && !empty($viewModel->posts))
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -49,7 +49,7 @@
     </div>
 </div>
 @endsection
-@if($viewModel != null && $viewModel->posts !== null)
+@if($viewModel != null && !empty($viewModel->posts))
 @section('scripts')
 <script defer src="https://assets.giacholari.com/js/blog/forms/delete.js"></script>
 @endsection

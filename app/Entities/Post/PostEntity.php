@@ -2,6 +2,8 @@
 
 namespace App\Entities\Post;
 
+use Carbon\Carbon;
+
 class PostEntity
 {
     public ?int $userId;
@@ -10,4 +12,6 @@ class PostEntity
     public string $slug;
     public string $excerpt;
     public int $views;
+    public Carbon $created_at;
+    public Carbon $updated_at;
 }

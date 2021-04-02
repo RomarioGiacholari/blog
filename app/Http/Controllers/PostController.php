@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $perPage = 15;
+        $limit = 100; // 100 currently and down the road to switch to a custom pagination
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
         $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
@@ -30,7 +30,7 @@ class PostController extends Controller
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
-        $viewModel->posts = $this->postManager->get($perPage, $orderBy, $orderByDirection);
+        $viewModel->posts = $this->postManager->get($limit, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }

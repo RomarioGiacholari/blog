@@ -7,6 +7,6 @@ use Illuminate\Contracts\Pagination\Paginator;
 
 class IndexViewModel extends BaseViewModel
 {
-    public ?Paginator $posts;
+    public array $posts;
     public string $orderBy;
 }
