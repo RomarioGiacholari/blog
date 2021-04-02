@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Privacy;
+namespace App\Managers\Privacy;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
 
-class PrivacyService implements IPrivacyService
+class PrivacyManager implements IPrivacyManager
 {
     private string $endpoint;
 

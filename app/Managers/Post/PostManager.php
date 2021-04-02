@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Post;
+namespace App\Managers\Post;
 
 use App\Entities\Post\PostEntity;
 use App\Post;
 use App\Repositories\IPostRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 
-class PostService implements IPostService
+class PostManager implements IPostManager
 {
     private IPostRepository $repository;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Photos;
+namespace App\Managers\Photos;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
 
-class PhotoService implements IPhotoService
+class PhotoManager implements IPhotoManager
 {
     private string $endpoint;
 

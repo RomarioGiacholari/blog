@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Post;
+namespace App\Managers\Post;
 
 use App\Entities\Post\PostEntity;
 use App\Post;
 use Illuminate\Contracts\Pagination\Paginator;
 
-interface IPostService
+interface IPostManager
 {
     public function get(int $perPage, string $orderByColumn = 'created_at', string $direction = 'desc'): ?Paginator;
 

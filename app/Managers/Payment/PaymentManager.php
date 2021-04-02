@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Payment;
+namespace App\Managers\Payment;
 
 use Exception;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
-class PaymentService implements IPaymentService
+class PaymentManager implements IPaymentManager
 {
     public function __construct(string $stripeSecretKey)
     {
