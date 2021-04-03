@@ -43,8 +43,8 @@ class UsersTableSeeder extends Seeder
                     'excerpt' => $excerpt,
                     'slug'    => $slug,
                     'views'   => $views,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
+                    'created_at' => now()->toDateTimeString(),
+                    'updated_at' => now()->toDateTimeString()
                 ];
             }
 
