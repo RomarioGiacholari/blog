@@ -14,15 +14,15 @@ class PostController extends Controller
 {
     private IPostManager $postManager;
 
-    public function __construct(IPostManager $service)
+    public function __construct(IPostManager $postManager)
     {
-        $this->postManager = $service;
+        $this->postManager = $postManager;
         $this->middleware('admin')->except(['show', 'index']);
     }
 
     public function index(Request $request)
     {
-        $limit = 100; // 100 currently and down the road to switch to a custom pagination
+        $limit = config('services.post.pagination.limit');
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
         $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");

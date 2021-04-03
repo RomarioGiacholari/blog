@@ -6,6 +6,7 @@ use Carbon\Carbon;
 
 class PostEntity
 {
+    public int $id;
     public ?int $userId;
     public string $title;
     public string $body;

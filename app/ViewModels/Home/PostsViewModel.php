@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PostsViewModel extends BaseViewModel
 {
-   public ?Collection $posts;
+   public array $posts;
 }

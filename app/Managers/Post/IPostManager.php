@@ -9,6 +9,8 @@ interface IPostManager
 {
     public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
+    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
+
     public function store(PostEntity $postEntity): ?string;
 
     public function findBy(string $slug): ?Post;

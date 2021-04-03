@@ -28,6 +28,18 @@ class PostManager implements IPostManager
         return $posts;
     }
 
+    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    {
+        $posts = [];
+        $postEntities =  $this->repository->getForUser($userId, $limit, $orderByColumn, $direction);
+
+        foreach ($postEntities as $postEntity) {
+            $posts[] = PostAdapter::toPost($postEntity);
+        }
+
+        return $posts;
+    }
+
     public function store(PostEntity $postEntity): ?string
     {
         $postSlug = null;

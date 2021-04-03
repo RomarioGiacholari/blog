@@ -14,6 +14,7 @@ class PostAdapter
     public static function toPost(PostEntity $postEntity): Post
     {
         $post = new Post();
+        $post->id = $postEntity->id;
         $post->user_id = $postEntity->userId;
         $post->title = $postEntity->title;
         $post->body = $postEntity->body;
@@ -29,11 +30,12 @@ class PostAdapter
     public static function toPostEntity(object $postData): PostEntity
     {
         $postEntity = new PostEntity();
+        $postEntity->id = $postData->id;
         $postEntity->userId = $postData->user_id;
         $postEntity->title = $postData->title;
         $postEntity->body = $postData->body;
-        $postEntity->slug = $postData->title;
-        $postEntity->excerpt = $postData->body;
+        $postEntity->slug = $postData->slug;
+        $postEntity->excerpt = $postData->excerpt;
         $postEntity->views = $postData->views;
         $postEntity->created_at = Carbon::parse($postData->created_at);
         $postEntity->updated_at = Carbon::parse($postData->updated_at);
@@ -47,8 +49,8 @@ class PostAdapter
         $postData->userId = $postEntity->userId;
         $postData->title = $postEntity->title;
         $postData->body = $postEntity->body;
-        $postData->slug = Str::slug($postEntity->slug, '-');
-        $postData->excerpt = strip_tags(Str::limit($postEntity->excerpt, 100, ' ...'));
+        $postData->slug = Str::slug($postEntity->title, '-');
+        $postData->excerpt = strip_tags(Str::limit($postEntity->body, 100, ' ...'));
         $postData->views = $postEntity->views;
         $postData->created_at = $postEntity->created_at->toDateTimeString();
         $postData->updated_at = $postEntity->updated_at->toDateTimeString();

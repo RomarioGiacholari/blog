@@ -8,6 +8,8 @@ interface IPostRepository
 {
     public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
+    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
+
     public function store(object $postData): ?string;
 
     public function findBy(string $slug): ?PostEntity;
