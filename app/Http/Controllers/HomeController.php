@@ -2,29 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Managers\Post\IPostManager;
+use App\User;
 use App\ViewModels\Home\EpisodesViewModel;
 use App\ViewModels\Home\PostsViewModel;
 
 class HomeController extends Controller
 {
-    public function __construct()
+    private IPostManager $postManager;
+
+    public function __construct(IPostManager $postManager)
     {
+        $this->postManager = $postManager;
         $this->middleware('admin');
     }
 
     public function posts()
     {
+        /** @var User $currentUser */
         $currentUser = auth()->user();
-        $postCollection = null;
+        $limit = config('services.post.pagination.limit');
+        $postList = [];
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
-            $postCollection = Post::query()->where('user_id', $currentUser->id)
-                ->orderBy('created_at', 'desc')->get();
+            $postList = $this->postManager->getForUser($currentUser->id, $limit);
         }
 
         $viewModel = new PostsViewModel();
-        $viewModel->posts = $postCollection;
+        $viewModel->posts = $postList;
         $viewModel->pageTitle = 'Home | Posts';
 
         return view('home.posts', ['viewModel' => $viewModel]);

@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             $userId = $user->id;
             $views = 0;
 
-            for ($i = 0; $i < 1500; $i++) {
+            for ($i = 0; $i < 50; $i++) {
                 $title = Str::random(10);
                 $body = Str::random(50);
                 $excerpt = strip_tags(Str::limit($body, 96, ' ...'));
@@ -48,10 +48,10 @@ class UsersTableSeeder extends Seeder
                 ];
             }
 
-            $chunkedPostList = array_chunk($posts, 1500);
+            $chunkedPostList = array_chunk($posts, 50);
 
             foreach ($chunkedPostList as $list) {
-                Post::query()->insert($list);
+                DB::table("posts")->insert($list);
             }
         });
     }

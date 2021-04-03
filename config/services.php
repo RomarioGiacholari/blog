@@ -49,4 +49,10 @@ return [
     'privacy' => [
         'endpoint' => 'https://assets.giacholari.com/json/privacy.json',
     ],
+
+    'post' => [
+        'pagination' => [
+            'limit' => 100,
+        ]
+    ]
 ];

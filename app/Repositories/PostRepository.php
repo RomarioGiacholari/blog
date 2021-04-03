@@ -4,10 +4,7 @@ namespace App\Repositories;
 
 use App\Adapters\Post\PostAdapter;
 use App\Entities\Post\PostEntity;
-use App\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\DatabaseManager;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class PostRepository implements IPostRepository
@@ -25,6 +22,21 @@ class PostRepository implements IPostRepository
         $postEntities = [];
 
         $postData = $this->repository->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->get();
+
+        if (!$postData->isEmpty()) {
+            foreach ($postData as $postDataItem) {
+                $postEntities[] = PostAdapter::toPostEntity($postDataItem);
+            }
+        }
+
+        return $postEntities;
+    }
+
+    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    {
+        $postEntities = [];
+
+        $postData = $this->repository->table(static::$table)->where('user_id', '=', $userId)->orderBy($orderByColumn, $direction)->limit($limit)->get();
 
         if (!$postData->isEmpty()) {
             foreach ($postData as $postDataItem) {
@@ -68,9 +80,7 @@ class PostRepository implements IPostRepository
         $postEntity = null;
 
         if (trim($slug) !== '') {
-            /** @var Post $postData */
             $postData = $this->repository->table(static::$table)->where('slug', '=', $slug)->sole();
-
             $postEntity = PostAdapter::toPostEntity($postData);
         }
 
@@ -81,7 +91,7 @@ class PostRepository implements IPostRepository
     {
         $isSuccess = false;
 
-        if (trim($slug) !== '') {
+        if ($postData && trim($slug) !== '') {
             DB::transaction(function () use (&$isSuccess, $postData, $slug) {
                 $values = [
                     'title' => $postData->title,
@@ -91,7 +101,7 @@ class PostRepository implements IPostRepository
                     'updated_at' => $postData->updated_at,
                 ];
 
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->update($values);
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->limit(1)->update($values);
             });
         }
 
@@ -104,8 +114,8 @@ class PostRepository implements IPostRepository
         $postData = $this->findBy($slug);
 
         if ($postData !== null) {
-            DB::transaction(function () use (&$isSuccess, $slug) {
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->delete();
+            DB::transaction(function () use (&$isSuccess, $postData) {
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->delete();
             });
         }
 
@@ -123,7 +133,7 @@ class PostRepository implements IPostRepository
                     'views' => $postData->views + 1
                 ];
 
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->update($values);
+                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->update($values);
             });
         }
 
