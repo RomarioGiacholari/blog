@@ -9,19 +9,18 @@ use Illuminate\Support\Facades\DB;
 
 class PostRepository implements IPostRepository
 {
-    private DatabaseManager $repository;
+    private DatabaseManager $dataAccess;
     private static string $table = "posts";
 
-    public function __construct(DatabaseManager $repository)
+    public function __construct(DatabaseManager $dataAccess)
     {
-        $this->repository = $repository;
+        $this->dataAccess = $dataAccess;
     }
 
     public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $postEntities = [];
-
-        $postData = $this->repository->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->get();
+        $postData = $this->dataAccess->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->get();
 
         if (!$postData->isEmpty()) {
             foreach ($postData as $postDataItem) {
@@ -35,8 +34,7 @@ class PostRepository implements IPostRepository
     public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $postEntities = [];
-
-        $postData = $this->repository->table(static::$table)->where('user_id', '=', $userId)->orderBy($orderByColumn, $direction)->limit($limit)->get();
+        $postData = $this->dataAccess->table(static::$table)->where('user_id', '=', $userId)->orderBy($orderByColumn, $direction)->limit($limit)->get();
 
         if (!$postData->isEmpty()) {
             foreach ($postData as $postDataItem) {
@@ -64,7 +62,7 @@ class PostRepository implements IPostRepository
                     'updated_at' => $postData->updated_at
                 ];
 
-                $isSuccess = $this->repository->table(static::$table)->insert($values);
+                $isSuccess = $this->dataAccess->table(static::$table)->insert($values);
 
                 if ($isSuccess) {
                     $postSlug = $values['slug'];
@@ -80,7 +78,7 @@ class PostRepository implements IPostRepository
         $postEntity = null;
 
         if (trim($slug) !== '') {
-            $postData = $this->repository->table(static::$table)->where('slug', '=', $slug)->sole();
+            $postData = $this->dataAccess->table(static::$table)->where('slug', '=', $slug)->sole();
             $postEntity = PostAdapter::toPostEntity($postData);
         }
 
@@ -101,7 +99,7 @@ class PostRepository implements IPostRepository
                     'updated_at' => $postData->updated_at,
                 ];
 
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $slug)->limit(1)->update($values);
+                $isSuccess = $this->dataAccess->table(static::$table)->where('slug', '=', $slug)->limit(1)->update($values);
             });
         }
 
@@ -115,7 +113,7 @@ class PostRepository implements IPostRepository
 
         if ($postData !== null) {
             DB::transaction(function () use (&$isSuccess, $postData) {
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->delete();
+                $isSuccess = $this->dataAccess->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->delete();
             });
         }
 
@@ -133,7 +131,7 @@ class PostRepository implements IPostRepository
                     'views' => $postData->views + 1
                 ];
 
-                $isSuccess = $this->repository->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->update($values);
+                $isSuccess = $this->dataAccess->table(static::$table)->where('slug', '=', $postData->slug)->limit(1)->update($values);
             });
         }
 
