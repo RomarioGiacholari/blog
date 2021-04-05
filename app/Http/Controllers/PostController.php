@@ -22,6 +22,7 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        $offset = 0;
         $limit = config('services.post.pagination.limit');
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
@@ -30,7 +31,7 @@ class PostController extends Controller
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
-        $viewModel->posts = $this->postManager->get($limit, $orderBy, $orderByDirection);
+        $viewModel->posts = $this->postManager->get($limit, $offset, $orderBy, $orderByDirection);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }

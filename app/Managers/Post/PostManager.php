@@ -16,10 +16,10 @@ class PostManager implements IPostManager
         $this->repository = $repository;
     }
 
-    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    public function get(int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $posts = [];
-        $postEntities =  $this->repository->get($limit, $orderByColumn, $direction);
+        $postEntities =  $this->repository->get($limit, $offset, $orderByColumn, $direction);
 
         if (!empty($postEntities)) {
             foreach ($postEntities as $postEntity) {
@@ -30,10 +30,10 @@ class PostManager implements IPostManager
         return $posts;
     }
 
-    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    public function getForUser(int $userId, int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $posts = [];
-        $postEntities =  $this->repository->getForUser($userId, $limit, $orderByColumn, $direction);
+        $postEntities =  $this->repository->getForUser($userId, $limit, $offset, $orderByColumn, $direction);
 
         if (!empty($postEntities)) {
             foreach ($postEntities as $postEntity) {
