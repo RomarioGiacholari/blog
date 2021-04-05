@@ -21,8 +21,10 @@ class PostManager implements IPostManager
         $posts = [];
         $postEntities =  $this->repository->get($limit, $orderByColumn, $direction);
 
-        foreach ($postEntities as $postEntity) {
-            $posts[] = PostAdapter::toPost($postEntity);
+        if (!empty($postEntities)) {
+            foreach ($postEntities as $postEntity) {
+                $posts[] = PostAdapter::toPost($postEntity);
+            }
         }
 
         return $posts;
@@ -33,8 +35,10 @@ class PostManager implements IPostManager
         $posts = [];
         $postEntities =  $this->repository->getForUser($userId, $limit, $orderByColumn, $direction);
 
-        foreach ($postEntities as $postEntity) {
-            $posts[] = PostAdapter::toPost($postEntity);
+        if (!empty($postEntities)) {
+            foreach ($postEntities as $postEntity) {
+                $posts[] = PostAdapter::toPost($postEntity);
+            }
         }
 
         return $posts;

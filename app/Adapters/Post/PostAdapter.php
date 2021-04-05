@@ -15,7 +15,7 @@ class PostAdapter
     {
         $post = new Post();
         $post->id = $postEntity->id;
-        $post->user_id = $postEntity->userId;
+        $post->user_id = $postEntity->userId ?? null;
         $post->title = $postEntity->title;
         $post->body = $postEntity->body;
         $post->slug = $postEntity->slug;
@@ -46,7 +46,7 @@ class PostAdapter
     public static function toPostData(PostEntity $postEntity): object
     {
         $postData = new stdClass();
-        $postData->userId = $postEntity->userId;
+        $postData->userId = $postEntity->userId ?? null;
         $postData->title = $postEntity->title;
         $postData->body = $postEntity->body;
         $postData->slug = Str::slug($postEntity->title, '-');
