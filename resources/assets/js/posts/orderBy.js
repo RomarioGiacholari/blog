@@ -22,6 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             var uri = "/posts?orderBy=" + orderByKey + "&direction=" + orderByDirection;
+            var urlParameters = new URLSearchParams(window.location.search);
+            var limit = urlParameters.get('limit');
+            var page = urlParameters.get('page');
+
+            if (limit && page) {
+                uri += "&limit=" + limit + "&page=" + page;
+            }
+
             window.location.href = encodeURI(uri);
         }
     });
