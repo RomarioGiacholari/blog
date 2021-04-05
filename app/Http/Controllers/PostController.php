@@ -22,15 +22,18 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $limit = config('services.post.pagination.limit');
+        $limit = $request->query('limit') ?? config('services.post.pagination.limit');
+        $page = $request->query('page') ?? 1;
+        $offset = ($page * $limit) - $limit;
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
         $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
+        $posts = $this->postManager->get($limit, $offset, $orderBy, $orderByDirection);
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
-        $viewModel->posts = $this->postManager->get($limit, $orderBy, $orderByDirection);
+        $viewModel->posts = $posts;
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }

@@ -7,9 +7,9 @@ use App\Post;
 
 interface IPostManager
 {
-    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
+    public function get(int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
-    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
+    public function getForUser(int $userId, int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array;
 
     public function store(PostEntity $postEntity): ?string;
 

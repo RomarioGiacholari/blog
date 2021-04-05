@@ -17,10 +17,10 @@ class PostRepository implements IPostRepository
         $this->dataAccess = $dataAccess;
     }
 
-    public function get(int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    public function get(int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $postEntities = [];
-        $postData = $this->dataAccess->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->get();
+        $postData = $this->dataAccess->table(static::$table)->orderBy($orderByColumn, $direction)->limit($limit)->offset($offset)->get();
 
         if (!$postData->isEmpty()) {
             foreach ($postData as $postDataItem) {
@@ -31,10 +31,10 @@ class PostRepository implements IPostRepository
         return $postEntities;
     }
 
-    public function getForUser(int $userId, int $limit, string $orderByColumn = 'created_at', string $direction = 'desc'): array
+    public function getForUser(int $userId, int $limit, int $offset = 0, string $orderByColumn = 'created_at', string $direction = 'desc'): array
     {
         $postEntities = [];
-        $postData = $this->dataAccess->table(static::$table)->where('user_id', '=', $userId)->orderBy($orderByColumn, $direction)->limit($limit)->get();
+        $postData = $this->dataAccess->table(static::$table)->where('user_id', '=', $userId)->orderBy($orderByColumn, $direction)->limit($limit)->offset($offset)->get();
 
         if (!$postData->isEmpty()) {
             foreach ($postData as $postDataItem) {

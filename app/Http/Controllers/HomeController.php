@@ -21,11 +21,12 @@ class HomeController extends Controller
     {
         /** @var User $currentUser */
         $currentUser = auth()->user();
+        $offset = 0;
         $limit = config('services.post.pagination.limit');
         $postList = [];
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
-            $postList = $this->postManager->getForUser($currentUser->id, $limit);
+            $postList = $this->postManager->getForUser($currentUser->id, $limit, $offset);
         }
 
         $viewModel = new PostsViewModel();
