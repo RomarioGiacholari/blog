@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/coffee/updateAmount.js": "/js/coffee/updateAmount.js",
     "/js/forms/delete.js": "/js/forms/delete.js",
+    "/js/pagination/pagination.js": "/js/pagination/pagination.js",
     "/js/photos/fetchPhotos.js": "/js/photos/fetchPhotos.js",
     "/js/photos/refreshPhoto.js": "/js/photos/refreshPhoto.js",
     "/js/posts/orderBy.js": "/js/posts/orderBy.js",

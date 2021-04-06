@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Adapters\Post\PostRequestAdapter;
 use App\Managers\Post\IPostManager;
+use App\ViewModels\Pagination\PaginationViewModel;
 use App\ViewModels\Post\CreateViewModel;
 use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
@@ -22,18 +23,21 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->query('limit') ?? config('services.post.pagination.limit');
-        $page = $request->query('page') ?? 1;
-        $offset = ($page * $limit) - $limit;
+        $limit = config('services.post.pagination.limit');
+        $currentPage = $request->query('currentPage') ?? 1;
+        $offset = ($currentPage * $limit) - $limit;
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
         $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
+        $itemsCount = $this->postManager->count();
+        $totalPages = ceil(($itemsCount / $limit));
         $posts = $this->postManager->get($limit, $offset, $orderBy, $orderByDirection);
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
         $viewModel->posts = $posts;
+        $viewModel->pagination = new PaginationViewModel($currentPage, $totalPages);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }

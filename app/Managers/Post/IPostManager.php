@@ -20,4 +20,6 @@ interface IPostManager
     public function destroy(string $slug): bool;
 
     public function incrementViews(string $slug): bool;
+
+    public function count (): int;
 }

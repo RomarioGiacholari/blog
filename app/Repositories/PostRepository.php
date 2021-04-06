@@ -137,4 +137,9 @@ class PostRepository implements IPostRepository
 
         return $isSuccess;
     }
+
+    public function count (): int
+    {
+        return $this->dataAccess->table(static::$table)->count();
+    }
 }
