@@ -104,4 +104,9 @@ class PostManager implements IPostManager
 
         return $isSuccess;
     }
+
+    public function count (): int
+    {
+        return $this->repository->count();
+    }
 }

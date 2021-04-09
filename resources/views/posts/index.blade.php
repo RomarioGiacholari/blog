@@ -32,10 +32,14 @@
         </div>
         @endforeach
     </div>
+    @if ($viewModel->pagination)
+        @include('components._pagination')
+    @endif
 </div>
 @endsection
 @section('scripts')
-<script defer src="https://assets.giacholari.com/js/blog/posts/orderBy.js"></script>
+{{--<script defer src="/js/posts/orderBy.js"></script>--}}
+<script defer src="/js/pagination/pagination.js"></script>
 @endsection
 @else
 @section('content')

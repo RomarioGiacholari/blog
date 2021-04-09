@@ -8,4 +8,5 @@ class IndexViewModel extends BaseViewModel
 {
     public array $posts;
     public string $orderBy;
+    public ?object $pagination;
 }

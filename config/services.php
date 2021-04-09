@@ -52,7 +52,7 @@ return [
 
     'post' => [
         'pagination' => [
-            'limit' => 100,
+            'limit' => 15,
         ]
     ]
 ];
