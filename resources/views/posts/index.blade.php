@@ -46,7 +46,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p>Blog posts coming soon.</p>
+            <p>There is nothing here...</p>
         </div>
     </div>
 </div>

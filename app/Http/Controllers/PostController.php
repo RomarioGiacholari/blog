@@ -24,8 +24,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $limit = config('services.post.pagination.limit');
-        $currentPage = $request->query('currentPage') ?? 1;
-        $offset = ($currentPage * $limit) - $limit;
+        $page = $request->query('page') ?? 1;
+        $offset = ($page * $limit) - $limit;
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
         $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
@@ -37,7 +37,7 @@ class PostController extends Controller
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = $formattedOrderBy;
         $viewModel->posts = $posts;
-        $viewModel->pagination = new PaginationViewModel($currentPage, $totalPages);
+        $viewModel->pagination = new PaginationViewModel($page, $totalPages);
 
         return view('posts.index', ['viewModel' => $viewModel]);
     }
