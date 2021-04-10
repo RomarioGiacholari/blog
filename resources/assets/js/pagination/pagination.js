@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var pagination = JSON.parse(document.getElementById('pagination').dataset.pagination);
     var previousButton = document.getElementById('previous');
     var nextButton = document.getElementById('next');
-    var currentPage = parseInt(pagination.currentPage);
+    var page = parseInt(pagination.page);
     var totalPages = parseInt(pagination.totalPages);
 
     // TODO - preserve the query string parameters
@@ -12,23 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // var z = urlParameters.get('z');
 
     previousButton.addEventListener('click', function () {
-        if (currentPage === 1) {
+        if (page === 1) {
             previousButton.disabled = true;
         } else {
             previousButton.disabled = false;
-            var page = currentPage - 1;
-            var uri = '/posts?currentPage=' + page;
+            page = page - 1;
+            var uri = '/posts?page=' + page;
             window.location.href = encodeURI(uri);
         }
     });
 
     nextButton.addEventListener('click', function () {
-        if (currentPage >= totalPages) {
+        if (page >= totalPages) {
             nextButton.disabled = true;
         } else {
             nextButton.disabled = false;
-            var page = currentPage + 1;
-            var uri = '/posts?currentPage=' + page;
+            page = page + 1;
+            var uri = '/posts?page=' + page;
             window.location.href = encodeURI(uri);
         }
     });

@@ -4,12 +4,12 @@ namespace App\ViewModels\Pagination;
 
 class PaginationViewModel
 {
-    public int $currentPage;
+    public int $page;
     public int $totalPages;
 
-    public function __construct(int $currentPage, int $totalPages)
+    public function __construct(int $page, int $totalPages)
     {
-        $this->currentPage = $currentPage;
+        $this->page = $page;
         $this->totalPages = $totalPages;
     }
 }
