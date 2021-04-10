@@ -1,4 +1,4 @@
-@if ($viewModel->pagination)
+@if ($viewModel->pagination !== null)
     <div id="pagination" data-pagination="{{json_encode($viewModel->pagination)}}">
         <button id="previous">previous</button>
         <button id="next">next</button>
