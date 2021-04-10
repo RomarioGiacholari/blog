@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $limit = config('services.post.pagination.limit');
-        $page = $request->query('page') ?? 1;
+        $page = static::getPage($request);
         $offset = ($page * $limit) - $limit;
         $orderBy = static::getOrderByKey($request);
         $orderByDirection = static::getOrderByDirection($request);
@@ -168,5 +168,16 @@ class PostController extends Controller
         }
 
         return $direction;
+    }
+
+    private static function getPage(Request $request): int
+    {
+        $page =  $request->query('page') ?? 1;
+
+        if ($page < 1) {
+            $page = 1;
+        }
+
+        return $page;
     }
 }
