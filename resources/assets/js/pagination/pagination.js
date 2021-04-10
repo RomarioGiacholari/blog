@@ -7,11 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var uri = new URL(window.location.href);
     var parameters = uri.searchParams;
 
+    if (page < 1) {
+        page = 1;
+    }
+
+    previousButton.disabled = page === 1;
+    nextButton.disabled = page >= totalPages;
+
     previousButton.addEventListener('click', function () {
-        if (page === 1) {
-            previousButton.disabled = true;
-        } else {
-            previousButton.disabled = false;
+        if (page !== 1) {
             page = page - 1;
             parameters.set("page", page);
             window.location.href = encodeURI(uri.href);
@@ -19,10 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     nextButton.addEventListener('click', function () {
-        if (page >= totalPages) {
-            nextButton.disabled = true;
-        } else {
-            nextButton.disabled = false;
+        if (page < totalPages) {
             page = page + 1;
             parameters.set("page", page);
             window.location.href = encodeURI(uri.href);
