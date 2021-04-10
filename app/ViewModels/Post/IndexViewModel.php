@@ -3,10 +3,11 @@
 namespace App\ViewModels\Post;
 
 use App\ViewModels\BaseViewModel;
+use App\ViewModels\Pagination\PaginationViewModel;
 
 class IndexViewModel extends BaseViewModel
 {
     public array $posts;
     public string $orderBy;
-    public ?object $pagination;
+    public ?PaginationViewModel $pagination = null;
 }

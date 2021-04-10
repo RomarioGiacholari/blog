@@ -32,14 +32,16 @@
         </div>
         @endforeach
     </div>
-    @if ($viewModel->pagination)
+    @if ($viewModel->pagination !== null)
         @include('components._pagination')
     @endif
 </div>
 @endsection
 @section('scripts')
 <script defer src="https://assets.giacholari.com/js/blog/posts/orderBy.js"></script>
+@if ($viewModel->pagination !== null)
 <script defer src="https://assets.giacholari.com/js/blog/pagination/pagination.js"></script>
+@endif
 @endsection
 @else
 @section('content')
