@@ -148,7 +148,7 @@ class PostController extends Controller
     {
         $allowedKeys = ['created_at', 'views'];
         $default = $allowedKeys[0];
-        $orderBy = $request->query('orderBy') ?? $default;
+        $orderBy = $request->query('order_by') ?? $default;
 
         if (!in_array($orderBy, $allowedKeys)) {
             $orderBy = $default;

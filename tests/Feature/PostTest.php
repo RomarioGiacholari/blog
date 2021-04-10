@@ -155,7 +155,7 @@ class PostTest extends TestCase
         /** @var Post $postCreatedNow */
         $postCreatedNow = Post::factory()->create(['user_id' => $user->id]);
 
-        $endpoint = route('posts.index', ['orderBy' => 'created_at', 'direction' => 'desc']);
+        $endpoint = route('posts.index', ['order_by' => 'created_at', 'direction' => 'desc']);
         $response = $this->get($endpoint);
 
         $response->assertSeeTextInOrder([$postCreatedNow->title, $postCreatedInThePast->title]);
@@ -175,7 +175,7 @@ class PostTest extends TestCase
         /** @var Post $postWithTwentyViews */
         $postWithTwentyViews = Post::factory()->create(['user_id' => $user->id, 'views' => 20]);
 
-        $endpoint = route('posts.index', ['orderBy' => 'views', 'direction' => 'desc']);
+        $endpoint = route('posts.index', ['order_by' => 'views', 'direction' => 'desc']);
         $response = $this->get($endpoint);
 
         $response->assertSeeTextInOrder([$postWithTwentyViews->views, $postWithTenViews->views]);
