@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 orderByDirection = defaultOrderByDirection;
             }
 
-            var uri = "/posts?orderBy=" + orderByKey + "&direction=" + orderByDirection;
+            var uri = "/posts?order_by=" + orderByKey + "&direction=" + orderByDirection;
             window.location.href = encodeURI(uri);
         }
     });
