@@ -38,7 +38,7 @@
 </div>
 @endsection
 @section('scripts')
-<script defer src="https://assets.giacholari.com/js/blog/posts/orderBy.js"></script>
+<script defer src="https://assets.giacholari.com/js/blog/posts/order.js"></script>
 @if ($viewModel->pagination !== null)
 <script defer src="https://assets.giacholari.com/js/blog/pagination/pagination.js"></script>
 @endif
