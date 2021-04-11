@@ -23,20 +23,23 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
+        $orderBy = PostRequestAdapter::getOrderByKey($request);
+        $direction = PostRequestAdapter::getOrderByDirection($request);
+
         $limit = config('services.post.pagination.limit');
-        $page = static::getPage($request);
+        $page = PostRequestAdapter::getPage($request);
         $offset = ($page * $limit) - $limit;
-        $orderBy = static::getOrderByKey($request);
-        $orderByDirection = static::getOrderByDirection($request);
-        $formattedOrderBy = trim("{$orderBy}|{$orderByDirection}");
         $itemsCount = $this->postManager->count();
-        $totalPages = ceil(($itemsCount / $limit));
-        $posts = $this->postManager->get($limit, $offset, $orderBy, $orderByDirection);
+        $totalPages = 1;
+
+        if ($itemsCount > 0) {
+            $totalPages = ceil(($itemsCount / $limit));
+        }
 
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
-        $viewModel->orderBy = $formattedOrderBy;
-        $viewModel->posts = $posts;
+        $viewModel->orderBy = trim("{$orderBy}|{$direction}");
+        $viewModel->posts = $this->postManager->get($limit, $offset, $orderBy, $direction);
         $viewModel->pagination = new PaginationViewModel($page, $totalPages);
 
         return view('posts.index', ['viewModel' => $viewModel]);
@@ -142,42 +145,5 @@ class PostController extends Controller
             'title' => "required|max:25|unique:posts,title,{$postId}",
             'body'  => 'required|max:6000',
         ]);
-    }
-
-    private static function getOrderByKey(Request $request): string
-    {
-        $allowedKeys = ['created_at', 'views'];
-        $default = $allowedKeys[0];
-        $orderBy = $request->query('order_by') ?? $default;
-
-        if (!in_array($orderBy, $allowedKeys)) {
-            $orderBy = $default;
-        }
-
-        return $orderBy;
-    }
-
-    private static function getOrderByDirection(Request $request): string
-    {
-        $allowedKeys = ['desc', 'asc'];
-        $default = $allowedKeys[0];
-        $direction = $request->query('direction') ?? $default;
-
-        if (!in_array($direction, $allowedKeys)) {
-            $direction = $default;
-        }
-
-        return $direction;
-    }
-
-    private static function getPage(Request $request): int
-    {
-        $page =  $request->query('page') ?? 1;
-
-        if ($page < 1) {
-            $page = 1;
-        }
-
-        return $page;
     }
 }
