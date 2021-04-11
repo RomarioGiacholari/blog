@@ -5,7 +5,7 @@
 @if($viewModel != null && !empty($viewModel->posts))
 @section('content')
 <div class="container">
-    <h1>Snippets</h1>
+    <h1>Posts</h1>
     <hr />
     @if($viewModel->orderBy !== '')
     <div class="row">

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var identifier = 'js-photos-partial-container';
     var targetElement = document.querySelector(`[data-identifier='${identifier}']`);
 
-    fetch('/all-photos/partial')
+    fetch('/photos/partial')
         .then(function (response) {
             return response.text();
         })
