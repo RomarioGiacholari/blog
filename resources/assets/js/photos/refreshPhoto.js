@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (photos && targetElement) {
             var keys = Object.keys(photos);
             var selectedPhoto = keys[Math.floor(Math.random() * keys.length)]
-            var photoPath = photos[selectedPhoto];
-            var src = photoPath;
+            var src = photos[selectedPhoto];
             var photoFriendlyName = selectedPhoto;
 
             targetElement.src = src;

@@ -10,8 +10,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ route('posts.index') }}" class="{{ Request::is('posts*') ? 'active' : '' }}">blog</a></li>
-        <li><a href="{{ route('photos') }}" class="{{ Request::is('all-photos*') ? 'active' : '' }}">photos</a></li>
+        <li><a href="{{ route('posts.index') }}" class="{{ Request::is('posts*') ? 'active' : '' }}">posts</a></li>
+        <li><a href="{{ route('photos.index') }}" class="{{ Request::is('photos*') ? 'active' : '' }}">photos</a></li>
         <li><a href="{{ route('cv') }}" class="{{ Request::is('cv') ? 'active' : '' }}">cv</a></li>
         <li><a href="{{ route('coffee.index') }}" class="{{ Request::is('coffee*') ? 'active' : '' }}">coffee</a></li>
         <li><a href="{{ route('about.index') }}" class="{{ Request::is('about*') ? 'active' : '' }}">about</a></li>

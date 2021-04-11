@@ -31,9 +31,9 @@ Route::group(['middleware' => ['throttle:global']], function () {
     Route::get('/home/posts', [\App\Http\Controllers\HomeController::class, 'posts'])->name('home.posts');
     Route::get('/home/episodes', [\App\Http\Controllers\HomeController::class, 'episodes'])->name('home.episodes');
 
-    Route::get('/all-photos', [\App\Http\Controllers\PhotoController::class, 'index'])->name('photos');
-    Route::get('/all-photos/partial', [\App\Http\Controllers\PhotoController::class, 'photos'])->name('photos.partial');
-    Route::get('/all-photos/{identifier}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photos.show');
+    Route::get('/photos', [\App\Http\Controllers\PhotoController::class, 'index'])->name('photos.index');
+    Route::get('/photos/partial', [\App\Http\Controllers\PhotoController::class, 'photos'])->name('photos.partial');
+    Route::get('/photos/{identifier}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photos.show');
 
     Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
