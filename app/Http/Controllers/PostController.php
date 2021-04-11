@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\Pagination\PaginationRequestAdapter;
 use App\Adapters\Post\PostRequestAdapter;
 use App\Managers\Post\IPostManager;
 use App\ViewModels\Pagination\PaginationViewModel;
@@ -27,7 +28,7 @@ class PostController extends Controller
         $direction = PostRequestAdapter::getOrderByDirection($request);
 
         $limit = config('services.post.pagination.limit');
-        $page = PostRequestAdapter::getPage($request);
+        $page = PaginationRequestAdapter::getPage($request);
         $offset = ($page * $limit) - $limit;
         $itemsCount = $this->postManager->count();
         $totalPages = 1;
