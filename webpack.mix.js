@@ -17,6 +17,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/photos/fetchPhotos.js', 'public/js/photos')
     .js('resources/assets/js/forms/delete.js', 'public/js/forms')
     .js('resources/assets/js/privacy-policy/fetchContent.js', 'public/js/privacy-policy')
-    .js('resources/assets/js/posts/order.js', 'public/js/posts')
+    .js('resources/assets/js/posts/order-by.js', 'public/js/posts')
     .js('resources/assets/js/pagination/pagination.js', 'public/js/pagination')
     .sass('resources/assets/sass/app.scss', 'public/css');
