@@ -22,7 +22,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $isSuccess = false;
-        $message = null;
+        $message = 'Something went wrong...';
         $headers = ['Content-Type' => 'application/json'];
         $status = 500;
 
@@ -44,7 +44,6 @@ class ContactController extends Controller
             $message = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
             $status = 200;
         } catch (Exception $exception) {
-            $message = 'Something went wrong...';
             Log::error($exception->getMessage());
         }
 
