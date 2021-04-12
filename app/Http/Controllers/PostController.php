@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\Order\OrderByAdapter;
 use App\Adapters\Pagination\PaginationRequestAdapter;
 use App\Adapters\Post\PostRequestAdapter;
 use App\Managers\Post\IPostManager;
@@ -24,8 +25,9 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $orderBy = PostRequestAdapter::getOrderByKey($request);
-        $direction = PostRequestAdapter::getOrderByDirection($request);
+        $orderBy = OrderByAdapter::toKey($request);
+        $direction = OrderByAdapter::toDirection($request);
+        $internalOrderByKey = OrderByAdapter::toInternalKey($orderBy);
 
         $limit = config('services.post.pagination.limit');
         $page = PaginationRequestAdapter::getPage($request);
@@ -40,7 +42,7 @@ class PostController extends Controller
         $viewModel = new IndexViewModel();
         $viewModel->pageTitle = 'Posts';
         $viewModel->orderBy = trim("{$orderBy}|{$direction}");
-        $viewModel->posts = $this->postManager->get($limit, $offset, $orderBy, $direction);
+        $viewModel->posts = $this->postManager->get($limit, $offset, $internalOrderByKey, $direction);
         $viewModel->pagination = new PaginationViewModel($page, $totalPages);
 
         return view('posts.index', ['viewModel' => $viewModel]);
