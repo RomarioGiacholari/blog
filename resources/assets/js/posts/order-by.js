@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var allowedKeysForOrderBy = ['created_at', 'views'];
+    var allowedKeysForOrderBy = ['date', 'views'];
     var allowedKeysForOrderByDirection = ['desc', 'asc'];
     var defaultOrderByKey = allowedKeysForOrderBy[0];
     var defaultOrderByDirection = allowedKeysForOrderByDirection[0];
