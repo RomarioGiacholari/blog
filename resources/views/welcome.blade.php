@@ -15,8 +15,8 @@
 
             <h4>Employment</h4>
             <div class="font-size-16">
-                <a href="https://tillo.io/">Tillo</a> - Software Developer 2020/Present |
-                <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Software Development Placement Student 2018/2020 |
+                <a href="https://tillo.io/">Tillo</a> - Software developer 2020/present |
+                <a href="https://www.pinewood.co.uk/">Pinewood Technologies</a> - Placement student 2018/2020 |
                 <a href="https://www.bootcampmedia.co.uk/">Bootcampmedia</a> - Web developer 2018 |
                 <a href="https://beautifulcanoe.com/">Beautiful Canoe</a> - Web developer intern 2017
             </div>
