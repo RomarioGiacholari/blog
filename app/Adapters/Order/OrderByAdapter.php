@@ -48,7 +48,7 @@ class OrderByAdapter
 
     private static function getAllowedDirections(): array
     {
-        return ['asc', 'desc'];
+        return ['desc', 'asc'];
     }
 
     private static function getAllowedKeys(): array
