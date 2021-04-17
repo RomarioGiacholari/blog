@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\Pagination\PaginationRequestAdapter;
 use App\Managers\Post\IPostManager;
 use App\User;
 use App\ViewModels\Home\EpisodesViewModel;
 use App\ViewModels\Home\PostsViewModel;
+use App\ViewModels\Pagination\PaginationViewModel;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -17,21 +20,24 @@ class HomeController extends Controller
         $this->middleware('admin');
     }
 
-    public function posts()
+    public function posts(Request $request)
     {
         /** @var User $currentUser */
         $currentUser = auth()->user();
-        $offset = 0;
         $limit = config('services.post.pagination.limit');
-        $postList = [];
+        $page = PaginationRequestAdapter::getPage($request);
+        $offset = ($page * $limit) - $limit;
+        $itemsCount = $this->postManager->countForUser($currentUser->id);
+        $totalPages = 1;
 
-        if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
-            $postList = $this->postManager->getForUser($currentUser->id, $limit, $offset);
+        if ($itemsCount > 0) {
+            $totalPages = ceil(($itemsCount / $limit));
         }
 
         $viewModel = new PostsViewModel();
-        $viewModel->posts = $postList;
+        $viewModel->posts = $this->postManager->getForUser($currentUser->id, $limit, $offset);
         $viewModel->pageTitle = 'Home | Posts';
+        $viewModel->pagination = new PaginationViewModel($page, $totalPages);
 
         return view('home.posts', ['viewModel' => $viewModel]);
     }

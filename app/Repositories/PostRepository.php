@@ -142,4 +142,15 @@ class PostRepository implements IPostRepository
     {
         return $this->dataAccess->table(static::$table)->count();
     }
+
+    public function countForUser (int $userId): int
+    {
+        $count = 0;
+
+        if ($userId > 0) {
+            $count = $this->dataAccess->table(static::$table)->where('user_id', '=', $userId)->count();
+        }
+
+        return $count;
+    }
 }

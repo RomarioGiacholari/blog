@@ -109,4 +109,15 @@ class PostManager implements IPostManager
     {
         return $this->repository->count();
     }
+
+    public function countForUser (int $userId): int
+    {
+        $count = 0;
+
+        if ($userId > 0) {
+            $count = $this->repository->countForUser($userId);
+        }
+
+        return $count;
+    }
 }

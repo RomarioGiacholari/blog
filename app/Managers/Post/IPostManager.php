@@ -22,4 +22,6 @@ interface IPostManager
     public function incrementViews(string $slug): bool;
 
     public function count (): int;
+
+    public function countForUser (int $userId): int;
 }
