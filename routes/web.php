@@ -4,37 +4,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['throttle:global']], function () {
-    Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-
-    Route::get('/cv', function () {
-        $endpoint = config('services.cv.endpoint');
-
-        return redirect($endpoint);
-    })->name('cv');
-
-    Route::get('/app/status', function () {
-        $data = ['status' => 'OK', 'code' => 200];
-        $status = 200;
-        $headers = ['Content-Type' => 'application/json'];
-
-        return response($data, $status, $headers);
-    })->name('app.status');
-
-    Route::get('/coffee', [\App\Http\Controllers\CoffeeController::class, 'index'])->name('coffee.index');
-    Route::post('/coffee', [\App\Http\Controllers\CoffeeController::class, 'store'])->name('coffee.store');
-    Route::get('/coffee/confirm/{sessionId}', [\App\Http\Controllers\CoffeeController::class, 'confirm'])->name('coffee.confirm');
-    Route::get('/coffee/success', [\App\Http\Controllers\CoffeeController::class, 'success'])->name('coffee.success');
-    Route::get('/coffee/cancel', [\App\Http\Controllers\CoffeeController::class, 'cancel'])->name('coffee.cancel');
-
+    // Authentication
     Auth::routes();
 
-    Route::get('/home/posts', [\App\Http\Controllers\HomeController::class, 'posts'])->name('home.posts');
-    Route::get('/home/episodes', [\App\Http\Controllers\HomeController::class, 'episodes'])->name('home.episodes');
+    // Welcome
+    Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
-    Route::get('/photos', [\App\Http\Controllers\PhotoController::class, 'index'])->name('photos.index');
-    Route::get('/photos/partial', [\App\Http\Controllers\PhotoController::class, 'photos'])->name('photos.partial');
-    Route::get('/photos/{identifier}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photos.show');
-
+    // Posts
     Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
     Route::get('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
@@ -43,12 +19,37 @@ Route::group(['middleware' => ['throttle:global']], function () {
     Route::patch('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{slug}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
 
+    // Photos
+    Route::get('/photos', [\App\Http\Controllers\PhotoController::class, 'index'])->name('photos.index');
+    Route::get('/photos/partial', [\App\Http\Controllers\PhotoController::class, 'photos'])->name('photos.partial');
+    Route::get('/photos/{identifier}', [\App\Http\Controllers\PhotoController::class, 'show'])->name('photos.show');
+
+    // CV
+    Route::get('/cv', function () {
+        $endpoint = config('services.cv.endpoint');
+
+        return redirect($endpoint);
+    })->name('cv');
+
+    // Coffee
+    Route::get('/coffee', [\App\Http\Controllers\CoffeeController::class, 'index'])->name('coffee.index');
+    Route::post('/coffee', [\App\Http\Controllers\CoffeeController::class, 'store'])->name('coffee.store');
+    Route::get('/coffee/confirm/{sessionId}', [\App\Http\Controllers\CoffeeController::class, 'confirm'])->name('coffee.confirm');
+    Route::get('/coffee/success', [\App\Http\Controllers\CoffeeController::class, 'success'])->name('coffee.success');
+    Route::get('/coffee/cancel', [\App\Http\Controllers\CoffeeController::class, 'cancel'])->name('coffee.cancel');
+
+    // About
+    Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about.index');
+
+    // Contact
     Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
+    // Privacy policy
     Route::get('/privacy-policy', [\App\Http\Controllers\PrivacyPolicyController::class, 'index'])->name('privacy-policy.index');
     Route::get('/privacy-policy/content', [\App\Http\Controllers\PrivacyPolicyController::class, 'content'])->name('privacy-policy.content');
 
+    // Episodes
     Route::get('/podcast/episodes', [\App\Http\Controllers\EpisodeController::class, 'index'])->name('episodes.index');
     Route::get('/podcast/episodes/create', [\App\Http\Controllers\EpisodeController::class, 'create'])->name('episodes.create');
     Route::get('/podcast/episodes/{episode}', [\App\Http\Controllers\EpisodeController::class, 'show'])->name('episodes.show');
@@ -57,12 +58,17 @@ Route::group(['middleware' => ['throttle:global']], function () {
     Route::patch('/podcast/episodes/{episode}', [\App\Http\Controllers\EpisodeController::class, 'update'])->name('episodes.update');
     Route::delete('/podcast/episodes/{episode}', [\App\Http\Controllers\EpisodeController::class, 'destroy'])->name('episodes.destroy');
 
+    // Dashboard
     Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/home/posts', [\App\Http\Controllers\HomeController::class, 'posts'])->name('home.posts');
+    Route::get('/home/episodes', [\App\Http\Controllers\HomeController::class, 'episodes'])->name('home.episodes');
 
-    Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about.index');
+    // App status
+    Route::get('/app/status', function () {
+        $data = ['status' => 'OK', 'code' => 200];
+        $status = 200;
+        $headers = ['Content-Type' => 'application/json'];
 
-    Route::prefix('/api')->group(function () {
-        Route::get('/projects', [\App\Http\Controllers\ProjectApiController::class, 'index'])->name('api.projects.index');
-        Route::get('/photos', [\App\Http\Controllers\PhotoApiController::class, 'index'])->name('api.photos.index');
-    });
+        return response($data, $status, $headers);
+    })->name('app.status');
 });
