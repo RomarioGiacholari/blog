@@ -12,10 +12,10 @@
         <div class="col-md-2">
             <div class="form-group">
                 <select name="orderBy" id="orderBy">
-                    <option {{ $viewModel->orderBy == 'date|desc'        ? 'selected' : '' }} value="date|desc">Newest first</option>
-                    <option {{ $viewModel->orderBy == 'date|asc'         ? 'selected' : '' }} value="date|asc">Newest last</option>
-                    <option {{ $viewModel->orderBy == 'views|desc'       ? 'selected' : '' }} value="views|desc">Top views</option>
-                    <option {{ $viewModel->orderBy == 'views|asc'        ? 'selected' : '' }} value="views|asc">Least views</option>
+                    <option {{ $viewModel->orderBy == 'date|desc'  ? 'selected' : '' }} value="date|desc">Newest first</option>
+                    <option {{ $viewModel->orderBy == 'date|asc'   ? 'selected' : '' }} value="date|asc">Newest last</option>
+                    <option {{ $viewModel->orderBy == 'views|desc' ? 'selected' : '' }} value="views|desc">Top views</option>
+                    <option {{ $viewModel->orderBy == 'views|asc'  ? 'selected' : '' }} value="views|asc">Least views</option>
                 </select>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\Order\OrderByAdapter;
 use App\Adapters\Pagination\PaginationRequestAdapter;
 use App\Managers\Post\IPostManager;
 use App\User;
@@ -9,6 +10,7 @@ use App\ViewModels\Home\EpisodesViewModel;
 use App\ViewModels\Home\PostsViewModel;
 use App\ViewModels\Pagination\PaginationViewModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,12 @@ class HomeController extends Controller
     public function posts(Request $request)
     {
         /** @var User $currentUser */
-        $currentUser = auth()->user();
+        $currentUser = Auth::user();
+
+        $orderBy = OrderByAdapter::toKey($request);
+        $direction = OrderByAdapter::toDirection($request);
+        $internalOrderByKey = OrderByAdapter::toInternalKey($orderBy);
+
         $limit = config('services.post.pagination.limit');
         $page = PaginationRequestAdapter::getPage($request);
         $offset = ($page * $limit) - $limit;
@@ -35,8 +42,9 @@ class HomeController extends Controller
         }
 
         $viewModel = new PostsViewModel();
-        $viewModel->posts = $this->postManager->getForUser($currentUser->id, $limit, $offset);
         $viewModel->pageTitle = 'Home | Posts';
+        $viewModel->posts = $this->postManager->getForUser($currentUser->id, $limit, $offset, $internalOrderByKey, $direction);
+        $viewModel->orderBy = trim("{$orderBy}|{$direction}");
         $viewModel->pagination = new PaginationViewModel($page, $totalPages);
 
         return view('home.posts', ['viewModel' => $viewModel]);
@@ -44,7 +52,8 @@ class HomeController extends Controller
 
     public function episodes()
     {
-        $currentUser = auth()->user();
+        /** @var User $currentUser */
+        $currentUser = Auth::user();
         $episodeCollection = null;
 
         if ($currentUser && isset($currentUser->id) && $currentUser->id > 0) {
