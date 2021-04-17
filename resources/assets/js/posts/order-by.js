@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var defaultOrderByKey = allowedKeysForOrderBy[0];
     var defaultOrderByDirection = allowedKeysForOrderByDirection[0];
     var orderByInput = document.getElementById("orderBy");
+    var uri = new URL(window.location.href);
+    var parameters = uri.searchParams;
 
     orderByInput.addEventListener("change", function () {
         var currentOrderBy = this.value;
@@ -21,8 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 orderByDirection = defaultOrderByDirection;
             }
 
-            var uri = "/posts?order-by=" + orderByKey + "&direction=" + orderByDirection;
-            window.location.href = encodeURI(uri);
+            parameters.set("order-by", orderByKey);
+            parameters.set("direction", orderByDirection);
+
+            if (parameters.get("page")) {
+                parameters.set("page", "1");
+            }
+
+            window.location.href = encodeURI(uri.href);
         }
     });
 });

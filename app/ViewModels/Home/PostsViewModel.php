@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Collection;
 class PostsViewModel extends BaseViewModel
 {
    public array $posts;
+   public string $orderBy;
 }
