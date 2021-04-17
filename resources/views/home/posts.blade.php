@@ -42,6 +42,9 @@
                     </tbody>
                 </table>
             </div>
+            @if ($viewModel->pagination !== null)
+                @include('components._pagination')
+            @endif
             @else
             <p>There are no posts to display. <a href="{{ route('dashboard.index') }}">Redirect to dashboard</a></p>
             @endif
@@ -52,5 +55,8 @@
 @if($viewModel != null && !empty($viewModel->posts))
 @section('scripts')
 <script defer src="https://assets.giacholari.com/js/blog/forms/delete.js"></script>
+@if ($viewModel->pagination !== null)
+<script defer src="https://assets.giacholari.com/js/blog/pagination/pagination.js"></script>
+@endif
 @endsection
 @endif
