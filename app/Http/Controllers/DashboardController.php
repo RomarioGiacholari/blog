@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Administrator;
 use App\ViewModels\Dashboard\IndexViewModel;
 
 class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware(Administrator::class);
     }
 
     public function index()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Episode;
+use App\Http\Middleware\Administrator;
 use App\Podcast;
 use App\ViewModels\Episode\CreateViewModel;
 use App\ViewModels\Episode\EditViewModel;
@@ -15,7 +16,7 @@ class EpisodeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['show', 'index']);
+        $this->middleware(Administrator::class)->except(['show', 'index']);
     }
 
     public function index()
