@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Post;
 
 use App\Adapters\Post\PostAdapter;
 use App\Entities\Post\PostEntity;
