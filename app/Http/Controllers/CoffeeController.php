@@ -29,7 +29,7 @@ class CoffeeController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, ['amount' => 'required|numeric|min:1']);
+        $this->validate($request, ['amount' => 'required|numeric|min:1|max:5']);
 
         $requestAmount = (float) $request->input('amount');
         $stripeAmount = ($requestAmount * 100);
