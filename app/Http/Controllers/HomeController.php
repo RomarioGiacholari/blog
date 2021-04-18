@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Adapters\Order\OrderByAdapter;
 use App\Adapters\Pagination\PaginationRequestAdapter;
+use App\Http\Middleware\Administrator;
 use App\Managers\Post\IPostManager;
 use App\User;
 use App\ViewModels\Home\EpisodesViewModel;
@@ -19,7 +20,7 @@ class HomeController extends Controller
     public function __construct(IPostManager $postManager)
     {
         $this->postManager = $postManager;
-        $this->middleware('admin');
+        $this->middleware(Administrator::class);
     }
 
     public function posts(Request $request)

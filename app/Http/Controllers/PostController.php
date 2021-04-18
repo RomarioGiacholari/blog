@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Adapters\Order\OrderByAdapter;
 use App\Adapters\Pagination\PaginationRequestAdapter;
 use App\Adapters\Post\PostRequestAdapter;
+use App\Http\Middleware\Administrator;
 use App\Managers\Post\IPostManager;
 use App\ViewModels\Pagination\PaginationViewModel;
 use App\ViewModels\Post\CreateViewModel;
@@ -20,7 +21,7 @@ class PostController extends Controller
     public function __construct(IPostManager $postManager)
     {
         $this->postManager = $postManager;
-        $this->middleware('admin')->except(['show', 'index']);
+        $this->middleware(Administrator::class)->except(['show', 'index']);
     }
 
     public function index(Request $request)
