@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\IPostRepository;
-use App\Repositories\PostRepository;
+use App\Repositories\Post\IPostRepository;
+use App\Repositories\Post\PostRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider

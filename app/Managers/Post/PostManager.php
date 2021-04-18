@@ -5,7 +5,7 @@ namespace App\Managers\Post;
 use App\Adapters\Post\PostAdapter;
 use App\Entities\Post\PostEntity;
 use App\Post;
-use App\Repositories\IPostRepository;
+use App\Repositories\Post\IPostRepository;
 
 class PostManager implements IPostManager
 {
