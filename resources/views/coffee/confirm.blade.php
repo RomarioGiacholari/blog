@@ -9,8 +9,8 @@
         <div class="col-md-12">
             <h1>Confirm payment of (£{{ $viewModel->friendlyAmount }})</h1>
             <hr>
-            <p>Next, you will be redirected to <a href="https://stripe.com/" target="_blank"><u>Stripe</u></a> and they are going to handle the payment.</p>
-            <button id="paymentButton" class="btn btn-success btn-block">pay</button>
+            <p>Next, you will be redirected to <a href="https://stripe.com/" target="_blank"><u>stripe</u></a> and they are going to handle the payment.</p>
+            <button id="proceedButton" class="btn btn-success btn-block">proceed</button>
             <a href="{{ route('coffee.index') }}" class="btn btn-default btn-block" role="button">cancel</a>
         </div>
     </div>
@@ -20,13 +20,13 @@
 <script defer src="https://js.stripe.com/v3/"></script>
 <script defer>
     document.addEventListener("DOMContentLoaded", function () {
-        var paymentButton = document.getElementById('paymentButton');
+        var proceedButton = document.getElementById('proceedButton');
         var stripeHandler = function () {
             var stripe = Stripe('{{ $viewModel->stripePublicKey }}');
             stripe.redirectToCheckout({sessionId:'{{ $viewModel->sessionId }}'}).then(function (result) {});
         };
 
-        paymentButton.addEventListener('click', stripeHandler);
+        proceedButton.addEventListener('click', stripeHandler);
     });
 </script>
 @endsection

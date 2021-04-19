@@ -126,7 +126,7 @@ class PostRepository implements IPostRepository
         $postData = $this->findBy($slug);
 
         if ($postData !== null) {
-            DB::transaction(function () use (&$isSuccess, $postData,  $slug) {
+            DB::transaction(function () use (&$isSuccess, $postData) {
                 $values = [
                     'views' => $postData->views + 1
                 ];
