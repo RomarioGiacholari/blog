@@ -30,13 +30,12 @@
         @include('components._social')
         @include('components._divider')
         @include('navbar.navbar')
+        @include('components._noscript')
         @yield('content')
         <privacy-modal></privacy-modal>
     </div>
     <script defer src="https://assets.giacholari.com/js/blog/app.js"></script>
-    <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "24b18c23c53140d5a67de4a052d255cb"}'></script>
-    <!-- End Cloudflare Web Analytics -->
     @yield('scripts')
 </body>
 </html>
