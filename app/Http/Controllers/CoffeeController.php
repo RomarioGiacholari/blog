@@ -8,6 +8,7 @@ use App\ViewModels\Coffee\ConfirmViewModel;
 use App\ViewModels\Coffee\IndexViewModel;
 use App\ViewModels\Coffee\SuccessViewModel;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
 use function count;
 
 class CoffeeController extends Controller
@@ -16,7 +17,7 @@ class CoffeeController extends Controller
 
     public function __construct(IPaymentManager $paymentManager)
     {
-        $this->paymentManager = $paymentManager;
+        $this->paymentManager = $paymentManager ?? throw new InvalidArgumentException(IPaymentManager::class);
     }
 
     public function index()

@@ -12,6 +12,7 @@ use App\ViewModels\Home\PostsViewModel;
 use App\ViewModels\Pagination\PaginationViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use InvalidArgumentException;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,7 @@ class HomeController extends Controller
 
     public function __construct(IPostManager $postManager)
     {
-        $this->postManager = $postManager;
+        $this->postManager = $postManager ?? throw new InvalidArgumentException(IPostManager::class);
         $this->middleware(Administrator::class);
     }
 
