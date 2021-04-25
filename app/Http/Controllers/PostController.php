@@ -13,6 +13,7 @@ use App\ViewModels\Post\EditViewModel;
 use App\ViewModels\Post\IndexViewModel;
 use App\ViewModels\Post\ShowViewModel;
 use Illuminate\Http\Request;
+use InvalidArgumentException;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
 
     public function __construct(IPostManager $postManager)
     {
-        $this->postManager = $postManager;
+        $this->postManager = $postManager ?? throw new InvalidArgumentException(IPostManager::class);
         $this->middleware(Administrator::class)->except(['show', 'index']);
     }
 

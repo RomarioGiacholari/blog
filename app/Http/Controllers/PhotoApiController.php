@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Managers\Photos\IPhotoManager;
 use Illuminate\Support\Facades\Cache;
+use InvalidArgumentException;
 
 class PhotoApiController extends Controller
 {
@@ -11,7 +12,7 @@ class PhotoApiController extends Controller
 
     public function __construct(IPhotoManager $photoManager)
     {
-        $this->photoManager = $photoManager;
+        $this->photoManager = $photoManager ?? throw new InvalidArgumentException(IPhotoManager::class);
     }
 
     public function index()
