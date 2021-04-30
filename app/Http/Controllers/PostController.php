@@ -31,9 +31,9 @@ class PostController extends Controller
         $direction = OrderByAdapter::toDirection($request);
         $internalOrderByKey = OrderByAdapter::toInternalKey($orderBy);
 
-        $limit = config('services.post.pagination.limit');
+        $limit = (int) config('services.post.pagination.limit');
         $page = PaginationRequestAdapter::getPage($request);
-        $offset = ($page * $limit) - $limit;
+        $offset = (int) (($page * $limit) - $limit);
         $itemsCount = $this->postManager->count();
         $totalPages = 1;
 
