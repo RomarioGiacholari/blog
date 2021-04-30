@@ -13,6 +13,10 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
+        DB::statement("TRUNCATE TABLE users");
+        DB::statement("TRUNCATE TABLE podcasts");
+        DB::statement("TRUNCATE TABLE posts");
+        
         DB::transaction(function () {
             $user = new User();
             $user->name = 'giacholari';
