@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Podcast;
-use App\Post;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

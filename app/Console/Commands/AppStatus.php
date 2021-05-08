@@ -43,9 +43,9 @@ class AppStatus extends Command
                 }
             }
         } catch (Exception $exception) {
-            $this->error($exception->getMessage());
-
             Log::error($exception->getMessage());
+            
+            $this->error($exception->getMessage());
         }
     }
 }
