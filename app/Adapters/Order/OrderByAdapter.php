@@ -39,7 +39,7 @@ class OrderByAdapter
         $internalKey = $allowedInternalKeys[0];
         $keys = array_combine($allowedKeys, $allowedInternalKeys);
 
-        if (trim($key) !== '') {
+        if (trim($key) !== '' && !empty($keys[$key])) {
             $internalKey = $keys[$key];
         }
 
