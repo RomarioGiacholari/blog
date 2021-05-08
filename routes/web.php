@@ -65,8 +65,8 @@ Route::group(['middleware' => ['throttle:global']], function () {
 
     // App status
     Route::get('/app/status', function () {
-        $data = ['status' => 'OK', 'code' => 200];
-        $status = 200;
+        $code = $status = 200;
+        $data = ['status' => 'OK', 'code' => $code];
         $headers = ['Content-Type' => 'application/json'];
 
         return response($data, $status, $headers);
