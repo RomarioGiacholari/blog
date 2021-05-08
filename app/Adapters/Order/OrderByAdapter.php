@@ -21,11 +21,11 @@ class OrderByAdapter
 
     public static function toDirection(Request $request): string
     {
-        $allowedDirection = static::getAllowedDirections();
-        $defaultDirection = $allowedDirection[0];
+        $allowedDirections = static::getAllowedDirections();
+        $defaultDirection = $allowedDirections[0];
         $direction = $request->query('direction') ?? $defaultDirection;
 
-        if (!in_array($direction, $allowedDirection)) {
+        if (!in_array($direction, $allowedDirections)) {
             $direction = $defaultDirection;
         }
 
@@ -39,7 +39,7 @@ class OrderByAdapter
         $internalKey = $allowedInternalKeys[0];
         $keys = array_combine($allowedKeys, $allowedInternalKeys);
 
-        if (trim($key) !== '') {
+        if (trim($key) !== '' && !empty($keys[$key])) {
             $internalKey = $keys[$key];
         }
 
