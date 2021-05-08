@@ -10,6 +10,7 @@
             <div class="font-size-16">
                 I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
+                Find here <a href="{{ route('cv') }}">(cv)</a> a copy of my curriculum vitae.
             </div>
             <hr />
 
