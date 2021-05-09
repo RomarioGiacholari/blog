@@ -60,9 +60,9 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $this->validatePost($request);
+        $data = $this->validatePost($request);
         $redirectPath = back();
-        $postEntity = PostRequestAdapter::toPostEntity($request);
+        $postEntity = PostRequestAdapter::toPostEntity($data['title'], $data['body']);
         $postSlug = $this->postManager->store($postEntity);
 
         if ($postSlug !== null) {
@@ -108,9 +108,9 @@ class PostController extends Controller
 
     public function update(Request $request, string $slug)
     {
-        $this->validatePost($request, $slug);
+        $data = $this->validatePost($request, $slug);
         $redirectPath = back();
-        $postEntity = PostRequestAdapter::toPostEntity($request);
+        $postEntity = PostRequestAdapter::toPostEntity($data['title'], $data['body']);
         $isSuccess = $this->postManager->update($postEntity, $slug);
 
         if ($isSuccess) {
@@ -132,7 +132,7 @@ class PostController extends Controller
         return $redirectPath;
     }
 
-    private function validatePost(Request $request, string $slug = ''): void
+    private function validatePost(Request $request, string $slug = ''): array
     {
         $postId = 0;
 
@@ -144,7 +144,7 @@ class PostController extends Controller
             }
         }
 
-        $this->validate($request, [
+        return $this->validate($request, [
             'title' => "required|max:25|unique:posts,title,{$postId}",
             'body'  => 'required|max:6000',
         ]);
