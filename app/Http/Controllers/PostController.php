@@ -88,6 +88,7 @@ class PostController extends Controller
             $viewModel->author = $viewModel->post->creator->name;
 
             $_ = $this->postManager->incrementViews($slug);
+            unset($_);
         }
 
         return view('posts.show', ['viewModel' => $viewModel]);
