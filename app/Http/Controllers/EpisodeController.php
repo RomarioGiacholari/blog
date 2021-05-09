@@ -27,7 +27,7 @@ class EpisodeController extends Controller
 
         $podcast = Podcast::query()->first();
 
-        if ($podcast && isset($posdcast->episodes)) {
+        if ($podcast && isset($podcast->episodes)) {
             $episodeList = $podcast->episodes()->paginate(24);
 
             if ($episodeList && !$episodeList->isEmpty()) {
@@ -70,6 +70,7 @@ class EpisodeController extends Controller
             'audioBase64' => static::convertToBase64($request->file('audioBase64')),
         ];
 
+        /** @var User $user */
         $user = auth()->user();
 
         if ($user && isset($user->podcasts)) {
