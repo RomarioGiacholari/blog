@@ -21,24 +21,23 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
+        $data = $this->validateEmailRequest($request);
+        $status = 500;
         $isSuccess = false;
         $message = 'Something went wrong...';
         $headers = ['Content-Type' => 'application/json'];
-        $status = 500;
-
-        $this->validateEmail($request);
 
         $appUrl = config('app.url');
         $environment = app()->environment();
         $sendToEmail = config('app.admin_email');
         $subject = "[{$environment}][{$appUrl}][Support]";
-        $messageData = $request->input('message');
-        $emailFrom = $request->input('email');
-        $name = $request->input('name');
+        $name = $data['name'];
+        $email = $data['email'];
+        $messageData = $data['message'];
 
         try {
             Mail::to($sendToEmail)
-                ->send(new ContactMe($messageData, $emailFrom, $name, $subject));
+                ->send(new ContactMe($messageData, $email, $name, $subject));
 
             $isSuccess = true;
             $message = 'Email sent! Thank you for reaching out. I should shortly get back to you with a reply.';
@@ -55,9 +54,9 @@ class ContactController extends Controller
         return response($data, $status, $headers);
     }
 
-    private function validateEmail($request): void
+    private function validateEmailRequest(Request $request): array
     {
-        $this->validate($request, [
+        return $this->validate($request, [
             'name'    => 'required|max:50',
             'email'   => 'required|email',
             'message' => 'required|max:1000',

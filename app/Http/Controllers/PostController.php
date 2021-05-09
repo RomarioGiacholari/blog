@@ -61,7 +61,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validatePost($request);
-
         $redirectPath = back();
         $postEntity = PostRequestAdapter::toPostEntity($request);
         $postSlug = $this->postManager->store($postEntity);
@@ -109,9 +108,8 @@ class PostController extends Controller
 
     public function update(Request $request, string $slug)
     {
-        $redirectPath = back();
         $this->validatePost($request, $slug);
-
+        $redirectPath = back();
         $postEntity = PostRequestAdapter::toPostEntity($request);
         $isSuccess = $this->postManager->update($postEntity, $slug);
 

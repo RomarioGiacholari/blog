@@ -30,9 +30,8 @@ class CoffeeController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, ['amount' => 'required|numeric|min:1|max:5']);
-
-        $requestAmount = (float) $request->input('amount');
+        $data = $this->validate($request, ['amount' => 'required|numeric|min:1|max:5']);
+        $requestAmount = (float) $data['amount'];
         $stripeAmount = ($requestAmount * 100);
         $session = $this->paymentManager->startSession($stripeAmount);
 
