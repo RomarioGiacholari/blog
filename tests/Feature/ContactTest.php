@@ -23,7 +23,7 @@ class ContactTest extends TestCase
         $endpoint = route('contact.store');
         $request  = [
             'name'    => 'John Doe',
-            'email'   => 'johnDoe@example.com',
+            'email'   => 'johndoe@gmail.com',
             'message' => 'World',
             'answer'  => 4,
             'privacy' => true

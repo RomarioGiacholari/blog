@@ -58,7 +58,7 @@ class ContactController extends Controller
     {
         return $this->validate($request, [
             'name'    => 'required|max:50',
-            'email'   => 'required|email',
+            'email'   => 'required|email:rfc,dns',
             'message' => 'required|max:1000',
             'answer'  => 'required|integer|in:4',
             'privacy' => 'required|accepted'
