@@ -155,7 +155,7 @@ class PostTest extends TestCase
         /** @var Post $postCreatedNow */
         $postCreatedNow = Post::factory()->create(['user_id' => $user->id]);
 
-        $endpoint = route('posts.index', ['order-by' => 'created_at', 'direction' => 'desc']);
+        $endpoint = route('posts.index', ['order-by' => 'date', 'direction' => 'desc']);
         $response = $this->get($endpoint);
 
         $response->assertSeeTextInOrder([$postCreatedNow->title, $postCreatedInThePast->title]);

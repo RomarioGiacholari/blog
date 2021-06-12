@@ -14,7 +14,7 @@ class PhotosTest extends TestCase
     {
         parent::setUp();
 
-        $json = file_get_contents(__DIR__."/Data/Photos/data.json");
+        $json = file_get_contents(__DIR__."/data/photos/data.json");
         $data = json_decode($json, true);
         $callback = fn ($mock) => $mock->shouldReceive()->all()->andReturn($data);
 
