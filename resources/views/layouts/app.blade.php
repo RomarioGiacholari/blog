@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Romario Giacholari">
-    <meta name="description" content="Personal website of Romario Giacholari. Web Developer and student in Brighton, UK.">
+    <meta name="description" content="Personal website of Romario Giacholari. Web developer and student in England.">
     <meta name="keywords" content="HTML, CSS, JavaScript, C#, ASP.NET, PHP, JavaScript, Laravel, Vue.js, Romario Giacholari">
 
     <!-- Open Graph Meta Tags -->
@@ -31,8 +31,8 @@
         @include('components._divider')
         @include('navbar.navbar')
         @include('components._noscript')
+        @include('components._privacy')
         @yield('content')
-        <privacy-modal></privacy-modal>
     </div>
     <script defer src="https://assets.giacholari.com/js/blog/app.js"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "24b18c23c53140d5a67de4a052d255cb"}'></script>
