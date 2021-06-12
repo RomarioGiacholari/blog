@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Hi, I am Romario, a web enthusiast!</h1>
+            <h1>Hi, I am Romario, a web enthusiast</h1>
             <hr />
 
             <div class="font-size-16">
                 I am a graduate student and web developer from Aston University.
                 See below my <b>work experience</b>, the <b>tools/languages</b> I use and the <b>websites</b> I have built.
-                Find here <a href="{{ route('cv') }}">(cv)</a> a copy of my curriculum vitae.
+                Find here, a copy of my <a href="{{ route('cv') }}">curriculum vitae</a>.
             </div>
             <hr />
 
@@ -30,7 +30,7 @@
                 <span class="label label-success">JavaScript</span> <span class="label label-primary">Ajax</span>
                 <span class="label label-primary">HTML</span> <span class="label label-primary">CSS</span>
                 <span class="label label-primary">Bootstrap</span> <span class="label label-success">Vue</span>
-                <span class="label label-primary">SQL</span> <span class="label label-primary">PhpStorm</span>
+                <span class="label label-danger">SQL</span> <span class="label label-primary">PhpStorm</span>
                 <span class="label label-primary">GitLab</span> <span class="label label-primary">Azure DevOps</span>
                 <span class="label label-success">Bash</span> <span class="label label-success">Git</span>
                 <span class="label label-primary">PHP-Unit</span> <span class="label label-primary">MOQ</span>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Romario Giacholari">
-    <meta name="description" content="Personal website of Romario Giacholari. Web Developer and student in Brighton, UK.">
+    <meta name="description" content="Personal website of Romario Giacholari. Web developer and student in England.">
     <meta name="keywords" content="HTML, CSS, JavaScript, C#, ASP.NET, PHP, JavaScript, Laravel, Vue.js, Romario Giacholari">
 
     <!-- Open Graph Meta Tags -->
