@@ -10,7 +10,7 @@ class Dictionary
 
         if (!empty($dictionary)) {
             $keys = array_keys($dictionary);
-            shuffle($keys);
+            $_ = shuffle($keys);
 
             foreach ($keys as $key) {
                 $shuffledDictionary[$key] = $dictionary[$key];

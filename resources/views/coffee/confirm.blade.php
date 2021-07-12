@@ -21,12 +21,12 @@
 <script defer>
     document.addEventListener("DOMContentLoaded", function () {
         var proceedButton = document.getElementById('proceedButton');
-        var stripeHandler = function () {
-            var stripe = Stripe('{{ $viewModel->stripePublicKey }}');
-            stripe.redirectToCheckout({sessionId:'{{ $viewModel->sessionId }}'}).then(function (result) {});
-        };
-
-        proceedButton.addEventListener('click', stripeHandler);
+        if (proceedButton) {
+            proceedButton.addEventListener('click', function () {
+                var stripe = Stripe('{{ $viewModel->stripePublicKey }}');
+                stripe.redirectToCheckout({sessionId:'{{ $viewModel->sessionId }}'}).then(function (result) {});
+            });
+        }
     });
 </script>
 @endsection

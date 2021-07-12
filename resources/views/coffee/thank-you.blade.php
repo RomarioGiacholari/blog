@@ -8,7 +8,6 @@
             <h1>Thank you!</h1>
             <hr>
             <p>{{ $viewModel->message }}</p>
-            <a href="{{ route('posts.index') }}" class="btn btn-primary btn-block" role="button">check out my blog!</a>
         </div>
     </div>
 </div>
