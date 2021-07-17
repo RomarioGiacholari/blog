@@ -7,5 +7,6 @@
     "/js/photos/fetchPhotos.js": "/js/photos/fetchPhotos.js",
     "/js/photos/refreshPhoto.js": "/js/photos/refreshPhoto.js",
     "/js/posts/order-by.js": "/js/posts/order-by.js",
-    "/js/privacy-policy/fetchContent.js": "/js/privacy-policy/fetchContent.js"
+    "/js/privacy-policy/fetchContent.js": "/js/privacy-policy/fetchContent.js",
+    "/js/projects/fetchProjects.js": "/js/projects/fetchProjects.js"
 }
