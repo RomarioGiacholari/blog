@@ -17,9 +17,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('project-list', require('./components/Project-list.vue').default);
 Vue.component('privacy-modal', require('./components/Privacy-Modal.vue').default);
-Vue.component('clock', require('./components/Clock.vue').default);
 Vue.component('trix', require('./components/Trix.vue').default);
 Vue.component('contact-form', require('./components/ContactForm.vue').default);
 

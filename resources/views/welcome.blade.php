@@ -44,10 +44,15 @@
             <hr />
 
             <h4>Portfolio</h4>
-            <section>
-                <project-list></project-list>
-            </section>
+            <div id="pinBoot" data-identifier="js-projects-partial-container">
+                @foreach(range(1, 6) as $index)
+                    <div class="thumbnail projects white-panel pinboot-placeholder"></div>
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script defer src="https://assets.giacholari.com/js/blog/projects/fetchProjects.js"></script>
 @endsection
