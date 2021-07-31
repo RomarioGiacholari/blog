@@ -20,7 +20,7 @@ class PrivacyPolicyController extends Controller
     public function content(IPrivacyManager $privacyManager)
     {
         $websiteName = 'giacholari.com';
-        $contactEmail = config('app.admin_email') ?? 'giacholari@gmail.com';
+        $contactEmail = config('app.admin.email') ?? 'giacholari@gmail.com';
         $privacyContent = Cache::remember('privacyContent', $seconds = 60 * 60 * 24, function () use ($privacyManager) {
             $content = $privacyManager->get();
 

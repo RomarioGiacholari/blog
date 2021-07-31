@@ -18,7 +18,7 @@ class AppStatus extends Command
     public function handle()
     {
         try {
-            $email = config('app.admin_email');
+            $email = config('app.admin.email');
             $endpoint = route('app.status');
             $response = Http::get($endpoint);
 
