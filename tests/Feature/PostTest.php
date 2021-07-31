@@ -14,10 +14,18 @@ class PostTest extends TestCase
 {
     use DatabaseTransactions;
 
+    private static $email;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        static::$email = config('app.admin.email');
+    }
+
     public function test_an_authenticated_user_can_create_a_post()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
@@ -38,8 +46,7 @@ class PostTest extends TestCase
 
     public function test_an_authenticated_user_can_delete_a_post()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
@@ -58,8 +65,7 @@ class PostTest extends TestCase
 
     public function test_an_authenticated_user_can_update_a_post()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         /** @var Post $post */
         $post = Post::factory()->create(['user_id' => $user->id]);
@@ -96,8 +102,7 @@ class PostTest extends TestCase
 
     public function test_the_body_and_title_attributes_are_required()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
@@ -115,8 +120,7 @@ class PostTest extends TestCase
 
     public function test_the_views_of_a_post_can_be_incremented()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
@@ -143,8 +147,7 @@ class PostTest extends TestCase
 
     public function test_posts_can_be_sorted_by_the_date_they_were_created()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
@@ -163,8 +166,7 @@ class PostTest extends TestCase
 
     public function test_posts_can_be_sorted_by_views()
     {
-        $email = config('app.admin_email');
-        $user = static::createUser(['email' => $email]);
+        $user = static::createUser(['email' => static::$email]);
 
         $this->actingAs($user);
 
