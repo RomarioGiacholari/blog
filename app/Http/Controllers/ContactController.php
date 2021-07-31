@@ -29,7 +29,7 @@ class ContactController extends Controller
 
         $appUrl = config('app.url');
         $environment = app()->environment();
-        $sendToEmail = config('app.admin_email');
+        $sendToEmail = config('app.admin.email');
         $subject = "[{$environment}][{$appUrl}][Support]";
         $name = $data['name'];
         $email = $data['email'];
