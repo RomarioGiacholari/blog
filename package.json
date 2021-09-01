@@ -27,7 +27,7 @@
         "serialize-javascript": "^4.0.0",
         "node-forge": ">=0.10.0",
         "trix": "^1.2.3",
-        "object-path": ">=0.11.5",
+        "object-path": ">=0.11.6",
         "node-notifier": ">=8.0.1"
     }
 }
