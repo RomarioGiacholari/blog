@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Buy me a cup of coffee (finding a reason to test stripe)</h1>
+            <h1>Buy me a cup of coffee</h1>
             <hr>
             <p>
                 Select an amount to pay. 
