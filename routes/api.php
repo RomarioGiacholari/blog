@@ -14,4 +14,7 @@ Route::group(['middleware' => ['throttle:global']], function () {
 
     // Photos
     Route::get('/photos', [\App\Http\Controllers\PhotoApiController::class, 'index'])->name('api.photos.index');
+
+    // Privacy Policy
+    Route::get('/privacy-policy', [\App\Http\Controllers\PrivacyPolicyApiController::class, 'index'])->name('api.privacy-policy.index');
 });
